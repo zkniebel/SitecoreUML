@@ -2,7 +2,7 @@
 INSTALLATION INSTRUCTIONS
 -------------------------
 1a. Install the Sitecore Package for the appropriate version from the 
-    .\Installation\SitecorePackage\ folder into your Sitecore instance
+    .\SitecorePackage\ folder into your Sitecore instance
 1b. Note that it is recommended that you do NOT install the Sitecore package
     on a Content Delivery (CD) instance. However, if you choose to do so, 
     please delete or disable the included Sitecore patch config at the path
@@ -16,8 +16,9 @@ INSTALLATION INSTRUCTIONS
     same features as the licensed version, so feel free to try the software 
     out and make your own decision on the licensing, based on how you plan to
     use it.
-3.  Copy the .\Installation\StarUMLExtension\SitecoreUML folder (not just its 
-	contents) to your "%APPDATA%\StarUML\extensions\user" folder.
+3.  Copy the .\StarUMLExtension\SitecoreUML folder from the SitecoreUML 
+    download (NOT in the package) into your %APPDATA%\StarUML\extensions\user 
+    folder.
 4.  Launch StarUML
 5.  Go to File > Preferences > Sitecore and provide the URL of the Sitecore
     instance that you want to connect to. Preferences save automatically, so
