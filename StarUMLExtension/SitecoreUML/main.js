@@ -1,6 +1,9 @@
 define(function (require, exports, module) {
     "use strict";
 
+    // load in the Sitecore preferences
+    var SitecorePreferencesLoader = require("SitecorePreferencesLoader");
+
     // load the json file export and initialize it to add the menu item
     var SitecoreTemplatesJsonGenerator = require("SitecoreTemplatesJsonGenerator");  
     SitecoreTemplatesJsonGenerator.initialize();

@@ -5,6 +5,7 @@ using System.Web;
 using Sitecore.ContentSearch.Maintenance;
 using Sitecore.Data;
 using Sitecore.Data.Items;
+using Sitecore.Data.Managers;
 using Sitecore.Data.Proxies;
 using Sitecore.Diagnostics;
 using Sitecore.SecurityModel;
@@ -13,7 +14,7 @@ using ZacharyKniebel.Feature.SitecoreUML.Models;
 
 namespace ZacharyKniebel.Feature.SitecoreUML
 {
-    public class ImportManager
+    public class SitecoreDataManager
     {
         private readonly Database _database = SitecoreUMLConfiguration.Instance.TargetDatabase;
 
@@ -144,6 +145,55 @@ namespace ZacharyKniebel.Feature.SitecoreUML
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Gets all of the templates under the given template root as JsonSitecoreTemplates for export
+        /// </summary>
+        /// <param name="templateRoot">The root item under which all of the templates to be exported live</param>
+        /// <returns></returns>
+        public virtual IEnumerable<JsonSitecoreTemplate> GetTemplatesForExport(Item templateRoot)
+        {
+            // get all of the template items that are children of the template root
+            var templateItems = TemplateManager.GetTemplates(_database).Values
+                .Select(template => _database.GetTemplate(template.ID))
+                .Where(
+                    templateItem =>
+                        templateItem != null
+                        && templateItem.InnerItem.Paths.Path.StartsWith(templateRoot.Paths.Path));
+
+            var jsonTemplates = templateItems
+                .Select(
+                    templateItem =>
+                        new JsonSitecoreTemplate()
+                        {
+                            ReferenceID = templateItem.ID.ToString(),
+                            Name = templateItem.Name,
+                            BaseTemplates = templateItem.BaseTemplates
+                                .Where(
+                                    baseTemplateItem =>
+                                        baseTemplateItem.InnerItem.Paths.Path.StartsWith(templateRoot.Paths.Path))
+                                .Select(
+                                    baseTemplateItem =>
+                                        baseTemplateItem.InnerItem.Paths.Path.Substring(templateRoot.Paths.Path.Length))
+                                .ToArray(),
+                            Path = templateItem.InnerItem.Paths.Path.Substring(templateRoot.Paths.Path.Length),
+                            Fields = templateItem.OwnFields
+                                .Select(
+                                    templateFieldItem =>
+                                        new JsonSitecoreTemplateField()
+                                        {
+                                            Name = templateFieldItem.Name,
+                                            FieldType =
+                                                SitecoreUMLConfiguration.Instance.FieldTypes.HasKey(templateFieldItem.Type)
+                                                    ? SitecoreUMLConfiguration.Instance.FieldTypes.Forward[templateFieldItem.Type]
+                                                    : templateFieldItem.Type, // field type wasn't in the map, so fall back to the Sitecore field type
+                                            SortOrder = templateFieldItem.Sortorder
+                                        })
+                                .ToArray()
+                        });
+
+            return jsonTemplates;
         }
     }
 }

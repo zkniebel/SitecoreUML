@@ -175,7 +175,7 @@
     <Compile Include="Common\Map{T1,T2}.cs" />
     <Compile Include="Configuration\SitecoreUMLConfiguration.cs" />
     <Compile Include="Controllers\TemplatesController.cs" />
-    <Compile Include="ImportManager.cs" />
+    <Compile Include="SitecoreDataManager.cs" />
     <Compile Include="Models\JsonSitecoreTemplate.cs" />
     <Compile Include="Models\JsonSitecoreTemplateField.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

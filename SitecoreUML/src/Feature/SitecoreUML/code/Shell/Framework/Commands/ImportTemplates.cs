@@ -64,7 +64,7 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Shell.Framework.Commands
             }
 
             // execute the import
-            var importManager = new ImportManager();
+            var importManager = new SitecoreDataManager();
             if (!importDataSets.All(set => importManager.ImportTemplates(set, templateRoot)))
             {
                 // TODO: add support for rolling back the import and update the logging when complete

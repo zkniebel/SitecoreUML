@@ -7,5 +7,6 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Models
     {
         public bool Success { get; set; }
         public string ErrorMessage { get; set; }
+        public string Data { get; set; }
     }
 }

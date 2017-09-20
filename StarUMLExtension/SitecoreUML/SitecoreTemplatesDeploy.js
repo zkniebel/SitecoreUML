@@ -6,37 +6,49 @@ define(function(require, exports, module) {
 
     // backing fields for lazy-loaded variables - do NOT use these values except from the lazy loaded variable assignments
     var _backingFields = {
+        _dialogs: undefined,
         _sitecoreTemplatesJsonGenerator: undefined,
+        _sitecorePreferencesLoader: undefined
     };
     
     // lazy-loaded StarUML modules
+    var Dialogs = _backingFields._dialogs || (_backingFields._dialogs = app.getModule("dialogs/Dialogs"));
+
+    // lazy-loaded custom modules
     var SitecoreTemplatesJsonGenerator = _backingFields._sitecoreTemplatesJsonGenerator || (_backingFields._sitecoreTemplatesJsonGenerator = require("SitecoreTemplatesJsonGenerator"));
+    var SitecorePreferencesLoader = _backingFields._sitecorePreferencesLoader || (_backingFields._sitecorePreferencesLoader = require("SitecorePreferencesLoader"));
 
     // serializes
     function serializeAndDeploySitecoreTemplates() {
         var templates = SitecoreTemplatesJsonGenerator.generateJsonTemplates();
         var json = JSON.stringify(templates);
 
+        var sitecoreUrl = SitecorePreferencesLoader.getSitecoreUrl();
+        var deployRoute = SitecorePreferencesLoader.getSitecoreDeployRoute();
+        
+        sitecoreUrl = sitecoreUrl.lastIndexOf("/") == sitecoreUrl.length - 1 
+            ? sitecoreUrl.substr(0, sitecoreUrl.length - 1) 
+            : sitecoreUrl;
+        deployRoute = deployRoute.indexOf("/") == 0 
+            ? deployRoute 
+            : "/" + deployRoute;
+
+        var postUrl = sitecoreUrl + deployRoute;
         $.ajax(
-            "http://local.sitecoreuml.com/sitecoreuml/templates/deploy", 
+            postUrl, 
             {
                 method: "POST",
                 data: json,
                 cache: false,
                 contentType: "application/json; charset=utf-8",
-                error: function() {
-                    console.error("Deploy Error Response: ", data);
-                    app.getModule("dialogs/Dialogs").showErrorDialog("Uh oh! An error occurred while deploying to the Sitecore instance. See the DevTools console for more details.");
-                    return;
-                },
-                success: function(data) {
+                complete: function(data) {
                     if (!data.success) {
                         console.error("Deploy Error Response: ", data);
-                        app.getModule("dialogs/Dialogs").showErrorDialog("Uh oh! An error occurred while deploying to the Sitecore instance. See the DevTools console for more details.");
+                        Dialogs.showErrorDialog("Uh oh! An error occurred while deploying to the Sitecore instance. See the DevTools console for more details.");
                         return;
                     }
     
-                    app.getModule("dialogs/Dialogs").showAlertDialog("Templates deployed successfully!");
+                    Dialogs.showAlertDialog("Templates deployed successfully!");
                 }
             });
     };
