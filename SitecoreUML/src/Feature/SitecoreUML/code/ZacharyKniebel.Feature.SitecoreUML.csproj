@@ -185,6 +185,7 @@
     <Compile Include="Models\JsonResponse.cs" />
     <Content Include="packages.config" />
     <Content Include="App_Config\Include\SitecoreUML\SitecoreUML.config" />
+    <Content Include="App_Config\Include\SitecoreUML\SitecoreUML.CM.config" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
   </ItemGroup>
   <ItemGroup />

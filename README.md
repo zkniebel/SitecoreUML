@@ -1,4 +1,4 @@
-# SitecoreUML (alpha-r3)
+# SitecoreUML (alpha)
 
 SitecoreUML is a productivity tool that enables architects to create Sitecore templates directly from their UML diagrams, as well as export an existing Sitecore solution’s template architecture and generate UML diagrams from it. 
 
@@ -12,6 +12,10 @@ SitecoreUML can save countless project hours spent reproducing architectures dia
  - Generate robust, detailed Sitecore template architecture diagrams from an existing solution
  - Plan your template architecture by diagramming in StarUML and import the result into Sitecore as templates
  - And more!
+ 
+## Video Demo
+
+[![Video Demo Link](https://i.ytimg.com/vi/qfmdegqbsvk/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBvofTYyJ18_AozsGbsYhovsohGeg)](https://youtu.be/qfmdegqbsvk)
 
 ## How it Works
 
@@ -19,7 +23,7 @@ SitecoreUML creates an integration between Sitecore and StarUML, a feature-rich 
 
 ## Project Status
 
-The project is currently under development, and the current version is *alpha-r3* (pre-release 3 before the official alpha release). The code that is currently in the project works and has been tested end-to-end for all expected scenarios during feature development. However, developer-level testing has not yet been formally conducted. 
+The project is currently under development, and the current version is *alpha*. The code that is currently in the project works and has been tested end-to-end for all expected scenarios during feature development. However, developer-level testing has not yet been formally completed. 
 
 At present, the tool will create templates and fields with matching sort order, field type and name, and the same information will be brought into the generated UML diagrams. Additional features will be coming soon, so stay tuned!
 
