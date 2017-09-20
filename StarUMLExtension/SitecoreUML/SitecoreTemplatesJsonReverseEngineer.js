@@ -284,7 +284,7 @@ define(function (require, exports, module) {
             FileUtils.readAsText(file)
                 .done(function (data) {
                     console.log("JSON data read successfully from file path " + filePath);
-                    generateDiagrams(data);
+                    generateTemplateDiagrams(data);
                 })
                 .fail(function (err) {
                     console.error(err);
