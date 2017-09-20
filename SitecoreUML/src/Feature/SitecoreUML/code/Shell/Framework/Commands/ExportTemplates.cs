@@ -39,44 +39,8 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Shell.Framework.Commands
                 return;
             }
 
-            // get all of the template items that are children of the template root
-            var templateItems = TemplateManager.GetTemplates(_database).Values
-                .Select(template => _database.GetTemplate(template.ID))
-                .Where(
-                    templateItem =>
-                        templateItem != null
-                        && templateItem.InnerItem.Paths.Path.StartsWith(templateRoot.Paths.Path));
-
-            var jsonTemplates = templateItems
-                .Select(
-                    templateItem => 
-                        new JsonSitecoreTemplate() 
-                        {
-                            ReferenceID = templateItem.ID.ToString(),
-                            Name = templateItem.Name,
-                            BaseTemplates = templateItem.BaseTemplates
-                                .Where(
-                                    baseTemplateItem =>
-                                        baseTemplateItem.InnerItem.Paths.Path.StartsWith(templateRoot.Paths.Path))
-                                .Select(
-                                    baseTemplateItem =>
-                                        baseTemplateItem.InnerItem.Paths.Path.Substring(templateRoot.Paths.Path.Length))
-                                .ToArray(),
-                            Path = templateItem.InnerItem.Paths.Path.Substring(templateRoot.Paths.Path.Length),
-                            Fields = templateItem.OwnFields
-                                .Select(
-                                    templateFieldItem => 
-                                        new JsonSitecoreTemplateField()
-                                        {
-                                            Name = templateFieldItem.Name,
-                                            FieldType = 
-                                                SitecoreUMLConfiguration.Instance.FieldTypes.HasKey(templateFieldItem.Type)
-                                                    ? SitecoreUMLConfiguration.Instance.FieldTypes.Forward[templateFieldItem.Type] 
-                                                    : templateFieldItem.Type, // field type wasn't in the map, so fall back to the Sitecore field type
-                                            SortOrder = templateFieldItem.Sortorder
-                                        })
-                                .ToArray()
-                        });
+            // get the templates for export
+            var jsonTemplates = new SitecoreDataManager().GetTemplatesForExport(templateRoot);
             
             using (var file = File.CreateText($"{outputDirectory.FullName}/{DateTime.Now:yyyyMMddhhmmss}.json"))
             {
