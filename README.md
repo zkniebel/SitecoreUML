@@ -1,4 +1,4 @@
-# SitecoreUML (alpha-r0)
+# SitecoreUML (alpha-r3)
 
 SitecoreUML is a productivity tool that enables architects to create Sitecore templates directly from their UML diagrams, as well as export an existing Sitecore solution’s template architecture and generate UML diagrams from it. 
 
@@ -6,19 +6,37 @@ SitecoreUML can save countless project hours spent reproducing architectures dia
 
 ## Features
 
- - One-click export of Sitecore templates as JSON
+ - One-click deploy Sitecore templates from UML to Sitecore
+ - One-click generate UML models and diagrams from Sitecore template architecture
+ - One-click import or export templates from Sitecore or from StarUML as JSON data
  - Generate robust, detailed Sitecore template architecture diagrams from an existing solution
  - Plan your template architecture by diagramming in StarUML and import the result into Sitecore as templates
  - And more!
 
 ## How it Works
 
-SitecoreUML creates an integration between Sitecore and StarUML, a feature-rich and highly customizable UML modeling and diagramming tool. SitecoreUML includes both a Sitecore module and a StarUML extension that together enable the serialization and deserialization of template data into and out of both Sitecore and StarUML. 
+SitecoreUML creates an integration between Sitecore and StarUML, a feature-rich and highly customizable UML modeling and diagramming tool. SitecoreUML includes both a Sitecore module and a StarUML extension that together enable the serialization, deserialization and transmission of template data between the two systems. 
 
 ## Project Status
 
-The project is currently under development, and the current version is *alpha-r0* (the first pre-release before the official alpha release). The code that is currently in the project works, but requires some cleanup and reorganization, as the *alpha-r0* release was essentially two different POCs spliced together. Right now, the tool is a little light on features, but more will be added shortly. 
+The project is currently under development, and the current version is *alpha-r3* (pre-release 3 before the official alpha release). The code that is currently in the project works and has been tested end-to-end for all expected scenarios during feature development. However, developer-level testing has not yet been formally conducted. 
+
+At present, the tool will create templates and fields with matching sort order, field type and name, and the same information will be brought into the generated UML diagrams. Additional features will be coming soon, so stay tuned!
+
+## Upcoming Features
+ 
+### Version 1.1 (December 2017)
+
+ - Support for "Title" field of template fields
+ - Support for "Source" field of template fields
+ - Support for "Display Name" field of items
+
+### Version 2.0 (Coming in 2018)
+
+ - Azure infrastructure provisioning support
+ - AWS infrastructure provisioning support
+ - and more
 
 ## Contributors
 
-Currently, I am the only contributor to this project, but I am hoping to open source it in the coming months. If you are interested in teaming up, send me a message over Sitecore Slack (@zachary_kniebel). 
+Currently, I, Zachary Kniebel, am the only contributor to this project. I am hoping to open source it in the coming months, so If you are interested in teaming up, please send me a message over Sitecore Slack (@zachary_kniebel). 
