@@ -133,8 +133,9 @@ define(function(require, exports, module) {
         return sitecoreTemplates;
     };
     
+    // TODO: move this to a separate module
     // serialize and save the Sitecore templates to a path specified by the user
-    function serializAndSaveSitecoreTemplates() {        
+    function serializeAndSaveSitecoreTemplates() {        
         FileSystem.showSaveDialog("Save serialized Sitecore templates as...", null, "Untitled.json", function (err, filename) {
             if (!err) {
                 if (filename) {
@@ -171,12 +172,12 @@ define(function(require, exports, module) {
         var CommandManager = app.getModule("command/CommandManager");
 
         // register the command
-        CommandManager.register("Export Template Diagrams as Serialized JSON", CMD_SAVESERIALIZEDTEMPLATES, serializAndSaveSitecoreTemplates);
+        CommandManager.register("Export Template Diagrams as Serialized JSON", CMD_SAVESERIALIZEDTEMPLATES, serializeAndSaveSitecoreTemplates);
         // add the menu item
         SitecoreMenuLoader.sitecoreMenu.addMenuItem(CMD_SAVESERIALIZEDTEMPLATES, ["Ctrl-Shift-B"]);
     };
     exports.generateJsonTemplates = generateJsonTemplates;
-    exports.serializAndSaveSitecoreTemplates = serializAndSaveSitecoreTemplates;
+    exports.serializeAndSaveSitecoreTemplates = serializeAndSaveSitecoreTemplates;
     exports.CMD_SAVESERIALIZEDTEMPLATES = CMD_SAVESERIALIZEDTEMPLATES;
 });
 
