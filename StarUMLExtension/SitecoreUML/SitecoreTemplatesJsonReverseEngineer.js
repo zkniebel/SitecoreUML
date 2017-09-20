@@ -26,7 +26,7 @@ define(function(require, exports, module) {
     var StringUtils = _backingFields._stringUtils || (_backingFields._stringUtils = require("StringUtils")); 
     var DiagramUtils = _backingFields._diagramUtils || (_backingFields._diagramUtils = require("DiagramUtils")); 
 
-    // execute the "Generate Template Diagrams" command
+    // generates the template diagrams and models from specified JSON file
     function generateTemplateDiagrams() {
         // generate the diagrams from the given JSON data
         function generateDiagrams(jsonTemplates) {
@@ -314,9 +314,9 @@ define(function(require, exports, module) {
         // eager-load the requisite modules
         var CommandManager = app.getModule("command/CommandManager");
         
-        // register the "Generate Template Diagrams" command
-        CommandManager.register("Import Diagrams from Sitecore", CMD_GENERATETEMPLATEDIAGRAMS, generateTemplateDiagrams);    
-        // add the "Generate Template Diagrams" menu item
+        // register the command
+        CommandManager.register("Import Template Diagrams from Serialized JSON", CMD_GENERATETEMPLATEDIAGRAMS, generateTemplateDiagrams);    
+        // add the menu item
         SitecoreMenuLoader.sitecoreMenu.addMenuItem(CMD_GENERATETEMPLATEDIAGRAMS, ["Ctrl-Shift-D"]);
     };
     exports.generateTemplateDiagrams = generateTemplateDiagrams;

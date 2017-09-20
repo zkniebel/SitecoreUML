@@ -2,10 +2,10 @@ define(function (require, exports, module) {
     "use strict";
 
     // load the export and initialize it to add the menu item
-    var SitecoreJsonGenerator = require("SitecoreJsonGenerator");  
-    SitecoreJsonGenerator.initialize();
+    var SitecoreTemplatesJsonGenerator = require("SitecoreTemplatesJsonGenerator");  
+    SitecoreTemplatesJsonGenerator.initialize();
     
     // load the import module and initialize it to add the menu item
-    var SitecoreJsonReverseEngineer = require("SitecoreJsonReverseEngineer");  
-    SitecoreJsonReverseEngineer.initialize();
+    var SitecoreTemplatesJsonReverseEngineer = require("SitecoreTemplatesJsonReverseEngineer");  
+    SitecoreTemplatesJsonReverseEngineer.initialize();
 });

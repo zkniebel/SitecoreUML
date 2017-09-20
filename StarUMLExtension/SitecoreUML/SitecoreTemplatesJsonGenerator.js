@@ -18,8 +18,8 @@ define(function(require, exports, module) {
     var FileUtils  = _backingFields._fileUtils || (_backingFields._fileUtils = app.getModule("file/FileUtils"));
     var Dialogs = _backingFields._dialogs || (_backingFields._dialogs = app.getModule("dialogs/Dialogs"));
 
-    // execute "Generate Serialized Templates"
-    function generateSerializedTemplates() {
+    // generates the JSON templates from the diagrams and models
+    function generateJsonTemplates() {
         var SitecoreTemplateField = function(
                 name, 
                 fieldType, 
@@ -130,28 +130,29 @@ define(function(require, exports, module) {
         // write the sitecore templates to the console for debugging purposes
         console.log(sitecoreTemplates);
 
-        // serialize template data as JSON and save to output directory
-        function serializeAndSaveSitecoreTemplates(filePath) {
-            var file = FileSystem.getFileForPath(filePath);
-            var json = JSON.stringify(sitecoreTemplates);
-
-            // write the json to the file
-            FileUtils.writeText(file, json, true)
-                .done(function () {
-                    Dialogs.showInfoDialog("File saved successfully!")
-                })
-                .fail(function (err) {
-                    console.error(err);
-                    Dialogs.showErrorDialog("Uh oh! An error occurred while saving. See the DevTools console for details.");
-                    return;
-                });  
-        }
-
+        return sitecoreTemplates;
+    };
+    
+    // serialize and save the Sitecore templates to a path specified by the user
+    function serializAndSaveSitecoreTemplates() {        
         FileSystem.showSaveDialog("Save serialized Sitecore templates as...", null, "Untitled.json", function (err, filename) {
             if (!err) {
                 if (filename) {
                     // save the file
-                    serializeAndSaveSitecoreTemplates(filename);
+                    var file = FileSystem.getFileForPath(filename);
+                    var templates = generateJsonTemplates();
+                    var json = JSON.stringify(templates);
+    
+                    // write the json to the file
+                    FileUtils.writeText(file, json, true)
+                        .done(function () {
+                            Dialogs.showInfoDialog("File saved successfully!")
+                        })
+                        .fail(function (err) {
+                            console.error(err);
+                            Dialogs.showErrorDialog("Uh oh! An error occurred while saving. See the DevTools console for details.");
+                            return;
+                        });  
                 } else { // User canceled
                     return; 
                 }
@@ -163,18 +164,19 @@ define(function(require, exports, module) {
     };
     
     // command ID constant
-    var CMD_GENERATESERIALIZEDTEMPLATES = "sitecore.generateserializedtemplates";
+    var CMD_SAVESERIALIZEDTEMPLATES = "sitecore.saveserializedtemplates";
 
     exports.initialize = function() {
         // eager-load the requisite modules
         var CommandManager = app.getModule("command/CommandManager");
 
-        // register the "Generate Serialized Templates" command
-        CommandManager.register("Export Diagrams to Sitecore", CMD_GENERATESERIALIZEDTEMPLATES, generateSerializedTemplates);
-        // add the "Generate Serialized Templates" menu item
-        SitecoreMenuLoader.sitecoreMenu.addMenuItem(CMD_GENERATESERIALIZEDTEMPLATES, ["Ctrl-Shift-B"]);
+        // register the command
+        CommandManager.register("Export Template Diagrams as Serialized JSON", CMD_SAVESERIALIZEDTEMPLATES, serializAndSaveSitecoreTemplates);
+        // add the menu item
+        SitecoreMenuLoader.sitecoreMenu.addMenuItem(CMD_SAVESERIALIZEDTEMPLATES, ["Ctrl-Shift-B"]);
     };
-    exports.generateSerializedTemplates = generateSerializedTemplates;
-    exports.CMD_GENERATESERIALIZEDTEMPLATES = CMD_GENERATESERIALIZEDTEMPLATES;
+    exports.generateJsonTemplates = generateJsonTemplates;
+    exports.serializAndSaveSitecoreTemplates = serializAndSaveSitecoreTemplates;
+    exports.CMD_SAVESERIALIZEDTEMPLATES = CMD_SAVESERIALIZEDTEMPLATES;
 });
 
