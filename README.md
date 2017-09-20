@@ -12,6 +12,10 @@ SitecoreUML can save countless project hours spent reproducing architectures dia
  - Generate robust, detailed Sitecore template architecture diagrams from an existing solution
  - Plan your template architecture by diagramming in StarUML and import the result into Sitecore as templates
  - And more!
+ 
+## Video Demo
+
+[![Video Demo Link](https://i.ytimg.com/vi/qfmdegqbsvk/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBvofTYyJ18_AozsGbsYhovsohGeg)](https://youtu.be/qfmdegqbsvk)
 
 ## How it Works
 
