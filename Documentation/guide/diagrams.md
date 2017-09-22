@@ -46,3 +46,7 @@ For those new to UML, it is important to know that, when modeling with UML, fold
 
 As with the Templates Diagram, while SitecoreUML does not require your Templates Diagram to be a Class Diagram, it is the recommended practice. To that end, SitecoreUML actually does not require you to have a Template Folders Diagram at all. You could do everything in your Templates Diagram. However, this will complicate your Templates Diagram and make it increasingly difficult to read. Depending on the size and complexity of the solution, putting everything in one diagram may not be a viable option. It is for this reason - for sake of organization and clarity - that the SitecoreUML recommended practice is to abstract out the template folders into their own diagram.
 
+## Views
+
+Recall from the last chapter, [Projects](/guide/creating-a-project.md), that Models are not Diagrams, and that diagrams are visualizations of a Model. Similarly, _Views_ are visual representations of a model element; a symbol or other graphic that represents an entity of the model. If a diagram is blank and has nothing on it, then there are no views on it. If a diagram has two elements connected by an arrow symbolizing a relationship, then there are three views on the diagram: one for each connected element, and one of the arrow that connects them. 
+
