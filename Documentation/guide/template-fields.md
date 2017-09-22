@@ -27,6 +27,8 @@ There are four elements of this syntax to be mindful of:
 
 The `+` modifier should be acknowledged but doesn't have a major affect on SitecoreUML architecture. Because all template fields in Sitecore are effectively public, SitecoreUML ignores the value that you set for the visibility modifier. It is recommended that you leave the visibility modifier set to the default, `+` meaning `public`, for sake of readability and future feature development.
 
+Note that when you add an attribute, you can omit the visibility modifier and the the default modifier \(`+`\) will be added for you. This can help you save a little extra time while creating your architectures.
+
 ### Name
 
 The name of the attribute is the exact name that you want to give your template field. While StarUML will allow it, you should not use any symbols or characters that are invalid in your Sitecore instance's `Settings.InvalidItemNameChars`. This applies to all name fields, but I am calling it out here, specifically, because it is easy to forget that fields are actually items.
@@ -41,11 +43,30 @@ The type-name separator is just that: a character \(`:`\) that separates the att
 
 ### Type
 
+Technically speaking, the `Type` isn't actually required in UML and you _could_ skip putting it in altogether. However, this won't work with SitecoreUML, which won't be able to map your field to a Sitecore type when you go to deploy your architecture. Any fields that have types that SitecoreUML is unable to map \(including no type at all\), will be skipped during deployment and a warning will be added to the log for it. 
+
 Keep in mind that UML is not actually a type-safe language, in that there are no checks to ensure that you have specified a real type or not. As such, the `Type` of your attribute can include pretty much any character \(spaces, dashes, etc. are all allowed\). In the [Sitecore Config Files](/guide/sitecore-configuration.md), there is a mapping from the field type name in Sitecore to the field type name in UML. The purpose of this feature is to allow architects to further accelerate their architecture tasks by allowing them to set custom names for field types. For example, if Sitecore's`Single-Line Text` field was set to map to the UML type `SLT` then any field that the architect sets to `SLT` in their UML will become a `Single-Line Text` field when deployed to Sitecore.
 
 _Note: the current version of SitecoreUML ships with a map that has UML field types that are slightly different from Sitecore's field type names, in that all spaces and punctuation have been removed. The original idea was that this would help architects enter their field types faster, but has proven to be confusing, based on feedback. The map will be updated to list the default Sitecore field type names before the release of the next version. You can still change the out-of-the-box values to make them simpler and quicker to type, at will \(e.g. _`Single-Line Text`_ -&gt; _`SLT`_ \)._
 
+### Examples
+
+The following are just a few examples of valid attribute text:
+
+```
++MetaDescription: SingleLineText
++BrowserTitle : SingleLineText
++Navigation Title  :SingleLineNext
++Search-Result-Image:Image
+```
+
 ## Adding a Template Field
 
-Coming soon...
+To add a template field, perform the following steps:
+
+1. Double-click on the template that you wish to add the field to ![](/assets/StarUML-Attribute-Add.png)
+2. Click the _Add Attribute_ button, located immediately to the right of the interface name, which should have an icon that looks like a small rectangle at a 45-degree angle \(![](/assets/StarUML-Attribute-Add-Button.png)\)
+3. Specify the text for your attribute, in the format `Name:Type`, where `Name` and `Type` are replaced with the name and the type of your new template field, respectively
+
+
 
