@@ -10,14 +10,14 @@ For those new to UML, a Generalization is essentially a type of relationship tha
 
 As with adding child template folders, there are essentially two ways to add an inheriting interface, in StarUML: the _easy method_, and the _manual method_.
 
-![](/assets/StarUML-Interfaces-InheritanceAdded.png)
+![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Interfaces-InheritanceAdded.png?raw=true)
 
 ### The Easy Method
 
 Adding an inheriting template the easy way avoids having to manually create the Generalization yourself. To add an inheriting template the easy way, perform the following steps:
 
-1. Double-click on the base template for which you want to add a new inheriting template ![](/assets/StarUML-Interfaces-InheritanceAdd.png)
-2. In the set of buttons to the right of the template name, click the bottom-leftmost button, which looks like a circle with an arrow coming out of the top \(![](/assets/StarUML-Interfaces-InheritanceAdd-Button.png)\)
+1. Double-click on the base template for which you want to add a new inheriting template ![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Interfaces-InheritanceAdd.png?raw=true)
+2. In the set of buttons to the right of the template name, click the bottom-leftmost button, which looks like a circle with an arrow coming out of the top \(![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Interfaces-InheritanceAdd-Button.png?raw=true)\)
 3. Rename the inheriting template by double-clicking and replacing the text with the desired name
 
 ### The Manual Method
