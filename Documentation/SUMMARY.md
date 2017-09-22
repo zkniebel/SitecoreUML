@@ -25,6 +25,7 @@
 * [Manipulating Hierarchies](guide/models-vs-diagrams/manipulating.md)
 * [Preferences](guide/saving-preferences.md)
 * [Deploy & Import](guide/deploy-and-import.md)
+* [JSON Tools](guide/json-tools.md)
 
 ## Module Reference
 
