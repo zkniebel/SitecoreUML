@@ -9,8 +9,9 @@
 ## Getting Started
 
 * [About SitecoreUML](getting-started/about-sitecoreuml.md)
+* How it Works
 * [Installation and Setup](getting-started/setup-and-insta.md)
-* StarUML
+* [StarUML](getting-started/staruml.md)
 
 ## Guide
 
