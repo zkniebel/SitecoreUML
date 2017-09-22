@@ -27,5 +27,7 @@ SitecoreUML's import and export logic is pretty straight-forward. When you _impo
 
 It's time to share the "secret sauce," as it were. When data is transferred there is a transmission source and a target. The transmission source isn't where the command to send or receive data was executed, but rather the location where the data to be transferred is stored. In SitecoreUML, if the Sitecore instance is the source then StarUML is the target, and vice versa. Whether you are deploying or importing your data, the first step is serialization.
 
-SitecoreUML uses a custom JSON structure for transferring data. Whether you are serializing existing Sitecore templates or UML diagrams and models, the resulting JSON structure is the same. Once the data has been serialized, it is transferred to the target, where it is subsequently deserialized into the target format - either Sitecore templates or UML diagrams and models. 
+SitecoreUML uses a custom JSON structure for transferring data. Whether you are serializing existing Sitecore templates or UML diagrams and models, the resulting JSON structure is the same. Once the data has been serialized, it is transferred to the target, where it is subsequently deserialized into the target format - either Sitecore templates or UML diagrams and models.
+
+
 
