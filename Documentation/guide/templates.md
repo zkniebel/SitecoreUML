@@ -26,11 +26,9 @@ To add a template, perform the following steps:
 
 ## Adding an Inheriting Template
 
-Coming soon...
+Coming soon... 
 
 ## Adding a Base Template to an Existing Template
 
 Coming soon...
-
-
 
