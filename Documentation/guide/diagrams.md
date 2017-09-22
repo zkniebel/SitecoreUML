@@ -2,6 +2,18 @@
 
 A diagram is a visual representation of a model. Diagrams are the bread and butter of UML, and, as such, the majority of the work when creating architectures in StarUML is spent creating diagrams.
 
+## Creating a Diagram
+
+To create a diagram:
+
+1. Right-click on the element in the Model Explorer that you want to add the diagram to
+2. Hover over _Add Diagram_
+3. Select the type of diagram that you want to create from the sub-menu
+4. Double-click the name of the diagram in the Model Explorer
+5. In the _Properties _box, below the Model Explorer, update the _name _field to the desired name of your diagram
+
+## ![](/assets/StarUML-Diagrams-Add.png)
+
 ## Diagram Sets
 
 In SitecoreUML, all template architectures should include at least one set of two diagrams, a _Templates Diagram_ and a _Template Folders Diagram_, living under a common Model element. Note that the diagram names are for description purposes, only; they are not types of diagrams. In actuality, the Templates Diagram is a Class Diagram and the Template Folders Diagram is a Package Diagram.
