@@ -15,7 +15,7 @@ SitecoreUML can save countless project hours that would have been otherwise spen
 
 ## Video Demo
 
-[![](/assets/VideoDemo-Overview-Preview.png)](https://youtu.be/qfmdegqbsvk)
+![](/assets/VideoDemo-Overview-Preview.png)[![](/assets/VideoDemo-Overview-Preview.png)](https://youtu.be/qfmdegqbsvk)
 
 ## Project Status
 
