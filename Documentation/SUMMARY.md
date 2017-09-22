@@ -10,6 +10,7 @@
 
 * [About SitecoreUML](getting-started/about-sitecoreuml.md)
 * [Installation and Setup](getting-started/setup-and-insta.md)
+* StarUML
 
 ## Guide
 
@@ -20,13 +21,14 @@
 * [Models vs. Diagrams](guide/models-vs-diagrams.md)
 * Template Fields
 * Template Inheritance
-* [Connecting to Sitecore](guide/saving-preferences.md)
+* [Preferences](guide/saving-preferences.md)
+* Deploy & Import
 
 ## Module Reference
 
 * [Sitecore Config Files](guide/sitecore-configuration.md)
 
-## Tutorials
+## Tutorial
 
 ## Glossary
 
