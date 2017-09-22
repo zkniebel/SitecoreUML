@@ -7,10 +7,13 @@ This page lists the project's upcoming features, phases and milestones.
 ### Version beta \(October 2017\)
 
 * Documentation Build-Out
+* Native Sitecore field-type names used for UML types, by default
+* Adds invalid name characters to prevent using characters in names that
 
 ### Version 1.0 \(November 2017\)
 
 * Adds SitecoreUML project template to StarUML with required diagrams automatically added
+* Adds invalid name characters field to the preferences for preventing invalid characters from being used in template, template folder or field names
 
 ### Version 1.1 \(~ December 2017\)
 
