@@ -11,7 +11,7 @@
 * [How it Works](getting-started/how-it-works.md)
 * [Installation and Setup](getting-started/setup-and-insta.md)
 
-## Guide \(Coming Soon\)
+## Guide \(In Progress\)
 
 * [The StarUML IDE](guide/the-staruml-ide.md)
 * [Projects](guide/creating-a-project.md)
