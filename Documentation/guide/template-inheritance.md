@@ -31,7 +31,7 @@ To add an inheriting template manually, perform the following steps:
 
 In Sitecore, you can add any number of base templates to a single template. Using the _Add Sub-Interface_ button, you can add as many templates that inherit from a single template as you would like. However, if you want to add one or more base templates to an existing template then you will have to do so manually, via the following steps:
 
-1. In the Toolbox, under "Classes \(Basic\)" click the "Generalization" element \(![](/assets/StarUML-Interfaces-ToolboxGeneralization.png)\)
+1. In the Toolbox, under "Classes \(Basic\)" click the "Generalization" element \(![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Interfaces-ToolboxGeneralization.png?raw=true)\)
 2. On the diagram, click and drag from the inheriting template up to the base template to add the Generalization. Note that you do not need to specify a name for the generalization that you added.
 
 
