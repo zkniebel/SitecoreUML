@@ -13,7 +13,7 @@ SitecoreUML is comprised of two components:
 * Sitecore Module
 * StarUML Extension
 
-The primary feature of the Sitecore Module is the SitecoreUML service. SitecoreUML uses this service in order to deploy templates to and request template data from Sitecore. There are some additional features, as well, which you can read about in the [JSON Tools](/JSON Tools)
+The primary feature of the Sitecore Module is the SitecoreUML service. SitecoreUML uses this service in order to deploy templates to and request template data from Sitecore. There are some additional features, as described in the chapter on [JSON Tools](/JSON Tools), however they are typically for more advanced users looking to customize or extend SitecoreUML.
 
 ![](/assets/ImportExportArchitecture.png)
 
