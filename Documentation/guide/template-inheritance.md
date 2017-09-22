@@ -1,6 +1,6 @@
 # Template Inheritance
 
-Sitecore's template inheritance is a powerful feature, but not the most visible when looking at Sitecore. It can be tedious to record inheritance when creating a template architecture, so being able to visualize these relationships is one of SitecoreUML's most powerful features.
+Sitecore's template inheritance is a powerful feature, but not the most visible when looking at Sitecore. It can be tedious to record inheritance when creating a template architecture, so being able to visualize these relationships is a key feature of SitecoreUML.
 
 ## Adding an Inheriting Template
 
@@ -26,5 +26,5 @@ Coming Soon...
 
 ## Adding a Base Template to an Existing Template
 
-Coming soon...
+In Sitecore, you can add any number of base templates to a single template...
 
