@@ -8,6 +8,8 @@ In Sitecore, an entity's data is stored in its fields; in C\#, an entity's data 
 
 For those new to UML, an attribute is analogous to a data-holding member of the containing type, like a field or a property in C\#. The attribute’s text is significant, as it defines the signature of the represented field or property, including the visibility modifier and the type. Understanding attributes is pretty straightforward once you have seen them used, but there is a little memorization required for the syntax.
 
+![](/assets/StarUML-Attribute-Attributes.png)https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Attribute-Attributes.png?raw=true
+
 ## Attribute Syntax
 
 The following is the syntax of a UML attribute:
@@ -29,7 +31,7 @@ The `+` modifier should be acknowledged but doesn't have a major affect on Sitec
 
 The name of the attribute is the exact name that you want to give your template field. While StarUML will allow it, you should not use any symbols or characters that are invalid in your Sitecore instance's `Settings.InvalidItemNameChars`. This applies to all name fields, but I am calling it out here, specifically, because it is easy to forget that fields are actually items.
 
-_Note: In the current version of SitecoreUML, there is no validation against the characters in element names. Optional support for these validations is on the _[_Project Roadmap_](/chapter1.md) _to be added soon_. 
+_Note: In the current version of SitecoreUML, there is no validation against the characters in element names. Optional support for these validations is on the _[_Project Roadmap_](/chapter1.md) _to be added soon_.
 
 _Note: In the current version, there is no support for setting the "Title" of a template field in the UML. This feature is on the _[_Project Roadmap_](/chapter1.md)_ to be added soon. _
 
@@ -46,6 +48,4 @@ _Note: the current version of SitecoreUML ships with a map that has UML field ty
 ## Adding a Template Field
 
 Coming soon...
-
-
 
