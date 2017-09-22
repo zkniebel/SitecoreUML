@@ -1,4 +1,4 @@
-# SitecoreUML - User Manual
+# SitecoreUML \(alpha\)
 
 SitecoreUML is a productivity tool that enables architects to create Sitecore templates directly from their UML diagrams, as well as export an existing Sitecore solution’s template architecture and generate UML diagrams from it.
 
