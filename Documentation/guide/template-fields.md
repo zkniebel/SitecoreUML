@@ -8,7 +8,7 @@ In Sitecore, an entity's data is stored in its fields; in C\#, an entity's data 
 
 For those new to UML, an attribute is analogous to a data-holding member of the containing type, like a field or a property in C\#. The attribute’s text is significant, as it defines the signature of the represented field or property, including the visibility modifier and the type. Understanding attributes is pretty straightforward once you have seen them used, but there is a little memorization required for the syntax.
 
-![](/assets/StarUML-Attribute-Attributes.png)https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Attribute-Attributes.png?raw=true
+![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Attribute-Attributes.png?raw=true)
 
 ## Attribute Syntax
 
