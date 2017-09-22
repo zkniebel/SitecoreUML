@@ -2,7 +2,7 @@
 
 As the focus of this walkthrough is on creating an architectural diagram and model, we must first understand the interface in which we will be working. When creating and editing UML diagrams and models within StarUML, the majority of your time will be spent working three components of the interface:
 
- ![](/assets/StarUML-IDE.png)
+![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-IDE.png?raw=true)
 
 1. On the left, we have our “Toolbox”, from which we choose what elements we wish to add to our diagrams. 
 2. In the center, we have our diagram window, where we can edit our diagrams. 
