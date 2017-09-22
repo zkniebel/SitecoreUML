@@ -6,9 +6,10 @@
 * [Goals](project-goal.md)
 * [Project Roadmap](chapter1.md)
 
-## About
-
 ## Getting Started
+
+* About SitecoreUML
+* [Setup and Install](getting-started/setup-and-insta.md)
 
 ## Guide
 

@@ -1,6 +1,4 @@
-# Installation Instructions
-
-
+# Setup and Installation
 
 1a. Install the Sitecore Package for the appropriate version from the 
 
