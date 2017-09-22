@@ -31,6 +31,11 @@ This page lists the project's upcoming features, phases and milestones.
   * Optional _exclusions_ configuration to define templates and paths to be excluded
 * Adds support for branch templates 
 
+### Version 1.3 \(~ February 2018\)
+
+* Adds support for deploying specific diagram sets
+* ...
+
 ### ...
 
 ### Version 2.0 \(Coming in 2018\)
