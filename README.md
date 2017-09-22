@@ -19,13 +19,11 @@ SitecoreUML can save countless project hours spent reproducing architectures dia
 
 ## How it Works
 
-SitecoreUML creates an integration between Sitecore and StarUML, a feature-rich and highly customizable UML modeling and diagramming tool. SitecoreUML includes both a Sitecore module and a StarUML extension that together enable the serialization, deserialization and transmission of template data between the two systems. 
+SitecoreUML creates an integration between Sitecore and StarUML, a feature-rich and highly customizable UML modeling and diagramming tool. SitecoreUML includes both a Sitecore module and a StarUML extension that together enable the serialization, deserialization and transmission of template data between the two systems. Check out the [documentation](https://zkniebel.gitbooks.io/sitecoreuml/) for more details!
 
 ## Project Status
 
-The project is currently under development, and the current version is *alpha*. The code that is currently in the project works and has been tested end-to-end for all expected scenarios during feature development. However, developer-level testing has not yet been formally completed. 
-
-At present, the tool will create templates and fields with matching sort order, field type and name, and the same information will be brought into the generated UML diagrams. Additional features will be coming soon, so stay tuned!
+The project is currently under development, and the current version is *alpha*. The code that is currently in the project works and has been tested end-to-end for all expected scenarios during feature development. However, developer-level testing has not yet been formally completed. The only outstanding task is to complete the [documentation](https://zkniebel.gitbooks.io/sitecoreuml/). 
 
 ## Upcoming Features
  
