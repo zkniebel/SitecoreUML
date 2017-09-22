@@ -8,7 +8,7 @@
 
 ## Getting Started
 
-* About SitecoreUML
+* [About SitecoreUML](getting-started/about-sitecoreuml.md)
 * [Installation and Setup](getting-started/setup-and-insta.md)
 
 ## Guide
