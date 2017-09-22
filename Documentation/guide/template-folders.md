@@ -37,7 +37,7 @@ There are essentially two ways to add a sub-folder in StarUML: the _easy method_
 Adding a package the easy way avoids having to manually create the Containment yourself. To add a package the easy way, perform the following steps:
 
 1. Double-click on the parent folder to which you want to add a new child folder ![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Packages-AddSub.png?raw=true)
-2. Click on the button to the right of the package name, which looks like a folder with a lollipop coming out of the top \(![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Packages-AddSub-Button.png?raw=true)\)
+2. Click on the button immediately to the right of the package name, which looks like a folder with a lollipop coming out of the top \(![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Packages-AddSub-Button.png?raw=true)\)
 3. Rename the sub-package by double-clicking and replacing the text with the desired name
 
 ### The Manual Method

@@ -24,19 +24,5 @@ To add a template, perform the following steps:
 
 ![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Interfaces-Add.png?raw=true)
 
-## Adding an Inheriting Template
 
-Creating a template that inherits another is similar to [Adding a Template Sub-Folder](/adding-a-template-sub-folder). In UML, the concept of a "Sub-Interface" exists, but it isn't a single element. Rather, a sub-interface is a combination of an _Interface_ and a _Generalization_.
-
-For those new to UML, a Generalization is essentially a type of relationship that shows one interface inheriting \(or generalizing\) another. UML uses the term "generalization" to differentiate between an interface inheriting another and an element \(e.g. class\) that _implements_ \(or "realizes", as it's referred to in UML\) an interface.
-
-As with adding child template folders, there are essentially two ways to add an inheriting interface, in StarUML: the _easy method_, and the _manual method_.
-
-![](/assets/StarUML-Interfaces-InheritanceAdded.png)
-
-...in progress...
-
-## Adding a Base Template to an Existing Template
-
-Coming soon...
 

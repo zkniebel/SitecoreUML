@@ -19,6 +19,7 @@
 * [Template Folders](guide/template-folders.md)
 * [Templates](guide/templates.md)
 * [Template Fields](guide/template-fields.md)
+* [Template Inheritance](guide/template-inheritance.md)
 * [Models vs. Diagrams](guide/models-vs-diagrams.md)
 * [Preferences](guide/saving-preferences.md)
 * [Deploy & Import](guide/deploy-and-import.md)
