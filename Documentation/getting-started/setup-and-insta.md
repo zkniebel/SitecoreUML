@@ -1,6 +1,6 @@
 # Installation and Setup
 
-This contains all of the instructions that you need in order to get up and running with SitecoreUML.
+Use the following instructions in order to get up and running with SitecoreUML.
 
 ## Installation Steps
 
