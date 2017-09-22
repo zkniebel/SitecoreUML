@@ -43,7 +43,7 @@ The type-name separator is just that: a character \(`:`\) that separates the att
 
 ### Type
 
-Technically speaking, the `Type` isn't actually required in UML and you _could_ skip putting it in altogether. However, this won't work with SitecoreUML, which won't be able to map your field to a Sitecore type when you go to deploy your architecture. Any fields that have types that SitecoreUML is unable to map \(including no type at all\), will be skipped during deployment and a warning will be added to the log for it. 
+Technically speaking, the `Type` isn't actually required in UML and you _could_ skip putting it in altogether. However, this won't work with SitecoreUML, which won't be able to map your field to a Sitecore type when you go to deploy your architecture. Any fields that have types that SitecoreUML is unable to map \(including no type at all\), will be skipped during deployment and a warning will be added to the log for it.
 
 Keep in mind that UML is not actually a type-safe language, in that there are no checks to ensure that you have specified a real type or not. As such, the `Type` of your attribute can include pretty much any character \(spaces, dashes, etc. are all allowed\). In the [Sitecore Config Files](/guide/sitecore-configuration.md), there is a mapping from the field type name in Sitecore to the field type name in UML. The purpose of this feature is to allow architects to further accelerate their architecture tasks by allowing them to set custom names for field types. For example, if Sitecore's`Single-Line Text` field was set to map to the UML type `SLT` then any field that the architect sets to `SLT` in their UML will become a `Single-Line Text` field when deployed to Sitecore.
 
@@ -64,8 +64,8 @@ The following are just a few examples of valid attribute text:
 
 To add a template field, perform the following steps:
 
-1. Double-click on the template that you wish to add the field to ![](/assets/StarUML-Attribute-Add.png)
-2. Click the _Add Attribute_ button, located immediately to the right of the interface name, which should have an icon that looks like a small rectangle at a 45-degree angle \(![](/assets/StarUML-Attribute-Add-Button.png)\)
+1. Double-click on the template that you wish to add the field to ![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Attribute-Add.png?raw=true)
+2. Click the _Add Attribute_ button, located immediately to the right of the interface name, which should have an icon that looks like a small rectangle at a 45-degree angle \(![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Attribute-Add-Button.png?raw=true)\)
 3. Specify the text for your attribute, in the format `Name:Type`, where `Name` and `Type` are replaced with the name and the type of your new template field, respectively
 
 
