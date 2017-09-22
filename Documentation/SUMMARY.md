@@ -14,7 +14,7 @@
 ## Guide \(Coming Soon\)
 
 * [The StarUML IDE](guide/the-staruml-ide.md)
-* [Creating a Project](guide/creating-a-project.md)
+* [Projects](guide/creating-a-project.md)
 * [Diagrams](guide/diagrams.md)
 * [Template Folders](guide/template-folders.md)
 * [Templates](guide/templates.md)

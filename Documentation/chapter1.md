@@ -1,6 +1,6 @@
 # Project Roadmap
 
-This page lists the project's upcoming features, phases and milestones. 
+This page lists the project's upcoming features, phases and milestones.
 
 ### Version alpha \(Current\)
 
@@ -10,7 +10,7 @@ This page lists the project's upcoming features, phases and milestones.
 
 ### Version 1.0 \(November 2017\)
 
-* No new features are planned for this release, save for bug fixes and documentation
+* Adds SitecoreUML project template to StarUML with required diagrams automatically added
 
 ### Version 1.1 \(~ December 2017\)
 
@@ -37,10 +37,6 @@ This page lists the project's upcoming features, phases and milestones.
 
 * Azure infrastructure provisioning support
 * AWS infrastructure provisioning support
-
-
-
-
 
 
 
