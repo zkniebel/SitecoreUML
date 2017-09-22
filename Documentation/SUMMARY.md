@@ -26,7 +26,6 @@
 * [Tree Hierarchy](guide/models-vs-diagrams.md)
 * [Preferences](guide/saving-preferences.md)
 * [Deploy & Import](guide/deploy-and-import.md)
-* [Template Containment 2](guide/template-containment.md)
 
 ## Module Reference
 
