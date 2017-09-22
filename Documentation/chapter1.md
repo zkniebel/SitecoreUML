@@ -8,7 +8,6 @@ This page lists the project's upcoming features, phases and milestones.
 
 * Documentation Build-Out
 * Native Sitecore field-type names used for UML types, by default
-* Adds invalid name characters to prevent using characters in names that
 
 ### Version 1.0 \(November 2017\)
 

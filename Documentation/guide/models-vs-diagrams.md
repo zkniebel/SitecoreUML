@@ -1,6 +1,6 @@
 # Tree Hierarchy
 
-_**Attention: If you have not yet read the section **_[_**Models vs Diagrams**_](/guide/creating-a-project.md#models-vs-diagrams)_** from the **_[_**Projects**_](/guide/creating-a-project.md)_** chapter then it is advised that you do so before proceeding with this chapter. Understanding the difference between models and diagrams can be very important when working with tree hierarchies.**_
+
 
 This chapter has been split into two parts: [Concepts](/guide/models-vs-diagrams/concepts.md) and [Manipulating Hierarchies](/guide/models-vs-diagrams/manipulating.md).
 

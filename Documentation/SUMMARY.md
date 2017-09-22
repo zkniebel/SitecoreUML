@@ -20,12 +20,13 @@
 * [Templates](guide/templates.md)
 * [Template Fields](guide/template-fields.md)
 * [Template Inheritance](guide/template-inheritance.md)
+* [Template Containment](guide/template-containment.md)
+* [Models vs Diagrams](guide/models-vs-diagrams/concepts.md)
+* [Manipulating Hierarchies](guide/models-vs-diagrams/manipulating.md)
 * [Tree Hierarchy](guide/models-vs-diagrams.md)
-  * [Concepts](guide/models-vs-diagrams/concepts.md)
-  * [Manipulating Hierarchies](guide/models-vs-diagrams/manipulating.md)
 * [Preferences](guide/saving-preferences.md)
 * [Deploy & Import](guide/deploy-and-import.md)
-* [JSON Tools](guide/json-tools.md)
+* [Template Containment 2](guide/template-containment.md)
 
 ## Module Reference
 
