@@ -11,26 +11,26 @@
 * [How it Works](getting-started/how-it-works.md)
 * [Installation and Setup](getting-started/setup-and-insta.md)
 
-## Guide
+## Guide \(Coming Soon\)
 
-* Creating a Project
-* Diagrams
-* Template Folders
-* Templates
+* [Creating a Project](guide/creating-a-project.md)
+* [Diagrams](guide/diagrams.md)
+* [Template Folders](guide/template-folders.md)
+* [Templates](guide/templates.md)
 * [Models vs. Diagrams](guide/models-vs-diagrams.md)
-* Template Fields
-* Template Inheritance
+* [Template Fields](guide/template-fields.md)
+* [Template Inheritance](guide/template-inheritance.md)
 * [Preferences](guide/saving-preferences.md)
-* Deploy & Import
-* JSON Tools
+* [Deploy & Import](guide/deploy-and-import.md)
+* [JSON Tools](guide/json-tools.md)
 
 ## Module Reference
 
 * [Sitecore Config Files](guide/sitecore-configuration.md)
 
-## Tutorial
+## Tutorial \(Coming Soon\)
 
-## Glossary
+## Glossary \(Coming Soon\)
 
-## Samples
+## Samples \(Coming Soon\)
 
