@@ -10,6 +10,7 @@
 
 * [How it Works](getting-started/how-it-works.md)
 * [Installation and Setup](getting-started/setup-and-insta.md)
+* JSON Tools
 
 ## Guide
 
@@ -22,7 +23,6 @@
 * Template Inheritance
 * [Preferences](guide/saving-preferences.md)
 * Deploy & Import
-* JSON Tools
 
 ## Module Reference
 
