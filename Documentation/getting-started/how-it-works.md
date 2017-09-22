@@ -6,8 +6,6 @@ The functionality of SitecoreUML is provided by a two-way integration between Si
 
 StarUML is one of the most popular modeling and diagramming tools on the market. It is important to know that StarUML is not just a diagramming tool, like Microsoft Visio, but also a modeling tool, wherein the model can be represented beyond the scope of the diagrams, alone. In other words, a diagram is a model but a model is not a diagram. Conceptually speaking, a diagram is a type of visual model. SitecoreUML leverages both the diagramming and modeling aspects of StarUML.
 
-One of the best features of StarUML is the platform on which it is built. StarUML is JavaScript-based, using the Chromium framework. This makes it very straightforward to customize, debug and extend. StarUML also supports integrating with Node.js, which SitecoreUML does not make use of at present, but likely will in the future. 
-
 ## Components of SitecoreUML
 
 SitecoreUML is comprised of two components:
