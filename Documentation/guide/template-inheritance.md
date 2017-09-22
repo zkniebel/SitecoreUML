@@ -17,14 +17,18 @@ As with adding child template folders, there are essentially two ways to add an 
 Adding an inheriting template the easy way avoids having to manually create the Generalization yourself. To add an inheriting template the easy way, perform the following steps:
 
 1. Double-click on the base template for which you want to add a new inheriting template ![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Interfaces-InheritanceAdd.png?raw=true)
-2. In the set of buttons to the right of the template name, click the bottom-leftmost button, which looks like a circle with an arrow coming out of the top \(![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Interfaces-InheritanceAdd-Button.png?raw=true)\)
+2. In the set of buttons to the right of the template name, click on the _Add Sub-Package_ button, located to the bottom-left and which looks like a circle with an arrow coming out of the top \(![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Interfaces-InheritanceAdd-Button.png?raw=true)\)
 3. Rename the inheriting template by double-clicking and replacing the text with the desired name
 
 ### The Manual Method
 
-Coming Soon...
+See [Adding a Base Template to an Existing Template.](#adding-a-base-template-to-an-existing-template)
 
 ## Adding a Base Template to an Existing Template
 
-In Sitecore, you can add any number of base templates to a single template...
+In Sitecore, you can add any number of base templates to a single template. Using the _Add Sub-Interface_ button, you can add as many templates that inherit from a single template as you would like. However, if you want to add one or more base templates to an existing template then you will have to do so manually, via the following steps:
+
+1. Coming soon...
+
+
 
