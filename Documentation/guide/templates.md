@@ -24,5 +24,13 @@ To add a template, perform the following steps:
 
 ![](/assets/StarUML-Interfaces-Add.png)
 
+## Adding an Inheriting Template
+
+Coming soon...
+
+## Adding a Base Template to an Existing Template
+
+Coming soon...
+
 
 
