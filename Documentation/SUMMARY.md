@@ -4,7 +4,6 @@
 
 * [Introduction](README.md)
 * [Goals](project-goal.md)
-* [Inspiration](inspiration.md)
 * [Project Roadmap](chapter1.md)
 
 ## About
