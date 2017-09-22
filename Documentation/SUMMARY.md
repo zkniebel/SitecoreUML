@@ -29,7 +29,7 @@
 
 * [Sitecore Config Files](guide/sitecore-configuration.md)
 
-## Tutorial \(Coming Soon\)
+## Tutorials \(Coming Soon\)
 
 ## Glossary \(Coming Soon\)
 
