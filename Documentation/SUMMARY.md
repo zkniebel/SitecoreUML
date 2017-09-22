@@ -13,6 +13,8 @@
 
 ## Guide
 
+* [Sitecore Configuration](guide/sitecore-configuration.md)
+
 ## Tutorials
 
 ## Glossary
