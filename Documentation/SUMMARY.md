@@ -10,7 +10,6 @@
 
 * [How it Works](getting-started/how-it-works.md)
 * [Installation and Setup](getting-started/setup-and-insta.md)
-* [StarUML](getting-started/staruml.md)
 
 ## Guide
 
@@ -23,6 +22,7 @@
 * Template Inheritance
 * [Preferences](guide/saving-preferences.md)
 * Deploy & Import
+* JSON Tools
 
 ## Module Reference
 
