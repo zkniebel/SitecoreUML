@@ -10,9 +10,9 @@ To create a diagram:
 2. Hover over _Add Diagram_
 3. Select the type of diagram that you want to create from the sub-menu
 4. Double-click the name of the diagram in the Model Explorer
-5. In the _Properties _box, below the Model Explorer, update the _name _field to the desired name of your diagram
+5. In the _Properties_ box, below the Model Explorer, update the _name_ field to the desired name of your diagram
 
-## ![](/assets/StarUML-Diagrams-Add.png)
+![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Diagrams-Add.png?raw=true)
 
 ## Diagram Sets
 
