@@ -13,7 +13,18 @@
 
 ## Guide
 
-* [Sitecore Configuration](guide/sitecore-configuration.md)
+* Creating a Project
+* Diagrams
+* Template Folders
+* Templates
+* [Models vs. Diagrams](guide/models-vs-diagrams.md)
+* Template Fields
+* Template Inheritance
+* [Connecting to Sitecore](guide/saving-preferences.md)
+
+## Module Reference
+
+* [Sitecore Config Files](guide/sitecore-configuration.md)
 
 ## Tutorials
 
