@@ -9,7 +9,7 @@
 ## Getting Started
 
 * About SitecoreUML
-* [Setup and Install](getting-started/setup-and-insta.md)
+* [Installation and Setup](getting-started/setup-and-insta.md)
 
 ## Guide
 
