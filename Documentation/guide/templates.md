@@ -14,7 +14,7 @@ Instances aren't a tenable option for representing Sitecore templates, as they a
 
 ## Adding a Template
 
-To add a template, perform the following steps:
+To add a template, perform the following steps: 
 
 1. Make sure that you have your Templates Diagram selected for editing, by double clicking it in the Model Explorer
 2. In the Toolbox, under “Classes \(Basic\)”, click on “Interface” \(![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Interfaces-ToolboxInterface.png?raw=true)\)
@@ -23,6 +23,4 @@ To add a template, perform the following steps:
 5. Click away or hit _return_ when done in order to close editing mode
 
 ![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Interfaces-Add.png?raw=true)
-
-
 
