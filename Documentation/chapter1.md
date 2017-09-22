@@ -34,7 +34,7 @@ This page lists the project's upcoming features, phases and milestones.
 ### Version 1.3 \(~ February 2018\)
 
 * Adds support for deploying specific diagram sets
-* ...
+* Code generation API support
 
 ### ...
 
