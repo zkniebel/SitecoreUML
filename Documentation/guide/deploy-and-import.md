@@ -13,7 +13,7 @@ Go to _Sitecore_ &gt; _Deploy Templates to Sitecore_
 
 Done.
 
-![](/assets/StarUML-Deploy.png)
+![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Deploy.png?raw=true)
 
 ## Import from Sitecore and Generate Diagrams
 
@@ -21,5 +21,5 @@ Go to _Sitecore_ &gt; _Import Templates from Sitecore_
 
 Done.
 
-![](/assets/StarUML-Import.png)
+![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Import.png?raw=true)
 
