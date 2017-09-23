@@ -4,14 +4,16 @@ SitecoreUML is a productivity tool that enables architects to create Sitecore te
 
 SitecoreUML can save countless project hours spent reproducing architectures diagrammed during planning phases. The round-trip diagram generation support also means that any solution’s template architecture documentation can be updated at the click of a button, following every sprint, iteration, or milestone, and could even be updated automatically after every commit. It’s time to stop doing the same work twice, and spending hours on documentation, only to have it become outdated weeks, days or even just hours later. It’s time to start using SitecoreUML.
 
+Check out the video demo, below and see the [documentation](https://zkniebel.gitbooks.io/sitecoreuml/) for more!
+
 ## Features
 
-* One-click deploy Sitecore templates from UML to Sitecore
-* One-click generate UML models and diagrams from Sitecore template architecture
-* One-click import or export templates from Sitecore or from StarUML as JSON data
-* Generate robust, detailed Sitecore template architecture diagrams from an existing solution
-* Plan your template architecture by diagramming in StarUML and import the result into Sitecore as templates
-* And more!
+* One-click deploy Sitecore templates from UML directly to Sitecore
+* One-click generate UML diagrams and models from a template architecture in Sitecore
+* Seamless integration between the StarUML IDE and Sitecore XP
+* Save the URL of your Sitecore instance in your preferences so you don't have to enter it every time
+* Built using a JavaScript-based platform that supports Node.js and can be easily extended and tailored to your needs
+* And much more!
 
 ## Video Demo
 
