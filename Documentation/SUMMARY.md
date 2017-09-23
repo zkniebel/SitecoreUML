@@ -33,6 +33,8 @@
 
 ## Tutorials \(Coming Soon\)
 
+* [Tutorials](tutorials-coming-soon/end-to-end.md)
+
 ## Glossary \(Coming Soon\)
 
 ## Samples \(Coming Soon\)
