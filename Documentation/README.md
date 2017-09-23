@@ -29,5 +29,5 @@ _**Currently, this book is under construction, and content will be added in as q
 
 ## Contributors
 
-My name is Zachary Kniebel, and I am currently the sole contributor to the SitecoreUML project, and the sole author of this book. I am a Sitecore Solution Architect and a Sitecore Evangelist. Feel free to reach out to me any time over Sitecore Community Slack \(@zachary\_kniebel\).
+My name is Zachary Kniebel, and I am the sole contributor to the SitecoreUML project, as well as the sole author of this book. Feel free to reach out to me any time over Sitecore Community Slack \(@zachary\_kniebel\) if you have any questions, issues, or comments regarding this tool. I am always happy to help.
 
