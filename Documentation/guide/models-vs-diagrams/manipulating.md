@@ -14,7 +14,7 @@ You can control where a template lives in your tree hierarchy by simply clicking
 
 _Even though this technique is simple, bear in mind that the cautions attached to this chapter are there for a reason. If you move the wrong thing your diagrams and your models can easily become out of sync. You need to properly understand the theory of what you're doing before you do it. _
 
-### Templates and Template Folders in the Same Diagram
+### Templates and Template Folders in the Same Diagram \(Manual\)
 
 _As was mentioned in the Diagrams chapter, SitecoreUML recommends but does not require that you split your templates and your template folders into separate Templates Diagrams and Template Folders Diagrams. Up until this point, the guide has assumed that you have been following SitecoreUML's recommendations, but this chapter will cover both approaches._
 
