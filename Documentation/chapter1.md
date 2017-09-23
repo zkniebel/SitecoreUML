@@ -13,6 +13,7 @@ This page lists the project's upcoming features, phases and milestones.
 
 * Adds SitecoreUML project template to StarUML with required diagrams automatically added
 * Adds invalid name characters field to the preferences for preventing invalid characters from being used in template, template folder or field names
+* Adds "connection test" to Preferences
 
 ### Version 1.1 \(~ December 2017\)
 
