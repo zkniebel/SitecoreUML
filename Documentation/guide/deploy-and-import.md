@@ -7,17 +7,19 @@ The real bread and butter of SitecoreUML is its ability to do the following:
 
 This chapter shows you just how easy it is to execute the _deploy_ and _import_ actions.
 
-## Deploy
+## Deploy to Sitecore
 
 Go to _Sitecore_ &gt; _Deploy Templates to Sitecore_
 
 Done.
 
-## Import and Generate
+![](/assets/StarUML-Deploy.png)
+
+## Import from Sitecore and Generate Diagrams
 
 Go to _Sitecore_ &gt; _Import Templates from Sitecore_
 
 Done.
 
-
+![](/assets/StarUML-Import.png)
 
