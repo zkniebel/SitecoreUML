@@ -18,7 +18,7 @@ To create a diagram:
 
 In SitecoreUML, all template architectures should include at least one set of two diagrams, a _Templates Diagram_ and a _Template Folders Diagram_, living under a common Model element. Note that the diagram names are for description purposes, only; they are not types of diagrams. In actuality, the Templates Diagram is a Class Diagram and the Template Folders Diagram is a Package Diagram.
 
-For organization and standardization purposes, it is recommended that there be one Templates Diagram and one Template Folders Diagram per Model element. This is referred to as a _Diagram Set_. To clarify, SitecoreUML does not require that you structure your project into Diagram Sets in order to function properly. However, it is the recommended practice.
+It is recommended that there be one Templates Diagram and one Template Folders Diagram per Model element. This is referred to as a _Diagram Set_. To clarify, SitecoreUML does not require that you structure your project into Diagram Sets in order to function properly. However, it is the recommended practice, as following the recommendation will help you to keep your project's diagrams easier to read and organized, to avoid relationship and manipulation issues that could corrupt your project, and to enforce the restriction that there can be at most one parent per template. 
 
 ![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Diagrams-DiagramSet.png?raw=true)
 
@@ -48,5 +48,5 @@ As with the Templates Diagram, while SitecoreUML does not require your Templates
 
 ## Views
 
-Recall from the last chapter, [Projects](/guide/creating-a-project.md), that Models are not Diagrams, and that diagrams are visualizations of a Model. Similarly, _Views_ are visual representations of a model element; a symbol or other graphic that represents an entity of the model. If a diagram is blank and has nothing on it, then there are no views on it. If a diagram has two elements connected by an arrow symbolizing a relationship, then there are three views on the diagram: one for each connected element, and one of the arrow that connects them. 
+Recall from the last chapter, [Projects](/guide/creating-a-project.md), that Models are not Diagrams, and that diagrams are visualizations of a Model. Similarly, _Views_ are visual representations of a model element; a symbol or other graphic that represents an entity of the model. If a diagram is blank and has nothing on it, then there are no views on it. If a diagram has two elements connected by an arrow symbolizing a relationship, then there are three views on the diagram: one for each connected element, and one of the arrow that connects them.
 
