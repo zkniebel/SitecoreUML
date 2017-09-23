@@ -20,12 +20,12 @@ _As was mentioned in the Diagrams chapter, SitecoreUML recommends but does not r
 
 For those of you who would prefer to keep your templates and template folders in the same diagram. you can manipulate your tree by adding a Containment from your template to its desired template folder, as was done in the example shown in the chapter [Template Containment](/guide/template-containment.md).
 
+_**IMPORTANT: if you use the following technique, it is advised that you not manipulate tree hierarchies using the click-and-drag method in the model explorer. Please, only do so if you are confident in your experience with StarUML and its data model.**_
+
 If you wish to move a template with an existing parent to another, you must follow the steps, below:
 
 1. Remove the Containment View from the diagram by selecting it and clicking _delete_
 2. Add a new Containment from the Toolbox, from the template to its parent, as was done for template folders' containments, in the chapter [Template Folders](/guide/template-folders.md)
 
-_**Be very careful manipulating tree hierarchies using this method. It is much easier for things to go wrong that will be difficult for you to identify until after you have deployed and re-imported.**_
-
-
+Be very careful manipulating tree hierarchies using this method. It is much easier for things to go wrong that will be difficult for you to identify until after you have deployed and re-imported. Again, this is not the recommended path, but it is an option for more advanced users.
 
