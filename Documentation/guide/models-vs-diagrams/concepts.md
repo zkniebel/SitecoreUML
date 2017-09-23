@@ -12,13 +12,13 @@ It has been mentioned several times already, but models are not diagrams. In thi
 
 Consider the example from the [Template Containment](/guide/template-containment.md) chapter, depicting the template hierarchy for the "BasePage" template \(image repeated, below\):
 
-![](/assets/StarUML-TreeHierarchy-OneDiagramWithHierarchy.png)
+![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-TreeHierarchy-OneDiagramWithHierarchy.png?raw=true)
 
-Consider what would happen if I were to delete the view for the Containment that joins the "BasePage" template to its parent "Pages" template folder. If the diagram and the model are the same, then the "BasePage" template will be "un-nested" from the "Pages" folder and would once again nest under the "Model" element. 
+Consider what would happen if I were to delete the view for the Containment that joins the "BasePage" template to its parent "Pages" template folder. If the diagram and the model are the same, then the "BasePage" template will be "un-nested" from the "Pages" folder and would once again nest under the "Model" element.
 
 Have a look at the following image, which shows the _actual_ result of this test:
 
-![](/assets/StarUML-TreeHierarchy-ModelProof.png)
+![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-TreeHierarchy-ModelProof.png?raw=true)
 
 Notice that the "BasePage" template remains a child of the "Pages" folder. No, this isn't a bug in StarUML - it would only be a bug if drawing a new Containment from "BasePage" to "Feature" didn't cause the "BasePage" template to nest under feature \(which it does, and you can try on your own\). The reason why this happens is because **the Model Explorer is effectively a diagram.** _Did I just blow your mind?_** **
 
