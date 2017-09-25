@@ -25,23 +25,15 @@ SitecoreUML creates an integration between Sitecore and StarUML, a feature-rich 
 
 ## Project Status
 
-The project is currently under development, and the current version is _alpha_. The code that is currently in the project works and has been tested end-to-end for all expected scenarios during feature development. However, developer-level testing has not yet been formally completed. The only outstanding task is to complete the [documentation](https://zkniebel.gitbooks.io/sitecoreuml/).
+The SitecoreUML project is fully functional, and has completed developer-level testing. Officially, the project will be moving into Beta on Thursday, September 28th, 2017, at which time I will be looking for volunteers in the community to test it out and provide feedback. See the [documentation](https://zkniebel.gitbooks.io/sitecoreuml/) for the most up to date project status news, and to find out more about current and upcoming features.
 
 ## Upcoming Features
 
-### Version 1.1 \(December 2017\)
-
-* Support for "Title" field of template fields
-* Support for "Source" field of template fields
-* Support for "Display Name" field of items
-
-### Version 2.0 \(Coming in 2018\)
-
-* Azure infrastructure provisioning support
-* AWS infrastructure provisioning support
-* and more
+Check out the [Project Roadmap](https://zkniebel.gitbooks.io/sitecoreuml/chapter1.html) for the most up to date information on upcoming features, fixes and enhancements!
 
 ## Contributors
 
-Currently, I, Zachary Kniebel, am the only contributor to this project. I am hoping to open source it in the coming months, so If you are interested in teaming up, please send me a message over Sitecore Slack \(@zachary\_kniebel\).
+My name is Zachary Kniebel, and I am the sole contributor to the SitecoreUML project, as well as the sole author of this book. Feel free to reach out to me any time over Sitecore Community Slack (@zachary_kniebel) if you have any questions, issues, or comments regarding this tool. I am always happy to help.
+
+If you are looking to get involved with the project, there are several exciting, new features on the horizon that you could work on. Send me a message over Sitecore Slack \(@zachary\_kniebel\) and let's see what we can do to team up.
 
