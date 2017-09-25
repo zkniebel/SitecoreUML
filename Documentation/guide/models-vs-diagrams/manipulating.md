@@ -1,6 +1,6 @@
 # Manipulating Hierarchies
 
-_**Attention: If you have not yet the **_[_**Template Containment**_](/guide/template-containment.md) _**and **_[_**Models vs Diagrams**_](/guide/models-vs-diagrams/concepts.md)_** chapters then it is highly recommended that you do so before proceeding with this chapter. Understanding the difference between models and diagrams can be very important when working with tree hierarchies.**_
+_**Attention: If you have not yet read the **_[_**Template Containment**_](/guide/template-containment.md) _**and **_[_**Models vs Diagrams**_](/guide/models-vs-diagrams/concepts.md)_** chapters then it is highly recommended that you do so before proceeding with this chapter. Understanding the difference between models and diagrams can be very important when working with tree hierarchies.**_
 
 It is important to note that the tree hierarchy visible in the Model Explorer at any given time is an exact match to what the resulting template hierarchy would be in Sitecore, if the templates were deployed via SitecoreUML at that moment. This chapter discusses the two very simple ways to manipulate your tree hierarchies.
 
