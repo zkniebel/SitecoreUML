@@ -19,11 +19,11 @@ SitecoreUML can save countless project hours that would have been otherwise spen
 
 ## Project Status
 
-The SitecoreUML project is fully functional, and has completed developer-level testing. Officially, the project will be moving into Beta on Thursday, September 28th, 2017, at which time I will be looking for volunteers in the community to test it out and provide feedback. 
+The SitecoreUML project is fully functional, and has completed developer-level testing. Officially, the project will be moving into Beta on Thursday, September 28th, 2017, at which time I will be looking for volunteers in the community to test it out and provide feedback.
 
 ## About the Book
 
-This book should serve as the primary reference for all of your SitecoreUML documentation needs. In this book, you can find definitions and quick references, installation and configuration instructions, information regarding syntax and data models, feature/tool usage, details on how the tool can be extended and customized, as well as walkthroughs and tutorials.
+This book is meant to serve as a comprehensive guide to SitecoreUML, and is the primary source of the tool's documentation. In this book, you can find definitions and quick references, installation and configuration instructions, information regarding syntax and data models, feature and tool usage, details on how the tool can be extended and customized, as well as walkthroughs and tutorials.
 
 ## Contributors
 
