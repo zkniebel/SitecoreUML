@@ -1,6 +1,6 @@
 # Template Containment
 
-_As was mentioned in the Diagrams chapter, SitecoreUML recommends but does not require that you split your templates and your template folders into separate Templates Diagrams and Template Folders Diagrams. Up until this point, the guide has assumed that you have been following SitecoreUML's recommendations, but this chapter covers the alternative approach, for those who wish to keep their templates and template folders in the same diagram._
+As was mentioned in the [Diagrams](/guide/diagrams.md) chapter, SitecoreUML recommends but does not require that you split your templates and your template folders into separate Templates Diagrams and Template Folders Diagrams. Up until this point, the guide has assumed that you have been following SitecoreUML's recommendations, but this chapter covers the alternative approach, for those who wish to keep their templates and template folders in the same diagram.
 
 ## Understanding Parent-Child Relationships
 

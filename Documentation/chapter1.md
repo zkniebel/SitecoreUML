@@ -1,6 +1,8 @@
 # Project Roadmap
 
-This page lists the project's upcoming features, phases and milestones.
+This page lists the project's upcoming features, phases and milestones. 
+
+Listed under each version is the set of tasks, features and enhancements that should be completed for and included in the release of the version. Please note that the roadmap is tentative and subject to change.
 
 ### Version alpha \(Current\)
 

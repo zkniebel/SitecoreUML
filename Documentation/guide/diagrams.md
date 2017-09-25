@@ -18,7 +18,7 @@ To create a diagram:
 
 In SitecoreUML, all template architectures should include at least one set of two diagrams, a _Templates Diagram_ and a _Template Folders Diagram_, living under a common Model element. Note that the diagram names are for description purposes, only; they are not types of diagrams. In actuality, the Templates Diagram is a Class Diagram and the Template Folders Diagram is a Package Diagram.
 
-It is recommended that there be one Templates Diagram and one Template Folders Diagram per Model element. This is referred to as a _Diagram Set_. To clarify, SitecoreUML does not require that you structure your project into Diagram Sets in order to function properly. However, it is the recommended practice, as following the recommendation will help you to keep your project's diagrams easier to read and organized, to avoid relationship and manipulation issues that could corrupt your project, and to enforce the restriction that there can be at most one parent per template. 
+It is recommended that there be one Templates Diagram and one Template Folders Diagram per Model element. This is referred to as a _Diagram Set_. To clarify, SitecoreUML does not require that you structure your project into Diagram Sets in order to function properly. However, it is the recommended practice, as following the recommendation will help you to keep your project's diagrams easier to read and organized, to avoid relationship and manipulation issues that could corrupt your project, and to enforce the restriction that there can be at most one parent per template.
 
 ![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Diagrams-DiagramSet.png?raw=true)
 
@@ -34,7 +34,7 @@ Perhaps the most visibly important component of a SitecoreUML architecture is th
 
 The role of the Templates Diagram is to visualize all of the diagrams in the architecture. The vast majority of the editing and authoring of the templates in the architecture is performed directly in the Templates Diagram, as well.
 
-As previously mentioned, Templates Diagrams are so named for labeling purposes and are actually required to be \_Class Diagrams. \_Considering Sitecore’s data model and the fact that most modern Sitecore solutions make use of an object-relational mapper \(ORM\), like Glass.Mapper, that map Sitecore templates to class or interface models, it makes sense that our templates diagram would be a Class Diagram.
+As previously mentioned, Templates Diagrams are so named for labeling purposes and are actually required to be _Class Diagrams_. Considering Sitecore’s data model and the fact that most modern Sitecore solutions make use of an object-relational mapper \(ORM\), e.g. Glass.Mapper, to map Sitecore templates to class or interface models, it makes sense that our templates diagram would be a Class Diagram.
 
 While SitecoreUML does not require your Templates Diagram to be a Class Diagram, it is the recommended practice.
 

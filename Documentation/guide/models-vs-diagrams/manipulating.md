@@ -16,7 +16,7 @@ _Even though this technique is simple, bear in mind that the cautions attached t
 
 ### Templates and Template Folders in the Same Diagram \(Manual\)
 
-_As was mentioned in the Diagrams chapter, SitecoreUML recommends but does not require that you split your templates and your template folders into separate Templates Diagrams and Template Folders Diagrams. Up until this point, the guide has assumed that you have been following SitecoreUML's recommendations, but this chapter will cover both approaches._
+_As was mentioned in the _[_Diagrams_](/guide/diagrams.md)_ chapter, SitecoreUML recommends but does not require that you split your templates and your template folders into separate Templates Diagrams and Template Folders Diagrams. This technique covers the alternative approach, though it is not what SitecoreUML recommends._
 
 For those of you who would prefer to keep your templates and template folders in the same diagram. you can manipulate your tree by adding a Containment from your template to its desired template folder, as was done in the example shown in the chapter [Template Containment](/guide/template-containment.md).
 
