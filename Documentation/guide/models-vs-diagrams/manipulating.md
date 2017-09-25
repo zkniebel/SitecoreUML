@@ -8,9 +8,9 @@ It is important to note that the tree hierarchy visible in the Model Explorer at
 
 Just like with our templates and template folders, there is an _easy_ way and a _manual_ way to manipulate your tree hierarchies.
 
-### The Model Explorer \(Easy\)
+### The Model Explorer \(Easy - Recommended\)
 
-You can control where a template lives in your tree hierarchy by simply clicking and dragging it to the desired parent, in the Model Explorer. It really is that simple.
+You can control where a template lives in your tree hierarchy by simply clicking and dragging it to the desired parent, in the Model Explorer. It really is that simple, and this is the SitecoreUML-recommended approach.
 
 _Even though this technique is simple, bear in mind that the cautions attached to this chapter are there for a reason. If you move the wrong thing your diagrams and your models can easily become out of sync. You need to properly understand the theory of what you're doing before you do it. _
 
