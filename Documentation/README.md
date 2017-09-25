@@ -19,13 +19,11 @@ SitecoreUML can save countless project hours that would have been otherwise spen
 
 ## Project Status
 
-The SitecoreUML project is currently under development and the current version is [_alpha_](https://github.com/zkniebel/SitecoreUML/releases)\_. \_An "alpha" version is typically a pre-release version that indicates that the software has been tested during feature development, but developer-level testing has not been formally completed. At present, the only outstanding task that I am requiring completion on before moving to "beta" is the documentation build-out. I plan to have enough documentation in this book for a user to start working with the software before I open it up to beta testers.
+The SitecoreUML project is currently under development and the current version is [_alpha_](https://github.com/zkniebel/SitecoreUML/releases). An "alpha" version is typically a pre-release version that indicates that the software has been tested during feature development, but developer-level testing has not been formally completed. At present, the only outstanding task that I am requiring completion on before moving to "beta" is the documentation build-out. I plan to have enough documentation in this book for a user to start working with the software before I open it up to beta testers.
 
 ## About the Book
 
 This book should serve as the primary reference for all of your SitecoreUML documentation needs. In this book, you can find definitions and quick references, installation and configuration instructions, information regarding syntax and data models, feature/tool usage, details on how the tool can be extended and customized, as well as walkthroughs and tutorials.
-
-_**Currently, this book is under construction, and content will be added in as quickly as possible. Please know that unlike most developers I know, I actually don't mind writing documentation. **I will do everything in my power to get this book populated with content as quickly as I can. _
 
 ## Contributors
 
