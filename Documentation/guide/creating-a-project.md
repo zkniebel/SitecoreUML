@@ -40,7 +40,7 @@ There is a difference between _models_ and _diagrams_. [StarUML's documentation]
 
 > _Model_ or _software model_ is a description of any aspect of a software system such as structure, behavior, requirement, and so on. A software model can be represented in textual, mathmatical or visual form. A _Model element_ is a building block of a software model.
 >
-> A _Diagram _is a visual geometric symbolic representation of a software model. A software model can be represented in one or more diagrams with different aspects. For example, a diagram can focus on class hierarchical structure while another diagram can focus on interaction between objects. Diagrams consists of _view elements_, which are visual representations of a model element.
+> A _Diagram_ is a visual geometric symbolic representation of a software model. A software model can be represented in one or more diagrams with different aspects. For example, a diagram can focus on class hierarchical structure while another diagram can focus on interaction between objects. Diagrams consist of _view elements_, which are visual representations of a model element.
 
 Effectively, this means two things:
 
