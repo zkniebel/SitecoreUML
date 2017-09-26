@@ -8,7 +8,7 @@ StarUML is one of the most popular UML diagramming and modeling interfaces on th
 
 At a high-level, the difference between modeling and diagramming is that a diagram is a visual form of a model, whereas a model can include features beyond the scope of the diagram. We will further discuss the difference between diagrams and models in the chapter [Models vs. Diagrams._ _](/guide/models-vs-diagrams.md)
 
-Although it is not used to actually develop programs that can be compiled and executed, StarUML is used to architect programs, infrastructure, and beyond using the Unified Modeling Language \(UML\). UML is a language with the goal of providing a standard for the visualization software and other systems. As we are developing our architectures in UML using StarUML as our interface, StarUML is our Interactive Development Environment \(IDE\).
+Although it is not used to actually develop programs that can be compiled and executed, StarUML is used to architect programs, infrastructure, and beyond using the Unified Modeling Language \(UML\). UML is a language with the goal of providing a standard for the visualization software and other systems. As we are developing our architectures in UML, StarUML is effectively our Interactive Development Environment \(IDE\).
 
 ## Extensibility
 
