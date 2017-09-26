@@ -40,12 +40,12 @@ There is a difference between _models_ and _diagrams_. [StarUML's documentation]
 
 > _Model_ or _software model_ is a description of any aspect of a software system such as structure, behavior, requirement, and so on. A software model can be represented in textual, mathmatical or visual form. A _Model element_ is a building block of a software model.
 >
-> A _Diagram _is a visual geometric symbolic representation of a software model. A software model can be represented in one or more diagrams with different aspects. For example, a diagram can focus on class hierarchical structure while another diagram can focus on interaction between objects. Diagrams consists of _view elements_, which are visual representations of a model element.
+> A _Diagram_ is a visual geometric symbolic representation of a software model. A software model can be represented in one or more diagrams with different aspects. For example, a diagram can focus on class hierarchical structure while another diagram can focus on interaction between objects. Diagrams consist of _view elements_, which are visual representations of a model element.
 
 Effectively, this means two things:
 
 1. A _diagram_ is a _model_ but a _model_ is not a _diagram_
-2. A _model_ can be represented in a multitude of different ways. 
+2. A _model_ can be represented in a multitude of different ways, including via a visual representation \(diagram\)
 
 If you would like to experiment with this concept on your own, open up StarUML and begin adding some element and relationships to your diagrams \(instructions for doing so can be found in the chapters on [Diagrams](/guide/diagrams.md), [Template Folders](/guide/template-folders.md), [Templates](/guide/templates.md), and [Template Inheritance](/guide/template-inheritance.md)\).  Once you have added a few elements, start clicking on them in the diagram and delete them. When you're done, have a look at the Model Explorer and note that all of your elements are still there. The only ones will disappear are the non-parent-child relationships \(associations, generalizations, realizations, containments, etc.\), because they have no formal way of appearing in the tree and are thus deleted with their respective _Views _\(or visual representations on the diagram; see [Views](/guide/diagrams.md#views)\).
 
