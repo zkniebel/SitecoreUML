@@ -1,4 +1,4 @@
-# SitecoreUML \(alpha\)
+# SitecoreUML
 
 SitecoreUML is a productivity tool that enables architects to create Sitecore templates directly from their UML diagrams, as well as export an existing Sitecore solution’s template architecture and generate UML diagrams from it.
 
@@ -25,7 +25,9 @@ SitecoreUML creates an integration between Sitecore and StarUML, a feature-rich 
 
 ## Project Status
 
-The SitecoreUML project is fully functional, and has completed developer-level testing. Officially, the project will be moving into Beta on Thursday, September 28th, 2017, at which time I will be looking for volunteers in the community to test it out and provide feedback. See the [documentation](https://zkniebel.gitbooks.io/sitecoreuml/) for the most up to date project status news, and to find out more about current and upcoming features.
+The SitecoreUML project is fully functional, and has completed developer-level testing. The project is officially in beta, and I have several volunteers in the community testing it out for themselves and working with it already. Feel free to reach out to me over Sitecore Slack (@Zachary_Kniebel) to get involved and to provide your own feedback!
+
+See the [documentation](https://zkniebel.gitbooks.io/sitecoreuml/) for the most up to date project status news, and to find out more about current and upcoming features.
 
 ## Upcoming Features
 
