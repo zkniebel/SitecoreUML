@@ -1,6 +1,6 @@
 # Project Roadmap
 
-This page lists the project's upcoming features, phases and milestones. 
+This page lists the project's upcoming features, phases and milestones.
 
 Listed under each version is the set of tasks, features and enhancements that should be completed for and included in the release of the version. Please note that the roadmap is tentative and subject to change.
 
@@ -10,6 +10,7 @@ Listed under each version is the set of tasks, features and enhancements that sh
 
 * Documentation Build-Out
 * Native Sitecore field-type names used for UML types, by default
+* Adds field type name validation feature
 
 ### Version 1.0 \(November 2017\)
 
