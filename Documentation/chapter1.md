@@ -4,9 +4,16 @@ This page lists the project's upcoming features, phases and milestones.
 
 Listed under each version is the set of tasks, features and enhancements that should be completed for and included in the release of the version. Please note that the roadmap is tentative and subject to change.
 
-### Version alpha \(Current\)
+### Version alpha
 
-### Version beta \(October 2017\)
+* Initial build out of core features
+* One-click deploy
+* One-click import
+* Sitecore module
+* StarUML extension
+* Initial documentation
+
+### Version beta \(Current - 2017.09.28\)
 
 * Documentation Build-Out
 * Native Sitecore field-type names used for UML types, by default
