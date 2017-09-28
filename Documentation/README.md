@@ -19,7 +19,7 @@ SitecoreUML can save countless project hours that would have been otherwise spen
 
 ## Project Status
 
-The SitecoreUML project is fully functional, and has completed developer-level testing. Officially, the project will be moving into Beta on Thursday, September 28th, 2017, at which time I will be looking for volunteers in the community to test it out and provide feedback.
+The SitecoreUML project is fully functional, and has completed developer-level testing. The project is officially in beta, and I have several volunteers in the community testing it out for themselves and working with it already. Feel free to reach out to me over Sitecore Slack \(@Zachary\_Kniebel\) to get involved and to provide your own feedback!
 
 ## About the Book
 
