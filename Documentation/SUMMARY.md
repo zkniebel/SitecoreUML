@@ -10,6 +10,7 @@
 
 * [How it Works](getting-started/how-it-works.md)
 * [Installation and Setup](getting-started/setup-and-insta.md)
+* [Upgrade Instructions](getting-started/upgrade-instructions.md)
 
 ## Guide
 

@@ -18,49 +18,13 @@ define(function(require, exports, module) {
     var SitecoreTemplatesJsonGenerator = _backingFields._sitecoreTemplatesJsonGenerator || (_backingFields._sitecoreTemplatesJsonGenerator = require("SitecoreTemplatesJsonGenerator"));
     var SitecorePreferencesLoader = _backingFields._sitecorePreferencesLoader || (_backingFields._sitecorePreferencesLoader = require("SitecorePreferencesLoader"));
 
-    // serializes and deployes templates to Sitecore
-    function serializeAndDeploySitecoreTemplates() {
-        var templates = SitecoreTemplatesJsonGenerator.generateJsonTemplates();
-        var json = JSON.stringify(templates);
-
-        var sitecoreUrl = SitecorePreferencesLoader.getSitecoreUrl();
-        var deployRoute = SitecorePreferencesLoader.getSitecoreDeployRoute();
-        
-        sitecoreUrl = sitecoreUrl.lastIndexOf("/") == sitecoreUrl.length - 1 
-            ? sitecoreUrl.substr(0, sitecoreUrl.length - 1) 
-            : sitecoreUrl;
-        deployRoute = deployRoute.indexOf("/") == 0 
-            ? deployRoute 
-            : "/" + deployRoute;
-
-        var postUrl = sitecoreUrl + deployRoute;
-        $.ajax(
-            postUrl, 
-            {
-                method: "POST",
-                data: json,
-                cache: false,
-                contentType: "application/json; charset=utf-8",
-                complete: function(data) {
-                    if (!data.success) {
-                        console.error("Deploy Error Response: ", data);
-                        Dialogs.showErrorDialog("Uh oh! An error occurred while deploying to the Sitecore instance. See the DevTools console for more details.");
-                        return;
-                    }
-    
-                    Dialogs.showAlertDialog("Templates deployed successfully!");
-                }
-            });
-    };
-
     // serializes the templates and validates the field type names in Sitecore
     function serializeAndValidateSitecoreTemplates() {
         var templates = SitecoreTemplatesJsonGenerator.generateJsonTemplates();
         var json = JSON.stringify(templates);
         
         var sitecoreUrl = SitecorePreferencesLoader.getSitecoreUrl();
-        // var validateRoute = SitecorePreferencesLoader.getSitecoreValidateRoute();
-        var validateRoute = "/sitecoreuml/templates/validateFieldTypes";
+        var validateRoute = SitecorePreferencesLoader.getSitecoreValidateRoute();
         
         sitecoreUrl = sitecoreUrl.lastIndexOf("/") == sitecoreUrl.length - 1 
             ? sitecoreUrl.substr(0, sitecoreUrl.length - 1) 
@@ -105,17 +69,17 @@ define(function(require, exports, module) {
     }
     
     // command ID constant
-    var CMD_DEPLOYSITECORETEMPLATES = "sitecore.serializeanddeploysitecoretemplates";
+    var CMD_VALIDATESITECORETEMPLATES = "sitecore.serializeandvalidatesitecoretemplates";
 
     exports.initialize = function() {
         // eager-load the requisite modules
         var CommandManager = app.getModule("command/CommandManager");
-        
+
         // register the command
-        CommandManager.register("Deploy Templates to Sitecore", CMD_DEPLOYSITECORETEMPLATES, serializeAndDeploySitecoreTemplates);
+        CommandManager.register("Validate Templates", CMD_VALIDATESITECORETEMPLATES, serializeAndValidateSitecoreTemplates);
         // add the menu item for the command
-        SitecoreMenuLoader.sitecoreMenu.addMenuItem(CMD_DEPLOYSITECORETEMPLATES);
+        SitecoreMenuLoader.sitecoreMenu.addMenuItem(CMD_VALIDATESITECORETEMPLATES);
     };
-    exports.serializeAndDeploySitecoreTemplates = serializeAndDeploySitecoreTemplates;
-    exports.CMD_DEPLOYSITECORETEMPLATES = CMD_DEPLOYSITECORETEMPLATES;
+    exports.serializeAndDeploySitecoreTemplates = serializeAndValidateSitecoreTemplates;
+    exports.CMD_VALIDATESITECORETEMPLATES = CMD_VALIDATESITECORETEMPLATES;
 });
