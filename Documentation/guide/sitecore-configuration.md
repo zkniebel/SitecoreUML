@@ -1,6 +1,4 @@
-Coming Soon...
+# Sitecore Config Files
 
-
-
-While you wait, have a look at the config files that are included with the Sitecore module that you installed. All settings and options should be briefly documented inline. Feel free to reach out to me over Sitecore Slack \(@zachary\_kniebel\) if you have any questions, in the meantime.
+The Sitecore module of SitecoreUML includes two config files: _SitecoreUML.config_, and _SitecoreUML.CM.config_. The contents of these configuration files is documented, below.
 
