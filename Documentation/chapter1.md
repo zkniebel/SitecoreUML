@@ -17,7 +17,7 @@ Listed under each version is the set of tasks, features and enhancements that sh
 
 * [ ] Documentation
   * [x] Upgrade instructions
-  * [ ] Validation feature
+  * [x] Validation feature
   * [ ] Sitecore Config Files
 * [x] Native Sitecore field-type names used for UML types, by default
 * [x] Adds support for UML field type mapping aliases \(optional abbreviated names mapping to Sitecore field type names\)
