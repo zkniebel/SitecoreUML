@@ -41,30 +41,27 @@ define(function(require, exports, module) {
                 data: json,
                 cache: false,
                 contentType: "application/json; charset=utf-8",
-                complete: function(data) {
-                    if (!data.success) {
-                        console.error("Validation Error Response: ", data);
-                        Dialogs.showErrorDialog("Uh oh! An error occurred while validating the Sitecore templates. See the DevTools console for more details.");
+                complete: function(data) {         
+                    var responseJson = JSON.parse(JSON.parse(data.responseText));           
+                    if (!responseJson.length) {                        
+                        Dialogs.showAlertDialog("No validation errors detected!");
                         return;
                     }
+
+                    var resultList = "<ol>";
+                    responseJson.forEach(function(entry) {
+                        resultList += "<li><b>" + entry.TemplateName + "</b>::<b>" + entry.FieldName + "</b> &nbsp; : &nbsp; " + entry.FieldType + "</li>";
+                    });
+                    resultList += "</ol>";
                     
-                    if (!data.responseText.Success) {
-                        console.log("Validation Error Response: ", data.responseText);
-                        var responseJson = JSON.parse(JSON.parse(data.responseText));
-
-                        var resultList = "<ol>";
-                        responseJson.forEach(function(entry) {
-                            resultList += "<li><b>" + entry.TemplateName + "</b>::<b>" + entry.FieldName + "</b> &nbsp; : &nbsp; " + entry.FieldType + "</li>";
-                        });
-                        resultList += "</ol>";
-                        
-                        var msg = "Invalid Field Types: " + resultList;
-                        Dialogs.showErrorDialog(msg);
-                        return;
-                    }
-
-                    Dialogs.showAlertDialog("No validation errors detected!");
+                    var msg = "Invalid Field Types: " + resultList;
+                    Dialogs.showErrorDialog(msg);
                 }
+            })
+            .fail(function(jqXHR, textStatus, errorThrown) {
+                console.error("Validation Errore: ", errorThrown, textStatus, jqXHR);
+                Dialogs.showErrorDialog("Uh oh! An error occurred while validating the Sitecore templates. See the DevTools console for more details.");
+                return;
             });
     }
     

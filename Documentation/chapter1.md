@@ -16,10 +16,11 @@ Listed under each version is the set of tasks, features and enhancements that sh
 ### Version beta \(2017.09.28 - Current\)
 
 * [ ] Documentation
-  * [ ] Upgrade instructions
-  * [ ] Validation feature
+  * [x] Upgrade instructions
+  * [x] Validation feature
   * [ ] Sitecore Config Files
 * [x] Native Sitecore field-type names used for UML types, by default
+* [x] Adds support for UML field type mapping aliases \(optional abbreviated names mapping to Sitecore field type names\)
 * [x] Adds field type name validation feature
 
 ### Version 1.0 \(November 2017\)
@@ -34,11 +35,6 @@ Listed under each version is the set of tasks, features and enhancements that sh
   * Support for setting the "Title" of a template field
   * Support for setting the "Source" of a template field
   * Support for setting the \_Standard Value of a field
-* Enhancements to UML to Sitecore Mappings
-  * Multiple UML types mapping to a single Sitecore type
-    * Will be referred to as "mapping aliases"
-    * e.g. SLT, SingleLineText and Single-Line Text all map to Sitecore's Single-Line Text field
-  * Standardization of mappings so that the exact Sitecore field types are available in UML by default
 
 ### Version 1.2 \(~ January 2018\)
 
