@@ -16,6 +16,39 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Controllers
     public class TemplatesController : Controller
     {
         [HttpPost]
+        public JsonResult Validate()
+        {
+            try
+            {
+                // read the json from the body of the request
+                var jsonBody = new StreamReader(Request.InputStream).ReadToEnd();
+                // parse the json
+                var templates = JsonConvert.DeserializeObject<List<JsonSitecoreTemplate>>(jsonBody);
+
+                // compare the field types with the mappings in the config
+                var fieldTypes = SitecoreUMLConfiguration.Instance.FieldTypes;
+                var invalidFieldTypes = templates
+                    .SelectMany(template => template.Fields
+                        .Select(field => new
+                        {
+                            TemplateName = template.Name,
+                            FieldName = field.Name,
+                            FieldType = field.FieldType
+                        }))
+                    .Where(templateFields =>
+                        !SitecoreUMLConfiguration.Instance.FieldTypes.HasValue(templateFields.FieldType));
+                
+                // send the response
+                return new JsonResult() { Data = JsonConvert.SerializeObject(invalidFieldTypes) };
+            }
+            catch (Exception ex)
+            {
+                Log.Error("SitecoreUML ValidateFieldTypes Exception: An error occurred while validating field types", ex, this);
+                return new JsonResult() { Data = new JsonResponse() { Success = false, ErrorMessage = ex.Message } };
+            }
+        }
+
+        [HttpPost]
         public JsonResult Deploy()
         {
             try

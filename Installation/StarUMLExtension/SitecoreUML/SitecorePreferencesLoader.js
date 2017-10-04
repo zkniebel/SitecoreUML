@@ -12,6 +12,7 @@ define(function(require, exports, module) {
     var sitecoreUrlId = "sitecore.url";
     var sitecoreDeployRouteId = "sitecore.deployroute";
     var sitecoreImportRouteId = "sitecore.importroute";
+    var sitecoreValidateRouteId = "sitecore.validateroute";
 
     // configure the preferences
     var sitecorePreferences = {
@@ -32,6 +33,12 @@ define(function(require, exports, module) {
             description: "Route to GET when importing data from Sitecore",
             type: "String",
             default: "/sitecoreuml/templates/export"
+        },
+        "sitecore.validateroute": {
+            text: "Validate Route",
+            description: "Route to POST to when validating field types with Sitecore",
+            type: "String",
+            default: "/sitecoreuml/templates/validate"
         }
     };
 
@@ -44,7 +51,9 @@ define(function(require, exports, module) {
     exports.sitecoreUrlId = sitecoreUrlId;
     exports.sitecoreDeployRouteId = sitecoreDeployRouteId;
     exports.sitecoreImportRouteId = sitecoreImportRouteId;
+    exports.sitecoreValidateRouteId = sitecoreValidateRouteId;
     exports.getSitecoreUrl = function() { return PreferenceManager.get(sitecoreUrlId); };
     exports.getSitecoreDeployRoute = function() { return PreferenceManager.get(sitecoreDeployRouteId); };
     exports.getSitecoreImportRoute = function() { return PreferenceManager.get(sitecoreImportRouteId); };
+    exports.getSitecoreValidateRoute = function() { return PreferenceManager.get(sitecoreValidateRouteId); };
 });
