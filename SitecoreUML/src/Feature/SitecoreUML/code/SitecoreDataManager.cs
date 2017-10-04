@@ -78,12 +78,14 @@ namespace ZacharyKniebel.Feature.SitecoreUML
                     // 4. add the fields to the new template
                     foreach (var jsonField in jsonTemplate.Fields)
                     {
-                        // if the field type is not recognized then log a message and skip it
-                        if (!SitecoreUMLConfiguration.Instance.FieldTypes.HasValue(jsonField.FieldType))
+                        // if the field type name/alias is not recognized then log a message and skip it
+                        if (!SitecoreUMLConfiguration.Instance.UmlFieldTypeAliases.ContainsKey(jsonField.FieldType))
                         {
-                            Log.Warn($"SitecoreUML Import Warning: Field type {jsonField.FieldType} was not recognized. Field {jsonField.Name} will be skipped for template {jsonTemplate.Name}.", this);
+                            Log.Warn($"SitecoreUML Import Warning: Field type name or alias {jsonField.FieldType} was not recognized. Field {jsonField.Name} will be skipped for template {jsonTemplate.Name}.", this);
                             continue;
                         }
+                        // get the field type from the field type name/alias
+                        var fieldType = SitecoreUMLConfiguration.Instance.UmlFieldTypeAliases[jsonField.FieldType];
 
                         // 4a. add the field
                         var templateFieldItem =
@@ -93,7 +95,7 @@ namespace ZacharyKniebel.Feature.SitecoreUML
                         templateFieldItem.BeginEdit();
 
                         templateFieldItem.Sortorder = jsonField.SortOrder;
-                        templateFieldItem.Type = SitecoreUMLConfiguration.Instance.FieldTypes.Reverse[jsonField.FieldType];
+                        templateFieldItem.Type = fieldType;
 
                         templateFieldItem.EndEdit();
                     }

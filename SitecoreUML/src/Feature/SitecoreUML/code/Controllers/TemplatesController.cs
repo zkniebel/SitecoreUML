@@ -26,7 +26,6 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Controllers
                 var templates = JsonConvert.DeserializeObject<List<JsonSitecoreTemplate>>(jsonBody);
 
                 // compare the field types with the mappings in the config
-                var fieldTypes = SitecoreUMLConfiguration.Instance.FieldTypes;
                 var invalidFieldTypes = templates
                     .SelectMany(template => template.Fields
                         .Select(field => new
@@ -36,7 +35,7 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Controllers
                             FieldType = field.FieldType
                         }))
                     .Where(templateFields =>
-                        !SitecoreUMLConfiguration.Instance.FieldTypes.HasValue(templateFields.FieldType));
+                        !SitecoreUMLConfiguration.Instance.UmlFieldTypeAliases.ContainsKey(templateFields.FieldType));
                 
                 // send the response
                 return new JsonResult() { Data = JsonConvert.SerializeObject(invalidFieldTypes) };

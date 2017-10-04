@@ -35,7 +35,7 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Configuration
         public string ImportHistoryFolderPath { get; private set; }
 
         // ReSharper disable once UnusedAutoPropertyAccessor.Local
-        public bool DeleteFilesAfterImport { get; private set; }
+        public bool ArchiveFilesAfterImport { get; private set; }
 
         // ReSharper disable once UnusedAutoPropertyAccessor.Local
         public bool DisableIndexingDuringImport { get; private set; }
@@ -43,21 +43,46 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Configuration
         // ReSharper disable once UnusedAutoPropertyAccessor.Local
         public string ExportSaveFolderPath { get; private set; }
 
+        // TODO: with the introduction of aliases, this can be changed to a dictionary for better performance, since 2-way lookups are no longer necessary
         /// <summary>
         /// Mapping between Sitecore field type names (keys) and UML field type names (values)
         /// </summary>
         public Map<string, string> FieldTypes { get; }
 
+        /// <summary>
+        /// Case-insensitive mapping between each uml alias and the sitecoreFieldTypeName that it refers to
+        /// </summary>
+        public Dictionary<string, string> UmlFieldTypeAliases { get; }
+
         public SitecoreUMLConfiguration()
         {
             FieldTypes = new Map<string, string>();
+            UmlFieldTypeAliases = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         }
 
         public void AddFieldType(System.Xml.XmlNode node)
         {
+            // add field type name the mapping
             var scName = Sitecore.Xml.XmlUtil.GetAttribute("sitecoreFieldTypeName", node);
             var umlName = Sitecore.Xml.XmlUtil.GetAttribute("umlFieldTypeName", node);
             FieldTypes.Add(scName, umlName);
+
+            // add the umlFieldTypeName to the aliases map to enable case-insensitive matches
+            UmlFieldTypeAliases.Add(umlName, scName);
+
+            // add the aliases to the alias map
+            var umlAliases = Sitecore.Xml.XmlUtil.GetAttribute("umlAliases", node);
+            if (string.IsNullOrEmpty(umlAliases))
+            {
+                return;
+            }
+
+            var aliases = umlAliases
+                .Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var alias in aliases)
+            {
+                UmlFieldTypeAliases.Add(alias, scName);
+            }
         }
     }
 }
