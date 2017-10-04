@@ -6,18 +6,21 @@ Listed under each version is the set of tasks, features and enhancements that sh
 
 ### Version alpha
 
-* Initial build out of core features
-* One-click deploy
-* One-click import
-* Sitecore module
-* StarUML extension
-* Initial documentation
+* [x] Initial build out of core features
+* [x] One-click deploy
+* [x] One-click import
+* [x] Sitecore module
+* [x] StarUML extension
+* [x] Initial documentation
 
 ### Version beta \(Current - 2017.09.28\)
 
-* Documentation Build-Out
-* Native Sitecore field-type names used for UML types, by default
-* Adds field type name validation feature
+* [ ] Documentation
+  * [ ] Upgrade instructions
+  * [ ] Validation feature
+  * [ ] Sitecore Config Files
+* [x] Native Sitecore field-type names used for UML types, by default
+* [x] Adds field type name validation feature
 
 ### Version 1.0 \(November 2017\)
 
