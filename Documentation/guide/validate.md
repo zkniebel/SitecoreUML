@@ -8,7 +8,7 @@ When deploying templates to Sitecore, any fields with field-types that SitecoreU
 
 Go to _Sitecore_ &gt; _Validate Templates_
 
-Any validation errors that are found will display in the resulting modal. 
+Any validation errors that are found will display in the resulting modal.
 
-![](/assets/StarUML-Validate.png)
+![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Validate.png?raw=true)
 
