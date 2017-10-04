@@ -13,7 +13,7 @@ Listed under each version is the set of tasks, features and enhancements that sh
 * [x] StarUML extension
 * [x] Initial documentation
 
-### Version beta \(Current - 2017.09.28\)
+### Version beta \(2017.09.28 - Current\)
 
 * [ ] Documentation
   * [ ] Upgrade instructions
