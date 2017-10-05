@@ -35,6 +35,7 @@ Listed under each version is the set of tasks, features and enhancements that sh
   * Support for setting the "Title" of a template field
   * Support for setting the "Source" of a template field
   * Support for setting the \_Standard Value of a field
+* Moves folder paths in Sitecore config files to settings to enable use of Sitecore variables
 
 ### Version 1.2 \(~ January 2018\)
 
