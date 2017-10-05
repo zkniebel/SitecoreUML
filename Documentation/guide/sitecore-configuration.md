@@ -4,7 +4,7 @@ The Sitecore module of SitecoreUML includes two config files: _SitecoreUML.confi
 
 ## SitecoreUML.config
 
-This file patches all of the in the SitecoreUML configuration, save for the `RegisterRoutes` processor which is patched in via the [SitecoreUML.CM.config](#sitecoreumlcmconfig). 
+This file patches all of the in the SitecoreUML configuration, save for the `RegisterRoutes` processor which is patched in via the [SitecoreUML.CM.config](#sitecoreumlcmconfig).
 
 ### Commands
 
@@ -20,7 +20,7 @@ Command to export templates from Sitecore as serialized JSON saved to the `expor
 
 ### SitecoreUML Configuration Section
 
-The `<sitecoreUML>` configuration section contains all of the custom configuration for the Sitecore module of SitecoreUML. It's components are documented, below. 
+The `<sitecoreUML>` configuration section contains all of the custom configuration for the Sitecore module of SitecoreUML. It's components are documented, below.
 
 #### `targetDatabaseName`
 
@@ -32,7 +32,7 @@ Description:** The name of the database to import data into and export data from
 
 **Type:** string  
 **Default:** `master`**  
-Description:** Path to the root item that contains all templates to be imported or exported. All template paths in UML diagrams will be relative to 
+Description:** Path to the root item that contains all templates to be imported or exported. All template paths in UML diagrams will be relative to
 
 #### `defaultFieldSectionName`
 
@@ -80,15 +80,13 @@ Description:** Maps the Sitecore field type names to the field type names used i
 | :--- | :--- |
 | sitecoreFieldTypeName | The name of the Sitecore field type being mapped to |
 | umlFieldTypeName | The name that will be used when diagrams are imported into StarUML or otherwise exported from Sitecore as SitecoreUML JSON. Effectively, this attribute defines the default UML field type name alias. |
-| umlAliases | \(Optional\) A pipe-delimited list of case-insensitive aliases that resolve to the umlFieldTypeName when deploying from StarUML to Sitecore. Note that the umlFieldTypeName does not have to be included in the umlAliases. **IMPORTANT: **All aliases must be unique. |
+| umlAliases | \(Optional\) A pipe-delimited list of case-insensitive aliases that resolve to the _umlFieldTypeName_ when deploying from StarUML to Sitecore. Note that the _umlFieldTypeName_ does not have to be included in the _umlAliases_. **IMPORTANT: **All aliases must be unique. |
 
 ## SitecoreUML.CM.config
 
-This configuration file patches in the SitecoreUML `RegisterRoutes` processor. This processor registers the routes to the SitecoreUML services, called via StarUML for [deployment](/guide/deploy-and-import.md), [import](/guide/deploy-and-import.md) and [validation](/guide/validate.md). 
+This configuration file patches in the SitecoreUML `RegisterRoutes` processor. This processor registers the routes to the SitecoreUML services, called via StarUML for [deployment](/guide/deploy-and-import.md), [import](/guide/deploy-and-import.md) and [validation](/guide/validate.md).
 
-If intending to update the out of the box SitecoreUML routes and/or services, this file should be your first stop. 
+If intending to update the out of the box SitecoreUML routes and/or services, this file should be your first stop.
 
-**IMPORTANT: **For security reasons, it is recommended that the SitecoreUML Sitecore module be installed only on Content Management \(CM\) and non-production instances. However, if you do happen to install the SitecoreUML Sitecore module on a production Content Delivery \(CD\) instance, it is important that you remove this file. 
-
-
+**IMPORTANT: **For security reasons, it is recommended that the SitecoreUML Sitecore module be installed only on Content Management \(CM\) and non-production instances. However, if you do happen to install the SitecoreUML Sitecore module on a production Content Delivery \(CD\) instance, it is important that you remove this file.
 
