@@ -15,10 +15,10 @@ Listed under each version is the set of tasks, features and enhancements that sh
 
 ### Version beta \(2017.09.28 - Current\)
 
-* [ ] Documentation
+* [x] Documentation
   * [x] Upgrade instructions
   * [x] Validation feature
-  * [ ] Sitecore Config Files
+  * [x] Sitecore Config Files
 * [x] Native Sitecore field-type names used for UML types, by default
 * [x] Adds support for UML field type mapping aliases \(optional abbreviated names mapping to Sitecore field type names\)
 * [x] Adds field type name validation feature
@@ -36,6 +36,10 @@ Listed under each version is the set of tasks, features and enhancements that sh
   * Support for setting the "Source" of a template field
   * Support for setting the \_Standard Value of a field
 * Moves folder paths in Sitecore config files to settings to enable use of Sitecore variables
+* Documentation
+  * Tutorials
+  * Samples
+  * Glossary
 
 ### Version 1.2 \(~ January 2018\)
 
