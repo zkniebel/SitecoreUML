@@ -30,7 +30,7 @@ Listed under each version is the set of tasks, features and enhancements that sh
   * [x] Helix Project
 * [ ] Refactor out broken lazy-initialization of module variables in JavaScript
 * [x] Adds support for validating field, template and template folder item names with Sitecore
-* [ ] Adds "connection test" command
+* [x] Adds "connection test" command
 * [ ] Documentation
   * [ ] Project Templates
   * [ ] Item name validation
@@ -66,6 +66,4 @@ Listed under each version is the set of tasks, features and enhancements that sh
 
 * Azure infrastructure provisioning support
 * AWS infrastructure provisioning support
-
-
 
