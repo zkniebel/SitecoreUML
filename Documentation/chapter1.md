@@ -25,10 +25,16 @@ Listed under each version is the set of tasks, features and enhancements that sh
 
 ### Version 1.0 \(November 2017\)
 
-* [ ] Adds SitecoreUML project template to StarUML with required diagrams automatically added
+* [x] Adds SitecoreUML project templates to StarUML with required diagrams automatically added
+  * [x] Blank Project
+  * [x] Helix Project
 * [ ] Refactor out broken lazy-initialization of module variables in JavaScript
-* [ ] Adds support for validating field, template and template folder item names with Sitecore
+* [x] Adds support for validating field, template and template folder item names with Sitecore
 * [ ] Adds "connection test" to Preferences
+* [ ] Documentation
+  * [ ] Project Templates
+  * [ ] Item name validation
+  * [ ] Connection test
 
 ### Version 1.1 \(~ December 2017\)
 
