@@ -28,6 +28,7 @@
 * [Preferences](guide/saving-preferences.md)
 * [Validate](guide/validate.md)
 * [Deploy & Import](guide/deploy-and-import.md)
+* [JSON Tools](guide/json-tools.md)
 
 ## Module Reference
 
