@@ -77,6 +77,6 @@ define(function(require, exports, module) {
         // add the menu item for the command
         SitecoreMenuLoader.sitecoreMenu.addMenuItem(CMD_VALIDATESITECORETEMPLATES);
     };
-    exports.serializeAndDeploySitecoreTemplates = serializeAndValidateSitecoreTemplates;
+    exports.serializeAndValidateSitecoreTemplates = serializeAndValidateSitecoreTemplates;
     exports.CMD_VALIDATESITECORETEMPLATES = CMD_VALIDATESITECORETEMPLATES;
 });
