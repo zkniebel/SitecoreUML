@@ -18,7 +18,31 @@ define(function(require, exports, module) {
     var SitecoreTemplatesJsonGenerator = _backingFields._sitecoreTemplatesJsonGenerator || (_backingFields._sitecoreTemplatesJsonGenerator = require("SitecoreTemplatesJsonGenerator"));
     var SitecorePreferencesLoader = _backingFields._sitecorePreferencesLoader || (_backingFields._sitecorePreferencesLoader = require("SitecorePreferencesLoader"));
 
-    // serializes the templates and validates the field type names in Sitecore
+    // gets the HTML for displaying the invalid field types
+    function getInvalidFieldTypesHtml(jsonInvalidTemplateFieldTypes) {
+        var resultList = "<ol>";
+        jsonInvalidTemplateFieldTypes.forEach(function(entry) {
+            resultList += "<li><b>" + entry.TemplateName + "</b>::<b>" + entry.FieldName + "</b> &nbsp; : &nbsp; " + entry.FieldType + "</li>";
+        });
+        resultList += "</ol>";
+        
+        var msg = "Invalid Field Types: " + resultList;
+        return msg;
+    };
+
+    // gets the HTML for displaying the invalid item names
+    function getInvalidItemNamesHtml(jsonInvalidItemNames) {
+        var resultList = "<ol>";
+        jsonInvalidItemNames.forEach(function(entry) {
+            resultList += "<li><b>" + entry.ItemName + "</b> &nbsp; <i>(" + entry.ItemType + ")</i></li>";
+        });
+        resultList += "</ol>";
+        
+        var msg = "Invalid Item Names: " + resultList;
+        return msg;
+    };
+
+    // serializes the templates and validates the templates with the SitecoreUML service
     function serializeAndValidateSitecoreTemplates() {
         var templates = SitecoreTemplatesJsonGenerator.generateJsonTemplates();
         var json = JSON.stringify(templates);
@@ -42,20 +66,21 @@ define(function(require, exports, module) {
                 cache: false,
                 contentType: "application/json; charset=utf-8",
                 complete: function(data) {         
-                    var responseJson = JSON.parse(JSON.parse(data.responseText));           
-                    if (!responseJson.length) {                        
-                        Dialogs.showAlertDialog("No validation errors detected!");
-                        return;
+                    var responseJson = JSON.parse(JSON.parse(data.responseText));  
+                    
+                    var errorMessageHtml = "";
+                    if (responseJson.InvalidTemplateFieldTypes.length) {  
+                        errorMessageHtml += getInvalidFieldTypesHtml(responseJson.InvalidTemplateFieldTypes);
+                    }
+                    if (responseJson.InvalidItemNames.length) {
+                        errorMessageHtml += getInvalidItemNamesHtml(responseJson.InvalidItemNames);
                     }
 
-                    var resultList = "<ol>";
-                    responseJson.forEach(function(entry) {
-                        resultList += "<li><b>" + entry.TemplateName + "</b>::<b>" + entry.FieldName + "</b> &nbsp; : &nbsp; " + entry.FieldType + "</li>";
-                    });
-                    resultList += "</ol>";
-                    
-                    var msg = "Invalid Field Types: " + resultList;
-                    Dialogs.showErrorDialog(msg);
+                    if (errorMessageHtml) {                              
+                        Dialogs.showErrorDialog(errorMessageHtml);                            
+                    } else {                        
+                        Dialogs.showAlertDialog("No validation errors detected!");
+                    }
                 }
             })
             .fail(function(jqXHR, textStatus, errorThrown) {
@@ -63,7 +88,7 @@ define(function(require, exports, module) {
                 Dialogs.showErrorDialog("Uh oh! An error occurred while validating the Sitecore templates. See the DevTools console for more details.");
                 return;
             });
-    }
+    };
     
     // command ID constant
     var CMD_VALIDATESITECORETEMPLATES = "sitecore.serializeandvalidatesitecoretemplates";
@@ -77,6 +102,6 @@ define(function(require, exports, module) {
         // add the menu item for the command
         SitecoreMenuLoader.sitecoreMenu.addMenuItem(CMD_VALIDATESITECORETEMPLATES);
     };
-    exports.serializeAndDeploySitecoreTemplates = serializeAndValidateSitecoreTemplates;
+    exports.serializeAndValidateSitecoreTemplates = serializeAndValidateSitecoreTemplates;
     exports.CMD_VALIDATESITECORETEMPLATES = CMD_VALIDATESITECORETEMPLATES;
 });
