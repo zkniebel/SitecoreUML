@@ -22,13 +22,13 @@ Listed under each version is the set of tasks, features and enhancements that sh
 * [x] Native Sitecore field-type names used for UML types, by default
 * [x] Adds support for UML field type mapping aliases \(optional abbreviated names mapping to Sitecore field type names\)
 * [x] Adds field type name validation feature
-* [ ] Fix lazy-loading variables in JavaScript to actually be lazy-loading
 
 ### Version 1.0 \(November 2017\)
 
-* Adds SitecoreUML project template to StarUML with required diagrams automatically added
-* Adds invalid name characters field to the preferences for preventing invalid characters from being used in template, template folder or field names
-* Adds "connection test" to Preferences
+* [ ] Adds SitecoreUML project template to StarUML with required diagrams automatically added
+* [ ] Fix lazy-loading variables in JavaScript to actually be lazy-loading
+* [ ] Adds invalid name characters field to the preferences for preventing invalid characters from being used in template, template folder or field names
+* [ ] Adds "connection test" to Preferences
 
 ### Version 1.1 \(~ December 2017\)
 
