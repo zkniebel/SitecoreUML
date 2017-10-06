@@ -32,10 +32,13 @@ Listed under each version is the set of tasks, features and enhancements that sh
 * [x] Adds support for validating field, template and template folder item names with Sitecore
 * [x] Adds "connection test" command
 * [ ] Adds "add diagram set" command
+* [ ] Adds MSI installer for StarUML extension via WiX
+* [ ] Adds "add diagram set" command
 * [ ] Documentation
   * [x] Project Templates
   * [x] Item name validation
   * [ ] Connection test
+  * [ ] Installation \(updated for MSI installer\)
 
 ### Version 1.1 \(~ December 2017\)
 

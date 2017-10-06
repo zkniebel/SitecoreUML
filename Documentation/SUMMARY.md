@@ -26,6 +26,7 @@
 * [Models vs Diagrams](guide/models-vs-diagrams/concepts.md)
 * [Manipulating Hierarchies](guide/models-vs-diagrams/manipulating.md)
 * [Preferences](guide/saving-preferences.md)
+* [Connecting to Sitecore](guide/connecting-to-sitecore.md)
 * [Validate](guide/validate.md)
 * [Deploy & Import](guide/deploy-and-import.md)
 * [JSON Tools](guide/json-tools.md)
