@@ -59,7 +59,7 @@ Listed under each version is the set of tasks, features and enhancements that sh
 ### Version 1.3 \(~ February 2018\)
 
 * Adds support for deploying specific diagram sets
-* Code generation API support
+* JSON Tools and Extensibility Documentation
 
 ### ...
 
@@ -67,4 +67,6 @@ Listed under each version is the set of tasks, features and enhancements that sh
 
 * Azure infrastructure provisioning support
 * AWS infrastructure provisioning support
+
+
 
