@@ -30,17 +30,8 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Shell.Framework.Commands
                 return;
             }
 
-            // get the root item to add the templates to
-            var templateRoot = _database.GetItem(SitecoreUMLConfiguration.Instance.TemplatesRootPath);
-            if (templateRoot == null)
-            {
-                Log.Error($"SitecoreUML Export Error: Template root path does not exist: '{SitecoreUMLConfiguration.Instance.TemplatesRootPath}'.", this);
-                Sitecore.Context.ClientPage.ClientResponse.Alert($"SitecoreUML Export Error: Template root path does not exist: '{SitecoreUMLConfiguration.Instance.TemplatesRootPath}'.");
-                return;
-            }
-
             // get the templates for export
-            var jsonTemplates = new SitecoreDataManager().GetTemplatesForExport(templateRoot);
+            var jsonTemplates = new SitecoreDataManager().GetTemplatesForExport();
             
             using (var file = File.CreateText($"{outputDirectory.FullName}/{DateTime.Now:yyyyMMddhhmmss}.json"))
             {
