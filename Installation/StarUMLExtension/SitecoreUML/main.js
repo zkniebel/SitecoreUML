@@ -27,4 +27,8 @@ define(function (require, exports, module) {
     // load the json file import module and initialize it to add the menu item
     var SitecoreTemplatesJsonReverseEngineer = require("SitecoreTemplatesJsonReverseEngineer");  
     SitecoreTemplatesJsonReverseEngineer.initialize();
+    
+    // load the Sitecore connection test module and initialize it to add the menu item
+    var SitecoreConnectionTest = require("SitecoreConnectionTest");
+    SitecoreConnectionTest.initialize();
 });

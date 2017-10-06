@@ -13,6 +13,7 @@ define(function(require, exports, module) {
     var sitecoreDeployRouteId = "sitecore.deployroute";
     var sitecoreImportRouteId = "sitecore.importroute";
     var sitecoreValidateRouteId = "sitecore.validateroute";
+    var sitecoreTestConnectionRouteId = "sitecore.testconnectionroute";
 
     // configure the preferences
     var sitecorePreferences = {
@@ -39,6 +40,12 @@ define(function(require, exports, module) {
             description: "Route to POST to when validating field types with Sitecore",
             type: "String",
             default: "/sitecoreuml/templates/validate"
+        },
+        "sitecore.testconnectionroute": {
+            text: "Connection Test Route",
+            description: "Route to GET when testing the connection to Sitecore",
+            type: "String",
+            default: "/sitecoreuml/status/connectivity"
         }
     };
 
@@ -56,4 +63,5 @@ define(function(require, exports, module) {
     exports.getSitecoreDeployRoute = function() { return PreferenceManager.get(sitecoreDeployRouteId); };
     exports.getSitecoreImportRoute = function() { return PreferenceManager.get(sitecoreImportRouteId); };
     exports.getSitecoreValidateRoute = function() { return PreferenceManager.get(sitecoreValidateRouteId); };
+    exports.getSitecoreTestConnectionRoute = function() { return PreferenceManager.get(sitecoreTestConnectionRouteId); };
 });
