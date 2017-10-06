@@ -28,7 +28,6 @@
 * [Preferences](guide/saving-preferences.md)
 * [Validate](guide/validate.md)
 * [Deploy & Import](guide/deploy-and-import.md)
-* [Project Templates](guide/project-templates.md)
 
 ## Module Reference
 
