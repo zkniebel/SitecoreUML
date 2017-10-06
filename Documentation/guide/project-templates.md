@@ -9,7 +9,7 @@ To create a new project from one of the SitecoreUML project templates, perform t
 1. Go to _File_ &gt; _New From Template_ &gt; _Sitecore_
 2. Select the template that you would like to create your new project from. Descriptions of each of the native SitecoreUML project templates can be found below, in the [Included Project Templates](#included-project-templates) section.
 
-![](/assets/StarUML-ProjectTemplates-NewFromTemplate.png)
+![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-ProjectTemplates-NewFromTemplate.png?raw=true)
 
 ## Included Project Templates
 
