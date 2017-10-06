@@ -11,6 +11,8 @@ The current version of SitecoreUML includes three native Preferences:
 * Sitecore URL
 * Deploy Route
 * Import Route
+* Validate Route
+* Connection Test Route
 
 ### Sitecore URL
 
