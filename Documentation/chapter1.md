@@ -30,7 +30,7 @@ Listed under each version is the set of tasks, features and enhancements that sh
   * [x] Helix Project
 * [ ] Refactor out broken lazy-initialization of module variables in JavaScript
 * [x] Adds support for validating field, template and template folder item names with Sitecore
-* [ ] Adds "connection test" to Preferences
+* [ ] Adds "connection test" command
 * [ ] Documentation
   * [ ] Project Templates
   * [ ] Item name validation
