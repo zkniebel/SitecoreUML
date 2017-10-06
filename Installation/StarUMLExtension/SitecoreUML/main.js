@@ -1,8 +1,12 @@
 define(function (require, exports, module) {
     "use strict";
 
-    // load in the Sitecore preferences
+    // load the Sitecore preferences
     var SitecorePreferencesLoader = require("SitecorePreferencesLoader");
+
+    // load the Sitecore project templates
+    var SitecoreProjectTemplatesLoader = require("SitecoreProjectTemplatesLoader");
+    SitecoreProjectTemplatesLoader.initialize();
 
     // load the Sitecore deploy module and initialize it to add the menu item
     var SitecoreTemplatesDeploy = require("SitecoreTemplatesDeploy");  
