@@ -17,6 +17,7 @@
 * [The StarUML IDE](guide/the-staruml-ide.md)
 * [Projects](guide/creating-a-project.md)
 * [Diagrams](guide/diagrams.md)
+* [Project Templates](guide/project-templates.md)
 * [Template Folders](guide/template-folders.md)
 * [Templates](guide/templates.md)
 * [Template Fields](guide/template-fields.md)
@@ -27,7 +28,7 @@
 * [Preferences](guide/saving-preferences.md)
 * [Validate](guide/validate.md)
 * [Deploy & Import](guide/deploy-and-import.md)
-* [JSON Tools](guide/json-tools.md)
+* Project Templates
 
 ## Module Reference
 
