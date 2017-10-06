@@ -31,9 +31,10 @@ Listed under each version is the set of tasks, features and enhancements that sh
 * [ ] Refactor out broken lazy-initialization of module variables in JavaScript
 * [x] Adds support for validating field, template and template folder item names with Sitecore
 * [x] Adds "connection test" command
+* [ ] Adds "add diagram set" command
 * [ ] Documentation
-  * [ ] Project Templates
-  * [ ] Item name validation
+  * [x] Project Templates
+  * [x] Item name validation
   * [ ] Connection test
 
 ### Version 1.1 \(~ December 2017\)
@@ -66,6 +67,4 @@ Listed under each version is the set of tasks, features and enhancements that sh
 
 * Azure infrastructure provisioning support
 * AWS infrastructure provisioning support
-
-
 
