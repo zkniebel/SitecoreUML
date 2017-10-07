@@ -17,9 +17,11 @@ SitecoreUML can save countless project hours that would have been otherwise spen
 
 [![](https://camo.githubusercontent.com/5e02bc620c53584a3238cba7964b3946fc078a43/68747470733a2f2f692e7974696d672e636f6d2f76692f71666d646567716273766b2f687164656661756c742e6a70673f7371703d2d6f61796d774558434e4143454c7742534672797134717041776b4941525541414968434741453d2672733d414f6e34434c42766f665459794a31385f416f7a7347627359686f76736f68476567)](https://youtu.be/qfmdegqbsvk)
 
+Video URL: https://youtu.be/qfmdegqbsvk
+
 ## Project Status
 
-The SitecoreUML project is actively maintained, and new features are always under development. As a general rule, documentation for any new or existing feature will be updated within two days or one patch release of the associated code changes. 
+The SitecoreUML project is actively maintained, and new features are always under development. As a general rule, documentation for any new or existing feature will be updated within two days or one patch release of the associated code changes.
 
 Feel free to reach out to me over Sitecore Slack \(@Zachary\_Kniebel\) to get involved and to provide feedback!
 
