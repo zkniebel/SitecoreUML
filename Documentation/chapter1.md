@@ -43,6 +43,10 @@ Listed under each version is the set of tasks, features and enhancements that sh
   * Support for setting the "Title" of a template field
   * Support for setting the "Source" of a template field
   * Support for setting the \_Standard Value of a field
+  * Support for setting if the field is Shared
+  * Support for setting if the field is Unversioned
+  * Support for setting the field section name
+  * Support for adding field section names to item name validation
 * Moves folder paths in Sitecore config files to settings to enable use of Sitecore variables
 * Refactor out broken lazy-initialization of module variables in JavaScript
 * Adds "add diagram set" command
