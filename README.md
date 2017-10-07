@@ -2,8 +2,21 @@
   <img src="https://github.com/zkniebel/SitecoreUML/blob/master/assets/SitecoreUML-Logo-50x50.png?raw=true" alt="SitecoreUML" />
 </p>
 
-# SitecoreUML: An Accelerator for Sitecore Architects
-[![GitHub release](https://img.shields.io/github/release/zkniebel/SitecoreUML.svg)](https://github.com/zkniebel/SitecoreUML/releases/latest) [![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg)]() [![Documentation](https://img.shields.io/badge/documentation-up%20to%20date-brightgreen.svg)](https://zkniebel.gitbooks.io/sitecoreuml/) [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/zkniebel/SitecoreUML/blob/master/LICENSE)
+<h1 align="center">SitecoreUML: An Accelerator for Sitecore Architects</h1>
+<p align="center">
+  <a href="https://github.com/zkniebel/SitecoreUML/releases/latest">
+    <img src="https://img.shields.io/github/release/zkniebel/SitecoreUML.svg" alt="GitHub Release" />
+  </a>
+  <a href="https://github.com/zkniebel/SitecoreUML">
+    <img src="https://img.shields.io/github/last-commit/zkniebel/SitecoreUML.svg" alt="GitHub Last Commit" />
+  </a>
+  <a href="https://zkniebel.gitbooks.io/sitecoreuml/">
+    <img src="https://img.shields.io/badge/documentation-up%20to%20date-brightgreen.svg" alt="Documentation" />
+  </a>
+  <a href="https://github.com/zkniebel/SitecoreUML/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/zkniebel/SitecoreUML.svg" alt="GitHub License" />
+  </a>  
+</p>
 
 SitecoreUML is a productivity tool that enables architects to create Sitecore templates directly from their UML diagrams, as well as export an existing Sitecore solution’s template architecture and generate UML diagrams from it.
 
