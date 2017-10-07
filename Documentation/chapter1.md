@@ -25,10 +25,18 @@ Listed under each version is the set of tasks, features and enhancements that sh
 
 ### Version 1.0 \(November 2017\)
 
-* [ ] Adds SitecoreUML project template to StarUML with required diagrams automatically added
-* [ ] Refactor out broken lazy-initialization of module variables in JavaScript
-* [ ] Adds support for validating field, template and template folder item names with Sitecore
-* [ ] Adds "connection test" to Preferences
+* [x] Adds SitecoreUML project templates to StarUML with required diagrams automatically added
+  * [x] Blank Project
+  * [x] Helix Project
+* [x] Adds support for validating field, template and template folder item names with Sitecore
+* [x] Adds "connection test" command
+* [ ] Adds MSI installer for StarUML extension via WiX
+* [ ] Adds "add diagram set" command
+* [ ] Documentation
+  * [x] Project Templates
+  * [x] Item name validation
+  * [x] Connection test
+  * [ ] Installation \(updated for MSI installer\)
 
 ### Version 1.1 \(~ December 2017\)
 
@@ -37,6 +45,7 @@ Listed under each version is the set of tasks, features and enhancements that sh
   * Support for setting the "Source" of a template field
   * Support for setting the \_Standard Value of a field
 * Moves folder paths in Sitecore config files to settings to enable use of Sitecore variables
+* Refactor out broken lazy-initialization of module variables in JavaScript
 * Documentation
   * Tutorials
   * Samples
@@ -52,7 +61,7 @@ Listed under each version is the set of tasks, features and enhancements that sh
 ### Version 1.3 \(~ February 2018\)
 
 * Adds support for deploying specific diagram sets
-* Code generation API support
+* JSON Tools and Extensibility Documentation
 
 ### ...
 
