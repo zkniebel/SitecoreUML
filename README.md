@@ -1,4 +1,8 @@
-# [![SitecoreUML](https://github.com/zkniebel/SitecoreUML/blob/master/assets/SitecoreUML-Logo-50x50.png?raw=true)](https://github.com/zkniebel/SitecoreUML)SitecoreUML: An Accelerator for Sitecore Architects
+<p align="center">
+  <img src="https://github.com/zkniebel/SitecoreUML/blob/master/assets/SitecoreUML-Logo-50x50.png?raw=true" alt="SitecoreUML" />
+</p>
+
+# SitecoreUML: An Accelerator for Sitecore Architects
 [![GitHub release](https://img.shields.io/github/release/zkniebel/SitecoreUML.svg)](https://github.com/zkniebel/SitecoreUML/releases/latest) [![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg)]() [![Documentation](https://img.shields.io/badge/documentation-up%20to%20date-brightgreen.svg)](https://zkniebel.gitbooks.io/sitecoreuml/) [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/zkniebel/SitecoreUML/blob/master/LICENSE)
 
 SitecoreUML is a productivity tool that enables architects to create Sitecore templates directly from their UML diagrams, as well as export an existing Sitecore solution’s template architecture and generate UML diagrams from it.
