@@ -28,7 +28,7 @@
 	<Fragment>
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="AppDataFolder" Name="Roaming">
-        <Directory Id="StarUML" Name="StarUMLTEST">
+        <Directory Id="StarUML" Name="StarUML">
           <Directory Id="extensions" Name="extensions">
             <Directory Id="user" Name="user">
               <Directory Id="INSTALLFOLDER" Name="SitecoreUML">
