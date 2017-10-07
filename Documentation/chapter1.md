@@ -51,7 +51,8 @@ Listed under each version is the set of tasks, features and enhancements that sh
 * Refactor out broken lazy-initialization of module variables in JavaScript
 * Adds "add diagram set" command
 * Documentation
-  * Tutorials
+  * Extended Field Info
+* * Tutorials
   * Samples
   * Glossary
 
