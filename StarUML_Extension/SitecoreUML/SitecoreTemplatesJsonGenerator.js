@@ -9,7 +9,7 @@ define(function(require, exports, module) {
         _repository: undefined,
         _fileSystem: undefined,
         _fileUtils: undefined,
-        _dialogs: undefined,
+        _dialogs: undefined
     };
     
     // lazy-loaded StarUML modules

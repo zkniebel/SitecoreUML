@@ -1,8 +1,12 @@
 define(function (require, exports, module) {
     "use strict";
 
-    // load in the Sitecore preferences
+    // load the Sitecore preferences
     var SitecorePreferencesLoader = require("SitecorePreferencesLoader");
+
+    // load the Sitecore project templates
+    var SitecoreProjectTemplatesLoader = require("SitecoreProjectTemplatesLoader");
+    SitecoreProjectTemplatesLoader.initialize();
 
     // load the Sitecore deploy module and initialize it to add the menu item
     var SitecoreTemplatesDeploy = require("SitecoreTemplatesDeploy");  
@@ -23,4 +27,8 @@ define(function (require, exports, module) {
     // load the json file import module and initialize it to add the menu item
     var SitecoreTemplatesJsonReverseEngineer = require("SitecoreTemplatesJsonReverseEngineer");  
     SitecoreTemplatesJsonReverseEngineer.initialize();
+    
+    // load the Sitecore connection test module and initialize it to add the menu item
+    var SitecoreConnectionTest = require("SitecoreConnectionTest");
+    SitecoreConnectionTest.initialize();
 });

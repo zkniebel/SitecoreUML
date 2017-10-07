@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Sitecore.ContentSearch.Maintenance;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Data.Managers;
 using Sitecore.Data.Proxies;
 using Sitecore.Diagnostics;
+using Sitecore.Exceptions;
 using Sitecore.SecurityModel;
 using ZacharyKniebel.Feature.SitecoreUML.Configuration;
 using ZacharyKniebel.Feature.SitecoreUML.Models;
@@ -27,10 +27,13 @@ namespace ZacharyKniebel.Feature.SitecoreUML
         /// will not overwrite existing items
         /// </remarks>
         /// <param name="templates">The set of JSON templates to import</param>
-        /// <param name="templateRoot">The root item where all other templates should be added</param>
+        /// <param name="templateRoot">The root item to import all of the templates under</param>
         /// <returns></returns>
-        public virtual bool ImportTemplates(List<JsonSitecoreTemplate> templates, Item templateRoot)
+        public virtual bool ImportTemplates(List<JsonSitecoreTemplate> templates, Item templateRoot = null)
         {
+            // get the root item to add the templates to
+            templateRoot = templateRoot ?? GetTemplateRoot();
+
             var shouldPauseIndexing = false;
             if (SitecoreUMLConfiguration.Instance.DisableIndexingDuringImport)
             {
@@ -152,10 +155,12 @@ namespace ZacharyKniebel.Feature.SitecoreUML
         /// <summary>
         /// Gets all of the templates under the given template root as JsonSitecoreTemplates for export
         /// </summary>
-        /// <param name="templateRoot">The root item under which all of the templates to be exported live</param>
         /// <returns></returns>
-        public virtual IEnumerable<JsonSitecoreTemplate> GetTemplatesForExport(Item templateRoot)
+        public virtual IEnumerable<JsonSitecoreTemplate> GetTemplatesForExport()
         {
+            // get the root item to add the templates to
+            var templateRoot = GetTemplateRoot();
+
             // get all of the template items that are children of the template root
             var templateItems = TemplateManager.GetTemplates(_database).Values
                 .Select(template => _database.GetTemplate(template.ID))
@@ -196,6 +201,111 @@ namespace ZacharyKniebel.Feature.SitecoreUML
                         });
 
             return jsonTemplates;
+        }
+
+        /// <summary>
+        /// Validates the templates and returns a response with any validation errors
+        /// </summary>
+        /// <param name="templates">The templates to validate</param>
+        /// <returns>Response with validation errors</returns>
+        public virtual JsonValidationResponse ValidateTemplates(List<JsonSitecoreTemplate> templates)
+        {
+            return new JsonValidationResponse()
+            {
+                InvalidItemNames = GetInvalidItemNames(templates),
+                InvalidTemplateFieldTypes = GetInvalidTemplateFieldTypes(templates)
+            };
+        }
+
+        /// <summary>
+        /// Gets the invalid template field types that could not be mapped to a Sitecore field type
+        /// </summary>
+        /// <param name="templates">The templates containing the fields with the field types to be checked</param>
+        /// <returns>Invalid field type models</returns>
+        public virtual IEnumerable<JsonInvalidTemplateFieldType> GetInvalidTemplateFieldTypes(List<JsonSitecoreTemplate> templates)
+        {
+            // compare the field types with the mappings in the config
+            return templates
+                .SelectMany(template => template.Fields
+                    .Select(field => new JsonInvalidTemplateFieldType
+                    {
+                        TemplateName = template.Name,
+                        FieldName = field.Name,
+                        FieldType = field.FieldType
+                    }))
+                .Where(templateFields =>
+                    !SitecoreUMLConfiguration.Instance.UmlFieldTypeAliases.ContainsKey(templateFields.FieldType));
+        }
+
+        public virtual IEnumerable<JsonInvalidItemName> GetInvalidItemNames(List<JsonSitecoreTemplate> templates)
+        {
+            // maps the item name (key) to the value (value) indicating whether or not it is valid (valid = true)
+            var nameValidationCache = new Dictionary<string, bool>();
+
+            // get the models for the item names from the templates template folders and template fields
+            var models = templates
+                .SelectMany(
+                    template =>
+                        template.Path
+                            // split the path into item names
+                            .Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries)
+                            // reverse so that the template name is first
+                            .Reverse()
+                            // get the models for the template and template folder items
+                            .Select((name, i) => new JsonInvalidItemName()
+                            {
+                                ItemName = name,
+                                ItemType = i == 0 ? ItemType.Template : ItemType.TemplateFolder
+                            })
+                            // add in the models for the template field items
+                            .Concat(
+                                template.Fields
+                                    .Select(field => new JsonInvalidItemName()
+                                    {
+                                        ItemName = field.Name,
+                                        ItemType = ItemType.TemplateField
+                                    })));
+            
+            // get the list of models with invalid item names
+            var invalidItemNames = models
+                .Where(
+                    model =>
+                    {
+                        // if the name has already been checked then return the cached result
+                        if (nameValidationCache.ContainsKey(model.ItemName))
+                        {
+                            return !nameValidationCache[model.ItemName];
+                        }
+
+                        // check the names in the models with the InvalidItemNameChars setting
+                        var isValid = ItemUtil.IsItemNameValid(model.ItemName);
+
+                        // add the name and result to the cache and return true if the name is invalid
+                        nameValidationCache.Add(model.ItemName, isValid);
+                        return !isValid;
+                    });
+
+            return invalidItemNames;
+        }
+
+        /// <summary>
+        /// Gets the root item under which all templates and template folders should be imported or exported
+        /// </summary>
+        /// <remarks>
+        /// All imported and exported paths should be relative to this item
+        /// </remarks>
+        /// <returns>The root item of the templates and template folders that are imported/exported</returns>
+        public virtual Item GetTemplateRoot()
+        {
+            // get the root item to add the templates to
+            var templateRoot = SitecoreUMLConfiguration.Instance.TargetDatabase.GetItem(SitecoreUMLConfiguration.Instance.TemplatesRootPath);
+            if (templateRoot == null)
+            {
+                Log.Error($"SitecoreUML Configuration Error: Template root path does not exist: '{SitecoreUMLConfiguration.Instance.TemplatesRootPath}'.", this);
+                throw new ItemNotFoundException("SitecoreUML Configuration Error: The configured template root item could not be found. See the Sitecore log for more details.");
+            }
+
+            return templateRoot;
         }
     }
 }
