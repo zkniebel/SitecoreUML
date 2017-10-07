@@ -1,6 +1,22 @@
-![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/SitecoreUML-Logo-50x50.png?raw=true) 
+<p align="center">
+  <img src="https://github.com/zkniebel/SitecoreUML/blob/master/assets/SitecoreUML-Logo-50x50.png?raw=true" alt="SitecoreUML" />
+</p>
 
-# SitecoreUML: An Accelerator for Solution Architects
+<h1 align="center">SitecoreUML: An Accelerator for Sitecore Architects</h1>
+<p align="center">
+  <a href="https://github.com/zkniebel/SitecoreUML/releases/latest">
+    <img src="https://img.shields.io/github/release/zkniebel/SitecoreUML.svg" alt="GitHub Release" />
+  </a>
+  <a href="https://github.com/zkniebel/SitecoreUML">
+    <img src="https://img.shields.io/github/last-commit/zkniebel/SitecoreUML.svg" alt="GitHub Last Commit" />
+  </a>
+  <a href="https://zkniebel.gitbooks.io/sitecoreuml/">
+    <img src="https://img.shields.io/badge/documentation-up%20to%20date-brightgreen.svg" alt="Documentation" />
+  </a>
+  <a href="https://github.com/zkniebel/SitecoreUML/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/zkniebel/SitecoreUML.svg" alt="GitHub License" />
+  </a>  
+</p>
 
 SitecoreUML is a productivity tool that enables architects to one-click deploy their Sitecore template architectures directly from their UML diagrams, as well as one-click import and generate UML diagrams from an existing Sitecore solution’s template architecture.
 
