@@ -1,4 +1,6 @@
-# ![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/SitecoreUML-Logo-50x50.png?raw=true) SitecoreUML: An Accelerator for Solution Architects
+![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/SitecoreUML-Logo-50x50.png?raw=true) 
+
+# SitecoreUML: An Accelerator for Solution Architects
 
 SitecoreUML is a productivity tool that enables architects to one-click deploy their Sitecore template architectures directly from their UML diagrams, as well as one-click import and generate UML diagrams from an existing Sitecore solution’s template architecture.
 
