@@ -174,7 +174,12 @@
   <ItemGroup>
     <Compile Include="Common\Map{T1,T2}.cs" />
     <Compile Include="Configuration\SitecoreUMLConfiguration.cs" />
+    <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\TemplatesController.cs" />
+    <Compile Include="Models\ItemType.cs" />
+    <Compile Include="Models\JsonInvalidTemplateFieldType.cs" />
+    <Compile Include="Models\JsonInvalidItemName.cs" />
+    <Compile Include="Models\JsonValidationResponse.cs" />
     <Compile Include="SitecoreDataManager.cs" />
     <Compile Include="Models\JsonSitecoreTemplate.cs" />
     <Compile Include="Models\JsonSitecoreTemplateField.cs" />
