@@ -13,7 +13,7 @@ Listed under each version is the set of tasks, features and enhancements that sh
 * [x] StarUML extension
 * [x] Initial documentation
 
-### Version beta \(2017.09.28 - Current\)
+### Version beta
 
 * [x] Documentation
   * [x] Upgrade instructions
@@ -23,7 +23,7 @@ Listed under each version is the set of tasks, features and enhancements that sh
 * [x] Adds support for UML field type mapping aliases \(optional abbreviated names mapping to Sitecore field type names\)
 * [x] Adds field type name validation feature
 
-### Version 1.0 \(October 2017\)
+### Version 1.0 \(2017.10.07 - Current\)
 
 * [x] Adds SitecoreUML project templates to StarUML with required diagrams automatically added
   * [x] Blank Project
