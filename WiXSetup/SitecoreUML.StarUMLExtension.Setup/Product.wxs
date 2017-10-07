@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Display name for the application -->
+<?define DisplayName="SitecoreUML Extension for StarUML" ?>
+<!-- Publisher of the software -->
+<?define Publisher="Zachary Kniebel" ?>
+<!-- Software version -->
+<?define Version="0.1.1" ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"  xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+	<Product Id="*"  Name="$(var.DisplayName)" Language="1033" Version="$(var.Version)" Manufacturer="$(var.Publisher)" UpgradeCode="9dfa20e8-e156-4227-b048-c059e633ab35">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perUser" />
+    
+		<MajorUpgrade DowngradeErrorMessage="A newer version of the [ProductName] is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="StarUML.Extension" Title="StarUML Extension" Level="1">
+			<ComponentGroupRef Id="StarUML.Extension.Components" />
+		</Feature>
+
+    <UIRef Id="WixUI_Minimal" />
+	  <UIRef Id="WixUI_ErrorProgressText" />
+    
+	  <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+
+	  <WixVariable Id="WixUILicenseRtf" Value="..\..\StarUML_Extension\SitecoreUML\LICENSE.rtf" />
+	</Product>
+  
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="AppDataFolder" Name="Roaming">
+        <Directory Id="StarUML" Name="StarUML">
+          <Directory Id="extensions" Name="extensions">
+            <Directory Id="user" Name="user">
+              <Directory Id="INSTALLFOLDER" Name="SitecoreUML" />
+            </Directory>
+          </Directory>
+        </Directory>
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="StarUML.Extension.Components" Directory="INSTALLFOLDER">
+      
+		  <Component Id="Modules.DiagramUtils" Permanent="no" NeverOverwrite="no"> 
+		    <RemoveFile Id="Remove_DiagramUtils" Name="DiagramUtils.js" On="both" />
+		    <File Source="..\..\StarUML_Extension\SitecoreUML\DiagramUtils.js" KeyPath="yes" Vital="yes" />
+		  </Component> 
+		  <Component Id="Modules.Main" Permanent="no" NeverOverwrite="no"> 
+		    <RemoveFile Id="Remove_Main" Name="Main.js" On="both" />
+		    <File Source="..\..\StarUML_Extension\SitecoreUML\Main.js" KeyPath="yes" Vital="yes" />
+		  </Component> 
+		  <Component Id="Modules.SitecoreMenuLoader" Permanent="no" NeverOverwrite="no"> 
+		    <RemoveFile Id="Remove_SitecoreMenuLoader" Name="SitecoreMenuLoader.js" On="both" />
+		    <File Source="..\..\StarUML_Extension\SitecoreUML\SitecoreMenuLoader.js" KeyPath="yes" Vital="yes" />
+		  </Component> 
+		  <Component Id="Modules.SitecorePreferencesLoader" Permanent="no" NeverOverwrite="no"> 
+		    <RemoveFile Id="Remove_SitecorePreferencesLoader" Name="SitecorePreferencesLoader.js" On="both" />
+		    <File Source="..\..\StarUML_Extension\SitecoreUML\SitecorePreferencesLoader.js" KeyPath="yes" Vital="yes" />
+		  </Component> 
+		  <Component Id="Modules.SitecoreTemplatesDeploy" Permanent="no" NeverOverwrite="no"> 
+		    <RemoveFile Id="Remove_SitecoreTemplatesDeploy" Name="SitecoreTemplatesDeploy.js" On="both" />
+		    <File Source="..\..\StarUML_Extension\SitecoreUML\SitecoreTemplatesDeploy.js" KeyPath="yes" Vital="yes" />
+		  </Component> 
+		  <Component Id="Modules.SitecoreTemplatesJsonGenerator" Permanent="no" NeverOverwrite="no"> 
+		    <RemoveFile Id="Remove_SitecoreTemplatesJsonGenerator" Name="SitecoreTemplatesJsonGenerator.js" On="both" />
+		    <File Source="..\..\StarUML_Extension\SitecoreUML\SitecoreTemplatesJsonGenerator.js" KeyPath="yes" Vital="yes" />
+		  </Component> 
+		  <Component Id="Modules.SitecoreTemplatesJsonReverseEngineer" Permanent="no" NeverOverwrite="no"> 
+		    <RemoveFile Id="Remove_SitecoreTemplatesJsonReverseEngineer" Name="SitecoreTemplatesJsonReverseEngineer.js" On="both" />
+		    <File Source="..\..\StarUML_Extension\SitecoreUML\SitecoreTemplatesJsonReverseEngineer.js" KeyPath="yes" Vital="yes" />
+		  </Component> 
+		  <Component Id="Modules.SitecoreTemplatesReverseEngineer" Permanent="no" NeverOverwrite="no"> 
+		    <RemoveFile Id="Remove_SitecoreTemplatesReverseEngineer" Name="SitecoreTemplatesReverseEngineer.js" On="both" />
+		    <File Source="..\..\StarUML_Extension\SitecoreUML\SitecoreTemplatesReverseEngineer.js" KeyPath="yes" Vital="yes" />
+		  </Component> 
+		  <Component Id="Modules.SitecoreTemplatesValidate" Permanent="no" NeverOverwrite="no"> 
+		    <RemoveFile Id="Remove_SitecoreTemplatesValidate" Name="SitecoreTemplatesValidate.js" On="both" />
+		    <File Source="..\..\StarUML_Extension\SitecoreUML\SitecoreTemplatesValidate.js" KeyPath="yes" Vital="yes" />
+		  </Component> 
+		  <Component Id="Modules.StringUtils" Permanent="no" NeverOverwrite="no"> 
+		    <RemoveFile Id="Remove_StringUtils" Name="StringUtils.js" On="both" />
+		    <File Source="..\..\StarUML_Extension\SitecoreUML\StringUtils.js" KeyPath="yes" Vital="yes" />
+		  </Component>
+    
+		</ComponentGroup>
+  
+	</Fragment>
+</Wix>
