@@ -30,13 +30,12 @@ Listed under each version is the set of tasks, features and enhancements that sh
   * [x] Helix Project
 * [x] Adds support for validating field, template and template folder item names with Sitecore
 * [x] Adds "connection test" command
-* [ ] Adds MSI installer for StarUML extension via WiX
-* [ ] Adds "add diagram set" command
-* [ ] Documentation
+* [x] Adds MSI installer for StarUML extension via WiX
+* [x] Documentation
   * [x] Project Templates
   * [x] Item name validation
   * [x] Connection test
-  * [ ] Installation \(updated for MSI installer\)
+  * [x] Installation \(updated for MSI installer\)
 
 ### Version 1.1 \(~ December 2017\)
 
@@ -46,6 +45,7 @@ Listed under each version is the set of tasks, features and enhancements that sh
   * Support for setting the \_Standard Value of a field
 * Moves folder paths in Sitecore config files to settings to enable use of Sitecore variables
 * Refactor out broken lazy-initialization of module variables in JavaScript
+* Adds "add diagram set" command
 * Documentation
   * Tutorials
   * Samples
