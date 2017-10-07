@@ -23,22 +23,21 @@ Listed under each version is the set of tasks, features and enhancements that sh
 * [x] Adds support for UML field type mapping aliases \(optional abbreviated names mapping to Sitecore field type names\)
 * [x] Adds field type name validation feature
 
-### Version 1.0 \(November 2017\)
+### Version 1.0 \(October 2017\)
 
 * [x] Adds SitecoreUML project templates to StarUML with required diagrams automatically added
   * [x] Blank Project
   * [x] Helix Project
 * [x] Adds support for validating field, template and template folder item names with Sitecore
 * [x] Adds "connection test" command
-* [ ] Adds MSI installer for StarUML extension via WiX
-* [ ] Adds "add diagram set" command
-* [ ] Documentation
+* [x] Adds MSI installer for StarUML extension via WiX
+* [x] Documentation
   * [x] Project Templates
   * [x] Item name validation
   * [x] Connection test
-  * [ ] Installation \(updated for MSI installer\)
+  * [x] Installation \(updated for MSI installer\)
 
-### Version 1.1 \(~ December 2017\)
+### Version 1.1 \(~ November 2017\)
 
 * Enhanced support for granular control over fields from UML
   * Support for setting the "Title" of a template field
@@ -46,19 +45,20 @@ Listed under each version is the set of tasks, features and enhancements that sh
   * Support for setting the \_Standard Value of a field
 * Moves folder paths in Sitecore config files to settings to enable use of Sitecore variables
 * Refactor out broken lazy-initialization of module variables in JavaScript
+* Adds "add diagram set" command
 * Documentation
   * Tutorials
   * Samples
   * Glossary
 
-### Version 1.2 \(~ January 2018\)
+### Version 1.2 \(~ December 2018\)
 
 * Makes the _TemplateRoot_ setting optional
   * Falls back to the _/sitecore/templates_ folder 
   * Optional _exclusions_ configuration to define templates and paths to be excluded
 * Adds support for branch templates 
 
-### Version 1.3 \(~ February 2018\)
+### Version 1.3 \(~ January 2018\)
 
 * Adds support for deploying specific diagram sets
 * JSON Tools and Extensibility Documentation
