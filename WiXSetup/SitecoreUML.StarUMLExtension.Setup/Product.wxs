@@ -4,7 +4,7 @@
 <!-- Publisher of the software -->
 <?define Publisher="Zachary Kniebel" ?>
 <!-- Software version -->
-<?define Version="0.1.1" ?>
+<?define Version="1.0.0" ?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"  xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
 	<Product Id="*"  Name="$(var.DisplayName)" Language="1033" Version="$(var.Version)" Manufacturer="$(var.Publisher)" UpgradeCode="9dfa20e8-e156-4227-b048-c059e633ab35">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perUser" />
@@ -13,7 +13,8 @@
 		<MediaTemplate />
 
 		<Feature Id="StarUML.Extension" Title="StarUML Extension" Level="1">
-			<ComponentGroupRef Id="StarUML.Extension.Components" />
+			<ComponentGroupRef Id="StarUML.Extension.Modules" />
+		  <ComponentGroupRef Id="StarUML.Extension.Templates" />
 		</Feature>
 
     <UIRef Id="WixUI_Minimal" />
@@ -27,10 +28,12 @@
 	<Fragment>
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="AppDataFolder" Name="Roaming">
-        <Directory Id="StarUML" Name="StarUML">
+        <Directory Id="StarUML" Name="StarUMLTEST">
           <Directory Id="extensions" Name="extensions">
             <Directory Id="user" Name="user">
-              <Directory Id="INSTALLFOLDER" Name="SitecoreUML" />
+              <Directory Id="INSTALLFOLDER" Name="SitecoreUML">
+                <Directory Id="SitecoreUML.ProjectTemplatesFolder" Name="Templates" />
+              </Directory>
             </Directory>
           </Directory>
         </Directory>
@@ -39,15 +42,18 @@
 	</Fragment>
 
 	<Fragment>
-		<ComponentGroup Id="StarUML.Extension.Components" Directory="INSTALLFOLDER">
-      
+		<ComponentGroup Id="StarUML.Extension.Modules" Directory="INSTALLFOLDER">
 		  <Component Id="Modules.DiagramUtils" Permanent="no" NeverOverwrite="no"> 
 		    <RemoveFile Id="Remove_DiagramUtils" Name="DiagramUtils.js" On="both" />
 		    <File Source="..\..\StarUML_Extension\SitecoreUML\DiagramUtils.js" KeyPath="yes" Vital="yes" />
-		  </Component> 
-		  <Component Id="Modules.Main" Permanent="no" NeverOverwrite="no"> 
-		    <RemoveFile Id="Remove_Main" Name="Main.js" On="both" />
-		    <File Source="..\..\StarUML_Extension\SitecoreUML\Main.js" KeyPath="yes" Vital="yes" />
+		  </Component>
+      <Component Id="Modules.Main" Permanent="no" NeverOverwrite="no">
+        <RemoveFile Id="Remove_Main" Name="Main.js" On="both" />
+        <File Source="..\..\StarUML_Extension\SitecoreUML\Main.js" KeyPath="yes" Vital="yes" />
+      </Component>
+		  <Component Id="Modules.SitecoreConnectionTest" Permanent="no" NeverOverwrite="no"> 
+		    <RemoveFile Id="Remove_SitecoreConnectionTest" Name="SitecoreConnectionTest.js" On="both" />
+		    <File Source="..\..\StarUML_Extension\SitecoreUML\SitecoreConnectionTest.js" KeyPath="yes" Vital="yes" />
 		  </Component> 
 		  <Component Id="Modules.SitecoreMenuLoader" Permanent="no" NeverOverwrite="no"> 
 		    <RemoveFile Id="Remove_SitecoreMenuLoader" Name="SitecoreMenuLoader.js" On="both" />
@@ -56,6 +62,10 @@
 		  <Component Id="Modules.SitecorePreferencesLoader" Permanent="no" NeverOverwrite="no"> 
 		    <RemoveFile Id="Remove_SitecorePreferencesLoader" Name="SitecorePreferencesLoader.js" On="both" />
 		    <File Source="..\..\StarUML_Extension\SitecoreUML\SitecorePreferencesLoader.js" KeyPath="yes" Vital="yes" />
+		  </Component>
+		  <Component Id="Modules.SitecoreProjectTemplatesLoader" Permanent="no" NeverOverwrite="no"> 
+		    <RemoveFile Id="Remove_SitecoreProjectTemplatesLoader" Name="SitecoreProjectTemplatesLoader.js" On="both" />
+		    <File Source="..\..\StarUML_Extension\SitecoreUML\SitecoreProjectTemplatesLoader.js" KeyPath="yes" Vital="yes" />
 		  </Component> 
 		  <Component Id="Modules.SitecoreTemplatesDeploy" Permanent="no" NeverOverwrite="no"> 
 		    <RemoveFile Id="Remove_SitecoreTemplatesDeploy" Name="SitecoreTemplatesDeploy.js" On="both" />
@@ -81,8 +91,19 @@
 		    <RemoveFile Id="Remove_StringUtils" Name="StringUtils.js" On="both" />
 		    <File Source="..\..\StarUML_Extension\SitecoreUML\StringUtils.js" KeyPath="yes" Vital="yes" />
 		  </Component>
-    
 		</ComponentGroup>
-  
-	</Fragment>
+
+    <ComponentGroup Id="StarUML.Extension.Templates" Directory="SitecoreUML.ProjectTemplatesFolder">
+      <Component Id="Templates.BlankProject" Permanent="no" NeverOverwrite="no">
+        <RemoveFile Id="Remove_BlankProject" Name="BlankProject.mdj" On="both" />
+        <File Source="..\..\StarUML_Extension\SitecoreUML\Templates\BlankProject.mdj" KeyPath="yes" Vital="yes" />
+      </Component>
+      <Component Id="Templates.HelixProject" Permanent="no" NeverOverwrite="no">
+        <RemoveFile Id="Remove_HelixProject" Name="HelixProject.mdj" On="both" />
+        <File Source="..\..\StarUML_Extension\SitecoreUML\Templates\HelixProject.mdj" KeyPath="yes" Vital="yes" />
+      </Component>
+    </ComponentGroup>
+
+
+  </Fragment>
 </Wix>
