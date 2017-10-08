@@ -21,7 +21,7 @@ The main component of SitecoreUML is the StarUML extension. This component exten
 
 SitecoreUML's import and export logic is pretty straight-forward. When you _import_, you are requesting data from the Sitecore instance. The retrieved data is then used to auto-generate your diagrams and models in Star UML. In contrast, when you _deploy_, you are sending data from StarUML to Sitecore, where it is then used to auto-generate templates and template folders.
 
-![](https://raw.githubusercontent.com/zkniebel/SitecoreUML/master/assets/ImportExportArchitecture.png)
+![](https://raw.githubusercontent.com/zkniebel/SitecoreUML/master/Documentation/assets/ImportExportArchitecture.png)
 
 ## Serialization and Transmission
 

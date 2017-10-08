@@ -8,7 +8,7 @@ In Sitecore, an entity's data is stored in its fields; in C\#, an entity's data 
 
 For those new to UML, an attribute is analogous to a data-holding member of the containing type, like a field or a property in C\#. The attribute’s text is significant, as it defines the signature of the represented field or property, including the visibility modifier and the type. Understanding attributes is pretty straightforward once you have seen them used, but there is a little memorization required for the syntax.
 
-![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Attribute-Attributes.png?raw=true)
+![](https://github.com/zkniebel/SitecoreUML/blob/master/Documentation/assets/StarUML-Attribute-Attributes.png?raw=true)
 
 ## Attribute Syntax
 
@@ -64,8 +64,8 @@ The following are just a few examples of valid attribute text:
 
 To add a template field, perform the following steps:
 
-1. Double-click on the template that you wish to add the field to ![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Attribute-Add.png?raw=true)
-2. Click the _Add Attribute_ button, located immediately to the right of the interface name, which should have an icon that looks like a small rectangle at a 45-degree angle \(![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Attribute-Add-Button.png?raw=true)\)
+1. Double-click on the template that you wish to add the field to ![](https://github.com/zkniebel/SitecoreUML/blob/master/Documentation/assets/StarUML-Attribute-Add.png?raw=true)
+2. Click the _Add Attribute_ button, located immediately to the right of the interface name, which should have an icon that looks like a small rectangle at a 45-degree angle \(![](https://github.com/zkniebel/SitecoreUML/blob/master/Documentation/assets/StarUML-Attribute-Add-Button.png?raw=true)\)
 3. Specify the text for your attribute, in the format `Name:Type`, where `Name` and `Type` are replaced with the name and the type of your new template field, respectively
 
 

@@ -11,7 +11,7 @@ In **Version 1.1+**, SitecoreUML includes support for granular control over _Ext
 
 These settings can be controlled from the _Documentation_ editor that lives under the Model Explorer.
 
-![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-ExtendedFieldInfo-DocumentationField.png?raw=true)
+![](https://github.com/zkniebel/SitecoreUML/blob/master/Documentation/assets/StarUML-ExtendedFieldInfo-DocumentationField.png?raw=true)
 
 ## Syntax and Properties
 
