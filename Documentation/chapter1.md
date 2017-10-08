@@ -39,29 +39,35 @@ Listed under each version is the set of tasks, features and enhancements that sh
 
 ### Version 1.1 \(~ November 2017\)
 
-* Enhanced support for granular control over fields from UML
-  * Support for setting the "Title" of a template field
-  * Support for setting the "Source" of a template field
-  * Support for setting the \_Standard Value of a field
-  * Support for setting if the field is Shared
-  * Support for setting if the field is Unversioned
-  * Support for setting the field section name
-  * Support for adding field section names to item name validation
-* Moves folder paths in Sitecore config files to settings to enable use of Sitecore variables
-* Refactor out broken lazy-initialization of module variables in JavaScript
-* Adds "add diagram set" command
-* Documentation
-  * Extended Field Info
-* * Tutorials
-  * Samples
-  * Glossary
+* [x] Enhanced support for granular control over fields from UML \(extended field info\)
+  * [x] Support for setting the "Title" of a template field
+  * [x] Support for setting the "Source" of a template field
+  * [x] Support for setting the \_Standard Value of a field
+  * [x] Support for setting if the field is Shared
+  * [x] Support for setting if the field is Unversioned
+  * [x] Support for setting the field section name
+* [ ] Adds support for setting the default field section name in preferences, leaving the one in the Sitecore configuration to be a required backup value
+* [ ] Validation updates
+  * [ ] Adds field section names to validation
+  * [ ] Adds validation of Extended Field Info syntax
+* [ ] Moves folder paths in Sitecore config files to settings to enable use of Sitecore variables
+* [ ] Refactor out broken lazy-initialization of module variables in JavaScript
+* [ ] Documentation
+  * [x] Extended Field Info
+  * [ ] Validation updates
 
 ### Version 1.2 \(~ December 2018\)
 
 * Makes the _TemplateRoot_ setting optional
   * Falls back to the _/sitecore/templates_ folder 
   * Optional _exclusions_ configuration to define templates and paths to be excluded
-* Adds support for branch templates 
+* Updates the deployment to run validation and give the option to cancel the deployment if errors are detected
+* Adds "Add diagram set" command
+* Documentation
+  * Add Diagram Set command
+* * Tutorials
+  * Samples
+  * Glossary
 
 ### Version 1.3 \(~ January 2018\)
 
@@ -74,6 +80,4 @@ Listed under each version is the set of tasks, features and enhancements that sh
 
 * Azure infrastructure provisioning support
 * AWS infrastructure provisioning support
-
-
 
