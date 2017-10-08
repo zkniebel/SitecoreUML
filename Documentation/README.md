@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="https://github.com/zkniebel/SitecoreUML/blob/master/assets/SitecoreUML-Logo-50x50.png?raw=true" alt="SitecoreUML" />
+  <a href="https://github.com/zkniebel/SitecoreUML/">
+    <img src="https://github.com/zkniebel/SitecoreUML/blob/master/assets/SitecoreUML-Logo-50x50.png?raw=true" alt="SitecoreUML" />
+  </a>
 </p>
 
 <h1 align="center">SitecoreUML: An Accelerator for Sitecore Architects</h1>
