@@ -1,0 +1,108 @@
+<project>
+  <Metadata>
+    <metadata>
+      <PackageName>SitecoreUML</PackageName>
+      <Author>Zachary Kniebel</Author>
+      <Version>1.0.0</Version>
+      <Revision />
+      <License />
+      <Comment />
+      <Attributes />
+      <Readme>---------------------------------------------
+INSTALLATION INSTRUCTIONS
+---------------------------------------------
+Refer to the installation instructions in the documentation for the latest:
+https://zkniebel.gitbooks.io/sitecoreuml/getting-started/setup-and-insta.html
+
+---------------------------------------------
+LICENSE
+---------------------------------------------
+MIT License
+
+Copyright (c) 2017 Zachary Kniebel
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</Readme>
+      <Publisher>Zachary Kniebel</Publisher>
+      <PostStep />
+      <PackageID />
+    </metadata>
+  </Metadata>
+  <SaveProject>True</SaveProject>
+  <Sources>
+    <xitems>
+      <Entries>
+        <x-item>/core/sitecore/content/Applications/Content Editor/Ribbons/Chunks/SitecoreUML/{C718196C-930D-4F55-89D8-E983E7719492}/invariant/0</x-item>
+        <x-item>/core/sitecore/content/Applications/Content Editor/Ribbons/Chunks/SitecoreUML/Export Templates/{8984A045-E7C2-4642-9859-BEECF08428CB}/invariant/0</x-item>
+        <x-item>/core/sitecore/content/Applications/Content Editor/Ribbons/Chunks/SitecoreUML/Import Templates/{E6647294-D3D4-4285-87BD-AF87BD744DFF}/invariant/0</x-item>
+        <x-item>/core/sitecore/content/Applications/Content Editor/Ribbons/Strips/Developer/SitecoreUML/{1117A2B4-BE48-49B0-8FEF-0B4739D9AD72}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>Core</Name>
+    </xitems>
+    <xfiles>
+      <Entries>
+        <x-item>/App_Config/Include/SitecoreUML/SitecoreUML.CM.config</x-item>
+        <x-item>/App_Config/Include/SitecoreUML/SitecoreUML.config</x-item>
+        <x-item>/bin/ZacharyKniebel.Feature.SitecoreUML.dll</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>Files</Name>
+    </xfiles>
+  </Sources>
+  <Converter>
+    <TrivialConverter>
+      <Transforms />
+    </TrivialConverter>
+  </Converter>
+  <Include />
+  <Exclude />
+  <Name />
+</project>
