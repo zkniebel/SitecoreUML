@@ -65,6 +65,7 @@ Listed under each version is the set of tasks, features and enhancements that sh
 * Adds "Add diagram set" command
 * Documentation
   * Add Diagram Set command
+  * Developer Setup
 * * Tutorials
   * Samples
   * Glossary
