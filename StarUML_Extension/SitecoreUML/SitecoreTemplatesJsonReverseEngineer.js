@@ -185,6 +185,11 @@ define(function (require, exports, module) {
         // reformat the template folders diagram to be legible
         DiagramUtils.reformatDiagramLayout(templateFoldersDiagram);
 
+        // helper function for parsing the extended template field properties that get added to the attributes' documentation
+        var getExtendedFieldInfoPropertyValue = function(value, defaultValue) {
+            return JSON.stringify(value !== undefined ? value : defaultValue);
+        };
+
         // create template elements
         var addedInterfaceElements = [];
         jsonTemplatesArray.forEach(function (jsonTemplate) {
@@ -227,12 +232,21 @@ define(function (require, exports, module) {
 
             // add the fields to the interface
             jsonFields.forEach(function (jsonField) {
+                var documentation = "{\n" 
+                    + "  Title: " + getExtendedFieldInfoPropertyValue(jsonField.Title, null) + ",\n"
+                    + "  Source: " + getExtendedFieldInfoPropertyValue(jsonField.Source, null) + ",\n"
+                    + "  Shared: " + getExtendedFieldInfoPropertyValue(jsonField.Shared, false) + ",\n"
+                    + "  Unversioned: " + getExtendedFieldInfoPropertyValue(jsonField.Unversioned, false) + ",\n"
+                    + "  SectionName: " + getExtendedFieldInfoPropertyValue(jsonField.SectionName, null) + ",\n"
+                    + "  StandardValue: " + getExtendedFieldInfoPropertyValue(jsonField.StandardValue, null) + "\n}";
+
                 // options for the template field to be added
                 var attributeModelOptions = {
                     modelInitializer: function (ele) {
                         ele.name = jsonField.Name;
                         ele.visibility = "public"; // all fields are visible in Sitecore to admin so they are public here
                         ele.type = jsonField.FieldType;
+                        ele.documentation = documentation;
                     }
                 };
 
