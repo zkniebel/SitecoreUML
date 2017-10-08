@@ -45,6 +45,18 @@ The SitecoreUML project is actively maintained, and new features are always unde
 
 Feel free to reach out to me over Sitecore Slack \(@Zachary\_Kniebel\) to get involved and to provide feedback!
 
+## Sprints & Milestones
+
+The SitecoreUML project is run in 2-week sprints, with monthly milestones. A general goal of the project is to release at least one update per month, following the end of each milestone. This project is run following the agile methodology with continuous deployment, and updates are made available as soon as the tasks for the milestone are completed and validated. Occasionally, updates are released weeks early, but this is subject to schedule and availability.
+
+Before every update, all work is reviewed, and any new or updated features are thoroughly tested and documented. Each release candidate is subsequently regression tested and undergoes an install, upgrade, and uninstall test, to avoid any issues for new or existing users. Any issues discovered or reported after a release are investigated and resolved as soon as possible, and fixes are immediately released as patch releases (e.g. version _X.X.3_, where the _3_ is the patch version). Patches are not held up for new features, other fixes, or milestone completion. 
+
+As previously alluded to, each milestone is comprised of a set of tasks that must be completed for the update to be released. A high-level view of the tasks is available on the [Project Roadmap](/chapter1.md), which is updated regularly. The roadmap is meant to allow users to get an idea of which new features that are currently under development, which have already been completed and will be made available in the next update, and which were released in previous updates. Occasionally, tasks are added to or removed from milestones, based on the number of changes, relation of tasks to other tasks in the queue, etc. 
+
+## Early Access to Features
+
+As a general rule, I do not mark tasks as completed on the [Project Roadmap](/chapter1.md) until they are finished and developer-tested. If for any reason you need access to a feature that is marked complete but hasn't been released yet, feel free to reach out to me over Sitecore Slack (@zachary\_kniebel) and I will gladly create an _early access_ version for you. 
+
 ## About the Book
 
 This book is meant to serve as a comprehensive guide to SitecoreUML, and is the primary source of the tool's documentation. In this book, you can find definitions and quick references, installation and configuration instructions, information regarding syntax and data models, feature and tool usage, details on how the tool can be extended and customized, as well as walkthroughs and tutorials.
