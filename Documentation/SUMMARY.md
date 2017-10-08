@@ -30,7 +30,7 @@
 * [Connecting to Sitecore](guide/connecting-to-sitecore.md)
 * [Validate](guide/validate.md)
 * [Deploy & Import](guide/deploy-and-import.md)
-* Extended Field Information
+* [JSON Tools](guide/json-tools.md)
 
 ## Module Reference
 
