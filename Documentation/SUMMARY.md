@@ -21,6 +21,7 @@
 * [Template Folders](guide/template-folders.md)
 * [Templates](guide/templates.md)
 * [Template Fields](guide/template-fields.md)
+* [Extended Field Information](guide/extended-field-information.md)
 * [Template Inheritance](guide/template-inheritance.md)
 * [Template Containment](guide/template-containment.md)
 * [Models vs Diagrams](guide/models-vs-diagrams/concepts.md)
@@ -29,7 +30,7 @@
 * [Connecting to Sitecore](guide/connecting-to-sitecore.md)
 * [Validate](guide/validate.md)
 * [Deploy & Import](guide/deploy-and-import.md)
-* [JSON Tools](guide/json-tools.md)
+* Extended Field Information
 
 ## Module Reference
 

@@ -53,7 +53,7 @@ Listed under each version is the set of tasks, features and enhancements that sh
 * [ ] Moves folder paths in Sitecore config files to settings to enable use of Sitecore variables
 * [ ] Refactor out broken lazy-initialization of module variables in JavaScript
 * [ ] Documentation
-  * [ ] Extended Field Info
+  * [x] Extended Field Info
   * [ ] Validation updates
 
 ### Version 1.2 \(~ December 2018\)
@@ -80,6 +80,4 @@ Listed under each version is the set of tasks, features and enhancements that sh
 
 * Azure infrastructure provisioning support
 * AWS infrastructure provisioning support
-
-
 
