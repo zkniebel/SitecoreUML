@@ -53,6 +53,7 @@ Listed under each version is the set of tasks, features and enhancements that sh
 * [ ] Moves folder paths in Sitecore config files to settings to enable use of Sitecore variables
 * [ ] Refactor out broken lazy-initialization of module variables in JavaScript
 * [ ] Adds visual progress dialog to be displayed during imports
+* [ ] Adds template exclude paths to SitecoreUML.config \(paths to exclude when data is being imported into StarUML\)
 * [ ] Documentation
   * [x] Extended Field Info
   * [ ] Validation updates
