@@ -31,6 +31,9 @@ define(function (require, exports, module) {
     // eagerly-loaded (make lazy later)
     var ProgressDialog = require("ProgressDialog"); 
 
+
+
+
     // progress dialog constants
     var progressDialogClassId = "dialog-progress__sitecoreuml--import";
     var progressDialogTitle = "Import Progress";
@@ -44,11 +47,11 @@ define(function (require, exports, module) {
             + "</div>";
     };
 
+
+
+
     // generate the diagrams from the given JSON data
     function generateTemplateDiagrams(jsonTemplates) {
-        // settings for the progress dialog
-        var totalTemplates = jsonTemplates.length;
-
         // get the project to generate our UML things in
         var project = Repository_get().select("@Project")[0];
 
@@ -82,10 +85,35 @@ define(function (require, exports, module) {
         };
         var templatesDiagram =
             Factory.createDiagram("UMLClassDiagram", rootModel, templateDiagramOptions);
+            
+        // parses the JSON templates into an array
+        var jsonTemplatesArray = JSON.parse(jsonTemplates);
+        // total number fo templates for the progress dialogs
+        var totalTemplates = jsonTemplatesArray.length;
 
-        // loop through the JSON templates and build out the folder (package) map
-        //   Build packages map such that it lists each package (folder) once and excludes the template name
-        // 
+        // executes a function asynchronously and supports a progress update function
+        function async_executeTask(taskFn, progressFn) {
+            return new Promise(function (resolve) {
+                // update the progress dialog
+                if (progressFn) {
+                    progressFn();
+                }
+
+                // run the task async to support the progress bars, using a timeout of 0
+                setTimeout(function() {
+                    // execute the task
+                    taskFn();
+                    // resolve the promises
+                    resolve();
+                }, 0);
+            });
+        }        
+
+        // start the promise chain for the tasks
+        var tasks = Promise.resolve();  
+        
+        
+        // map to hold the info for each of the packages (template folders)
         //   Structure by example:
         //     Path: 
         //       /Feature/Pages/BasePage
@@ -94,24 +122,13 @@ define(function (require, exports, module) {
         //
         //     Resulting Entries:
         //       "/Feature": { Name: "Feature", ParentKey: undefined, ReferenceId: "<StarUML ID>" } 
-        //       "Feature/Pages": { Name: "Pages", ParentKey: "/Feature", ReferenceId: "<StarUML ID>"  }
-        var packagesMap = [];
-        var jsonTemplatesArray = JSON.parse(jsonTemplates);
-        jsonTemplatesArray.forEach(function (jsonTemplate, templateIndex) {
-            // update the progress dialog      
-            console.log("Dialog should update");
-            // ProgressDialog.queueProgressBarMessageForDialog(
-            //     progressDialogClassId, 
-            //     progressDialogTitle, 
-            //     getImportProgressMessage("Processing Paths", jsonTemplate.Path, templateIndex, totalTemplates), 
-            //     templateIndex, 
-            //     totalTemplates);
-            ProgressDialog.showOrUpdateDialogWithProgressBar(
-                progressDialogClassId, 
-                progressDialogTitle, 
-                getImportProgressMessage("Processing Paths", jsonTemplate.Path, templateIndex, totalTemplates), 
-                { currentStep: templateIndex, totalSteps: totalTemplates});
+        //       "Feature/Pages": { Name: "Pages", ParentKey: "/Feature", ReferenceId: "<StarUML ID>"  }   
+        var packagesMap = [];     
 
+        
+        // populates the folder (package) map based on the template's path data, such that it lists each
+        //   package (folder) once and excludes the template name
+        function populatePackagesMapFromTemplate(jsonTemplate) {
             // get the path parts            
             // e.g. "/Feature/Pages/BasePage"
             //      -->
@@ -146,37 +163,61 @@ define(function (require, exports, module) {
                     ParentKey: prevPathPartKey
                 };
             }
-        });
+        };
 
-        // sort the package map keys by level
-        //   Inherently, creating in sorted order means that parents will be created before
-        //   children, as each level of packages will be built out breadth-first
-        var packagesMapKeys = Object.keys(packagesMap).sort(function (a, b) {
-            var levelA = StringUtils.occurrences(a, "/");
-            var levelB = StringUtils.occurrences(b, "/");
-
-            return levelA > levelB
-                ? 1 // a is deeper level than b
-                : levelA == levelB
-                    ? 0 // a and b are at the same level
-                    : -1; // b is a deeper level than a
-        });
-
-        // create package elements
-        var addedPackageElements = []; // packagesMapKey is the key, value is the element
-        var totalPackages = packagesMapKeys.length; // to be used for the progress dialogs
-        packagesMapKeys.forEach(function (packageMapKey, entryIndex) {
-            // get the entry from the packages map
-            var entry = packagesMap[packageMapKey];
+        
+        jsonTemplatesArray.forEach(function(jsonTemplate, templateIndex){
+            var task = function() {
+                return async_executeTask(
+                    function() { populatePackagesMapFromTemplate(jsonTemplate); },
+                    function() {    
+                        console.log("Dialog should update");
+                        ProgressDialog.showOrUpdateDialogWithProgressBar(
+                            progressDialogClassId, 
+                            progressDialogTitle, 
+                            getImportProgressMessage("Processing Paths", jsonTemplate.Path, templateIndex, totalTemplates), 
+                            { currentStep: templateIndex, totalSteps: totalTemplates});
+                    }
+                );
+            };
             
-            // update the progress dialog      
-            console.log("Dialog should update");
-            ProgressDialog.showOrUpdateDialogWithProgressBar(
-                progressDialogClassId, 
-                progressDialogTitle, 
-                getImportProgressMessage("Importing", (entry.ParentKey + entry.Name), entryIndex, totalPackages, "Folder"), 
-                { currentStep: entryIndex, totalSteps: totalPackages });
+            // add task to chain
+            tasks = tasks.then(task);
+        });
 
+        // the keys for the package map
+        var packagesMapKeys = [];        
+        // task to populate the packageMapKeys array
+        var buildPackagesMapKeysTask = 
+            function() {
+                return async_executeTask(
+                    function() { 
+                        packagesMapKeys = Object.keys(packagesMap).sort(function (a, b) {
+                            var levelA = StringUtils.occurrences(a, "/");
+                            var levelB = StringUtils.occurrences(b, "/");
+
+                            return levelA > levelB
+                                ? 1 // a is deeper level than b
+                                : levelA == levelB
+                                    ? 0 // a and b are at the same level
+                                    : -1; // b is a deeper level than a
+                        });
+                    }
+                );
+            };
+
+        // add the task to the chain
+        tasks = tasks.then(buildPackagesMapKeysTask);
+
+        // array to hold all of the package eleemnts that have been added
+        var addedPackageElements = []; // packagesMapKey is the key, value is the element
+
+        // getter with backing field for the total number of packages, so that the actual value can be read while running tasks
+        var _totalPackages = undefined;
+        var totalPackages_get = function() { return _totalPackages || (_totalPackages = packagesMapKeys.length); }; // to be used for the progress dialogs
+       
+        // creates the package and adds it to the diagram
+        function createPackage(entry, packageMapKey) {
             // set up the options for the package to be created
             var packageOptions = {
                 modelInitializer: function (modelEle) {
@@ -226,29 +267,55 @@ define(function (require, exports, module) {
                     templateFoldersDiagram,
                     relationshipOptions);
             }
+        };
+        
+        // loop through all of the packages and add a task for executing each to the chain
+        packagesMapKeys.forEach(function (packageMapKey, entryIndex) {
+            // get the entry from the packages map
+            var entry = packagesMap[packageMapKey];
+
+            // create the task
+            var task = function() {
+                return async_executeTask(
+                    function() { createPackage(entry, packageMapKey); },
+                    function() {                        
+                        // update the progress dialog      
+                        console.log("Dialog should update");
+                        ProgressDialog.showOrUpdateDialogWithProgressBar(
+                            progressDialogClassId, 
+                            progressDialogTitle, 
+                            getImportProgressMessage("Importing", (entry.ParentKey + entry.Name), entryIndex, totalPackages_get(), "Folder"), 
+                            { currentStep: entryIndex, totalSteps: totalPackages_get() });
+                    }
+                );
+            };
+
+            // add the task to the chain
+            tasks = tasks.then(task);
         });
         
-        // update the progress dialog      
-        console.log("Dialog should update");
-        ProgressDialog.showOrUpdateDialog(
-            progressDialogClassId, 
-            progressDialogTitle, 
-            "<div>Template folders imported.</div><div>Template Folders Diagram generation complete.</div><div>Reformatting diagram layout...</div>");
+        // task for reformatting the template folders diagram to be legible
+        var reformatTemplateFoldersDiagramTask = 
+            function() {
+                return async_executeTask(
+                    function() { DiagramUtils.reformatDiagramLayout(templateFoldersDiagram); },
+                    function() { 
+                        // update the progress dialog      
+                        console.log("Dialog should update");
+                        ProgressDialog.showOrUpdateDialog(
+                            progressDialogClassId, 
+                            progressDialogTitle, 
+                            "<div>Template folders imported.</div><div>Template Folders Diagram generation complete.</div><div>Reformatting diagram layout...</div>");
+                    }
+                );
+            };
 
-        // reformat the template folders diagram to be legible
-        DiagramUtils.reformatDiagramLayout(templateFoldersDiagram);
+        // add the task to the chain
+        tasks = tasks.then(reformatTemplateFoldersDiagramTask);
 
-        // create template elements
-        var addedInterfaceElements = [];
-        jsonTemplatesArray.forEach(function (jsonTemplate, templateIndex) {   
-            // update the progress dialog      
-            console.log("Dialog should update");
-            ProgressDialog.showOrUpdateDialogWithProgressBar(
-                progressDialogClassId, 
-                progressDialogTitle, 
-                getImportProgressMessage("Importing", jsonTemplate.Path, templateIndex, totalTemplates, "Template"), 
-                { currentStep: templateIndex, totalSteps: totalTemplates });
 
+        // creates the template and adds it to the diagram
+        function createTemplate(jsonTemplate) {   
             // options for the template model and view
             var interfaceOptions = {
                 modelInitializer: function (ele) {
@@ -304,18 +371,33 @@ define(function (require, exports, module) {
                     "attributes",
                     attributeModelOptions);
             });
+        };
+
+        // create template elements
+        var addedInterfaceElements = [];
+        jsonTemplatesArray.forEach(function (jsonTemplate, templateIndex) {
+            // create the task
+            var task = function() {
+                return async_executeTask(
+                    function() { createTemplate(jsonTemplate) },
+                    function() {
+                        // update the progress dialog      
+                        console.log("Dialog should update");
+                        ProgressDialog.showOrUpdateDialogWithProgressBar(
+                            progressDialogClassId, 
+                            progressDialogTitle, 
+                            getImportProgressMessage("Importing", jsonTemplate.Path, templateIndex, totalTemplates, "Template"), 
+                            { currentStep: templateIndex, totalSteps: totalTemplates });
+                    }
+                );
+            };
+
+            // add the task to the chain
+            tasks = tasks.then(task);
         });
 
-        // generate the template inheritance relationships
-        jsonTemplatesArray.forEach(function (jsonTemplate, templateIndex) {
-            // update the progress dialog      
-            console.log("Dialog should update");
-            ProgressDialog.showOrUpdateDialogWithProgressBar(
-                progressDialogClassId, 
-                progressDialogTitle, 
-                getImportProgressMessage("Setting Relationships", jsonTemplate.Path, templateIndex, totalTemplates, "Base Templates"), 
-                { currentStep: templateIndex, totalSteps: totalTemplates});
-
+        // generate the inheritance relationships for the template
+        function createInheritanceRelationshipsForTemplate(jsonTemplate) {
             // if the template has no base templates then nothing more to do
             if (jsonTemplate.BaseTemplates && jsonTemplate.BaseTemplates.length) {
                 jsonTemplate.BaseTemplates.forEach(function (baseTemplatePath) {
@@ -339,40 +421,81 @@ define(function (require, exports, module) {
                     );
                 });
             }
+        };
+
+        // create all of the tasks for creating the inheritance relationships and add them to the chain
+        jsonTemplatesArray.forEach(function (jsonTemplate, templateIndex) {
+            // create the task
+            var task = function() {
+                return async_executeTask(
+                    function() { createInheritanceRelationshipsForTemplate(jsonTemplate); },
+                    function() {
+                        // update the progress dialog      
+                        console.log("Dialog should update");
+                        ProgressDialog.showOrUpdateDialogWithProgressBar(
+                            progressDialogClassId, 
+                            progressDialogTitle, 
+                            getImportProgressMessage("Setting Relationships", jsonTemplate.Path, templateIndex, totalTemplates, "Base Templates"), 
+                            { currentStep: templateIndex, totalSteps: totalTemplates });
+                    }
+                );
+            };
+
+            // add the task to the chain
+            tasks = tasks.then(task);
         });
         
-        // update the progress dialog 
-        console.log("Dialog should update");
-        ProgressDialog.showOrUpdateDialog(
-            progressDialogClassId, 
-            progressDialogTitle, 
-            "<div>Templates imported.</div><div>Templates Diagram generation complete.</div><div>Reformatting diagram layout...</div>");        
-        
-        // collapse all of the templates in the Model Explorer
-        var allTemplates = Repository_get().select("@UMLInterface");
-        allTemplates.forEach(ModelExplorerView_get().collapse);
 
-        // collapse all of the template folders in the Model Explorer
-        var allTemplateFolders = Repository_get().select("@UMLPackage");
-        allTemplateFolders.forEach(ModelExplorerView_get().collapse);
+        // task for collapsing all of the templates and template folders in the model explorer
+        var performFinalCleanupOperationsTask = function() {
+            return async_executeTask(
+                function() {       
+                    // collapse all of the templates in the Model Explorer
+                    var allTemplates = Repository_get().select("@UMLInterface");
+                    allTemplates.forEach(ModelExplorerView_get().collapse);
+            
+                    // collapse all of the template folders in the Model Explorer
+                    var allTemplateFolders = Repository_get().select("@UMLPackage");
+                    allTemplateFolders.forEach(ModelExplorerView_get().collapse);
 
-        // reformat the templates diagram to be legible
-        DiagramUtils.reformatDiagramLayout(templatesDiagram)
-            // update the progress dialog to reflect completion once the reformatting is done
-            .done(function() {
-                console.log("Dialog should update");
-                ProgressDialog.showOrUpdateDialog(
-                    progressDialogClassId, 
-                    "Import Completed Successfully", 
-                    "<p>Sitecore templates and template folders have been imported successfully. Diagram generation and reformatting complete.</p><p>Click \"Finish\" to close this dialog.</p>",
-                    [
-                        { 
-                            id: Dialogs.DIALOG_BTN_CANCEL, 
-                            text: "Finish",
-                            className: ""
-                        }
-                    ]);
-            });
+                    // reformat the templates diagram to be legible
+                    DiagramUtils.reformatDiagramLayout(templatesDiagram)
+                },
+                function() {
+                    // update the progress dialog 
+                    console.log("Dialog should update");
+                    ProgressDialog.showOrUpdateDialog(
+                        progressDialogClassId, 
+                        progressDialogTitle, 
+                        "<div>Templates imported.</div><div>Templates Diagram generation complete.</div><div>Collapsing templates and folders in Model Explorer...</div>");        
+                }
+            );
+        };
+
+        // add the task to the chain
+        tasks = tasks.then(performFinalCleanupOperationsTask);
+
+
+        // task to update the progress dialog to reflect completion
+        var doCompleteTask = function() {
+            return async_executeTask(
+                function() {                    
+                    console.log("Dialog should update");
+                    ProgressDialog.showOrUpdateDialog(
+                        progressDialogClassId, 
+                        "Import Completed Successfully", 
+                        "<p>Sitecore templates and template folders have been imported successfully. Diagram generation and reformatting complete.</p><p>Click \"Finish\" to close this dialog.</p>",
+                        [
+                            { 
+                                id: Dialogs.DIALOG_BTN_CANCEL, 
+                                text: "Finish",
+                                className: ""
+                            }
+                        ]
+                    );
+                }
+            );
+        };
     };
 
     // generates the template diagrams and models from specified JSON file

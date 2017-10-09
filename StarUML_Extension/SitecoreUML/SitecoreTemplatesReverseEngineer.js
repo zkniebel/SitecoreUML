@@ -16,9 +16,9 @@ define(function(require, exports, module) {
     var Dialogs = _backingFields._dialogs || (_backingFields._dialogs = app.getModule("dialogs/Dialogs"));
 
     // lazy-loaded custom modules
-    var SitecoreTemplatesJsonReverseEngineer = _backingFields._sitecoreTemplatesJsonReverseEngineer || (_backingFields._sitecoreTemplatesJsonReverseEngineer = require("SitecoreTemplatesJsonReverseEngineer"));
+    var SitecoreTemplatesJsonReverseEngineer = _backingFields._sitecoreTemplatesJsonReverseEngineer || (_backingFields._sitecoreTemplatesJsonReverseEngineer = require("SitecoreTemplatesJsonReverseEngineer2"));
     var SitecorePreferencesLoader = _backingFields._sitecorePreferencesLoader || (_backingFields._sitecorePreferencesLoader = require("SitecorePreferencesLoader"));
-    var ProgressDialog_get = function() { return _backingFields._progressDialog || (_backingFields._progressDialog = require("ProgressDialog2")); };
+    var ProgressDialog_get = function() { return _backingFields._progressDialog || (_backingFields._progressDialog = require("ProgressDialog")); };
 
     // reverse engineer the diagrams and models from Sitecore
     function reverseEngineerFromSitecore() {
@@ -50,17 +50,16 @@ define(function(require, exports, module) {
 
             // display the initial progress dialog
             console.log("Dialog should show");
-            // ProgressDialog_get().showOrUpdateDialog(
-            //     "dialog-progress__sitecoreuml--import", 
-            //     "Import Progress", 
-            //     "<div>Templates successfully retrieved from Sitecore.</div><div>Diagram Generator starting...</div>");
-            ProgressDialog_get().createAndDisplayDialog(
+            ProgressDialog_get().showOrUpdateDialog(
                 "dialog-progress__sitecoreuml--import", 
                 "Import Progress", 
                 "<div>Templates successfully retrieved from Sitecore.</div><div>Diagram Generator starting...</div>");
 
-            // generate the diagrams
-            SitecoreTemplatesJsonReverseEngineer.generateTemplateDiagrams(jsonTemplates)
+            // using setTimeout for sake of the progress bars
+            setTimeout(function() { 
+                // generate the diagrams
+                SitecoreTemplatesJsonReverseEngineer.generateTemplateDiagrams(jsonTemplates); 
+            }, 0);
         });
     };
     
