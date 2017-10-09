@@ -8,7 +8,8 @@ define(function(require, exports, module) {
     var _backingFields = {
         _dialogs: undefined,
         _sitecoreTemplatesJsonReverseEngineer: undefined,
-        _sitecorePreferencesLoader: undefined
+        _sitecorePreferencesLoader: undefined,
+        _progressDialog: undefined
     };
     
     // lazy-loaded StarUML modules
@@ -17,6 +18,7 @@ define(function(require, exports, module) {
     // lazy-loaded custom modules
     var SitecoreTemplatesJsonReverseEngineer = _backingFields._sitecoreTemplatesJsonReverseEngineer || (_backingFields._sitecoreTemplatesJsonReverseEngineer = require("SitecoreTemplatesJsonReverseEngineer"));
     var SitecorePreferencesLoader = _backingFields._sitecorePreferencesLoader || (_backingFields._sitecorePreferencesLoader = require("SitecorePreferencesLoader"));
+    var ProgressDialog_get = function() { return _backingFields._progressDialog || (_backingFields._progressDialog = require("ProgressDialog2")); };
 
     // reverse engineer the diagrams and models from Sitecore
     function reverseEngineerFromSitecore() {
@@ -42,8 +44,20 @@ define(function(require, exports, module) {
             // get the templates from the returned data
             var jsonTemplates = data.Data;
 
-            // report the retrieved templates to the log for debugging purposes
-            console.log(jsonTemplates);
+            // report the number of retrieved templates to the log for debugging purposes
+            var totalTemplates = jsonTemplates.length;
+            console.log("Successfully retrieved " + totalTemplates + " templates from Sitecore");
+
+            // display the initial progress dialog
+            console.log("Dialog should show");
+            // ProgressDialog_get().showOrUpdateDialog(
+            //     "dialog-progress__sitecoreuml--import", 
+            //     "Import Progress", 
+            //     "<div>Templates successfully retrieved from Sitecore.</div><div>Diagram Generator starting...</div>");
+            ProgressDialog_get().createAndDisplayDialog(
+                "dialog-progress__sitecoreuml--import", 
+                "Import Progress", 
+                "<div>Templates successfully retrieved from Sitecore.</div><div>Diagram Generator starting...</div>");
 
             // generate the diagrams
             SitecoreTemplatesJsonReverseEngineer.generateTemplateDiagrams(jsonTemplates)

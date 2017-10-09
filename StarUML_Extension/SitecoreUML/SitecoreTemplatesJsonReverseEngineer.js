@@ -11,25 +11,46 @@ define(function (require, exports, module) {
         _fileSystem: undefined,
         _fileUtils: undefined,
         _dialogs: undefined,
+        _modelExplorerView: undefined,
         _stringUtils: undefined,
         _diagramUtils: undefined
     };
 
     // lazy-loaded StarUML modules
-    var Repository = _backingFields._repository || (_backingFields._repository = app.getModule("core/Repository"));
+    var Repository_get =  function() { return _backingFields._repository || (_backingFields._repository = app.getModule("core/Repository")); };
     var Factory = _backingFields._factory || (_backingFields._factory = app.getModule("engine/Factory"));
     var FileSystem = _backingFields._fileSystem || (_backingFields._fileSystem = app.getModule("filesystem/FileSystem"));
     var FileUtils = _backingFields._fileUtils || (_backingFields._fileUtils = app.getModule("file/FileUtils"));
     var Dialogs = _backingFields._dialogs || (_backingFields._dialogs = app.getModule("dialogs/Dialogs"));
+    var ModelExplorerView_get = function() { return _backingFields._modelExplorerView || (_backingFields._modelExplorerView = app.getModule("explorer/ModelExplorerView")); };
 
     // lazy-loaded custom modules
     var StringUtils = _backingFields._stringUtils || (_backingFields._stringUtils = require("StringUtils"));
     var DiagramUtils = _backingFields._diagramUtils || (_backingFields._diagramUtils = require("DiagramUtils"));
 
+    // eagerly-loaded (make lazy later)
+    var ProgressDialog = require("ProgressDialog2"); 
+
+    // progress dialog constants
+    var progressDialogClassId = "dialog-progress__sitecoreuml--import";
+    var progressDialogTitle = "Import Progress";
+    
+    // gets the import progress message that should be displayed
+    function getImportProgressMessage(actionLabel, path, index, total, type) {
+        type = type ? " (" + type + ")" : "";
+        return "<div><b>" + actionLabel + ": </b>" + path + type
+            + "<br/><b>Completed: </b>" + index
+            + "<br/><b>Remaining: </b>" + (total - index)
+            + "</div>";
+    };
+
     // generate the diagrams from the given JSON data
     function generateTemplateDiagrams(jsonTemplates) {
+        // settings for the progress dialog
+        var totalTemplates = jsonTemplates.length;
+
         // get the project to generate our UML things in
-        var project = Repository.select("@Project")[0];
+        var project = Repository_get().select("@Project")[0];
 
         // create the model to be the root for all generated things
         var rootModelOptions = {
@@ -76,7 +97,16 @@ define(function (require, exports, module) {
         //       "Feature/Pages": { Name: "Pages", ParentKey: "/Feature", ReferenceId: "<StarUML ID>"  }
         var packagesMap = [];
         var jsonTemplatesArray = JSON.parse(jsonTemplates);
-        jsonTemplatesArray.forEach(function (jsonTemplate) {
+        jsonTemplatesArray.forEach(function (jsonTemplate, templateIndex) {
+            // update the progress dialog      
+            console.log("Dialog should update");
+            ProgressDialog.queueProgressBarMessageForDialog(
+                progressDialogClassId, 
+                progressDialogTitle, 
+                getImportProgressMessage("Processing Paths", jsonTemplate.Path, templateIndex, totalTemplates), 
+                templateIndex, 
+                totalTemplates);
+
             // get the path parts            
             // e.g. "/Feature/Pages/BasePage"
             //      -->
@@ -129,9 +159,21 @@ define(function (require, exports, module) {
 
         // create package elements
         var addedPackageElements = []; // packagesMapKey is the key, value is the element
-        packagesMapKeys.forEach(function (packageMapKey) {
+        var totalPackages = packagesMapKeys.length; // to be used for the progress dialogs
+        packagesMapKeys.forEach(function (packageMapKey, entryIndex) {
+            // get the entry from the packages map
             var entry = packagesMap[packageMapKey];
+            
+            // update the progress dialog      
+            console.log("Dialog should update");
+            ProgressDialog.queueProgressBarMessageForDialog(
+                progressDialogClassId, 
+                progressDialogTitle, 
+                getImportProgressMessage("Importing", (entry.ParentKey + entry.Name), entryIndex, totalPackages, "Folder"), 
+                entryIndex, 
+                totalPackages);
 
+            // set up the options for the package to be created
             var packageOptions = {
                 modelInitializer: function (modelEle) {
                     modelEle.name = entry.Name;
@@ -181,13 +223,29 @@ define(function (require, exports, module) {
                     relationshipOptions);
             }
         });
+        
+        // update the progress dialog      
+        console.log("Dialog should update");
+        ProgressDialog.queueMessageForDialog(
+            progressDialogClassId, 
+            progressDialogTitle, 
+            "<div>Template folders imported.</div><div>Template Folders Diagram generation complete.</div><div>Reformatting diagram layout...</div>");
 
         // reformat the template folders diagram to be legible
         DiagramUtils.reformatDiagramLayout(templateFoldersDiagram);
 
         // create template elements
         var addedInterfaceElements = [];
-        jsonTemplatesArray.forEach(function (jsonTemplate) {
+        jsonTemplatesArray.forEach(function (jsonTemplate, templateIndex) {   
+            // update the progress dialog      
+            console.log("Dialog should update");
+            ProgressDialog.queueProgressBarMessageForDialog(
+                progressDialogClassId, 
+                progressDialogTitle, 
+                getImportProgressMessage("Importing", jsonTemplate.Path, templateIndex, totalTemplates, "Template"), 
+                templateIndex, 
+                totalTemplates);
+
             // options for the template model and view
             var interfaceOptions = {
                 modelInitializer: function (ele) {
@@ -246,7 +304,16 @@ define(function (require, exports, module) {
         });
 
         // generate the template inheritance relationships
-        jsonTemplatesArray.forEach(function (jsonTemplate) {
+        jsonTemplatesArray.forEach(function (jsonTemplate, templateIndex) {
+            // update the progress dialog      
+            console.log("Dialog should update");
+            ProgressDialog.queueProgressBarMessageForDialog(
+                progressDialogClassId, 
+                progressDialogTitle, 
+                getImportProgressMessage("Setting Relationships", jsonTemplate.Path, templateIndex, totalTemplates, "Base Templates"), 
+                templateIndex, 
+                totalTemplates);
+
             // if the template has no base templates then nothing more to do
             if (jsonTemplate.BaseTemplates && jsonTemplate.BaseTemplates.length) {
                 jsonTemplate.BaseTemplates.forEach(function (baseTemplatePath) {
@@ -271,10 +338,42 @@ define(function (require, exports, module) {
                 });
             }
         });
+        
+        // update the progress dialog 
+        console.log("Dialog should update");
+        ProgressDialog.queueMessageForDialog(
+            progressDialogClassId, 
+            progressDialogTitle, 
+            "<div>Templates imported.</div><div>Templates Diagram generation complete.</div><div>Reformatting diagram layout...</div>");        
+        
+        // collapse all of the templates in the Model Explorer
+        var allTemplates = Repository_get().select("@UMLInterface");
+        allTemplates.forEach(ModelExplorerView_get().collapse);
+
+        // collapse all of the template folders in the Model Explorer
+        var allTemplateFolders = Repository_get().select("@UMLPackage");
+        allTemplateFolders.forEach(ModelExplorerView_get().collapse);
 
         // reformat the templates diagram to be legible
-        DiagramUtils.reformatDiagramLayout(templatesDiagram);
-    }
+        DiagramUtils.reformatDiagramLayout(templatesDiagram)
+            // update the progress dialog to reflect completion once the reformatting is done
+            .done(function() {
+                console.log("Dialog should update");
+                ProgressDialog.queueMessageForDialog(
+                    progressDialogClassId, 
+                    "Import Completed Successfully", 
+                    "<p>Sitecore templates and template folders have been imported successfully. Diagram generation and reformatting complete.</p><p>Click \"Finish\" to close this dialog.</p>",
+                    [
+                        { 
+                            id: Dialogs.DIALOG_BTN_CANCEL, 
+                            text: "Finish",
+                            className: ""
+                        }
+                    ]);
+                
+                ProgressDialog.disposeOfDialog(progressDialogClassId);
+            });
+    };
 
     // generates the template diagrams and models from specified JSON file
     function generateTemplateDiagramsFromFile() {
