@@ -10,7 +10,7 @@ define(function(require, exports, module) {
     //   message              :  HTML string value to be rendered as the body of the dialog
     //   buttons              :  Array.<{id:string,text:string,className:string}> controlling the buttons to be displayed on the dialog
     function showOrUpdateDialog(uniqueDialogCssClass, title, message, buttons) {
-        message = "<div style=\"padding:10px 10px 20px 10px;\">" + message + "</div>";
+        message = "<div style=\"padding:10px 10px 20px 10px; height: 400px; width: 500px;\">" + message + "</div>";
 
         cancelDialogIfOpen(uniqueDialogCssClass);
         Dialogs_get().showModalDialog(uniqueDialogCssClass, title, message, (buttons || []), false)
