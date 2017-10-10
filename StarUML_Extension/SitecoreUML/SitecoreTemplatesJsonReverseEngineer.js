@@ -417,16 +417,18 @@ define(function (require, exports, module) {
         var performFinalCleanupOperationsTask = function() {
             return async_executeTask(
                 function() {       
-                    // collapse all of the templates in the Model Explorer
-                    var allTemplates = Repository_get().select("@UMLInterface");
-                    allTemplates.forEach(ModelExplorerView_get().collapse);
-            
-                    // collapse all of the template folders in the Model Explorer
-                    var allTemplateFolders = Repository_get().select("@UMLPackage");
-                    allTemplateFolders.forEach(ModelExplorerView_get().collapse);
-
                     // reformat the templates diagram to be legible
-                    DiagramUtils.reformatDiagramLayout(templatesDiagram)
+                    DiagramUtils.reformatDiagramLayout(templatesDiagram);
+
+                    // setting to a local variable for a negligable performance increase
+                    var ModelExplorerView = ModelExplorerView_get();
+
+                    // rebuild the model explorer
+                    ModelExplorerView.rebuild();
+
+                    // expand the project and root model nodes
+                    ModelExplorerView.expand(project);
+                    ModelExplorerView.expand(rootModel);
                 },
                 function() {
                     // update the progress dialog 
