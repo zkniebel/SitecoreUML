@@ -32,6 +32,8 @@ define(function (require, exports, module) {
     var SitecoreConnectionTest = require("SitecoreConnectionTest");
     SitecoreConnectionTest.initialize();
 
+    
+    var AppInit = app.getModule("utils/AppInit");
     AppInit.htmlReady(function() {
         var ExtensionUtils = app.getModule("utils/ExtensionUtils");
 
