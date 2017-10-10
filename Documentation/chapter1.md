@@ -56,6 +56,8 @@ Listed under each version is the set of tasks, features and enhancements that sh
 * [ ] Adds template exclude paths to SitecoreUML.config \(paths to exclude when data is being imported into StarUML\)
 * [ ] Documentation
   * [x] Extended Field Info
+  * [ ] Export as Html Docs
+  * [ ] Print to PDF
   * [ ] Validation updates
 
 ### Version 1.2 \(~ December 2018\)
