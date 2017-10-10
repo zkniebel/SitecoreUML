@@ -179,7 +179,7 @@ define(function (require, exports, module) {
                     function() {    
                         ProgressDialog.showOrUpdateDialogWithProgressBar(
                             progressDialogClassId, 
-                            progressDialogTitle, 
+                            progressDialogTitle + " - Step 2 of 7", 
                             getImportProgressMessage("Processing Paths", jsonTemplate.Path, templateIndex, totalTemplates), 
                             { currentStep: templateIndex, totalSteps: totalTemplates});
                     }
@@ -271,7 +271,7 @@ define(function (require, exports, module) {
                         // update the progress dialog      
                         ProgressDialog.showOrUpdateDialogWithProgressBar(
                             progressDialogClassId, 
-                            progressDialogTitle, 
+                            progressDialogTitle + " - Step 3 of 7", 
                             getImportProgressMessage("Importing", (entry.ParentKey + entry.Name), entryIndex, totalPackages_get(), "Folder"), 
                             { currentStep: entryIndex, totalSteps: totalPackages_get() });
                     }
@@ -287,7 +287,7 @@ define(function (require, exports, module) {
                     // update the progress dialog      
                     ProgressDialog.showOrUpdateDialog(
                         progressDialogClassId, 
-                        progressDialogTitle, 
+                        progressDialogTitle  + " - Step 4 of 7", 
                         "<div>Template folders imported.</div><div>Template Folders Diagram generation complete.</div><div>Reformatting diagram layout...</div>");
                 }
             );
@@ -361,7 +361,7 @@ define(function (require, exports, module) {
                         // update the progress dialog      
                         ProgressDialog.showOrUpdateDialogWithProgressBar(
                             progressDialogClassId, 
-                            progressDialogTitle, 
+                            progressDialogTitle  + " - Step 5 of 7", 
                             getImportProgressMessage("Importing", jsonTemplate.Path, templateIndex, totalTemplates, "Template"), 
                             { currentStep: templateIndex, totalSteps: totalTemplates });
                     }
@@ -405,8 +405,8 @@ define(function (require, exports, module) {
                         // update the progress dialog      
                         ProgressDialog.showOrUpdateDialogWithProgressBar(
                             progressDialogClassId, 
-                            progressDialogTitle, 
-                            getImportProgressMessage("Setting Relationships", jsonTemplate.Path, templateIndex, totalTemplates, "Base Templates"), 
+                            progressDialogTitle + " - Step 6 of 7", 
+                            getImportProgressMessage("Setting Base Templates", jsonTemplate.Path, templateIndex, totalTemplates), 
                             { currentStep: templateIndex, totalSteps: totalTemplates });
                     }
                 );
@@ -432,7 +432,7 @@ define(function (require, exports, module) {
                     // update the progress dialog 
                     ProgressDialog.showOrUpdateDialog(
                         progressDialogClassId, 
-                        progressDialogTitle, 
+                        progressDialogTitle + " - Step 7 of 7", 
                         "<div>Templates imported.</div><div>Templates Diagram generation complete.</div><div>Collapsing templates and folders in Model Explorer...</div>");        
                 }
             );

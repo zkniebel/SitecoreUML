@@ -51,7 +51,7 @@ define(function(require, exports, module) {
             // display the initial progress dialog
             ProgressDialog_get().showOrUpdateDialog(
                 "dialog-progress__sitecoreuml--import", 
-                "Import Progress", 
+                "Import Progress - Step 1 of 7", 
                 "<div>Templates successfully retrieved from Sitecore.</div><div>Diagram Generator starting...</div>");
 
             // using setTimeout for sake of the progress bars

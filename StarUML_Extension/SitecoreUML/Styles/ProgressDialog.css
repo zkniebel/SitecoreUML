@@ -10,18 +10,18 @@
     top: 175px;
 }
 
-.progress-dialog__content > .progress-bar .progress-bar__label {
+.progress-dialog__content > .progress-bar > .progress-bar__label {
     text-align: right;
     margin-bottom: 4px;
 }
 
-.progress-dialog__content > .progress-bar__label:before{
+.progress-dialog__content > .progress-bar > .progress-bar__label:before{
     content: "Progress:";
     position: absolute;
     left: 0;
 }
 
-.progress-dialog__content > .progress-bar .progress-bar__container {
+.progress-dialog__content > .progress-bar > .progress-bar__container {
     height: 21px; 
     background-color: #2d2e30;     
     border-top: 1px solid #27282a; 
@@ -33,7 +33,7 @@
     padding: 1px;
 }
 
-.progress-dialog__content > .progress-bar .progress-bar__container > .progress-bar__completed-progress {
+.progress-dialog__content > .progress-bar > .progress-bar__container > .progress-bar__completed-progress {
     display: inline-block; 
     height: 100%;
     background: linear-gradient(to right, rgb(199, 199, 199), rgb(240, 240, 240)); 
