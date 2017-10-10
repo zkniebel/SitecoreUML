@@ -171,7 +171,7 @@ define(function (require, exports, module) {
             }
         };
 
-        // gets the task for pupulating the packages map from the given template
+        // gets the task for populating the packages map from the given template
         var getPopulatePackagesMapFromTemplateTask = function(jsonTemplate, templateIndex) {
             return function() {
                 return async_executeTask(
