@@ -22,5 +22,5 @@ When creating and editing UML diagrams and models within StarUML, the majority o
 2. In the center, we have our diagram window, where we can edit our diagrams. 
 3. On the right, we have our “Model Explorer”, where we can view the different pieces that make up our modeling project, as well as the hierarchy in which they live. 
 
-![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-IDE.png?raw=true)
+![](https://github.com/zkniebel/SitecoreUML/blob/master/Documentation/assets/StarUML-IDE.png?raw=true)
 

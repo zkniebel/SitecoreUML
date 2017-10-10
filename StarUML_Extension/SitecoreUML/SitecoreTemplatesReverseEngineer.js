@@ -8,7 +8,8 @@ define(function(require, exports, module) {
     var _backingFields = {
         _dialogs: undefined,
         _sitecoreTemplatesJsonReverseEngineer: undefined,
-        _sitecorePreferencesLoader: undefined
+        _sitecorePreferencesLoader: undefined,
+        _progressDialog: undefined
     };
     
     // lazy-loaded StarUML modules
@@ -17,6 +18,7 @@ define(function(require, exports, module) {
     // lazy-loaded custom modules
     var SitecoreTemplatesJsonReverseEngineer = _backingFields._sitecoreTemplatesJsonReverseEngineer || (_backingFields._sitecoreTemplatesJsonReverseEngineer = require("SitecoreTemplatesJsonReverseEngineer"));
     var SitecorePreferencesLoader = _backingFields._sitecorePreferencesLoader || (_backingFields._sitecorePreferencesLoader = require("SitecorePreferencesLoader"));
+    var ProgressDialog_get = function() { return _backingFields._progressDialog || (_backingFields._progressDialog = require("ProgressDialog")); };
 
     // reverse engineer the diagrams and models from Sitecore
     function reverseEngineerFromSitecore() {
@@ -42,11 +44,21 @@ define(function(require, exports, module) {
             // get the templates from the returned data
             var jsonTemplates = data.Data;
 
-            // report the retrieved templates to the log for debugging purposes
-            console.log(jsonTemplates);
+            // report the number of retrieved templates to the log for debugging purposes
+            var totalTemplates = jsonTemplates.length;
+            console.log("Successfully retrieved response from Sitecore");
 
-            // generate the diagrams
-            SitecoreTemplatesJsonReverseEngineer.generateTemplateDiagrams(jsonTemplates)
+            // display the initial progress dialog
+            ProgressDialog_get().showOrUpdateDialog(
+                "dialog-progress__sitecoreuml--import", 
+                "Import Progress - Step 1 of 7", 
+                "<div>Templates successfully retrieved from Sitecore.</div><div>Diagram Generator starting...</div>");
+
+            // using setTimeout for sake of the progress bars
+            setTimeout(function() { 
+                // generate the diagrams
+                SitecoreTemplatesJsonReverseEngineer.generateTemplateDiagrams(jsonTemplates); 
+            }, 0);
         });
     };
     

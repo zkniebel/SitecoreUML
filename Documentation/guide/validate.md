@@ -10,7 +10,7 @@ To validate your templates, click _Sitecore_ &gt; _Validate Templates_
 
 Any validation errors that are found will display in the resulting modal.
 
-## ![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Validate.png?raw=true)Supported Validation Strategies
+## ![](https://github.com/zkniebel/SitecoreUML/blob/master/Documentation/assets/StarUML-Validate.png?raw=true)Supported Validation Strategies
 
 SitecoreUML's _Validate Templates_ command is meant to be a one-click validation tool for your UML diagrams. As time goes on, this feature will become more robust, but it currently is meant to help you validate that the templates that you create can be deployed to Sitecore without error.
 

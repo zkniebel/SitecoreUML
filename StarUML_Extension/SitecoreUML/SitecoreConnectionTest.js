@@ -7,7 +7,7 @@ define(function(require, exports, module) {
     // eager-load SitecoreUML module dependencies
     var SitecorePreferencesLoader = require("SitecorePreferencesLoader");
 
-    function executeConnectivityTest() {        
+    function executeConnectivityTest() {      
         var sitecoreUrl = SitecorePreferencesLoader.getSitecoreUrl();
         var route = SitecorePreferencesLoader.getSitecoreTestConnectionRoute();
         
