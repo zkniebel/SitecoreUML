@@ -1,6 +1,9 @@
 define(function (require, exports, module) {
     "use strict";
 
+    var ProgressDialog = require("ProgressDialog");
+    ProgressDialog.showOrUpdateDialogWithProgressBar("uniqueDialogCssClass", "title", "message", {currentStep: 0, totalSteps:100});
+
     // load the Sitecore preferences
     var SitecorePreferencesLoader = require("SitecorePreferencesLoader");
 

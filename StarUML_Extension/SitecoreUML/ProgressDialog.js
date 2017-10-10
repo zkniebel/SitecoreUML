@@ -26,7 +26,7 @@ define(function(require, exports, module) {
         var percentComplete = parseInt(((progressBar.currentStep / progressBar.totalSteps) || 0) * 100);
 
         var progressBarMarkup = 
-            "<div class=\"progress-bar\">" + percentComplete + "%</div><div class=\"progress-bar__container\"><span style=\"width: " + percentComplete + "%;\"></span></div>";
+            "<div class=\"progress-bar__label\">" + percentComplete + "%</div><div class=\"progress-bar__container\"><span class=\"progress-bar__completed-progress\" style=\"width: " + percentComplete + "%;\"></span></div>";
         
         var bodyHtml = message + progressBarMarkup;
         return showOrUpdateDialog(uniqueDialogCssClass, title, bodyHtml, buttons);
