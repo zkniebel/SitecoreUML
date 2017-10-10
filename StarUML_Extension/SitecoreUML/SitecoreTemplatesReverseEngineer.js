@@ -16,7 +16,7 @@ define(function(require, exports, module) {
     var Dialogs = _backingFields._dialogs || (_backingFields._dialogs = app.getModule("dialogs/Dialogs"));
 
     // lazy-loaded custom modules
-    var SitecoreTemplatesJsonReverseEngineer = _backingFields._sitecoreTemplatesJsonReverseEngineer || (_backingFields._sitecoreTemplatesJsonReverseEngineer = require("SitecoreTemplatesJsonReverseEngineer2"));
+    var SitecoreTemplatesJsonReverseEngineer = _backingFields._sitecoreTemplatesJsonReverseEngineer || (_backingFields._sitecoreTemplatesJsonReverseEngineer = require("SitecoreTemplatesJsonReverseEngineer"));
     var SitecorePreferencesLoader = _backingFields._sitecorePreferencesLoader || (_backingFields._sitecorePreferencesLoader = require("SitecorePreferencesLoader"));
     var ProgressDialog_get = function() { return _backingFields._progressDialog || (_backingFields._progressDialog = require("ProgressDialog")); };
 
