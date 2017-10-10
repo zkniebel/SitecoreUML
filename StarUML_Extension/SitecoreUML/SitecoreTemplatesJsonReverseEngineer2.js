@@ -47,8 +47,23 @@ define(function (require, exports, module) {
             + "</div>";
     };
 
+    // executes a function asynchronously and supports a progress update function
+    function async_executeTask(taskFn, progressFn) {
+        return new Promise(function (resolve) {
+            // update the progress dialog
+            if (progressFn) {
+                progressFn();
+            }
 
-
+            // run the task async to support the progress bars, using a timeout of 0
+            setTimeout(function() {
+                // execute the task
+                taskFn();
+                // resolve the promises
+                resolve();
+            }, 0);
+        });
+    };
 
     // generate the diagrams from the given JSON data
     function generateTemplateDiagrams(jsonTemplates) {
@@ -89,29 +104,7 @@ define(function (require, exports, module) {
         // parses the JSON templates into an array
         var jsonTemplatesArray = JSON.parse(jsonTemplates);
         // total number fo templates for the progress dialogs
-        var totalTemplates = jsonTemplatesArray.length;
-
-        // executes a function asynchronously and supports a progress update function
-        function async_executeTask(taskFn, progressFn) {
-            return new Promise(function (resolve) {
-                // update the progress dialog
-                if (progressFn) {
-                    progressFn();
-                }
-
-                // run the task async to support the progress bars, using a timeout of 0
-                setTimeout(function() {
-                    // execute the task
-                    taskFn();
-                    // resolve the promises
-                    resolve();
-                }, 0);
-            });
-        }        
-
-        // start the promise chain for the tasks
-        var tasks = Promise.resolve();  
-        
+        var totalTemplates = jsonTemplatesArray.length;               
         
         // map to hold the info for each of the packages (template folders)
         //   Structure by example:
@@ -123,8 +116,19 @@ define(function (require, exports, module) {
         //     Resulting Entries:
         //       "/Feature": { Name: "Feature", ParentKey: undefined, ReferenceId: "<StarUML ID>" } 
         //       "Feature/Pages": { Name: "Pages", ParentKey: "/Feature", ReferenceId: "<StarUML ID>"  }   
-        var packagesMap = [];     
+        var packagesMap = [];    
+        // the keys for the package map
+        var packagesMapKeys = [];           
 
+        // array to hold all of the template folder eleemnts that have been added
+        var addedPackageElements = {}; // packagesMapKey is the key, value is the element        
+        
+        // getter with backing field for the total number of packages, so that the actual value can be read while running tasks
+        var _totalPackages = undefined;
+        var totalPackages_get = function() { return _totalPackages || (_totalPackages = packagesMapKeys.length); }; // to be used for the progress dialogs
+        
+        // holds all of the added template elements
+        var addedInterfaceElements = [];        
         
         // populates the folder (package) map based on the template's path data, such that it lists each
         //   package (folder) once and excludes the template name
@@ -165,13 +169,12 @@ define(function (require, exports, module) {
             }
         };
 
-        
-        jsonTemplatesArray.forEach(function(jsonTemplate, templateIndex){
-            var task = function() {
+        // gets the task for pupulating the packages map from the given template
+        var getPopulatePackagesMapFromTemplateTask = function(jsonTemplate, templateIndex) {
+            return function() {
                 return async_executeTask(
                     function() { populatePackagesMapFromTemplate(jsonTemplate); },
                     function() {    
-                        console.log("Dialog should update");
                         ProgressDialog.showOrUpdateDialogWithProgressBar(
                             progressDialogClassId, 
                             progressDialogTitle, 
@@ -180,41 +183,25 @@ define(function (require, exports, module) {
                     }
                 );
             };
-            
-            // add task to chain
-            tasks = tasks.then(task);
-        });
-
-        // the keys for the package map
-        var packagesMapKeys = [];        
+        };
+      
         // task to populate the packageMapKeys array
-        var buildPackagesMapKeysTask = 
-            function() {
-                return async_executeTask(
-                    function() { 
-                        packagesMapKeys = Object.keys(packagesMap).sort(function (a, b) {
-                            var levelA = StringUtils.occurrences(a, "/");
-                            var levelB = StringUtils.occurrences(b, "/");
+        var buildPackagesMapKeysTask = function() {
+            return async_executeTask(
+                function() { 
+                    packagesMapKeys = Object.keys(packagesMap).sort(function (a, b) {
+                        var levelA = StringUtils.occurrences(a, "/");
+                        var levelB = StringUtils.occurrences(b, "/");
 
-                            return levelA > levelB
-                                ? 1 // a is deeper level than b
-                                : levelA == levelB
-                                    ? 0 // a and b are at the same level
-                                    : -1; // b is a deeper level than a
-                        });
-                    }
-                );
-            };
-
-        // add the task to the chain
-        tasks = tasks.then(buildPackagesMapKeysTask);
-
-        // array to hold all of the package eleemnts that have been added
-        var addedPackageElements = []; // packagesMapKey is the key, value is the element
-
-        // getter with backing field for the total number of packages, so that the actual value can be read while running tasks
-        var _totalPackages = undefined;
-        var totalPackages_get = function() { return _totalPackages || (_totalPackages = packagesMapKeys.length); }; // to be used for the progress dialogs
+                        return levelA > levelB
+                            ? 1 // a is deeper level than b
+                            : levelA == levelB
+                                ? 0 // a and b are at the same level
+                                : -1; // b is a deeper level than a
+                    });
+                }
+            );
+        };
        
         // creates the package and adds it to the diagram
         function createPackage(entry, packageMapKey) {
@@ -247,7 +234,7 @@ define(function (require, exports, module) {
                 templateFoldersDiagram,
                 packageOptions);
 
-            // add the package to the list of added packages
+            // add the package to the list of added packages          
             addedPackageElements[packageMapKey] = addedPackage;
 
             // add the visual containment for the parent-child relationship
@@ -269,18 +256,17 @@ define(function (require, exports, module) {
             }
         };
         
-        // loop through all of the packages and add a task for executing each to the chain
-        packagesMapKeys.forEach(function (packageMapKey, entryIndex) {
+        // creates the task for creating the package for the given packageMapKey
+        var getCreatePackageTask = function(packageMapKey, entryIndex) {
             // get the entry from the packages map
             var entry = packagesMap[packageMapKey];
 
-            // create the task
-            var task = function() {
+            // return the task
+            return function() {
                 return async_executeTask(
                     function() { createPackage(entry, packageMapKey); },
                     function() {                        
                         // update the progress dialog      
-                        console.log("Dialog should update");
                         ProgressDialog.showOrUpdateDialogWithProgressBar(
                             progressDialogClassId, 
                             progressDialogTitle, 
@@ -289,33 +275,24 @@ define(function (require, exports, module) {
                     }
                 );
             };
-
-            // add the task to the chain
-            tasks = tasks.then(task);
-        });
+        };
         
         // task for reformatting the template folders diagram to be legible
-        var reformatTemplateFoldersDiagramTask = 
-            function() {
-                return async_executeTask(
-                    function() { DiagramUtils.reformatDiagramLayout(templateFoldersDiagram); },
-                    function() { 
-                        // update the progress dialog      
-                        console.log("Dialog should update");
-                        ProgressDialog.showOrUpdateDialog(
-                            progressDialogClassId, 
-                            progressDialogTitle, 
-                            "<div>Template folders imported.</div><div>Template Folders Diagram generation complete.</div><div>Reformatting diagram layout...</div>");
-                    }
-                );
-            };
-
-        // add the task to the chain
-        tasks = tasks.then(reformatTemplateFoldersDiagramTask);
-
+        var reformatTemplateFoldersDiagramTask = function() {
+            return async_executeTask(
+                function() { DiagramUtils.reformatDiagramLayout(templateFoldersDiagram); },
+                function() { 
+                    // update the progress dialog      
+                    ProgressDialog.showOrUpdateDialog(
+                        progressDialogClassId, 
+                        progressDialogTitle, 
+                        "<div>Template folders imported.</div><div>Template Folders Diagram generation complete.</div><div>Reformatting diagram layout...</div>");
+                }
+            );
+        };
 
         // creates the template and adds it to the diagram
-        function createTemplate(jsonTemplate) {   
+        function createTemplate(jsonTemplate) {
             // options for the template model and view
             var interfaceOptions = {
                 modelInitializer: function (ele) {
@@ -371,18 +348,15 @@ define(function (require, exports, module) {
                     "attributes",
                     attributeModelOptions);
             });
-        };
-
-        // create template elements
-        var addedInterfaceElements = [];
-        jsonTemplatesArray.forEach(function (jsonTemplate, templateIndex) {
-            // create the task
-            var task = function() {
+        };   
+        
+        // creates a task for creating the interface for the given template and adding it to the diagram
+        var getCreateTemplateTask = function(jsonTemplate, templateIndex) {
+            return function() {
                 return async_executeTask(
                     function() { createTemplate(jsonTemplate) },
                     function() {
                         // update the progress dialog      
-                        console.log("Dialog should update");
                         ProgressDialog.showOrUpdateDialogWithProgressBar(
                             progressDialogClassId, 
                             progressDialogTitle, 
@@ -391,10 +365,7 @@ define(function (require, exports, module) {
                     }
                 );
             };
-
-            // add the task to the chain
-            tasks = tasks.then(task);
-        });
+        };
 
         // generate the inheritance relationships for the template
         function createInheritanceRelationshipsForTemplate(jsonTemplate) {
@@ -421,17 +392,15 @@ define(function (require, exports, module) {
                     );
                 });
             }
-        };
-
-        // create all of the tasks for creating the inheritance relationships and add them to the chain
-        jsonTemplatesArray.forEach(function (jsonTemplate, templateIndex) {
-            // create the task
-            var task = function() {
+        }; 
+        
+        // creates a task for creating inheritance relationships for the given template
+        var getCreateInheritanceRelationshipsForTemplateTask = function(jsonTemplate, templateIndex) {
+            return function() {
                 return async_executeTask(
                     function() { createInheritanceRelationshipsForTemplate(jsonTemplate); },
                     function() {
                         // update the progress dialog      
-                        console.log("Dialog should update");
                         ProgressDialog.showOrUpdateDialogWithProgressBar(
                             progressDialogClassId, 
                             progressDialogTitle, 
@@ -440,11 +409,7 @@ define(function (require, exports, module) {
                     }
                 );
             };
-
-            // add the task to the chain
-            tasks = tasks.then(task);
-        });
-        
+        };
 
         // task for collapsing all of the templates and template folders in the model explorer
         var performFinalCleanupOperationsTask = function() {
@@ -463,24 +428,18 @@ define(function (require, exports, module) {
                 },
                 function() {
                     // update the progress dialog 
-                    console.log("Dialog should update");
                     ProgressDialog.showOrUpdateDialog(
                         progressDialogClassId, 
                         progressDialogTitle, 
                         "<div>Templates imported.</div><div>Templates Diagram generation complete.</div><div>Collapsing templates and folders in Model Explorer...</div>");        
                 }
             );
-        };
-
-        // add the task to the chain
-        tasks = tasks.then(performFinalCleanupOperationsTask);
-
-
+        };        
+        
         // task to update the progress dialog to reflect completion
         var doCompleteTask = function() {
             return async_executeTask(
                 function() {                    
-                    console.log("Dialog should update");
                     ProgressDialog.showOrUpdateDialog(
                         progressDialogClassId, 
                         "Import Completed Successfully", 
@@ -495,7 +454,76 @@ define(function (require, exports, module) {
                     );
                 }
             );
+        };        
+        
+        // gets the task for actually generating the models, adding them to the diagram, performing cleanup, etc.
+        var generationAndCompletionTask = function() {            
+            return async_executeTask(
+                function() {
+                    // create the packages and add them to the diagram
+                    packagesMapKeys.forEach(function (packageMapKey, entryIndex) {    
+                        tasks = tasks.then(getCreatePackageTask(packageMapKey, entryIndex));
+                    });
+                    // reformat the template folders diagram
+                    tasks = tasks.then(reformatTemplateFoldersDiagramTask);            
+                    // create the interfaces and add them to the diagram
+                    jsonTemplatesArray.forEach(function(jsonTemplate, templateIndex) {
+                        tasks = tasks.then(createTemplateTask(jsonTemplate, templateIndex));
+                    });            
+                    // create the inheritance relationships for the interfaces
+                    jsonTemplatesArray.forEach(function (jsonTemplate, templateIndex) {
+                        tasks = tasks.then(getCreateInheritanceRelationshipsForTemplateTask(jsonTemplate, templateIndex));
+                    });
+                    tasks = tasks
+                        // perform final 
+                        .then(performFinalCleanupOperationsTask)
+                        // show the completion dialog
+                        .then(doCompleteTask);
+                }
+            );
         };
+        
+        
+        // start the promise chain for the tasks
+        var tasks = Promise.resolve();   
+
+        // populate the packages map from the templates
+        jsonTemplatesArray.forEach(function(jsonTemplate, templateIndex){
+            tasks = tasks.then(getPopulatePackagesMapFromTemplateTask(jsonTemplate, templateIndex));
+        });
+
+        tasks = tasks
+            // build the packages map's keys
+            .then(buildPackagesMapKeysTask)
+            // generate and complete the process - note that because packagesMapKeys is populated in an earlier task and the result is 
+            //   used to generate and add more tasks in this function, it is required that all subsequent tasks follow it in the chain.
+            //   Alternatively, I could have assigned the subsequent tasks to a different chain and then added that chain to the "tasks"
+            //   chain but that seemed harder to follow along with
+            .then(function() {            
+                return async_executeTask(
+                    function() {
+                        // create the packages and add them to the diagram
+                        packagesMapKeys.forEach(function (packageMapKey, entryIndex) {    
+                            tasks = tasks.then(getCreatePackageTask(packageMapKey, entryIndex));
+                        });
+                        // reformat the template folders diagram
+                        tasks = tasks.then(reformatTemplateFoldersDiagramTask);            
+                        // create the interfaces and add them to the diagram
+                        jsonTemplatesArray.forEach(function(jsonTemplate, templateIndex) {
+                            tasks = tasks.then(getCreateTemplateTask(jsonTemplate, templateIndex));
+                        });            
+                        // create the inheritance relationships for the interfaces
+                        jsonTemplatesArray.forEach(function (jsonTemplate, templateIndex) {
+                            tasks = tasks.then(getCreateInheritanceRelationshipsForTemplateTask(jsonTemplate, templateIndex));
+                        });
+                        tasks = tasks
+                            // perform final 
+                            .then(performFinalCleanupOperationsTask)
+                            // show the completion dialog
+                            .then(doCompleteTask);
+                    }
+                );
+            });
     };
 
     // generates the template diagrams and models from specified JSON file
