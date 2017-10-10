@@ -1,0 +1,23 @@
+.progress-bar {
+    text-align: right;
+}
+
+.progress-bar__container {
+    height: 21px; 
+    background-color: #2d2e30;     
+    border-top: 1px solid #27282a; 
+    border-left: 1px solid #27282a; 
+    border-bottom: 1px solid #454648; 
+    border-right: 1px solid #454648; 
+    border-radius: 4px;     
+    overflow: hidden; 
+    padding: 1px;
+}
+
+.progress-bar__container > .progress-bar__completed-progress {
+    display: inline-block; 
+    height: 100%;
+    background: linear-gradient(to right, rgb(199, 199, 199), rgb(240, 240, 240)); 
+    background-color: rgb(199, 199, 199); 
+    border-radius: 2px;
+}

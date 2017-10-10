@@ -25,11 +25,8 @@ define(function(require, exports, module) {
     function showOrUpdateDialogWithProgressBar(uniqueDialogCssClass, title, message, progressBar, buttons) {
         var percentComplete = parseInt(((progressBar.currentStep / progressBar.totalSteps) || 0) * 100);
 
-        var progressBarMarkup = "<div style=\"text-align: right;\"> " 
-            + percentComplete 
-            + "%</div><div class=\"progress-bar__container\" style=\"height: 21px; background-color: #2d2e30; border-top: 1px solid #27282a; border-left: 1px solid #27282a; border-bottom: 1px solid #454648; border-right: 1px solid #454648; border-radius: 4px; overflow: hidden; padding: 1px;\"><span style=\"display: inline-block; height: 100%; width: " 
-            + percentComplete 
-            + "%; background: linear-gradient(to right, rgb(199, 199, 199), rgb(240, 240, 240)); background-color: rgb(199, 199, 199); border-radius: 2px;\"></span></div>";
+        var progressBarMarkup = 
+            "<div class=\"progress-bar\">" + percentComplete + "%</div><div class=\"progress-bar__container\"><span style=\"width: " + percentComplete + "%;\"></span></div>";
         
         var bodyHtml = message + progressBarMarkup;
         return showOrUpdateDialog(uniqueDialogCssClass, title, bodyHtml, buttons);
