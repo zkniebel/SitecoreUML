@@ -291,6 +291,11 @@ define(function (require, exports, module) {
                         "<div>Template folders imported.</div><div>Template Folders Diagram generation complete.</div><div>Reformatting diagram layout...</div>");
                 }
             );
+        };        
+        
+        // helper function for parsing the extended template field properties that get added to the attributes' documentation
+        var getExtendedFieldInfoPropertyValue = function(value, defaultValue) {
+            return JSON.stringify(value !== undefined ? value : defaultValue);
         };
 
         // creates the template and adds it to the diagram
