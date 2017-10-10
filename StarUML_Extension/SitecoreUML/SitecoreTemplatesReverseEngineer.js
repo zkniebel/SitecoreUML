@@ -46,10 +46,9 @@ define(function(require, exports, module) {
 
             // report the number of retrieved templates to the log for debugging purposes
             var totalTemplates = jsonTemplates.length;
-            console.log("Successfully retrieved " + totalTemplates + " templates from Sitecore");
+            console.log("Successfully retrieved response from Sitecore");
 
             // display the initial progress dialog
-            console.log("Dialog should show");
             ProgressDialog_get().showOrUpdateDialog(
                 "dialog-progress__sitecoreuml--import", 
                 "Import Progress", 

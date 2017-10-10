@@ -13,7 +13,7 @@ define(function(require, exports, module) {
         message = "<div style=\"padding:10px 10px 20px 10px; height: 400px; width: 500px;\">" + message + "</div>";
 
         cancelDialogIfOpen(uniqueDialogCssClass);
-        Dialogs_get().showModalDialog(uniqueDialogCssClass, title, message, (buttons || []), false)
+        return Dialogs_get().showModalDialog(uniqueDialogCssClass, title, message, (buttons || []), false)
     };
     
     // creates and displays a new or updates the existing progress dialog with progress bar that has the specified uniqueDialogCssClass as its ID
@@ -32,7 +32,7 @@ define(function(require, exports, module) {
             + "%; background: linear-gradient(to right, rgb(199, 199, 199), rgb(240, 240, 240)); background-color: rgb(199, 199, 199); border-radius: 2px;\"></span></div>";
         
         var bodyHtml = message + progressBarMarkup;
-        showOrUpdateDialog(uniqueDialogCssClass, title, bodyHtml, buttons);
+        return showOrUpdateDialog(uniqueDialogCssClass, title, bodyHtml, buttons);
     }
 
     // cancels and closes the dialog with the specified uniqueDialogCssClass identifier, if one exists

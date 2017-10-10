@@ -105,6 +105,8 @@ define(function (require, exports, module) {
         var jsonTemplatesArray = JSON.parse(jsonTemplates);
         // total number fo templates for the progress dialogs
         var totalTemplates = jsonTemplatesArray.length;               
+
+        console.log("Importing " + totalTemplates + " Sitecore templates into StarUML");
         
         // map to hold the info for each of the packages (template folders)
         //   Structure by example:
@@ -439,8 +441,9 @@ define(function (require, exports, module) {
         // task to update the progress dialog to reflect completion
         var doCompleteTask = function() {
             return async_executeTask(
-                function() {                    
-                    ProgressDialog.showOrUpdateDialog(
+                function() {        
+                    var finishButtonClass = "btn-import-finish";            
+                    var finishDialog = ProgressDialog.showOrUpdateDialog(
                         progressDialogClassId, 
                         "Import Completed Successfully", 
                         "<p>Sitecore templates and template folders have been imported successfully. Diagram generation and reformatting complete.</p><p>Click \"Finish\" to close this dialog.</p>",
@@ -448,10 +451,15 @@ define(function (require, exports, module) {
                             { 
                                 id: Dialogs.DIALOG_BTN_CANCEL, 
                                 text: "Finish",
-                                className: ""
+                                className: finishButtonClass
                             }
                         ]
                     );
+                    
+                    // add the click handler for closing the window
+                    finishDialog.getElement().on("click.finishimport", "." + finishButtonClass, function() {
+                        finishDialog.close();
+                    });
                 }
             );
         };        
