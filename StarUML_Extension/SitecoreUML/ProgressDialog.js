@@ -57,6 +57,5 @@ define(function(require, exports, module) {
 
     exports.showOrUpdateDialog = showOrUpdateDialog;
     exports.showOrUpdateDialogWithProgressBar = showOrUpdateDialogWithProgressBar;
-    exports.updateDialogInPlace = updateDialogInPlace;
     exports.cancelDialogIfOpen = cancelDialogIfOpen;
 });
