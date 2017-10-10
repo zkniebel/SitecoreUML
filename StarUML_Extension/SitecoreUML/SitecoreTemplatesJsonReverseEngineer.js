@@ -448,7 +448,11 @@ define(function (require, exports, module) {
                     var finishDialog = ProgressDialog.showOrUpdateDialog(
                         progressDialogClassId, 
                         "Import Completed Successfully", 
-                        "<p>Sitecore templates and template folders have been imported successfully. Diagram generation and reformatting complete.</p><p>Click \"Finish\" to close this dialog.</p>",
+                        "<p>Sitecore templates and template folders have been imported successfully. Diagram generation and reformatting complete.</p>\
+                        <p><b>IMPORTANT:</b> Depending on the size of the imported architecture, it may take a few minutes for the Model Explorer to complete its background tasks. It is \
+                        common to experience some sluggishness or scrolling issues during this time. If this occurs, give the Model Explorer a few minutes and proper \
+                        functionality will be automatically restored.</p>\
+                        <p>Click \"Finish\" to close this dialog.</p>",
                         [
                             { 
                                 id: Dialogs.DIALOG_BTN_CANCEL, 
