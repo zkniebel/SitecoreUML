@@ -12,7 +12,7 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Shell.Framework.Commands
         public override void Execute(CommandContext context)
         {
             var outputFolderPath = SitecoreUMLConfiguration.ExportSaveFolder;
-            var outputDirectory = new DirectoryInfo(outputFolderPath);
+            var outputDirectory = new DirectoryInfo(outputFolderPath); 
 
             // if the export save folder path doesn't exist then terminate and show an error
             if (!outputDirectory.Exists)
