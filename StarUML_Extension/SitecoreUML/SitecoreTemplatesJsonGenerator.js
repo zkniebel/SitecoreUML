@@ -25,12 +25,20 @@ define(function(require, exports, module) {
                 fieldType, 
                 sortOrder,
                 title,
-                source) {
+                source,
+                standardValue,
+                shared,
+                unversioned,
+                sectionName) {
             this.Name = name;
             this.FieldType = fieldType;
             this.SortOrder = sortOrder;
             this.Title = title;
             this.Source = source;
+            this.StandardValue = standardValue;
+            this.Shared = shared;
+            this.Unversioned = unversioned;
+            this.SectionName = sectionName;
         };
         
         var SitecoreTemplate = function(
@@ -83,12 +91,30 @@ define(function(require, exports, module) {
         var inheritanceMap = [];
         // get an array of sitecore templates
         var sitecoreTemplates = umlInterfaces.map(function(umlInterface, index) {            
-            var fields = umlInterface.attributes.map(function(attribute, index) {      
-                // TODO: add title and source support
-                return new SitecoreTemplateField(
+            var fields = umlInterface.attributes.map(function(attribute, index) {  
+                var field = new SitecoreTemplateField(
                     attribute.name,
                     attribute.type,
                     index); 
+
+                if (!attribute.documentation) {
+                    return field;
+                }
+
+                try {
+                    var extendedInfo = undefined;
+                    eval("extendedInfo = " + attribute.documentation);
+                    field.Title = extendedInfo.Title;
+                    field.Source = extendedInfo.Source;
+                    field.Shared = extendedInfo.Shared || false; // by default, fields are not shared
+                    field.Unversioned = extendedInfo.Unversioned || false; // by default, fields are not shared
+                    field.SectionName = extendedInfo.SectionName;
+                    field.StandardValue = extendedInfo.StandardValue;
+                } catch (e) {
+                    console.error("Eval error occurred while trying to parse documentation for " + umlInterface.name + "::" + attribute.name, e);
+                }
+
+                return field;
             });
 
             // add inheriting templates to inheritance map
