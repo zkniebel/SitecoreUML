@@ -7,7 +7,7 @@ define(function(require, exports, module) {
     var MenuManager = app.getModule("menu/MenuManager");
 
     // the command ID for the sitecore menu
-    var CMD_SITECOREMENU = "sitecore"
+    var CMD_SITECOREMENU = "sitecore";
 
     // register the "Sitecore" menu command
     CommandManager.register("Sitecore", CMD_SITECOREMENU, CommandManager.doNothing);        

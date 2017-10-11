@@ -12,7 +12,7 @@ To create a diagram:
 4. Double-click the name of the diagram in the Model Explorer
 5. In the _Properties_ box, below the Model Explorer, update the _name_ field to the desired name of your diagram
 
-![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Diagrams-Add.png?raw=true)
+![](https://github.com/zkniebel/SitecoreUML/blob/master/Documentation/assets/StarUML-Diagrams-Add.png?raw=true)
 
 ## Diagram Sets
 
@@ -20,13 +20,13 @@ In SitecoreUML, all template architectures should include at least one set of tw
 
 It is recommended that there be one Templates Diagram and one Template Folders Diagram per Model element. This is referred to as a _Diagram Set_. To clarify, SitecoreUML does not require that you structure your project into Diagram Sets in order to function properly. However, it is the recommended practice, as following the recommendation will help you to keep your project's diagrams easier to read and organized, to avoid relationship and manipulation issues that could corrupt your project, and to enforce the restriction that there can be at most one parent per template.
 
-![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Diagrams-DiagramSet.png?raw=true)
+![](https://github.com/zkniebel/SitecoreUML/blob/master/Documentation/assets/StarUML-Diagrams-DiagramSet.png?raw=true)
 
 SitecoreUML allows for the creation of as many Diagram Sets for an architecture as desired. As will be discussed later, repeating folder paths will not create duplicate items when deploying. As such, the number of Diagram Sets in an architecture depends on the architect and the complexity of the architecture. When creating simpler architectures for smaller sites, I tend to avoid having multiple Diagram Sets, as it takes a bit more work to have them. In contrast, when working on larger or more complex architectures, I tend to create a separate Diagram Set per module. Having separate Diagram Sets per module also carries with it the advantage of helping to identify and avoid dependencies on templates in other modules during while creating the architecture.
 
-_Note that the architecture examples illustrated in the chapters of this book are simplified for easier consumption, and thus make use of only one Diagram Set. I intend to add examples of architectures with multiple Diagram Sets to the _[_Samples_](/Samples) _section, in the coming weeks. _
+_Note that the architecture examples illustrated in the chapters of this book are simplified for easier consumption, and thus make use of only one Diagram Set. I intend to add examples of architectures with multiple Diagram Sets to the _[_Samples_](/Samples) _section, in the coming weeks._
 
-_Note also that at present, SitecoreUML does not include options for deploying only one Diagram Set at a time. There is a feature task for adding support for deploying specific Diagram Sets added to the _[_Project Roadmap_](/chapter1.md). _It is slated for February, 2018, but may arrive sooner, depending on bandwidth. _
+_Note also that at present, SitecoreUML does not include options for deploying only one Diagram Set at a time. There is a feature task for adding support for deploying specific Diagram Sets added to the _[_Project Roadmap_](/chapter1.md). 
 
 ## Templates Diagrams
 

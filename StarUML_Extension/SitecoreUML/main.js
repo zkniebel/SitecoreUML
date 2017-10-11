@@ -31,4 +31,12 @@ define(function (require, exports, module) {
     // load the Sitecore connection test module and initialize it to add the menu item
     var SitecoreConnectionTest = require("SitecoreConnectionTest");
     SitecoreConnectionTest.initialize();
+
+    
+    var AppInit = app.getModule("utils/AppInit");
+    AppInit.htmlReady(function() {
+        var ExtensionUtils = app.getModule("utils/ExtensionUtils");
+
+        ExtensionUtils.loadStyleSheet(module, "Styles/ProgressDialog.css");
+    });
 });

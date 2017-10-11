@@ -16,18 +16,21 @@ define(function(require, exports, module) {
         // hold onto the current diagram so we can switch back to it when finished
         var currentDiagram = DiagramManager.getCurrentDiagram();
 
+        var reformatPromise;
         // if not on the specified diagram
         if (currentDiagram._id != diagram._id) {
             // switch to the specified diagram 
             DiagramManager.setCurrentDiagram(diagram);            
             // do the reformatting
-            CommandManager.execute("format.layout.auto");
+            reformatPromise = CommandManager.execute("format.layout.auto");
             // switch back to the original diagram
             DiagramManager.setCurrentDiagram(currentDiagram);
         } else { // already on the requested diagram, no need to switch         
             // do the reformatting
-            CommandManager.execute("format.layout.auto");
+            reformatPromise = CommandManager.execute("format.layout.auto");
         }
+
+        return reformatPromise;
     };
 
     exports.reformatDiagramLayout = reformatDiagramLayout;

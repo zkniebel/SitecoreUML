@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Sitecore;
 using Sitecore.ContentSearch.Maintenance;
 using Sitecore.Data;
 using Sitecore.Data.Items;
@@ -60,55 +61,108 @@ namespace ZacharyKniebel.Feature.SitecoreUML
                 {
                     // create the templates
                     foreach (var jsonTemplate in templates)
-                {
-                    // 1. make the full Sitecore path to the template
-                    var path = templateRoot.Paths.Path + jsonTemplate.Path;
-
-                    // if the path already exists then log a message and move onto the next template
-                    if (_database.GetItem(path) != null)
                     {
-                        Log.Warn($"SitecoreUML Import Warning: Item with path '{path}' skipped as an item with that path already exists", this);
-                        continue;
-                    }
+                        // 1. make the full Sitecore path to the template
+                        var path = templateRoot.Paths.Path + jsonTemplate.Path;
 
-                    // 2. add the template and its parent folders (if necessary)
-                    var templateItem = _database.CreateItemPath(path, templateFolderTemplate, templateTemplate);
-                    addedItemsCache.Add(jsonTemplate.Path, templateItem);
-
-                    // 3. add a field section to the new template
-                    var templateSectionItem = templateItem.Add(SitecoreUMLConfiguration.Instance.DefaultFieldSectionName, templateSectionTemplate);
-
-                    // 4. add the fields to the new template
-                    foreach (var jsonField in jsonTemplate.Fields)
-                    {
-                        // if the field type name/alias is not recognized then log a message and skip it
-                        if (!SitecoreUMLConfiguration.Instance.UmlFieldTypeAliases.ContainsKey(jsonField.FieldType))
+                        // if the path already exists then log a message and move onto the next template
+                        if (_database.GetItem(path) != null)
                         {
-                            Log.Warn($"SitecoreUML Import Warning: Field type name or alias {jsonField.FieldType} was not recognized. Field {jsonField.Name} will be skipped for template {jsonTemplate.Name}.", this);
+                            Log.Warn($"SitecoreUML Import Warning: Item with path '{path}' skipped as an item with that path already exists", this);
                             continue;
                         }
-                        // get the field type from the field type name/alias
-                        var fieldType = SitecoreUMLConfiguration.Instance.UmlFieldTypeAliases[jsonField.FieldType];
 
-                        // 4a. add the field
-                        var templateFieldItem =
-                            (TemplateFieldItem)templateSectionItem.Add(jsonField.Name, templateFieldTemplate);
+                        // 2. add the template and its parent folders (if necessary)
+                        var templateItem = _database.CreateItemPath(path, templateFolderTemplate, templateTemplate);
+                        addedItemsCache.Add(jsonTemplate.Path, templateItem);
 
-                        // 4b. update the field based on the imported data
-                        templateFieldItem.BeginEdit();
+                        // NOTE: adding the field section was moved into the add fields loop, due to the added support 
+                        //       for controlling field sections in UML documentation
+                        //// 3. add a field section to the new template 
+                        //var templateSectionItem = templateItem.Add(SitecoreUMLConfiguration.Instance.DefaultFieldSectionName, templateSectionTemplate);
+                        var addedTemplateSectionItems = new Dictionary<string, Item>();
 
-                        templateFieldItem.Sortorder = jsonField.SortOrder;
-                        templateFieldItem.Type = fieldType;
+                        // 4. add the fields to the new template
+                        var standardValuesToAdd = new List<Tuple<ID, string>>();
+                        foreach (var jsonField in jsonTemplate.Fields)
+                        {
+                            // if the field type name/alias is not recognized then log a message and skip it
+                            if (!SitecoreUMLConfiguration.Instance.UmlFieldTypeAliases.ContainsKey(jsonField.FieldType))
+                            {
+                                Log.Warn($"SitecoreUML Import Warning: Field type name or alias {jsonField.FieldType} was not recognized. Field {jsonField.Name} will be skipped for template {jsonTemplate.Name}.", this);
+                                continue;
+                            }
+                            // get the field type from the field type name/alias
+                            var fieldType = SitecoreUMLConfiguration.Instance.UmlFieldTypeAliases[jsonField.FieldType];
 
-                        templateFieldItem.EndEdit();
+                            // add/get the template section item
+                            Item templateSectionItem;
+                            var templateSectionName = !string.IsNullOrEmpty(jsonField.SectionName)
+                                ? jsonField.SectionName
+                                : SitecoreUMLConfiguration.Instance.DefaultFieldSectionName;
+
+                            if (addedTemplateSectionItems.ContainsKey(templateSectionName))
+                            {
+                                templateSectionItem = addedTemplateSectionItems[templateSectionName];
+                            }
+                            else
+                            {
+                                templateSectionItem = templateItem.Add(templateSectionName, templateSectionTemplate);
+                                addedTemplateSectionItems.Add(templateSectionName, templateSectionItem);
+                            }
+
+                            // add the field
+                            var templateFieldItem =
+                                (TemplateFieldItem)templateSectionItem.Add(jsonField.Name, templateFieldTemplate);
+
+                            // update the field based on the imported data
+                            templateFieldItem.BeginEdit();
+
+                            templateFieldItem.Sortorder = jsonField.SortOrder;
+                            templateFieldItem.Type = fieldType;
+                            templateFieldItem.Title = jsonField.Title;
+                            templateFieldItem.Source = jsonField.Source;
+
+                            if (jsonField.Shared)
+                            {
+                                templateFieldItem.InnerItem[TemplateFieldIDs.Shared] = "1";
+                            }
+                            if (jsonField.Unversioned)
+                            {
+                                templateFieldItem.InnerItem[TemplateFieldIDs.Unversioned] = "1";
+                            }
+
+                            templateFieldItem.EndEdit();
+
+                            // if set, add StandardValue to the list of those to be aded
+                            if (jsonField.StandardValue != null)
+                            {
+                                standardValuesToAdd.Add(
+                                    new Tuple<ID, string>(templateFieldItem.ID, jsonField.StandardValue));
+                            }
+                        }
+
+                        // 5. add the standard values item and set the values, if appropriate
+                        if (!standardValuesToAdd.Any())
+                        {
+                            continue;
+                        }
+
+                        var standardValuesItem = new TemplateItem(templateItem).CreateStandardValues();
+                        using (new EditContext(standardValuesItem))
+                        {
+                            foreach (var standardValueToAdd in standardValuesToAdd)
+                            {
+                                standardValuesItem[standardValueToAdd.Item1] = standardValueToAdd.Item2;
+                            }
+                        }
                     }
-                }
 
-                // get the Standard Template, which will be the default base template (only added if no other base templates)
-                var standardTemplate = _database.GetTemplate(Sitecore.TemplateIDs.StandardTemplate);
-                var standardTemplateIDStr = standardTemplate.ID.ToString();
+                    // get the Standard Template, which will be the default base template (only added if no other base templates)
+                    var standardTemplate = _database.GetTemplate(Sitecore.TemplateIDs.StandardTemplate);
+                    var standardTemplateIDStr = standardTemplate.ID.ToString();
 
-                // set the base templates
+                    // set the base templates
                     foreach (var jsonTemplate in templates)
                     {
                         Item item;
@@ -195,7 +249,12 @@ namespace ZacharyKniebel.Feature.SitecoreUML
                                                 SitecoreUMLConfiguration.Instance.FieldTypes.HasKey(templateFieldItem.Type)
                                                     ? SitecoreUMLConfiguration.Instance.FieldTypes.Forward[templateFieldItem.Type]
                                                     : templateFieldItem.Type, // field type wasn't in the map, so fall back to the Sitecore field type
-                                            SortOrder = templateFieldItem.Sortorder
+                                            SortOrder = templateFieldItem.Sortorder,
+                                            SectionName = templateFieldItem.Section.Name,
+                                            Title = templateFieldItem.InnerItem.Fields[TemplateFieldIDs.Title].GetValue(false, false, false, false),
+                                            Source = templateFieldItem.InnerItem.Fields[TemplateFieldIDs.Source].GetValue(false, false, false, false),
+                                            StandardValue = templateItem.StandardValues?.Fields[templateFieldItem.ID].GetValue(false, false, false, false),
+                                            Shared = templateFieldItem.IsShared
                                         })
                                 .ToArray()
                         });

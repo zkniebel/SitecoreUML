@@ -10,7 +10,7 @@ Whenever you add a template to your diagram and inspect the resulting element in
 
 Recall that a Containment represents the ownership of one element over another. This means that when we add a Containment, we are effectively adding a parent-child relationship. In the [Template Folders](/guide/template-folders.md) chapter, we discussed two ways to add a Containment, visually. Applying the material from that chapter, it should be logical that the scenario in the image below is valid and would work properly with SitecoreUML_ _\(note that this is an example for demonstrative purposes; SitecoreUML still recommends that you separate your templates and template folders\):
 
-![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-TreeHierarchy-OneDiagramWithHierarchy.png?raw=true)
+![](https://github.com/zkniebel/SitecoreUML/blob/master/Documentation/assets/StarUML-TreeHierarchy-OneDiagramWithHierarchy.png?raw=true)
 
 The above image depicts a \(Helix-compliant \*wink\*\) template hierarchy, in which the root folder, "Feature", contains a sub-folder, "Pages", that contains a template, "BasePage". If you look at the tree hierarchy depicted in the Model Explorer to the right, you can see that the "BasePage" template is correctly nested under the "Pages" folder, and so on.
 
@@ -18,7 +18,7 @@ The above image depicts a \(Helix-compliant \*wink\*\) template hierarchy, in wh
 
 In UML, a single entity can belong to an indeterminate number of _Packages_. This means that, as far as UML and StarUML are concerned, you could add Containments from a single template to as many template folders as you want. For example, see the image, below.
 
-![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-TreeHierarchy-MultipleContainments.png?raw=true)
+![](https://github.com/zkniebel/SitecoreUML/blob/master/Documentation/assets/StarUML-TreeHierarchy-MultipleContainments.png?raw=true)
 
 Obviously, this structure is untenable for Sitecore: a template cannot have multiple parent items. As such, when manually adding Containments and consolidating templates and template folders into a single diagram, be sure to not violate constraints like these.
 

@@ -2,7 +2,7 @@
 
 SitecoreUML ships with full UI support for storing Preferences in StarUML. You can view and edit SitecoreUML preferences, by navigating to _File_ &gt; _Preferences_ and selecting the "Sitecore" tab.
 
-![](https://github.com/zkniebel/SitecoreUML/blob/master/assets/StarUML-Preferences.png?raw=true)
+![](https://github.com/zkniebel/SitecoreUML/blob/master/Documentation/assets/StarUML-Preferences.png?raw=true)
 
 ## Supported Preferences
 
