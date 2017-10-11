@@ -22,6 +22,8 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Configuration
 
         // ReSharper disable once UnusedAutoPropertyAccessor.Local
         public string TemplatesRootPath { get; private set; }
+        
+        public List<string> TemplateExcludePaths { get; }
 
         // ReSharper disable once UnusedAutoPropertyAccessor.Local
         public string DefaultFieldSectionName { get; private set; }
@@ -49,6 +51,7 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Configuration
 
         public SitecoreUMLConfiguration()
         {
+            TemplateExcludePaths = new List<string>();
             FieldTypes = new Map<string, string>();
             UmlFieldTypeAliases = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         }

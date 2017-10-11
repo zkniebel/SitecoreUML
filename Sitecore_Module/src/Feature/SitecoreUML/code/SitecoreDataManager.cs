@@ -215,8 +215,20 @@ namespace ZacharyKniebel.Feature.SitecoreUML
             // get the root item to add the templates to
             var templateRoot = GetTemplateRoot();
 
+            const string defaultTemplatesRoot = "/sitecore/templates/";
+            var relativeExcludePaths = SitecoreUMLConfiguration.Instance.TemplateExcludePaths
+                .Select(
+                    excludePath =>
+                        excludePath.StartsWith(defaultTemplatesRoot)
+                            ? excludePath.Substring(defaultTemplatesRoot.Length)
+                            : excludePath);
+
             // get all of the template items that are children of the template root
             var templateItems = TemplateManager.GetTemplates(_database).Values
+                .Where(
+                    template => 
+                        !relativeExcludePaths
+                            .Any(excludePath => template.FullName.StartsWith(excludePath, StringComparison.OrdinalIgnoreCase)))
                 .Select(template => _database.GetTemplate(template.ID))
                 .Where(
                     templateItem =>
@@ -233,7 +245,9 @@ namespace ZacharyKniebel.Feature.SitecoreUML
                             BaseTemplates = templateItem.BaseTemplates
                                 .Where(
                                     baseTemplateItem =>
-                                        baseTemplateItem.InnerItem.Paths.Path.StartsWith(templateRoot.Paths.Path))
+                                        !SitecoreUMLConfiguration.Instance.TemplateExcludePaths
+                                            .Any(excludePath => baseTemplateItem.InnerItem.Paths.Path.StartsWith(excludePath, StringComparison.OrdinalIgnoreCase))
+                                        && baseTemplateItem.InnerItem.Paths.Path.StartsWith(templateRoot.Paths.Path))
                                 .Select(
                                     baseTemplateItem =>
                                         baseTemplateItem.InnerItem.Paths.Path.Substring(templateRoot.Paths.Path.Length))
