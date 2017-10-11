@@ -2,16 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Web;
 using Newtonsoft.Json;
-using Sitecore.ContentSearch.Maintenance;
 using Sitecore.Data;
-using Sitecore.Data.Events;
-using Sitecore.Data.Items;
-using Sitecore.Data.Managers;
-using Sitecore.Data.Proxies;
 using Sitecore.Diagnostics;
-using Sitecore.SecurityModel;
 using Sitecore.Shell.Framework.Commands;
 using ZacharyKniebel.Feature.SitecoreUML.Configuration;
 using ZacharyKniebel.Feature.SitecoreUML.Models;
@@ -24,7 +17,7 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Shell.Framework.Commands
 
         public override void Execute(CommandContext context)
         {
-            var inputFolderPath = SitecoreUMLConfiguration.Instance.ImportDropFolderPath;
+            var inputFolderPath = SitecoreUMLConfiguration.ImportDropFolder;
             var inputDirectory = new DirectoryInfo(inputFolderPath);
 
             // if the import file drop path doesn't exist then terminate and show an error
