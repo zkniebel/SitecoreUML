@@ -4,17 +4,22 @@
 <!-- Publisher of the software -->
 <?define Publisher="Zachary Kniebel" ?>
 <!-- Software version -->
-<?define Version="1.0.0" ?>
+<?define Version="1.1.0" ?>
+<!-- Guid value unique to each version (necessary for upgrades) -->
+<?define VersionGuid="219af740-6a6e-4584-acc1-c40063cd18f0" ?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"  xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
-	<Product Id="*"  Name="$(var.DisplayName)" Language="1033" Version="$(var.Version)" Manufacturer="$(var.Publisher)" UpgradeCode="9dfa20e8-e156-4227-b048-c059e633ab35">
+	<Product Id="*"  Name="$(var.DisplayName)" Language="1033" Version="$(var.Version)" Manufacturer="$(var.Publisher)" UpgradeCode="$(var.VersionGuid)">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perUser" />
     
-		<MajorUpgrade DowngradeErrorMessage="A newer version of the [ProductName] is already installed." />
-		<MediaTemplate />
+		<MajorUpgrade
+		  Schedule="afterInstallFinalize"
+      DowngradeErrorMessage="A newer version of the [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes" />
 
 		<Feature Id="StarUML.Extension" Title="StarUML Extension" Level="1">
 			<ComponentGroupRef Id="StarUML.Extension.Modules" />
-		  <ComponentGroupRef Id="StarUML.Extension.Templates" />
+      <ComponentGroupRef Id="StarUML.Extension.Templates" />
+		  <ComponentGroupRef Id="StarUML.Extension.Styles" />
 		</Feature>
 
     <UIRef Id="WixUI_Minimal" />
@@ -32,6 +37,7 @@
           <Directory Id="extensions" Name="extensions">
             <Directory Id="user" Name="user">
               <Directory Id="INSTALLFOLDER" Name="SitecoreUML">
+                <Directory Id="SitecoreUML.ProjectStylesFolder" Name="Styles" />
                 <Directory Id="SitecoreUML.ProjectTemplatesFolder" Name="Templates" />
               </Directory>
             </Directory>
@@ -47,10 +53,14 @@
 		    <RemoveFile Id="Remove_DiagramUtils" Name="DiagramUtils.js" On="both" />
 		    <File Source="..\..\StarUML_Extension\SitecoreUML\DiagramUtils.js" KeyPath="yes" Vital="yes" />
 		  </Component>
-      <Component Id="Modules.Main" Permanent="no" NeverOverwrite="no">
-        <RemoveFile Id="Remove_Main" Name="Main.js" On="both" />
-        <File Source="..\..\StarUML_Extension\SitecoreUML\Main.js" KeyPath="yes" Vital="yes" />
-      </Component>
+		  <Component Id="Modules.Main" Permanent="no" NeverOverwrite="no">
+		    <RemoveFile Id="Remove_Main" Name="Main.js" On="both" />
+		    <File Source="..\..\StarUML_Extension\SitecoreUML\Main.js" KeyPath="yes" Vital="yes" />
+		  </Component>
+		  <Component Id="Modules.ProgressDialog" Permanent="no" NeverOverwrite="no">
+		    <RemoveFile Id="Remove_ProgressDialog" Name="ProgressDialog.js" On="both" />
+		    <File Source="..\..\StarUML_Extension\SitecoreUML\ProgressDialog.js" KeyPath="yes" Vital="yes" />
+		  </Component>
 		  <Component Id="Modules.SitecoreConnectionTest" Permanent="no" NeverOverwrite="no"> 
 		    <RemoveFile Id="Remove_SitecoreConnectionTest" Name="SitecoreConnectionTest.js" On="both" />
 		    <File Source="..\..\StarUML_Extension\SitecoreUML\SitecoreConnectionTest.js" KeyPath="yes" Vital="yes" />
@@ -104,6 +114,12 @@
       </Component>
     </ComponentGroup>
 
+	  <ComponentGroup Id="StarUML.Extension.Styles" Directory="SitecoreUML.ProjectStylesFolder">
+	    <Component Id="Styles.ProgressDialog" Permanent="no" NeverOverwrite="no">
+	      <RemoveFile Id="Remove_ProgressStyles" Name="ProgressDialog.css" On="both" />
+	      <File Source="..\..\StarUML_Extension\SitecoreUML\Styles\ProgressDialog.css" KeyPath="yes" Vital="yes" />
+	    </Component>
+	  </ComponentGroup>
 
   </Fragment>
 </Wix>
