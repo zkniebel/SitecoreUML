@@ -32,9 +32,9 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Configuration
         // ReSharper disable once UnusedAutoPropertyAccessor.Local
         public bool DisableIndexingDuringImport { get; private set; }
 
-        public static string ImportDropFolder => Sitecore.Configuration.Settings.GetSetting("ImportDropFolder");
-        public static string ImportHistoryFolder => Sitecore.Configuration.Settings.GetSetting("ImportHistoryFolder");
-        public static string ExportSaveFolder => Sitecore.Configuration.Settings.GetSetting("ExportSaveFolder");
+        public static string ImportDropFolder => Sitecore.Configuration.Settings.GetSetting("SitecoreUML.JsonTools.ImportDropFolder");
+        public static string ImportHistoryFolder => Sitecore.Configuration.Settings.GetSetting("SitecoreUML.JsonTools.ImportHistoryFolder");
+        public static string ExportSaveFolder => Sitecore.Configuration.Settings.GetSetting("SitecoreUML.JsonTools.ExportSaveFolder");
 
         // TODO: with the introduction of aliases, this can be changed to a dictionary for better performance, since 2-way lookups are no longer necessary
         /// <summary>
