@@ -27,6 +27,11 @@ define(function(require, exports, module) {
             }
             
             Dialogs.showAlertDialog("Connection successful!");
+        })
+        .fail(function(jqxhr, statusText, error) {
+            var errorObject = { statusText: statusText, error: error, jqxhr: jqxhr };
+            console.error("Connection Test Failed:", errorObject);
+            Dialogs.showErrorDialog("<h3>Connection Test Failed!</h3><p>Check that the <b>Sitecore URL</b> setting in <i>File</i> &rarr; <i>Preferences</i> &rarr; <i>Sitecore</i> is pointing at your instance.</p><p>See the DevTools console for more details.</p>");
         });
     }
     
