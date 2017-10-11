@@ -47,8 +47,12 @@ Listed under each version is the set of tasks, features and enhancements that sh
   * [x] Support for setting if the field is Unversioned
   * [x] Support for setting the field section name
 * [x] Adds visual progress dialog to be displayed during imports
+* [x] Updates file-path based config elements to settings that leverage the `$(dataFolder)` variable
+* [x] Adds template exclude paths to SitecoreUML.config \(paths to exclude when data is being imported into StarUML
 * [x] Documentation
   * [x] Extended Field Info
+  * [ ] Path configuration settings
+  * [ ] Template Exclude paths
 
 ### Version 1.2 \(~ November 2017\)
 
@@ -58,7 +62,6 @@ Listed under each version is the set of tasks, features and enhancements that sh
   * [ ] Adds validation of Extended Field Info syntax
 * [ ] Moves folder paths in Sitecore config files to settings to enable use of Sitecore variables
 * [ ] Refactor out broken lazy-initialization of module variables in JavaScript
-* [ ] Adds template exclude paths to SitecoreUML.config \(paths to exclude when data is being imported into StarUML\)
 * [ ] Documentation
   * [ ] Export as Html Docs
   * [ ] Print to PDF
