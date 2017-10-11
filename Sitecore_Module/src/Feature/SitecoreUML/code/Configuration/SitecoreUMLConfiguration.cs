@@ -22,6 +22,8 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Configuration
 
         // ReSharper disable once UnusedAutoPropertyAccessor.Local
         public string TemplatesRootPath { get; private set; }
+        
+        public List<string> TemplateExcludePaths { get; }
 
         // ReSharper disable once UnusedAutoPropertyAccessor.Local
         public string DefaultFieldSectionName { get; private set; }
@@ -32,9 +34,9 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Configuration
         // ReSharper disable once UnusedAutoPropertyAccessor.Local
         public bool DisableIndexingDuringImport { get; private set; }
 
-        public static string ImportDropFolder => Sitecore.Configuration.Settings.GetSetting("ImportDropFolder");
-        public static string ImportHistoryFolder => Sitecore.Configuration.Settings.GetSetting("ImportHistoryFolder");
-        public static string ExportSaveFolder => Sitecore.Configuration.Settings.GetSetting("ExportSaveFolder");
+        public static string ImportDropFolder => Sitecore.Configuration.Settings.GetSetting("SitecoreUML.JsonTools.ImportDropFolder");
+        public static string ImportHistoryFolder => Sitecore.Configuration.Settings.GetSetting("SitecoreUML.JsonTools.ImportHistoryFolder");
+        public static string ExportSaveFolder => Sitecore.Configuration.Settings.GetSetting("SitecoreUML.JsonTools.ExportSaveFolder");
 
         // TODO: with the introduction of aliases, this can be changed to a dictionary for better performance, since 2-way lookups are no longer necessary
         /// <summary>
@@ -49,6 +51,7 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Configuration
 
         public SitecoreUMLConfiguration()
         {
+            TemplateExcludePaths = new List<string>();
             FieldTypes = new Map<string, string>();
             UmlFieldTypeAliases = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         }
