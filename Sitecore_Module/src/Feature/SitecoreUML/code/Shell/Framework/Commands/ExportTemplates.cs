@@ -1,25 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Web;
 using Newtonsoft.Json;
-using Sitecore.Data;
-using Sitecore.Data.Managers;
 using Sitecore.Diagnostics;
 using Sitecore.Shell.Framework.Commands;
 using ZacharyKniebel.Feature.SitecoreUML.Configuration;
-using ZacharyKniebel.Feature.SitecoreUML.Models;
 
 namespace ZacharyKniebel.Feature.SitecoreUML.Shell.Framework.Commands
 {
     public class ExportTemplates : Command
     {
-        private readonly Database _database = SitecoreUMLConfiguration.Instance.TargetDatabase;
-
         public override void Execute(CommandContext context)
         {
-            var outputFolderPath = SitecoreUMLConfiguration.Instance.ExportSaveFolderPath;
+            var outputFolderPath = SitecoreUMLConfiguration.ExportSaveFolder;
             var outputDirectory = new DirectoryInfo(outputFolderPath);
 
             // if the export save folder path doesn't exist then terminate and show an error
