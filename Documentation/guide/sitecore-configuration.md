@@ -70,7 +70,7 @@ Description:** Path to the root item that contains all templates to be imported 
 **Default:** `Data`  
 **Description:** Field section name to be created by default on all imported templates
 
-#### `importDropFolderPath` \(&lt1.1.1\)
+#### `importDropFolderPath` \(&lt;1.1.1\)
 
 **DEPRECATED: See **[**SitecoreUML.JsonTools.ImportDropFolder \(v1.1.1+\)**](#sitecoreumljsontoolsimportdropfolder-v111)
 
@@ -78,7 +78,7 @@ Description:** Path to the root item that contains all templates to be imported 
 **Default:** `C:/inetpub/wwwroot/SitecoreUML/Data/SitecoreUML/Import`**  
 Description:** Path to the folder where serialized template data to be imported into Sitecore should be stored. Note that this setting is only necessary if intending to manually \(i.e. not from StarUML\) import template data from serialized JSON, using SitecoreUML's [JSON tools](/guide/json-tools.md)
 
-#### `importHistoryFolderPath` \(&lt1.1.1\)
+#### `importHistoryFolderPath` \(&lt;1.1.1\)
 
 **DEPRECATED: See **[**SitecoreUML.JsonTools.ImportHistoryFolder \(v1.1.1+\)**](#sitecoreumljsontoolsimporthistoryfolder-v111)
 
@@ -98,7 +98,7 @@ Description:** Determines whether or not import data files should be archived af
 **Default:** `true`**  
 Description:** Controls whether or not indexing should be disabled during import. It is recommended that this be set to `true` for sake of performance during the import
 
-#### `exportSaveFolderPath` \(&lt1.1.1\)
+#### `exportSaveFolderPath` \(&lt;1.1.1\)
 
 **DEPRECATED: See **[**SitecoreUML.JsonTools.ExportSaveFolder \(v1.1.1+\)**](#sitecoreumljsontoolsexportsavefolder-v111)
 
