@@ -61,8 +61,7 @@ Description:** Paths to be ignored when templates are exported from Sitecore
 
 * Paths should be full Sitecore path
 * Path and descendants are excluded from templates in export
-* Path and descendants are also excluded from the exported
-* templates' base templates
+* Path and descendants are excluded from the exported templates' base templates
 
 #### `defaultFieldSectionName`
 
