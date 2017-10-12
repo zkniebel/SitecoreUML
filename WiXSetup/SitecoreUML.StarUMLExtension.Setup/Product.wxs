@@ -4,9 +4,9 @@
 <!-- Publisher of the software -->
 <?define Publisher="Zachary Kniebel" ?>
 <!-- Software version -->
-<?define Version="1.1.1" ?>
+<?define Version="1.1.3" ?>
 <!-- Guid value unique to each version (necessary for upgrades) -->
-<?define VersionGuid="3213b597-4c87-4dea-9316-87d76fb4ec3c" ?>
+<?define VersionGuid="785873ef-4898-4226-9616-cc4d1c3e7c61" ?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"  xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
 	<Product Id="*"  Name="$(var.DisplayName)" Language="1033" Version="$(var.Version)" Manufacturer="$(var.Publisher)" UpgradeCode="$(var.VersionGuid)">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perUser" />
