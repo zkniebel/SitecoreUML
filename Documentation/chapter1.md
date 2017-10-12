@@ -2,7 +2,7 @@
 
 This page lists the project's upcoming features and serves as high-level release notes.
 
-Listed under each version is the set of tasks, features and enhancements that are planned/were completed for a particular version. Note that completed tasks may not have been completed for the initial release of the version. For example a feature listed under version 1.0 might have been added in version 1.0.3. In **Version 1.2+**, each note will be labeled with the patch version that it is included in, e.g. _Version 1.2.1_. 
+Listed under each version is the set of tasks, features and enhancements that are \(to be\) completed for a particular version. Note that completed tasks may not have been completed for the initial release of the version. For example a feature listed under version 1.0 might have been added in version 1.0.3. Starting with version **Version 1.2.0**, each item will be labeled with the patch version that it is included in, e.g. _Version 1.2.1_.
 
 Please note that the roadmap is tentative and subject to change.
 
