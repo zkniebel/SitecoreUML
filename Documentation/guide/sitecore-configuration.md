@@ -53,19 +53,34 @@ Description:** The name of the database to import data into and export data from
 **Default:** `master`**  
 Description:** Path to the root item that contains all templates to be imported or exported. All template paths in UML diagrams will be relative to
 
+#### `templateExcludePaths`
+
+**Type:** List  
+**ChildNode:** `<exclude>`**  
+Description:** Paths to be ignored when templates are exported from Sitecore
+
+* Paths should be full Sitecore path
+* Path and descendants are excluded from templates in export
+* Path and descendants are also excluded from the exported
+* templates' base templates
+
 #### `defaultFieldSectionName`
 
 **Type:** string  
 **Default:** `Data`**  
 Description:** Field section name to be created by default on all imported templates
 
-#### `importDropFolderPath` \(changed to `SitecoreUML.JsonTools.ImportDropFolder` setting in v1.1.1\)
+#### `importDropFolderPath` \(&lt;1.1.1\)
+
+**DEPRECATED: See **[**SitecoreUML.JsonTools.ImportDropFolder \(v1.1.1+\)**](#sitecoreumljsontoolsimportdropfolder-v111)
 
 **Type:** string  
 **Default:** `C:/inetpub/wwwroot/SitecoreUML/Data/SitecoreUML/Import`**  
 Description:** Path to the folder where serialized template data to be imported into Sitecore should be stored. Note that this setting is only necessary if intending to manually \(i.e. not from StarUML\) import template data from serialized JSON, using SitecoreUML's [JSON tools](/guide/json-tools.md)
 
-#### `importHistoryFolderPath` \(changed to `SitecoreUML.JsonTools.ImportHistoryFolder` setting in v1.1.1\)
+#### `importHistoryFolderPath` \(&lt;1.1.1\)
+
+**DEPRECATED: See **[**SitecoreUML.JsonTools.ImportHistoryFolder \(v1.1.1+\)**](#sitecoreumljsontoolsimporthistoryfolder-v111)
 
 **Type:** string  
 **Default:** `C:/inetpub/wwwroot/SitecoreUML/ImportHistory`**  
@@ -83,7 +98,9 @@ Description:** Determines whether or not import data files should be archived af
 **Default:** `true`**  
 Description:** Controls whether or not indexing should be disabled during import. It is recommended that this be set to `true` for sake of performance during the import
 
-#### `exportSaveFolderPath` \(changed to `SitecoreUML.JsonTools.ExportSaveFolder` setting in v1.1.1\)
+#### `exportSaveFolderPath` \(&lt;1.1.1\)
+
+**DEPRECATED: See **[**SitecoreUML.JsonTools.ExportSaveFolder \(v1.1.1+\)**](#sitecoreumljsontoolsexportsavefolder-v111)
 
 **Type:** string  
 **Default:** `C:/inetpub/wwwroot/SitecoreUML/Data/SitecoreUML/Export`**  
