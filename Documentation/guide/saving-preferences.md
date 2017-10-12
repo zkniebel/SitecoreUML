@@ -2,7 +2,7 @@
 
 SitecoreUML ships with full UI support for storing Preferences in StarUML. You can view and edit SitecoreUML preferences, by navigating to _File_ &gt; _Preferences_ and selecting the "Sitecore" tab.
 
-![](https://github.com/zkniebel/SitecoreUML/blob/master/Documentation/assets/StarUML-Preferences.png?raw=true)\(Image displays version 1.0\)
+![](https://github.com/zkniebel/SitecoreUML/blob/master/Documentation/assets/StarUML-Preferences.png?raw=true)_\(Displayed image reflects Version 1.0.0\)_
 
 ## Supported Preferences
 
@@ -21,7 +21,7 @@ The Sitecore URL setting is the most important setting for SitecoreUML deploymen
 
 ### Default Diagram Format
 
-SitecoreUML version 1.1.3 adds support for controlling the default format of diagrams generated from imported template data, via the _Default Diagram Format_ drop-down. By default, the value is set to "Left to Right", as this tends to be the most printer and export-friendly format. Note that the available options map to the settings that are available by navigating to _Format_ -&gt; _Layout_ in the toolbar.
+SitecoreUML **Version 1.1.3** adds support for controlling the default format of diagrams generated from imported template data, via the _Default Diagram Format_ drop-down. By default, the value is set to "Left to Right", as this tends to be the most printer and export-friendly format. Note that the available options map to the settings that are available by navigating to _Format_ -&gt; _Layout_ in the toolbar.
 
 ### Route Settings
 
