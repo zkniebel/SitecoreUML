@@ -13,8 +13,7 @@ define(function (require, exports, module) {
         _dialogs: undefined,
         _modelExplorerView: undefined,
         _stringUtils: undefined,
-        _diagramUtils: undefined,
-        _sitecorePreferencesLoader: undefined
+        _diagramUtils: undefined
     };
 
     // lazy-loaded StarUML modules
@@ -28,19 +27,16 @@ define(function (require, exports, module) {
     // lazy-loaded custom modules
     var StringUtils = _backingFields._stringUtils || (_backingFields._stringUtils = require("StringUtils"));
     var DiagramUtils = _backingFields._diagramUtils || (_backingFields._diagramUtils = require("DiagramUtils"));
-    var SitecorePreferencesLoader_get = function() { return _backingFields._sitecorePreferencesLoader || (_backingFields._sitecorePreferencesLoader = require("SitecorePreferencesLoader")); };
 
     // eagerly-loaded (make lazy later)
     var ProgressDialog = require("ProgressDialog"); 
 
+
+
+
     // progress dialog constants
     var progressDialogClassId = "dialog-progress__sitecoreuml--import";
     var progressDialogTitle = "Import Progress";
-
-    // get the default diagram format for generated diagrams
-    function getDefaultImportDiagramFormat() { 
-        return SitecorePreferencesLoader_get().getSitecoreImportDefaultDiagramFormat(); 
-    };
     
     // gets the import progress message that should be displayed
     function getImportProgressMessage(actionLabel, path, index, total, type) {
@@ -286,7 +282,7 @@ define(function (require, exports, module) {
         // task for reformatting the template folders diagram to be legible
         var reformatTemplateFoldersDiagramTask = function() {
             return async_executeTask(
-                function() { DiagramUtils.reformatDiagramLayout(templateFoldersDiagram, getDefaultImportDiagramFormat()); },
+                function() { DiagramUtils.reformatDiagramLayout(templateFoldersDiagram); },
                 function() { 
                     // update the progress dialog      
                     ProgressDialog.showOrUpdateDialog(
@@ -436,7 +432,7 @@ define(function (require, exports, module) {
             return async_executeTask(
                 function() {       
                     // reformat the templates diagram to be legible
-                    DiagramUtils.reformatDiagramLayout(templatesDiagram, getDefaultImportDiagramFormat());
+                    DiagramUtils.reformatDiagramLayout(templatesDiagram);
 
                     // setting to a local variable for a negligable performance increase
                     var ModelExplorerView = ModelExplorerView_get();
