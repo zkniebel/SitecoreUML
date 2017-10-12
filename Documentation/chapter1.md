@@ -25,7 +25,7 @@ Please note that the roadmap is tentative and subject to change.
 * [x] Adds support for UML field type mapping aliases \(optional abbreviated names mapping to Sitecore field type names\)
 * [x] Adds field type name validation feature
 
-### Version 1.0 \(2017.10.07 - Current\)
+### Version 1.0
 
 * [x] Adds SitecoreUML project templates to StarUML with required diagrams automatically added
   * [x] Blank Project
@@ -39,7 +39,7 @@ Please note that the roadmap is tentative and subject to change.
   * [x] Connection test
   * [x] Installation \(updated for MSI installer\)
 
-### Version 1.1 \(~ Mid-October 2017\)
+### Version 1.1 \(2017.10.10 - Current\)
 
 * [x] Enhanced support for granular control over fields from UML \(extended field info\)
   * [x] Support for setting the "Title" of a template field
