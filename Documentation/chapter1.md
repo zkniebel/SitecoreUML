@@ -1,8 +1,10 @@
 # Project Roadmap
 
-This page lists the project's upcoming features, phases and milestones.
+This page lists the project's upcoming features and serves as high-level release notes.
 
-Listed under each version is the set of tasks, features and enhancements that should be completed for and included in the release of the version. Please note that the roadmap is tentative and subject to change.
+Listed under each version is the set of tasks, features and enhancements that are planned/were completed for a particular version. Note that completed tasks may not have been completed for the initial release of the version. For example a feature listed under version 1.0 might have been added in version 1.0.3. In **Version 1.2+**, each note will be labeled with the patch version that it is included in, e.g. _Version 1.2.1_. 
+
+Please note that the roadmap is tentative and subject to change.
 
 ### Version alpha
 
@@ -49,10 +51,13 @@ Listed under each version is the set of tasks, features and enhancements that sh
 * [x] Adds visual progress dialog to be displayed during imports
 * [x] Updates file-path based config elements to settings that leverage the `$(dataFolder)` variable
 * [x] Adds template exclude paths to SitecoreUML.config \(paths to exclude when data is being imported into StarUML
+* [x] Adds support for controlling default diagram formatting for diagrams generated from imported data via Preferences
+* [x] Moves folder paths in Sitecore config files to settings to enable use of Sitecore variables
 * [x] Documentation
   * [x] Extended Field Info
   * [x] Path configuration settings
   * [x] Template Exclude paths
+  * [x] Import Diagram Formatting Preference
 
 ### Version 1.2 \(~ November 2017\)
 
@@ -60,7 +65,6 @@ Listed under each version is the set of tasks, features and enhancements that sh
 * [ ] Validation updates
   * [ ] Adds field section names to validation
   * [ ] Adds validation of Extended Field Info syntax
-* [ ] Moves folder paths in Sitecore config files to settings to enable use of Sitecore variables
 * [ ] Refactor out broken lazy-initialization of module variables in JavaScript
 * [ ] Documentation
   * [ ] Export as Html Docs
@@ -92,4 +96,6 @@ Listed under each version is the set of tasks, features and enhancements that sh
 
 * Azure infrastructure provisioning support
 * AWS infrastructure provisioning support
+
+
 
