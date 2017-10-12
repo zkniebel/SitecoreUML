@@ -52,7 +52,7 @@ Listed under each version is the set of tasks, features and enhancements that sh
 * [x] Documentation
   * [x] Extended Field Info
   * [x] Path configuration settings
-  * [ ] Template Exclude paths
+  * [x] Template Exclude paths
 
 ### Version 1.2 \(~ November 2017\)
 
