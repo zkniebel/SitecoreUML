@@ -51,7 +51,7 @@ Listed under each version is the set of tasks, features and enhancements that sh
 * [x] Adds template exclude paths to SitecoreUML.config \(paths to exclude when data is being imported into StarUML
 * [x] Documentation
   * [x] Extended Field Info
-  * [ ] Path configuration settings
+  * [x] Path configuration settings
   * [ ] Template Exclude paths
 
 ### Version 1.2 \(~ November 2017\)
@@ -92,6 +92,4 @@ Listed under each version is the set of tasks, features and enhancements that sh
 
 * Azure infrastructure provisioning support
 * AWS infrastructure provisioning support
-
-
 

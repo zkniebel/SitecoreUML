@@ -53,10 +53,17 @@ Description:** The name of the database to import data into and export data from
 **Default:** `master`**  
 Description:** Path to the root item that contains all templates to be imported or exported. All template paths in UML diagrams will be relative to
 
-#### `templateExcludePaths`
+#### `templateExcludePaths` \(v1.1.2+\)
 
 **Type:** List  
-**ChildNode:** `<exclude>`**  
+**ChildNode:** `<exclude>`  
+**Default:  
+**`   <exclude>/sitecore/templates/Branches</exclude>  
+    <exclude>/sitecore/templates/Common</exclude>  
+    <exclude>/sitecore/templates/List Manager</exclude>  
+    <exclude>/sitecore/templates/Sample</exclude>  
+    <exclude>/sitecore/templates/System</exclude>  
+    <exclude>/sitecore/templates/Web Forms for Marketers</exclude>`**  
 Description:** Paths to be ignored when templates are exported from Sitecore
 
 * Paths should be full Sitecore path
