@@ -12,7 +12,7 @@
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perUser" />
     
 		<MajorUpgrade
-		  Schedule="afterInstallFinalize"
+		  Schedule="afterInstallValidate"
       DowngradeErrorMessage="A newer version of the [ProductName] is already installed." />
 		<MediaTemplate EmbedCab="yes" />
 
