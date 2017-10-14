@@ -1,6 +1,10 @@
 define(function (require, exports, module) {
     "use strict";
 
+    // load the module overrides 
+    var ModuleOverridesLoader = require("ModuleOverridesLoader");
+    ModuleOverridesLoader.initialize();
+
     // load the Sitecore preferences
     var SitecorePreferencesLoader = require("SitecorePreferencesLoader");
 
