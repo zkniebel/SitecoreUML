@@ -77,6 +77,7 @@ Please note that the roadmap is tentative and subject to change.
   * Falls back to the _/sitecore/templates_ folder 
   * Optional _exclusions_ configuration to define templates and paths to be excluded
 * Updates the deployment to run validation and give the option to cancel the deployment if errors are detected
+* Integrate Validation feature with StarUML's real-time validation features
 * Adds "Add diagram set" command
 * Documentation
   * Add Diagram Set command
