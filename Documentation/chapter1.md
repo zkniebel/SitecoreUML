@@ -65,8 +65,6 @@ Please note that the roadmap is tentative and subject to change.
 * [ ] Validation updates
   * [x] Adds field section names to validation
   * [ ] Adds validation of Extended Field Info syntax
-* ~~Refactor out broken lazy-initialization of module variables in JavaScript ~~ 
-  This will instead be fixed progressively as each existing module is updated
 * [ ] Documentation
   * [ ] Export as Html Docs
   * [ ] Print to PDF
