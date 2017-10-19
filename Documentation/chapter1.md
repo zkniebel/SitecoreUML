@@ -64,7 +64,7 @@ Please note that the roadmap is tentative and subject to change.
 * [ ] Adds support for setting the default field section name in preferences, leaving the one in the Sitecore configuration to be a required backup value
 * [x] Adds support for dashes in Quick Edits for attribute type names **\(1.2.0\)**
 * [ ] Changes Extended Field Info to be controlled by a custom Editor Panel instead of JavaScript object **\(1.2.0\)**
-* [ ] Sets the default value of each field's Documentation to display the field attribute values
+* [ ] Sets the default value of each field's Documentation to display the field attribute values **\(1.2.0\)**
 * [ ] Validation updates
   * [x] Adds field section names to validation **\(1.2.0\)**
   * [ ] Adds validation of Extended Field Info syntax
@@ -72,7 +72,7 @@ Please note that the roadmap is tentative and subject to change.
   * [ ] Export as Html Docs
   * [ ] Print to PDF
   * [ ] Validation updates
-  * [ ] Sitecore Field Editor
+  * [ ] Sitecore Field Editor **\(1.2.0\)**
   * [ ] Attribute type name dash support - fixes StarUML bug **\(1.2.0\)**
 
 ### Version 1.3 \(~ December 2018\)
