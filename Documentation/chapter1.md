@@ -63,7 +63,7 @@ Please note that the roadmap is tentative and subject to change.
 
 * [ ] Adds support for setting the default field section name in preferences, leaving the one in the Sitecore configuration to be a required backup value
 * [ ] Validation updates
-  * [ ] Adds field section names to validation
+  * [x] Adds field section names to validation
   * [ ] Adds validation of Extended Field Info syntax
 * [ ] Refactor out broken lazy-initialization of module variables in JavaScript
 * [ ] Documentation
