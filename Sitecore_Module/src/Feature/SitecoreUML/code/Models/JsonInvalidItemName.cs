@@ -14,5 +14,7 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Models
 
         [JsonConverter(typeof(StringEnumConverter))]
         public ItemType ItemType { get; set; }
+
+        public string TemplatePath { get; set; }
     }
 }

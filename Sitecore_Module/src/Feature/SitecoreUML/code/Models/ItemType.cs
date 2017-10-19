@@ -10,6 +10,7 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Models
         Unspecified,
         Template,
         TemplateField,
+        TemplateFieldSection,
         TemplateFolder
     }
 }
