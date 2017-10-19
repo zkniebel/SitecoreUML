@@ -64,7 +64,7 @@ Please note that the roadmap is tentative and subject to change.
 * [ ] Adds support for setting the default field section name in preferences, leaving the one in the Sitecore configuration to be a required backup value
 * [x] Adds support for dashes in Quick Edits for attribute type names **\(1.2.0\)**
 * [x] Changes Extended Field Info to be controlled by a custom Editor Panel instead of JavaScript object **\(1.2.0\)**
-* [ ] Adds support for setting the default value of documentation to the title field's value.
+* [ ] Sets the default value of each field's Documentation to display all of its field attribute values
 * [ ] Validation updates
   * [x] Adds field section names to validation **\(1.2.0\)**
   * [ ] Adds validation of Extended Field Info syntax
