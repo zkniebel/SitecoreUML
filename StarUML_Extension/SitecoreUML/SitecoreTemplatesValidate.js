@@ -34,7 +34,7 @@ define(function(require, exports, module) {
     function getInvalidItemNamesHtml(jsonInvalidItemNames) {
         var resultList = "<ol>";
         jsonInvalidItemNames.forEach(function(entry) {
-            resultList += "<li><b>" + entry.ItemName + "</b> &nbsp; <i>(" + entry.ItemType + ")</i></li>";
+            resultList += "<li><b>" + entry.ItemName + "</b> &nbsp; <i>(" + entry.ItemType + (entry.TemplatePath ? " - " + entry.TemplatePath : "") + ")</i></li>";
         });
         resultList += "</ol>";
         
