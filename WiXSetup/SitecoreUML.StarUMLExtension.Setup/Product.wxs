@@ -22,7 +22,7 @@
 		  <ComponentGroupRef Id="StarUML.Extension.Styles" />
 		  <ComponentGroupRef Id="StarUML.Extension.Grammars" />
 		  <ComponentGroupRef Id="StarUML.Extension.HtmlContent" />
-		  <ComponentGroupRef Id="StarUML.Extension.Overrides" />
+		  <ComponentGroupRef Id="StarUML.Extension.ModuleExtenders" />
 		</Feature>
 
     <UIRef Id="WixUI_Minimal" />
@@ -40,10 +40,10 @@
           <Directory Id="extensions" Name="extensions">
             <Directory Id="user" Name="user">
               <Directory Id="INSTALLFOLDER" Name="SitecoreUML">
-                <Directory Id="SitecoreUML.ProjectGrammarsFolder" Name="Grammars" />
-                <Directory Id="SitecoreUML.ProjectHtmlContentFolder" Name="HtmlContent" />
-                <Directory Id="SitecoreUML.ProjectOverridesFolder" Name="Overrides" />
-                <Directory Id="SitecoreUML.ProjectStylesFolder" Name="Styles" />
+                <Directory Id="SitecoreUML.GrammarsFolder" Name="Grammars" />
+                <Directory Id="SitecoreUML.HtmlContentFolder" Name="HtmlContent" />
+                <Directory Id="SitecoreUML.ModuleExtendersFolder" Name="ModuleExtenders" />
+                <Directory Id="SitecoreUML.StylesFolder" Name="Styles" />
                 <Directory Id="SitecoreUML.ProjectTemplatesFolder" Name="Templates" />
               </Directory>
             </Directory>
@@ -62,6 +62,10 @@
 		  <Component Id="Modules.Main" Permanent="no" NeverOverwrite="no">
 		    <RemoveFile Id="Remove_MainModule" Name="Main.js" On="both" />
 		    <File Source="..\..\StarUML_Extension\SitecoreUML\Main.js" KeyPath="yes" Vital="yes" />
+		  </Component>
+		  <Component Id="Modules.ModuleExtendersLoader" Permanent="no" NeverOverwrite="no">
+		    <RemoveFile Id="Remove_ModuleExtendersLoaderModule" Name="ModuleExtendersLoader.js" On="both" />
+		    <File Source="..\..\StarUML_Extension\SitecoreUML\ModuleExtendersLoader.js" KeyPath="yes" Vital="yes" />
 		  </Component>
 		  <Component Id="Modules.ProgressDialog" Permanent="no" NeverOverwrite="no">
 		    <RemoveFile Id="Remove_ProgressDialogModule" Name="ProgressDialog.js" On="both" />
@@ -124,31 +128,31 @@
       </Component>
     </ComponentGroup>
 
-	  <ComponentGroup Id="StarUML.Extension.Styles" Directory="SitecoreUML.ProjectStylesFolder">
+	  <ComponentGroup Id="StarUML.Extension.Styles" Directory="SitecoreUML.StylesFolder">
 	    <Component Id="Styles.ProgressDialog" Permanent="no" NeverOverwrite="no">
 	      <RemoveFile Id="Remove_ProgressStyles" Name="ProgressDialog.css" On="both" />
 	      <File Source="..\..\StarUML_Extension\SitecoreUML\Styles\ProgressDialog.css" KeyPath="yes" Vital="yes" />
 	    </Component>
 	  </ComponentGroup>
 
-	  <ComponentGroup Id="StarUML.Extension.Grammars" Directory="SitecoreUML.ProjectGrammarsFolder">
+	  <ComponentGroup Id="StarUML.Extension.Grammars" Directory="SitecoreUML.GrammarsFolder">
 	    <Component Id="Grammars.UMLAttribute" Permanent="no" NeverOverwrite="no">
 	      <RemoveFile Id="Remove_UMLAttributeGrammar" Name="uml-attribute.pegjs" On="both" />
 	      <File Source="..\..\StarUML_Extension\SitecoreUML\Grammars\uml-attribute.pegjs" KeyPath="yes" Vital="yes" />
 	    </Component>
 	  </ComponentGroup>
 
-	  <ComponentGroup Id="StarUML.Extension.HtmlContent" Directory="SitecoreUML.ProjectHtmlContentFolder">
+	  <ComponentGroup Id="StarUML.Extension.HtmlContent" Directory="SitecoreUML.HtmlContentFolder">
 	    <Component Id="HtmlContent.SitecoreFieldEditorView" Permanent="no" NeverOverwrite="no">
 	      <RemoveFile Id="Remove_SitecoreFieldEditorViewHtmlContent" Name="Sitecore-Field-Editor-View.html" On="both" />
 	      <File Source="..\..\StarUML_Extension\SitecoreUML\HtmlContent\Sitecore-Field-Editor-View.html" KeyPath="yes" Vital="yes" />
 	    </Component>
 	  </ComponentGroup>
 
-	  <ComponentGroup Id="StarUML.Extension.Overrides" Directory="SitecoreUML.ProjectOverridesFolder">
-	    <Component Id="Overrides.UMLUtils" Permanent="no" NeverOverwrite="no">
-	      <RemoveFile Id="Remove_UMLUtilsOverride" Name="UMLUtils.js" On="both" />
-	      <File Source="..\..\StarUML_Extension\SitecoreUML\Overrides\uml\UMLUtils.js" KeyPath="yes" Vital="yes" />
+	  <ComponentGroup Id="StarUML.Extension.ModuleExtenders" Directory="SitecoreUML.ModuleExtendersFolder">
+	    <Component Id="ModuleExtenders.UMLUtils" Permanent="no" NeverOverwrite="no">
+	      <RemoveFile Id="Remove_UMLUtilsModuleExtender" Name="UMLUtils.js" On="both" />
+	      <File Source="..\..\StarUML_Extension\SitecoreUML\ModuleExtenders\uml\UMLUtils.js" KeyPath="yes" Vital="yes" />
 	    </Component>
 	  </ComponentGroup>
 

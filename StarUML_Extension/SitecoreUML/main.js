@@ -1,11 +1,12 @@
 define(function (require, exports, module) {
     "use strict";
 
+    // load in the Sitecore Field Editor view
     var SitecoreFieldEditorView = require("SitecoreFieldEditorView");
 
-    // load the module overrides 
-    var ModuleOverridesLoader = require("ModuleOverridesLoader");
-    ModuleOverridesLoader.initialize();
+    // load the module extenders 
+    var ModuleExtendersLoader = require("ModuleExtendersLoader");
+    ModuleExtendersLoader.initialize();
 
     // load the Sitecore preferences
     var SitecorePreferencesLoader = require("SitecorePreferencesLoader");
