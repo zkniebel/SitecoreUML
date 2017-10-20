@@ -1,6 +1,6 @@
 # Project Roadmap
 
-This page lists the project's upcoming features and serves as high-level release notes.
+This page lists the project's upcoming features and serves as high-level release notes. See the [latest version](#version-12-20171020---current).
 
 Listed under each version is the set of tasks, features and enhancements that are \(to be\) completed for a particular version. Note that completed tasks may not have been completed for the initial release of the version. For example a feature listed under version 1.0 might have been added in version 1.0.3. Starting with version **Version 1.2.0**, each item will be labeled with the patch version that it is included in, e.g. _Version 1.2.1_.
 
@@ -39,7 +39,7 @@ Please note that the roadmap is tentative and subject to change.
   * [x] Connection test
   * [x] Installation \(updated for MSI installer\)
 
-### Version 1.1 \(2017.10.10 - Current\)
+### Version 1.1
 
 * [x] Enhanced support for granular control over fields from UML \(extended field info\)
   * [x] Support for setting the "Title" of a template field
@@ -59,20 +59,25 @@ Please note that the roadmap is tentative and subject to change.
   * [x] Template Exclude paths
   * [x] Import Diagram Formatting Preference
 
-### Version 1.2 \(~ November 2017\)
+### Version 1.2 \(2017.10.20 - Current\)
 
-* [ ] Adds support for setting the default field section name in preferences, leaving the one in the Sitecore configuration to be a required backup value
-* [ ] Validation updates
-  * [ ] Adds field section names to validation
-  * [ ] Adds validation of Extended Field Info syntax
-* [ ] Refactor out broken lazy-initialization of module variables in JavaScript
+* [x] Adds support for dashes in Quick Edits for attribute type names **\(1.2.0\)**
+* [x] Replaces Documentation field-based implementation of Extended Field Info with the Sitecore Field Editor **\(1.2.0\)**
+  * [x] Updates the content of the Documentation field to be more human-readable **\(1.2.0\)**
+  * [x] Adds auto-generation of Documentation based on Sitecore Field Editor-managed values **\(1.2.0\)**
+  * [x] Adds support for controlling whether or not Documentation is auto-generated via a Sitecore Field Editor setting **\(1.2.0\)**
+* [x] Validation updates
+  * [x] Adds field section names to validation **\(1.2.0\)**
 * [ ] Documentation
   * [ ] Export as Html Docs
   * [ ] Print to PDF
-  * [ ] Validation updates
+  * [x] Field section name validation **\(1.2.0\)**
+  * [x] Sitecore Field Editor **\(1.2.0\)**
+  * [x] Attribute type name dash support - fixes StarUML bug **\(1.2.0\)**
 
 ### Version 1.3 \(~ December 2018\)
 
+* Adds support for setting the default field section name in preferences, leaving the one in the Sitecore configuration to be a required backup value
 * Makes the _TemplateRoot_ setting optional
   * Falls back to the _/sitecore/templates_ folder 
   * Optional _exclusions_ configuration to define templates and paths to be excluded
@@ -81,7 +86,7 @@ Please note that the roadmap is tentative and subject to change.
 * Documentation
   * Add Diagram Set command
   * Developer Setup
-* * Tutorials
+  * Tutorials
   * Samples
   * Glossary
 

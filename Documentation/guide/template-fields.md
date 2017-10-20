@@ -45,7 +45,9 @@ The type-name separator is just that: a character \(`:`\) that separates the att
 
 Technically speaking, the `Type` isn't actually required in UML and you _could_ skip putting it in altogether. However, this won't work with SitecoreUML, which won't be able to map your field to a Sitecore type when you go to deploy your architecture. Any fields that have types that SitecoreUML is unable to map \(including no type at all\), will be skipped during deployment and a warning will be added to the log for it.
 
-Keep in mind that UML is not actually a type-safe language, in that there are no checks to ensure that you have specified a real type or not. As such, the `Type` of your attribute can include pretty much any character \(spaces, dashes, etc. are all allowed\). In the [Sitecore Config Files](/guide/sitecore-configuration.md), there is a mapping from the field type name in Sitecore to the field type name in UML. The purpose of this feature is to allow architects to further accelerate their architecture tasks by allowing them to set custom names for field types. For example, if Sitecore's`Single-Line Text` field was set to map to the UML type `SLT` then any field that the architect sets to `SLT` in their UML will become a `Single-Line Text` field when deployed to Sitecore.
+Keep in mind that UML is not actually a type-safe language, in that there are no checks to ensure that you have specified a real type or not. To that end, it should also be noted that the `Type` of your attribute can have pretty much any characters, including  spaces, dashes, etc. However, if looking to use dashes in field type names then it is advised that you use SitecoreUML **Version 1.2.0+**, as version 1.2.0 introduces a fix for a known bug in StarUML \(one that the StarUML team has decided not to fix\) that prevents using dashes in type names when editing directly on the diagram, itself \(Quick Edits\). If you are using an earlier version of SitecoreUML \(&lt;1.2.0\), then to edit the type names you will have to click the attribute and change the `type` value, found in the _Properties Editor_, under the Model Explorer.
+
+In the [Sitecore Config Files](/guide/sitecore-configuration.md), there is a mapping from the field type name in Sitecore to the field type name in UML. The purpose of this feature is to allow architects to further accelerate their architecture tasks by allowing them to set custom names for field types. For example, if Sitecore's`Single-Line Text` field was set to map to the UML type `SLT` then any field that the architect sets to `SLT` in their UML will become a `Single-Line Text` field when deployed to Sitecore.
 
 _Note: the current version of SitecoreUML ships with a map that has UML field types that are slightly different from Sitecore's field type names, in that all spaces and punctuation have been removed. The original idea was that this would help architects enter their field types faster, but has proven to be confusing, based on feedback. The map will be updated to list the default Sitecore field type names before the release of the next version. You can still change the out-of-the-box values to make them simpler and quicker to type, at will \(e.g. _`Single-Line Text`_ -&gt; _`SLT`_ \)._
 
@@ -58,6 +60,8 @@ The following are just a few examples of valid attribute text:
 +BrowserTitle : SingleLineText
 +Navigation Title  :SingleLineNext
 +Search-Result-Image:Image
++SearchResultTitle: Single-Line Text
++Search_Result_Text: Rich Text
 ```
 
 ## Adding a Template Field

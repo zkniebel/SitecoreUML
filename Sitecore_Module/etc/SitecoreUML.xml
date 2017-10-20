@@ -3,21 +3,9 @@
     <metadata>
       <PackageName>SitecoreUML</PackageName>
       <Author>Zachary Kniebel</Author>
-      <Version>1.0.0</Version>
+      <Version>1.2.0</Version>
       <Revision />
-      <License />
-      <Comment />
-      <Attributes />
-      <Readme>---------------------------------------------
-INSTALLATION INSTRUCTIONS
----------------------------------------------
-Refer to the installation instructions in the documentation for the latest:
-https://zkniebel.gitbooks.io/sitecoreuml/getting-started/setup-and-insta.html
-
----------------------------------------------
-LICENSE
----------------------------------------------
-MIT License
+      <License>MIT License
 
 Copyright (c) 2017 Zachary Kniebel
 
@@ -37,7 +25,13 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.</Readme>
+SOFTWARE.
+      </License>
+      <Comment />
+      <Attributes />
+      <Readme>Refer to the installation instructions in the documentation to get started:
+https://zkniebel.gitbooks.io/sitecoreuml/getting-started/setup-and-insta.html
+      </Readme>
       <Publisher>Zachary Kniebel</Publisher>
       <PostStep />
       <PackageID />

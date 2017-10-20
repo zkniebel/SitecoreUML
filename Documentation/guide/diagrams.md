@@ -26,7 +26,7 @@ SitecoreUML allows for the creation of as many Diagram Sets for an architecture 
 
 _Note that the architecture examples illustrated in the chapters of this book are simplified for easier consumption, and thus make use of only one Diagram Set. I intend to add examples of architectures with multiple Diagram Sets to the _[_Samples_](/Samples) _section, in the coming weeks._
 
-_Note also that at present, SitecoreUML does not include options for deploying only one Diagram Set at a time. There is a feature task for adding support for deploying specific Diagram Sets added to the _[_Project Roadmap_](/chapter1.md). 
+_Note also that at present, SitecoreUML does not include options for deploying only one Diagram Set at a time. There is a feature task for adding support for deploying specific Diagram Sets added to the _[_Project Roadmap_](/chapter1.md).
 
 ## Templates Diagrams
 
@@ -48,5 +48,7 @@ As with the Templates Diagram, while SitecoreUML does not require your Templates
 
 ## Views
 
-Recall from the last chapter, [Projects](/guide/creating-a-project.md), that Models are not Diagrams, and that diagrams are visualizations of a Model. Similarly, _Views_ are visual representations of a model element; a symbol or other graphic that represents an entity of the model. If a diagram is blank and has nothing on it, then there are no views on it. If a diagram has two elements connected by an arrow symbolizing a relationship, then there are three views on the diagram: one for each connected element, and one of the arrow that connects them.
+Recall from the last chapter, [Projects](/guide/creating-a-project.md), that Models are not Diagrams, and that diagrams are visualizations of a Model. Similarly, _Views_ are visual representations of a model element; a symbol or other graphic that represents an entity of the model. 
+
+If a diagram is blank and has nothing on it, then there are no views on it. If a diagram has two elements connected by an arrow symbolizing a relationship, then there are three views on the diagram: one for each connected element, and one of the arrow that connects them.
 

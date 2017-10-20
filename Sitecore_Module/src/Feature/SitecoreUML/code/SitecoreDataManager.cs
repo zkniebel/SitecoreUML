@@ -328,7 +328,8 @@ namespace ZacharyKniebel.Feature.SitecoreUML
                             .Select((name, i) => new JsonInvalidItemName()
                             {
                                 ItemName = name,
-                                ItemType = i == 0 ? ItemType.Template : ItemType.TemplateFolder
+                                ItemType = i == 0 ? ItemType.Template : ItemType.TemplateFolder,
+                                TemplatePath = i == 0 ? template.Path : null
                             })
                             // add in the models for the template field items
                             .Concat(
@@ -336,7 +337,18 @@ namespace ZacharyKniebel.Feature.SitecoreUML
                                     .Select(field => new JsonInvalidItemName()
                                     {
                                         ItemName = field.Name,
-                                        ItemType = ItemType.TemplateField
+                                        ItemType = ItemType.TemplateField,
+                                        TemplatePath = template.Path
+                                    }))
+                            // add in the models for the template field section items
+                            .Concat(
+                                template.Fields
+                                    .Where(field => !string.IsNullOrEmpty(field.SectionName))
+                                    .Select(field => new JsonInvalidItemName()
+                                    {
+                                        ItemName = field.SectionName,
+                                        ItemType = ItemType.TemplateFieldSection,
+                                        TemplatePath = template.Path
                                     })));
             
             // get the list of models with invalid item names
