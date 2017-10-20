@@ -66,11 +66,10 @@ Please note that the roadmap is tentative and subject to change.
 * [x] Updates the content of the Documentation field to be more human-readable **\(1.2.0\)**
 * [ ] Validation updates
   * [x] Adds field section names to validation **\(1.2.0\)**
-  * [ ] Adds validation of the extended field info in the Sitecore Field Editor
 * [ ] Documentation
   * [ ] Export as Html Docs
   * [ ] Print to PDF
-  * [ ] Validation updates
+  * [ ] Field section name validation **\(1.2.0\)**
   * [ ] Sitecore Field Editor **\(1.2.0\)**
   * [ ] Attribute type name dash support - fixes StarUML bug **\(1.2.0\)**
 
@@ -100,4 +99,6 @@ Please note that the roadmap is tentative and subject to change.
 
 * Azure infrastructure provisioning support
 * AWS infrastructure provisioning support
+
+
 
