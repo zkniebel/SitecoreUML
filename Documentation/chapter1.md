@@ -1,6 +1,6 @@
 # Project Roadmap
 
-This page lists the project's upcoming features and serves as high-level release notes.
+This page lists the project's upcoming features and serves as high-level release notes. See the [latest version](#version-12-20171020---current).
 
 Listed under each version is the set of tasks, features and enhancements that are \(to be\) completed for a particular version. Note that completed tasks may not have been completed for the initial release of the version. For example a feature listed under version 1.0 might have been added in version 1.0.3. Starting with version **Version 1.2.0**, each item will be labeled with the patch version that it is included in, e.g. _Version 1.2.1_.
 
@@ -39,7 +39,7 @@ Please note that the roadmap is tentative and subject to change.
   * [x] Connection test
   * [x] Installation \(updated for MSI installer\)
 
-### Version 1.1 \(2017.10.10 - Current\)
+### Version 1.1
 
 * [x] Enhanced support for granular control over fields from UML \(extended field info\)
   * [x] Support for setting the "Title" of a template field
@@ -59,7 +59,7 @@ Please note that the roadmap is tentative and subject to change.
   * [x] Template Exclude paths
   * [x] Import Diagram Formatting Preference
 
-### Version 1.2 \(~ November 2017\)
+### Version 1.2 \(2017.10.20 - Current\)
 
 * [x] Adds support for dashes in Quick Edits for attribute type names **\(1.2.0\)**
 * [x] Replaces Documentation field-based implementation of Extended Field Info with the Sitecore Field Editor **\(1.2.0\)**
