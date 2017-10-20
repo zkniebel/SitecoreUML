@@ -64,12 +64,12 @@ Please note that the roadmap is tentative and subject to change.
 * [x] Adds support for dashes in Quick Edits for attribute type names **\(1.2.0\)**
 * [x] Replaces Documentation field-based implementation of Extended Field Info with the Sitecore Field Editor **\(1.2.0\)**
 * [x] Updates the content of the Documentation field to be more human-readable **\(1.2.0\)**
-* [ ] Validation updates
+* [x] Validation updates
   * [x] Adds field section names to validation **\(1.2.0\)**
 * [ ] Documentation
   * [ ] Export as Html Docs
   * [ ] Print to PDF
-  * [ ] Field section name validation **\(1.2.0\)**
+  * [x] Field section name validation **\(1.2.0\)**
   * [ ] Sitecore Field Editor **\(1.2.0\)**
   * [x] Attribute type name dash support - fixes StarUML bug **\(1.2.0\)**
 
@@ -99,6 +99,4 @@ Please note that the roadmap is tentative and subject to change.
 
 * Azure infrastructure provisioning support
 * AWS infrastructure provisioning support
-
-
 
