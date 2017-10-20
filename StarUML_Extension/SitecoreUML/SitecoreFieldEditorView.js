@@ -21,6 +21,7 @@ define(function (require, exports, module) {
     var input_unversioned_id = "#sitecoreField_Unversioned";
     var input_sectionName_id = "#sitecoreField_SectionName";
     var input_standardValue_id = "#sitecoreField_StandardValue";
+    var input_autoDocument_id = "#sitecoreField_Documentation";
 
     var fieldAttributes = [ 
         { name: "Title", kind: "string", default: null },
@@ -31,6 +32,18 @@ define(function (require, exports, module) {
         { name: "StandardValue", kind: "string", default: null }
     ];
 
+    var defaultInputValues = {};
+    // populate the default input values for the field attributes
+    fieldAttributes.forEach(function(fieldAttr) {
+        defaultInputValues[fieldAttr.name] = 
+            fieldAttr.default === null 
+                ? "" // so that 'null' doesn't display in the input
+                : fieldAttr.default;
+    });
+    // add the default input value for the Documentation input
+    defaultInputValues["Documentation"] = true;
+
+    // sets the input to the value that already exists for the attribute of the field 
     function _setExistingValueForInput($input, attributeEle, name) {        
         var existing = undefined;
         for (var i = 0; i < attributeEle.ownedElements.length; i++) {
@@ -41,14 +54,14 @@ define(function (require, exports, module) {
             }
         }
 
+        var value = existing !== undefined ? existing.value : defaultInputValues[name];
+
         // intentionally using attr here to avoid caching
         var kind = $input.attr("data-kind");
         if (kind == "string") {
-            var value = existing ? existing.value : "";
             $input.val(value);
         } else if (kind == "boolean") {
-            var isChecked = existing !== undefined && existing.value;
-            $input.prop("checked", isChecked);
+            $input.prop("checked", value);
         }
     };
 
@@ -64,6 +77,7 @@ define(function (require, exports, module) {
             _setExistingValueForInput($(input_shared_id), _attributeElement, "Shared");
             _setExistingValueForInput($(input_unversioned_id), _attributeElement, "Unversioned");
             _setExistingValueForInput($(input_standardValue_id), _attributeElement, "StandardValue");
+            _setExistingValueForInput($(input_autoDocument_id), _attributeElement, "Documentation");
         } else {
             $view.hide();
             _attributeElement = null;
@@ -173,8 +187,11 @@ define(function (require, exports, module) {
                 attributeEle.ownedElements.push(tag);
             }
               
-            // update the documentation html
-            updateAttributeDocumentation(attributeEle);
+            // auto-update the documentation, if checked
+            var $input_autoDocument = $(input_autoDocument_id);
+            if ($input_autoDocument.is(":checked")) {
+                updateAttributeDocumentation(attributeEle);
+            }
         } catch (err) {
             console.error(err);
         }
