@@ -71,7 +71,7 @@ Please note that the roadmap is tentative and subject to change.
   * [ ] Print to PDF
   * [ ] Field section name validation **\(1.2.0\)**
   * [ ] Sitecore Field Editor **\(1.2.0\)**
-  * [ ] Attribute type name dash support - fixes StarUML bug **\(1.2.0\)**
+  * [x] Attribute type name dash support - fixes StarUML bug **\(1.2.0\)**
 
 ### Version 1.3 \(~ December 2018\)
 
