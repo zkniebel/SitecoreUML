@@ -8,6 +8,7 @@ define(function (require, exports, module) {
     var Repository = app.getModule("core/Repository");
     var ProjectManager = app.getModule("engine/ProjectManager");
     var SelectionManager = app.getModule("engine/SelectionManager");
+    var Engine = app.getModule("engine/Engine");
 
     var viewTemplate = require("text!htmlContent/Sitecore-Field-Editor-View.html");
 
@@ -20,6 +21,15 @@ define(function (require, exports, module) {
     var input_unversioned_id = "#sitecoreField_Unversioned";
     var input_sectionName_id = "#sitecoreField_SectionName";
     var input_standardValue_id = "#sitecoreField_StandardValue";
+
+    var fieldAttributes = [ 
+        { name: "Title", kind: "string", default: null },
+        { name: "Section Name", kind: "string", default: null },
+        { name: "Source", kind: "string", default: null },
+        { name: "Shared", kind: "boolean", default: false },
+        { name: "Unversioned", kind: "boolean", default: false },
+        { name: "Standard Value", kind: "string", default: null }
+    ];
 
     function _setExistingValueForInput($input, attributeEle, name) {        
         var existing = undefined;
@@ -95,6 +105,34 @@ define(function (require, exports, module) {
         });
     };
 
+    function getFieldAttributeDocumentation(attributeEle) {
+        var fieldAttributeMap = {};        
+        attributeEle.ownedElements.forEach(function(element) {
+            if (element instanceof type.Tag) {
+                fieldAttributeMap[element.name] = element.value;
+            }
+        });
+        var docString = "";
+        var numFieldAttributes = fieldAttributes.length;
+        fieldAttributes.forEach(function(fieldAttribute, i) {
+            var value = fieldAttributeMap[fieldAttribute.name];
+            if (value === undefined || value === "") {
+                value = fieldAttribute.default;
+            }
+            docString += fieldAttribute.name + ": " + JSON.stringify(value);
+            if (numFieldAttributes > i + 1) {                
+                docString += ",\n";  
+            }              
+        });
+
+        return docString;
+    };
+
+    function updateDocumentationHtml(attributeEle) {
+        var docString = getFieldAttributeDocumentation(attributeEle);
+        Engine.setProperty(attributeEle, "documentation", docString);
+    };
+
     function _handleViewChangeForInput($input, attributeEle, name) {
         try {  
             var existing = undefined;
@@ -108,16 +146,10 @@ define(function (require, exports, module) {
                 }
             }
 
-            var documentationDefaultValue = undefined;
-
             if (existing) {
                 if (existing.kind == "string") {
                     var value = $input.val();
                     existing.value = value;
-                    
-                    if (name == "Title") {
-                        documentationDefaultValue = value;
-                    }
                 } else if (existing.kind == "boolean") {
                     existing.value = $input.is(":checked");
                 }
@@ -128,10 +160,6 @@ define(function (require, exports, module) {
                 var kind = $input.attr("data-kind");
                 if (kind == "string") {
                     value = $input.val();
-
-                    if (name == "Title") {
-                        documentationDefaultValue = value;
-                    }
                 } else if (kind == "boolean") {
                     value = $input.is(":checked");
                 }
@@ -145,15 +173,8 @@ define(function (require, exports, module) {
                 attributeEle.ownedElements.push(tag);
             }
               
-            // if applicable, set the default documentation text
-            if (documentationDefaultValue !== undefined) {
-                var $documentation = $("#documentation");
-                var documentation = $documentation.val().trim();
-                if (documentation == "") {
-                    $documentation.val(documentationDefaultValue);
-                    $documentation.trigger("change");
-                }
-            }  
+            // update the documentation html
+            updateDocumentationHtml(attributeEle);
         } catch (err) {
             console.error(err);
         }
