@@ -10,7 +10,7 @@ define(function(require, exports, module) {
     var FileUtils_get = function() { return _fileUtils || (_fileUtils = app.getModule("file/FileUtils")); }; 
 
 
-    function applyOverrides(entry, basePath) {        
+    function applyExtensions(entry, basePath) {        
         var getPath = function(name) {
             return basePath ? basePath + "/" + name : name;
         };
@@ -23,39 +23,34 @@ define(function(require, exports, module) {
             }
 
             var path = getPath(entryName);
-            doOverride(path, "Overrides/" + path);
+            doExtend(path, "ModuleExtenders/" + path);
         } else {
             var path = getPath(entry.name);
             entry.getContents(function (err, children) {
-                children.forEach(function (child) { applyOverrides(child, path); });
+                children.forEach(function (child) { applyExtensions(child, path); });
             });
         }
     };  
 
-    function doOverride(target, overrideName) {
-        console.log("Overriding \"" + target + "\" with \"" + overrideName + "\"");
+    function doExtend(target, extenderName) {
+        console.log("Extending \"" + target + "\" with \"" + extenderName + "\"");
 
-        // get the native StarUML module to override
-        var targetModule = app.getModule(target);
-
-        // get the custom override module
-        require([overrideName], function(override) {
-            // perform the override
-            $.extend(targetModule, override);
-            console.log("Target:", targetModule);
+        // get the custom extend module
+        require([extenderName], function(extender) {            
+            extender.doExtend();
         });
     };
 
-    // NOTE: all Module Overrides must have the same name and be at the same relative path as the StarUML module they override
+    // NOTE: all Module Extenders must have the same name and be at the same relative path as the StarUML module they extend
     exports.initialize = function() {
         // get the root path
         var rootPath = ExtensionUtils.getModulePath(module);
-        // get the overrides directory        
-        var overridesDirectory = FileSystem.getDirectoryForPath(rootPath + "Overrides");
+        // get the extenders directory        
+        var extendersDirectory = FileSystem.getDirectoryForPath(rootPath + "ModuleExtenders");
         
-        // for each of the contents of the overrides directory, add the file descendants to the overrides
-        overridesDirectory.getContents(function (err, children) {
-            children.forEach(function(child) { applyOverrides(child); });
+        // for each of the contents of the extenders directory, add the file descendants to the extenders
+        extendersDirectory.getContents(function (err, children) {
+            children.forEach(function(child) { applyExtensions(child); });
         });      
     };
 });

@@ -15,4 +15,14 @@ define(function(require, exports, module) {
     };
 
     exports.parseAttributeExpression = parseAttributeExpression;
+    exports.doExtend = function() {        
+        // ensure that the dependency is loaded
+        var UMLUtils = app.getModule("uml/UMLUtils");
+        
+        // perform the extend
+        $.extend(UMLUtils, exports);
+
+        // cleanup so that the doExtend function isn't availabile on the extended module
+        UMLUtils.doExtend = undefined;
+    }
 });
