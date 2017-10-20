@@ -97,21 +97,22 @@ define(function(require, exports, module) {
                     attribute.type,
                     index); 
 
-                if (!attribute.documentation) {
-                    return field;
-                }
-
                 try {
-                    var extendedInfo = undefined;
-                    eval("extendedInfo = " + attribute.documentation);
-                    field.Title = extendedInfo.Title;
-                    field.Source = extendedInfo.Source;
-                    field.Shared = extendedInfo.Shared || false; // by default, fields are not shared
-                    field.Unversioned = extendedInfo.Unversioned || false; // by default, fields are not shared
-                    field.SectionName = extendedInfo.SectionName;
-                    field.StandardValue = extendedInfo.StandardValue;
+                    var fieldAttributeMap = {};        
+                    attribute.ownedElements.forEach(function(element) {
+                        if (element instanceof type.Tag) {
+                            fieldAttributeMap[element.name] = element.value;
+                        }
+                    });
+
+                    field.Title = fieldAttributeMap["Title"] || null;
+                    field.Source = fieldAttributeMap["Source"] || null;
+                    field.Shared = fieldAttributeMap["Shared"] || false; // by default, fields are not shared
+                    field.Unversioned = fieldAttributeMap["Unversioned"] || false; // by default, fields are not shared
+                    field.SectionName = fieldAttributeMap["SectionName"];
+                    field.StandardValue = fieldAttributeMap["StandardValue"];
                 } catch (e) {
-                    console.error("Eval error occurred while trying to parse documentation for " + umlInterface.name + "::" + attribute.name, e);
+                    console.error("Eval error occurred while trying to retrieve the extended field info for " + umlInterface.name + "::" + attribute.name, e);
                 }
 
                 return field;

@@ -374,8 +374,8 @@ define(function (require, exports, module) {
                     
                 createFieldAttributeTag(attributeEle, "Title", "string", getExtendedFieldInfoPropertyValue(jsonField.Title, null));
                 createFieldAttributeTag(attributeEle, "Source", "string", getExtendedFieldInfoPropertyValue(jsonField.Source, null));
-                createFieldAttributeTag(attributeEle, "Shared", "bool", getExtendedFieldInfoPropertyValue(jsonField.Shared, false));
-                createFieldAttributeTag(attributeEle, "Unversioned", "bool", getExtendedFieldInfoPropertyValue(jsonField.Unversioned, false));
+                createFieldAttributeTag(attributeEle, "Shared", "boolean", getExtendedFieldInfoPropertyValue(jsonField.Shared, false));
+                createFieldAttributeTag(attributeEle, "Unversioned", "boolean", getExtendedFieldInfoPropertyValue(jsonField.Unversioned, false));
                 createFieldAttributeTag(attributeEle, "SectionName", "string", getExtendedFieldInfoPropertyValue(jsonField.SectionName, null));
                 createFieldAttributeTag(attributeEle, "StandardValue", "string", getExtendedFieldInfoPropertyValue(jsonField.StandardValue, null));
 
