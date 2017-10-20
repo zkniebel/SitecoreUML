@@ -64,9 +64,9 @@ Please note that the roadmap is tentative and subject to change.
 * [x] Adds support for dashes in Quick Edits for attribute type names **\(1.2.0\)**
 * [x] Replaces Documentation field-based implementation of Extended Field Info with the Sitecore Field Editor **\(1.2.0\)**
 * [x] Updates the content of the Documentation field to be more human-readable **\(1.2.0\)**
-* [x] Validation updates
+* [ ] Validation updates
   * [x] Adds field section names to validation **\(1.2.0\)**
-  * [x] Adds validation of the extended field info in the Sitecore Field Editor
+  * [ ] Adds validation of the extended field info in the Sitecore Field Editor
 * [ ] Documentation
   * [ ] Export as Html Docs
   * [ ] Print to PDF
@@ -100,6 +100,4 @@ Please note that the roadmap is tentative and subject to change.
 
 * Azure infrastructure provisioning support
 * AWS infrastructure provisioning support
-
-
 
