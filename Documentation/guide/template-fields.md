@@ -60,6 +60,8 @@ The following are just a few examples of valid attribute text:
 +BrowserTitle : SingleLineText
 +Navigation Title  :SingleLineNext
 +Search-Result-Image:Image
++SearchResultTitle: Single-Line Text
++Search_Result_Text: Rich Text
 ```
 
 ## Adding a Template Field
