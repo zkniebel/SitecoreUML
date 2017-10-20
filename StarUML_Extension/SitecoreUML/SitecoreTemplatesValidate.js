@@ -12,11 +12,11 @@ define(function(require, exports, module) {
     };
     
     // lazy-loaded StarUML modules
-    var Dialogs = _backingFields._dialogs || (_backingFields._dialogs = app.getModule("dialogs/Dialogs"));
+    var Dialogs_get = function() { return _backingFields._dialogs || (_backingFields._dialogs = app.getModule("dialogs/Dialogs")); };
 
     // lazy-loaded custom modules
-    var SitecoreTemplatesJsonGenerator = _backingFields._sitecoreTemplatesJsonGenerator || (_backingFields._sitecoreTemplatesJsonGenerator = require("SitecoreTemplatesJsonGenerator"));
-    var SitecorePreferencesLoader = _backingFields._sitecorePreferencesLoader || (_backingFields._sitecorePreferencesLoader = require("SitecorePreferencesLoader"));
+    var SitecoreTemplatesJsonGenerator_get = function() { return _backingFields._sitecoreTemplatesJsonGenerator || (_backingFields._sitecoreTemplatesJsonGenerator = require("SitecoreTemplatesJsonGenerator")); };
+    var SitecorePreferencesLoader_get = function() { return _backingFields._sitecorePreferencesLoader || (_backingFields._sitecorePreferencesLoader = require("SitecorePreferencesLoader")); };
 
     // gets the HTML for displaying the invalid field types
     function getInvalidFieldTypesHtml(jsonInvalidTemplateFieldTypes) {
@@ -34,7 +34,7 @@ define(function(require, exports, module) {
     function getInvalidItemNamesHtml(jsonInvalidItemNames) {
         var resultList = "<ol>";
         jsonInvalidItemNames.forEach(function(entry) {
-            resultList += "<li><b>" + entry.ItemName + "</b> &nbsp; <i>(" + entry.ItemType + ")</i></li>";
+            resultList += "<li><b>" + entry.ItemName + "</b> &nbsp; <i>(" + entry.ItemType + (entry.TemplatePath ? " - " + entry.TemplatePath : "") + ")</i></li>";
         });
         resultList += "</ol>";
         
@@ -44,11 +44,11 @@ define(function(require, exports, module) {
 
     // serializes the templates and validates the templates with the SitecoreUML service
     function serializeAndValidateSitecoreTemplates() {
-        var templates = SitecoreTemplatesJsonGenerator.generateJsonTemplates();
+        var templates = SitecoreTemplatesJsonGenerator_get().generateJsonTemplates();
         var json = JSON.stringify(templates);
         
-        var sitecoreUrl = SitecorePreferencesLoader.getSitecoreUrl();
-        var validateRoute = SitecorePreferencesLoader.getSitecoreValidateRoute();
+        var sitecoreUrl = SitecorePreferencesLoader_get().getSitecoreUrl();
+        var validateRoute = SitecorePreferencesLoader_get().getSitecoreValidateRoute();
         
         sitecoreUrl = sitecoreUrl.lastIndexOf("/") == sitecoreUrl.length - 1 
             ? sitecoreUrl.substr(0, sitecoreUrl.length - 1) 
@@ -77,15 +77,15 @@ define(function(require, exports, module) {
                     }
 
                     if (errorMessageHtml) {                              
-                        Dialogs.showErrorDialog(errorMessageHtml);                            
+                        Dialogs_get().showErrorDialog(errorMessageHtml);                            
                     } else {                        
-                        Dialogs.showAlertDialog("No validation errors detected!");
+                        Dialogs_get().showAlertDialog("No validation errors detected!");
                     }
                 }
             })
             .fail(function(jqXHR, textStatus, errorThrown) {
                 console.error("Validation Errore: ", errorThrown, textStatus, jqXHR);
-                Dialogs.showErrorDialog("Uh oh! An error occurred while validating the Sitecore templates. See the DevTools console for more details.");
+                Dialogs_get().showErrorDialog("Uh oh! An error occurred while validating the Sitecore templates. See the DevTools console for more details.");
                 return;
             });
     };

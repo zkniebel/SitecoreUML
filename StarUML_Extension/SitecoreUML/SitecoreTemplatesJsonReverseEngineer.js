@@ -14,7 +14,8 @@ define(function (require, exports, module) {
         _modelExplorerView: undefined,
         _stringUtils: undefined,
         _diagramUtils: undefined,
-        _sitecorePreferencesLoader: undefined
+        _sitecorePreferencesLoader: undefined,
+        _sitecoreFieldEditorView: undefined
     };
 
     // lazy-loaded StarUML modules
@@ -29,9 +30,11 @@ define(function (require, exports, module) {
     var StringUtils = _backingFields._stringUtils || (_backingFields._stringUtils = require("StringUtils"));
     var DiagramUtils = _backingFields._diagramUtils || (_backingFields._diagramUtils = require("DiagramUtils"));
     var SitecorePreferencesLoader_get = function() { return _backingFields._sitecorePreferencesLoader || (_backingFields._sitecorePreferencesLoader = require("SitecorePreferencesLoader")); };
+    var SitecoreFieldEditorView_get = function() { return _backingFields._sitecoreFieldEditorView || (_backingFields._sitecoreFieldEditorView = require("SitecoreFieldEditorView")); };
 
     // eagerly-loaded (make lazy later)
     var ProgressDialog = require("ProgressDialog"); 
+    var Core = app.getModule("core/Core");
 
     // progress dialog constants
     var progressDialogClassId = "dialog-progress__sitecoreuml--import";
@@ -297,10 +300,20 @@ define(function (require, exports, module) {
             );
         };        
         
-        // helper function for parsing the extended template field properties that get added to the attributes' documentation
+        // helper function for getting the extended template field properties that get added to the attributes 
         var getExtendedFieldInfoPropertyValue = function(value, defaultValue) {
-            return JSON.stringify(value !== undefined ? value : defaultValue);
+            return value !== undefined ? value : defaultValue;
         };
+
+        // helper function for adding field attribute tags
+        var createFieldAttributeTag = function(attributeEle, name, kind, value) {
+            var tag = new Core.Tag();
+            tag.name = name;
+            tag.kind = kind;
+            tag.value = value;
+
+            attributeEle.ownedElements.push(tag);
+        }
 
         // creates the template and adds it to the diagram
         function createTemplate(jsonTemplate) {
@@ -343,30 +356,30 @@ define(function (require, exports, module) {
 
             // add the fields to the interface
             jsonFields.forEach(function (jsonField) {
-                var documentation = "{\n" 
-                    + "  Title: " + getExtendedFieldInfoPropertyValue(jsonField.Title, null) + ",\n"
-                    + "  Source: " + getExtendedFieldInfoPropertyValue(jsonField.Source, null) + ",\n"
-                    + "  Shared: " + getExtendedFieldInfoPropertyValue(jsonField.Shared, false) + ",\n"
-                    + "  Unversioned: " + getExtendedFieldInfoPropertyValue(jsonField.Unversioned, false) + ",\n"
-                    + "  SectionName: " + getExtendedFieldInfoPropertyValue(jsonField.SectionName, null) + ",\n"
-                    + "  StandardValue: " + getExtendedFieldInfoPropertyValue(jsonField.StandardValue, null) + "\n}";
-
                 // options for the template field to be added
                 var attributeModelOptions = {
                     modelInitializer: function (ele) {
                         ele.name = jsonField.Name;
                         ele.visibility = "public"; // all fields are visible in Sitecore to admin so they are public here
                         ele.type = jsonField.FieldType;
-                        ele.documentation = documentation;
                     }
                 };
 
                 // add the template field to the template's model
-                Factory.createModel(
+                var attributeEle = Factory.createModel(
                     "UMLAttribute",
                     addedInterfaceElement.model,
                     "attributes",
                     attributeModelOptions);
+                    
+                createFieldAttributeTag(attributeEle, "Title", "string", getExtendedFieldInfoPropertyValue(jsonField.Title, null));
+                createFieldAttributeTag(attributeEle, "Source", "string", getExtendedFieldInfoPropertyValue(jsonField.Source, null));
+                createFieldAttributeTag(attributeEle, "Shared", "boolean", getExtendedFieldInfoPropertyValue(jsonField.Shared, false));
+                createFieldAttributeTag(attributeEle, "Unversioned", "boolean", getExtendedFieldInfoPropertyValue(jsonField.Unversioned, false));
+                createFieldAttributeTag(attributeEle, "SectionName", "string", getExtendedFieldInfoPropertyValue(jsonField.SectionName, null));
+                createFieldAttributeTag(attributeEle, "StandardValue", "string", getExtendedFieldInfoPropertyValue(jsonField.StandardValue, null));
+
+                SitecoreFieldEditorView_get().updateAttributeDocumentation(attributeEle);
             });
         };   
         
