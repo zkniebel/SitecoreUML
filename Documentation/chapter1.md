@@ -62,14 +62,18 @@ Please note that the roadmap is tentative and subject to change.
 ### Version 1.2 \(~ November 2017\)
 
 * [ ] Adds support for setting the default field section name in preferences, leaving the one in the Sitecore configuration to be a required backup value
+* [x] Adds support for dashes in Quick Edits for attribute type names **\(1.2.0\)**
+* [ ] Changes Extended Field Info to be controlled by a custom Editor Panel instead of JavaScript object **\(1.2.0\)**
+* [ ] Sets the default value of each field's Documentation to display the field attribute values **\(1.2.0\)**
 * [ ] Validation updates
-  * [ ] Adds field section names to validation
+  * [x] Adds field section names to validation **\(1.2.0\)**
   * [ ] Adds validation of Extended Field Info syntax
-* [ ] Refactor out broken lazy-initialization of module variables in JavaScript
 * [ ] Documentation
   * [ ] Export as Html Docs
   * [ ] Print to PDF
   * [ ] Validation updates
+  * [ ] Sitecore Field Editor **\(1.2.0\)**
+  * [ ] Attribute type name dash support - fixes StarUML bug **\(1.2.0\)**
 
 ### Version 1.3 \(~ December 2018\)
 
@@ -77,12 +81,11 @@ Please note that the roadmap is tentative and subject to change.
   * Falls back to the _/sitecore/templates_ folder 
   * Optional _exclusions_ configuration to define templates and paths to be excluded
 * Updates the deployment to run validation and give the option to cancel the deployment if errors are detected
-* Integrate Validation feature with StarUML's real-time validation features
 * Adds "Add diagram set" command
 * Documentation
   * Add Diagram Set command
   * Developer Setup
-* * Tutorials
+  * Tutorials
   * Samples
   * Glossary
 

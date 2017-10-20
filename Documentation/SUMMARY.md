@@ -3,7 +3,6 @@
 ## Overview
 
 * [Introduction](README.md)
-* [Goals](project-goal.md)
 * [Project Roadmap](chapter1.md)
 
 ## Getting Started
