@@ -24,11 +24,11 @@ define(function (require, exports, module) {
 
     var fieldAttributes = [ 
         { name: "Title", kind: "string", default: null },
-        { name: "Section Name", kind: "string", default: null },
+        { name: "SectionName", kind: "string", default: null },
         { name: "Source", kind: "string", default: null },
         { name: "Shared", kind: "boolean", default: false },
         { name: "Unversioned", kind: "boolean", default: false },
-        { name: "Standard Value", kind: "string", default: null }
+        { name: "StandardValue", kind: "string", default: null }
     ];
 
     function _setExistingValueForInput($input, attributeEle, name) {        
@@ -59,11 +59,11 @@ define(function (require, exports, module) {
             _attributeElement = elem;
 
             _setExistingValueForInput($(input_title_id), _attributeElement, "Title");
-            _setExistingValueForInput($(input_sectionName_id), _attributeElement, "Section Name");
+            _setExistingValueForInput($(input_sectionName_id), _attributeElement, "SectionName");
             _setExistingValueForInput($(input_source_id), _attributeElement, "Source");
             _setExistingValueForInput($(input_shared_id), _attributeElement, "Shared");
             _setExistingValueForInput($(input_unversioned_id), _attributeElement, "Unversioned");
-            _setExistingValueForInput($(input_standardValue_id), _attributeElement, "Standard Value");
+            _setExistingValueForInput($(input_standardValue_id), _attributeElement, "StandardValue");
         } else {
             $view.hide();
             _attributeElement = null;
@@ -105,7 +105,7 @@ define(function (require, exports, module) {
         });
     };
 
-    function getFieldAttributeDocumentation(attributeEle) {
+    function createAttributeDocumentation(attributeEle) {
         var fieldAttributeMap = {};        
         attributeEle.ownedElements.forEach(function(element) {
             if (element instanceof type.Tag) {
@@ -128,8 +128,8 @@ define(function (require, exports, module) {
         return docString;
     };
 
-    function updateDocumentationHtml(attributeEle) {
-        var docString = getFieldAttributeDocumentation(attributeEle);
+    function updateAttributeDocumentation(attributeEle) {
+        var docString = createAttributeDocumentation(attributeEle);
         Engine.setProperty(attributeEle, "documentation", docString);
     };
 
@@ -174,7 +174,7 @@ define(function (require, exports, module) {
             }
               
             // update the documentation html
-            updateDocumentationHtml(attributeEle);
+            updateAttributeDocumentation(attributeEle);
         } catch (err) {
             console.error(err);
         }
@@ -197,5 +197,8 @@ define(function (require, exports, module) {
     });
 
     exports.show = show;
+    exports.fieldAttributes = fieldAttributes;
+    exports.updateAttributeDocumentation = updateAttributeDocumentation;
+    exports.createAttributeDocumentation = createAttributeDocumentation;
 });
 
