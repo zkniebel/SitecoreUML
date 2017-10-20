@@ -4,7 +4,7 @@ Sitecore's template inheritance is a powerful feature, but not the most visible 
 
 ## Adding an Inheriting Template
 
-Creating a template that inherits another is similar to [Adding a Template Sub-Folder](/adding-a-template-sub-folder). In UML, the concept of a "Sub-Interface" exists, but it isn't a single element. Rather, a sub-interface is a combination of an _Interface_ and a _Generalization_.
+Creating a template that inherits another is similar to [Adding a Template Sub-Folder](/guide/template-folders.md#adding-a-template-sub-folder). In UML, the concept of a "Sub-Interface" exists, but it isn't a single element. Rather, a sub-interface is a combination of an _Interface_ and a _Generalization_.
 
 For those new to UML, a Generalization is essentially a type of relationship that shows one interface inheriting \(or generalizing\) another. UML uses the term "generalization" to differentiate between an interface inheriting another and an element \(e.g. class\) that _implements_ \(or "realizes", as it's referred to in UML\) an interface.
 

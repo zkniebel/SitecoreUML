@@ -12,11 +12,11 @@ The commands included with SitecoreUML are primarily for advanced users who inte
 
 #### `sitecoreuml:import`
 
-Command to import templates from the serialized JSON file located at the `importDropFolderPath` \(see [below](#importdropfolderpath)\).
+Command to import templates from the serialized JSON file located at the [`importDropFolderPath`](#sitecoreumljsontoolsimportdropfolder-v111).
 
 #### `sitecoreuml:export`
 
-Command to export templates from Sitecore as serialized JSON saved to the `exportSaveFolderPath` \(see [below](#exportsavefolderpath)\).
+Command to export templates from Sitecore as serialized JSON saved to the [`exportSaveFolderPath`](#sitecoreumljsontoolsexportsavefolder-v111).
 
 ### Settings
 
