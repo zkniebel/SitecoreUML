@@ -3,7 +3,7 @@
     <metadata>
       <PackageName>SitecoreUML</PackageName>
       <Author>Zachary Kniebel</Author>
-      <Version>1.1.2</Version>
+      <Version>1.2.0</Version>
       <Revision />
       <License>MIT License
 
@@ -29,10 +29,7 @@ SOFTWARE.
       </License>
       <Comment />
       <Attributes />
-      <Readme>---------------------------------------------
-INSTALLATION INSTRUCTIONS
----------------------------------------------
-Refer to the installation instructions in the documentation for the latest:
+      <Readme>Refer to the installation instructions in the documentation to get started:
 https://zkniebel.gitbooks.io/sitecoreuml/getting-started/setup-and-insta.html
       </Readme>
       <Publisher>Zachary Kniebel</Publisher>
