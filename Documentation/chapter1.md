@@ -66,7 +66,9 @@ Please note that the roadmap is tentative and subject to change.
   * [x] Updates the content of the Documentation field to be more human-readable **\(1.2.0\)**
   * [x] Adds auto-generation of Documentation based on Sitecore Field Editor-managed values **\(1.2.0\)**
   * [x] Adds support for controlling whether or not Documentation is auto-generated via a Sitecore Field Editor setting **\(1.2.0\)**
-* [ ] Adds new diagram generated on import for visualizing Helix layer dependencies
+* [ ] New Diagrams Generated on Import
+  * [ ] Adds new diagram generated on import for visualizing Helix layer dependencies
+  * [ ] Adds support for generating layer-specific diagrams in addition to all-inclusive ones
 * [x] Validation updates
   * [x] Adds field section names to validation **\(1.2.0\)**
 * [ ] Documentation
@@ -79,6 +81,8 @@ Please note that the roadmap is tentative and subject to change.
 ### Version 1.3 \(~ December 2018\)
 
 * Adds support for setting the default field section name in preferences, leaving the one in the Sitecore configuration to be a required backup value
+* New Diagrams Generated on Import
+  * Adds support for generating module-specific diagrams
 * Makes the _TemplateRoot_ setting optional
   * Falls back to the _/sitecore/templates_ folder 
   * Optional _exclusions_ configuration to define templates and paths to be excluded
