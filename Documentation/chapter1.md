@@ -69,11 +69,16 @@ Please note that the roadmap is tentative and subject to change.
 * [ ] New Diagrams Generated on Import
   * [ ] Adds new diagram generated on import for visualizing Helix layer dependencies
   * [ ] Adds support for generating layer-specific diagrams in addition to all-inclusive ones
+  * [ ] Adds Helix preferences for setting layer-root paths for Helix diagram generation
 * [x] Validation updates
   * [x] Adds field section names to validation **\(1.2.0\)**
 * [ ] Documentation
   * [ ] Export as Html Docs
   * [ ] Print to PDF
+  * [ ] New Diagrams
+    * [ ] Layer Dependencies
+    * [ ] Layer-Specific
+    * [ ] Helix layer-root path preferences
   * [x] Field section name validation **\(1.2.0\)**
   * [x] Sitecore Field Editor **\(1.2.0\)**
   * [x] Attribute type name dash support **\(1.2.0\)**
@@ -82,7 +87,7 @@ Please note that the roadmap is tentative and subject to change.
 
 * Adds support for setting the default field section name in preferences, leaving the one in the Sitecore configuration to be a required backup value
 * New Diagrams Generated on Import
-  * Adds support for generating module-specific diagrams
+  * Adds preferences option for generating module-specific diagrams
 * Makes the _TemplateRoot_ setting optional
   * Falls back to the _/sitecore/templates_ folder 
   * Optional _exclusions_ configuration to define templates and paths to be excluded
