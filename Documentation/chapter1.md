@@ -75,10 +75,9 @@ Please note that the roadmap is tentative and subject to change.
 * [ ] Documentation
   * [ ] Export as Html Docs
   * [ ] Print to PDF
-  * [ ] New Diagrams
-    * [ ] Layer Dependencies
-    * [ ] Layer-Specific
-    * [ ] Helix layer-root path preferences
+  * [ ] Layer Dependencies Diagram
+  * [ ] Layer-Specific Diagrams
+  * [ ] Helix layer-root path preferences
   * [x] Field section name validation **\(1.2.0\)**
   * [x] Sitecore Field Editor **\(1.2.0\)**
   * [x] Attribute type name dash support **\(1.2.0\)**
