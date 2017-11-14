@@ -28,5 +28,12 @@ define(function (require, exports, module) {
         return n;
     };
 
+    // checks if the given source string starts with the given searchString
+    //  adapted from polyfill from MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith
+    function startsWith(sourceString, searchString, position){
+        return sourceString.substr(position || 0, searchString.length) === searchString;
+    };
+
     exports.occurrences = occurrences;
+    exports.startsWith = startsWith;
 });
