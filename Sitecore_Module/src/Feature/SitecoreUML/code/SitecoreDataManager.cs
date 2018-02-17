@@ -56,7 +56,6 @@ namespace ZacharyKniebel.Feature.SitecoreUML
 
 
                 using (new SecurityDisabler())
-                using (new ProxyDisabler())
                 using (new DatabaseCacheDisabler())
                 {
                     // create the templates
