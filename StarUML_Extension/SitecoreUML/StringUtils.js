@@ -27,13 +27,33 @@ define(function (require, exports, module) {
         }
         return n;
     };
-
-    // checks if the given source string starts with the given searchString
-    //  adapted from polyfill from MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith
+     
+    /** 
+     * Checks if the given source string starts with the given searchString
+     * @param {String} sourceString String to check
+     * @param {String} searchString String to look for
+     * @param {Integer} position (optional) Index of the first character to check (default: 0)
+     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith
+     */
     function startsWith(sourceString, searchString, position){
         return sourceString.substr(position || 0, searchString.length) === searchString;
     };
 
+    /**
+     * Checks if the given search string ends with the given string
+     * @param {String} sourceString String to check
+     * @param {String} search String to look for
+     * @param {Integer} this_len (optional) Length of the string to include in the check (default: length of the search string)
+     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith
+     */
+    function endsWith(sourceString, search, this_len) {
+		if (this_len === undefined || this_len > sourceString.length) {
+			this_len = sourceString.length;
+		}
+		return sourceString.substring(this_len - search.length, this_len) === search;
+	};
+
     exports.occurrences = occurrences;
     exports.startsWith = startsWith;
+    exports.endsWith = endsWith;
 });

@@ -69,21 +69,21 @@ define(function(require, exports, module) {
         },
         "sitecore.helix.foundationlayerpath": {
             text: "Foundation Template Folder Path",
-            description: "Path to Foundation template folder relative to root template folder",
+            description: "Path to Foundation template folder relative to root template folder. (Case-sensitive; should start with a forward-slash should not end with a forward-slash)",
             type: "String",
-            default: "/foundation"
+            default: "/Foundation"
         },
         "sitecore.helix.featurelayerpath": {
             text: "Feature Template Folder Path",
-            description: "Path to Feature template folder relative to root template folder",
+            description: "Path to Feature template folder relative to root template folder. (Case-sensitive; should start with a forward-slash should not end with a forward-slash)",
             type: "String",
-            default: "/feature"
+            default: "/Feature"
         },
         "sitecore.helix.projectlayerpath": {
             text: "Project Template Folder Path",
-            description: "Path to Project template folder relative to root template folder",
+            description: "Path to Project template folder relative to root template folder. (Case-sensitive; should start with a forward-slash should not end with a forward-slash)",
             type: "String",
-            default: "/project"
+            default: "/Project"
         },
         "sitecore.service.section": {
             text: "SitecoreUML Service Settings",
@@ -135,7 +135,7 @@ define(function(require, exports, module) {
     exports.getSitecoreImportRoute = function() { return PreferenceManager.get(sitecoreImportRouteId); };
     exports.getSitecoreValidateRoute = function() { return PreferenceManager.get(sitecoreValidateRouteId); };
     exports.getSitecoreTestConnectionRoute = function() { return PreferenceManager.get(sitecoreTestConnectionRouteId); };
-    exports.getSitecoreHelixFoundationPathId = function() { return PreferenceManager.get(sitecoreHelixFoundationPathId); };
-    exports.getSitecoreHelixFeaturePathId = function() { return PreferenceManager.get(sitecoreHelixFeaturePathId); };
-    exports.getSitecoreHelixProjectPathId = function() { return PreferenceManager.get(sitecoreHelixProjectPathId); };
+    exports.getSitecoreHelixFoundationPath = function() { return PreferenceManager.get(sitecoreHelixFoundationPathId); };
+    exports.getSitecoreHelixFeaturePath = function() { return PreferenceManager.get(sitecoreHelixFeaturePathId); };
+    exports.getSitecoreHelixProjectPath = function() { return PreferenceManager.get(sitecoreHelixProjectPathId); };
 });

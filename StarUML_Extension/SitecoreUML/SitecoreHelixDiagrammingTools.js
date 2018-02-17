@@ -1,7 +1,9 @@
 define(function (require, exports, module) {
     "use strict";
 
+    // dependencies
     var SitecoreHelix = require("SitecoreHelix");
+    var SitecoreMenuLoader = require("SitecoreMenuLoader");
 
     function _addPackageViewForLayer(helixLayer, diagram) {
         return Factory.createViewOf(
@@ -78,6 +80,40 @@ define(function (require, exports, module) {
         // TODO: implement
     };
 
+    
+
+
+    function testCreateHelixObject() {
+        var SitecoreTemplatesJsonGenerator = require("SitecoreTemplatesJsonGenerator");
+        console.log("Serializing architecture into JSON...");
+        var jsonTemplates = SitecoreTemplatesJsonGenerator.generateJsonTemplates();
+        console.log("Serialization complete. Creating Helix Architecture object...");
+        var helixArchitecture = new SitecoreHelix.HelixArchitecture(jsonTemplates);
+        console.log("Helix Architecture object created! See app.HelixArchitecture in the Dev Tools console for more.");
+
+        app.HelixArchitecture = helixArchitecture;
+
+        return helixArchitecture;
+    };
+
+
+
+
+    // command ID constant
+    var CMD_TESTCREATEHELIXOBJECT = "sitecore.testcreatehelixobject";
+
+    exports.initialize = function() {
+        // eager-load the requisite modules
+        var CommandManager = app.getModule("command/CommandManager");
+
+        // register the command
+        CommandManager.register("Test Create Helix Object", CMD_TESTCREATEHELIXOBJECT, testCreateHelixObject);
+        // add the menu item
+        SitecoreMenuLoader.sitecoreMenu.addMenuItem(CMD_TESTCREATEHELIXOBJECT);
+        app.testCreateHelixObject = testCreateHelixObject;
+    };
+
+    exports.testCreateHelixObject = testCreateHelixObject;
     exports.generateLayerDependenciesDiagram = generateLayerDependenciesDiagram;
     exports.generateModuleDependenciesDiagram = generateModuleDependenciesDiagram;
     exports.generateTemplateDependenciesDiagram = generateTemplateDependenciesDiagram;
