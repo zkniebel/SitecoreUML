@@ -17,7 +17,7 @@ define(function (require, exports, module) {
         this.IsFoundationTemplate = false;
         this.IsFeatureTemplate = false;
         this.IsProjectTemplate = false;
-        this.Dependencies = [];
+        this.DirectDependencies = null;
 
         switch(layerId) {
             case HelixLayerIds.Foundation:
@@ -34,29 +34,14 @@ define(function (require, exports, module) {
                 break;
         }
     };
-    var _dependencySearchCache = {};
-    HelixTemplate.prototype.initializeDependencies = function(pathsToHelixTemplatesMap) {
-        function _getDependencies(helixTemplate) {
-            var dependencies = _dependencySearchCache[helixTemplate.JsonTemplate.Path];
-            if (dependencies !== undefined) {
-                return dependencies;
-            }
-
-            // DEPENDENCY DETERMINATION LOGIC BELOW - ADD ADDITIONAL RULES/LOGIC HERE TO CUSTOMIZE DEPENDENCY DETERMINATION
-            dependencies = helixTemplate.JsonTemplate.BaseTemplates
-                ? helixTemplate.JsonTemplate.BaseTemplates
-                    .map(function(baseTemplatePath) {
-                        return _getDependencies(pathsToHelixTemplatesMap[baseTemplatePath]);
-                    })
-                    .reduce(function(a, b) {
-                        return a.concat(b);
-                    })
-                : [];
-            
-            return dependencies;
-        };
-
-        this.Dependencies = _getDependencies(this);
+    
+    HelixTemplate.prototype.initializeDirectDependencies = function(pathsToHelixTemplatesMap) {
+        this.DirectDependencies = this.JsonTemplate.BaseTemplates
+            ? this.JsonTemplate.BaseTemplates
+                .map(function(baseTemplatePath) {
+                    return pathsToHelixTemplatesMap[baseTemplatePath];
+                })
+            : [];
     };
     
     var HelixLayerIds = {
@@ -172,7 +157,7 @@ define(function (require, exports, module) {
             return helixTemplate;
         });
         this.HelixTemplates.forEach(function(helixTemplate) {
-            helixTemplate.initializeDependencies(_this.PathsToHelixTemplatesMap);
+            helixTemplate.initializeDirectDependencies(_this.PathsToHelixTemplatesMap);
         });
 
         var getModulePaths = function() {
