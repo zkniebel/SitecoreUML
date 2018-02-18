@@ -43,6 +43,16 @@ define(function (require, exports, module) {
                 })
             : [];
     };
+
+    HelixTemplate.prototype.getHelixLayer = function(helixArchitecture) {
+        return this.IsFoundationTemplate 
+            ? helixArchitecture.FoundationLayer
+            : this.IsFeatureTemplate
+                ? helixArchitecture.FeatureLayer
+                : this.IsProjectTemplate 
+                    ? helixArchitecture.ProjectLayer
+                    : helixArchitecture.UnknownLayer;
+    };
     
     var HelixLayerIds = {
         Unknown: "Unknown",
@@ -51,11 +61,41 @@ define(function (require, exports, module) {
         Project: "Project"
     }
 
-    function HelixModule(rootPath, layerId, templatePaths) {
+    function HelixModule(name, rootPath, rootPackageModel, layerId, templatePaths) {
+        this.Name = name;
         this.RootPath = rootPath;
+        this.RootPackageModel = rootPackageModel;
         this.LayerId = layerId;
         this.TemplatePaths = templatePaths;
-    }
+        this.IsFoundationModule = false;
+        this.IsFeatureModule = false;
+        this.IsProjectModule = false;
+
+        switch(layerId) {
+            case HelixLayerIds.Foundation:
+                this.IsFoundationModule = true;
+                break;
+            case HelixLayerIds.Feature:
+                this.IsFeatureModule = true;
+                break;
+            case HelixLayerIds.Project:
+                this.IsProjectModule = true;
+                break;
+            default:
+                console.error("Unknown layer id,  \"" + layerId + "\", detected for helix module");
+                break;
+        }
+    };    
+
+    HelixModule.prototype.getHelixLayer = function(helixArchitecture) {
+        return this.IsFoundationModule 
+            ? helixArchitecture.FoundationLayer
+            : this.IsFeatureModule
+                ? helixArchitecture.FeatureLayer
+                : this.IsProjectModule 
+                    ? helixArchitecture.ProjectLayer
+                    : helixArchitecture.UnknownLayer;
+    };
 
     function HelixLayer(layerId, rootPath, rootPackageModel) {
         this.LayerId = layerId;
@@ -74,19 +114,18 @@ define(function (require, exports, module) {
      * @param {UMLModel} featurePackageModel (Optional) model of the feature layer's root package
      * @param {UMLModel} projectPackageModel (Optional) model of the project layer's root package
      * @param {Object} pathsToTemplateModelsMap (Optional) mapping table that has the template paths as keys and the corresponding models as values
-     * @param {Array} modulePaths (Optional) the paths to all of the modules in the architecture
      */
-    function HelixArchitecture(jsonTemplates, foundationPackageModel, featurePackageModel, projectPackageModel, pathsToTemplateModelsMap, modulePaths) {
+    function HelixArchitecture(jsonTemplates, foundationPackageModel, featurePackageModel, projectPackageModel, pathsToTemplateModelsMap) {
         this.JsonTemplates = jsonTemplates;        
 
-        // fallback function for getting the layer root models 
-        var getLayerRootPackageFromPath = function(rootPackagePath) {
-            var foundModels = RepositoryUtils.getElementsByPath(rootPackagePath, "@UMLPackage");
+        // fallback function for getting the package model from the specified path
+        var getPackageModelFromPath = function(packagePath) {
+            var foundModels = RepositoryUtils.getElementsByPath(packagePath, "@UMLPackage");
             if (!foundModels.length) {
-                console.warn("WARNING: A layer root could not be found at the path '" + rootPackagePath + "'.");
+                console.warn("WARNING: A package model could not be found at the path '" + packagePath + "'.");
                 return;
             } else if (foundModels.length > 1) {
-                console.warn("WARNING: more than one model was detected at the path for layer root '" + rootPackagePath + "'. Helix architecture information will be based on the first result, only.");
+                console.warn("WARNING: more than one package model was detected at the path '" + packagePath + "'. Helix architecture information will be based on the first result, only.");
             }
 
             return foundModels[0];
@@ -99,7 +138,7 @@ define(function (require, exports, module) {
             foundationLayerRootPath,
             foundationPackageModel 
                 ? foundationPackageModel 
-                : getLayerRootPackageFromPath(foundationLayerRootPath));
+                : getPackageModelFromPath(foundationLayerRootPath));
 
         //feature layer
         var featureLayerRootPath = SitecorePreferencesLoader.getSitecoreHelixFeaturePath();
@@ -108,7 +147,7 @@ define(function (require, exports, module) {
             featureLayerRootPath,
             featurePackageModel
                 ? featurePackageModel
-                : getLayerRootPackageFromPath(featureLayerRootPath));
+                : getPackageModelFromPath(featureLayerRootPath));
           
         // project layer
         var projectLayerRootPath = SitecorePreferencesLoader.getSitecoreHelixProjectPath();
@@ -117,7 +156,7 @@ define(function (require, exports, module) {
             projectLayerRootPath,
             projectPackageModel
                 ? projectPackageModel
-                : getLayerRootPackageFromPath(projectLayerRootPath));   
+                : getPackageModelFromPath(projectLayerRootPath));   
         
         // unknown layer
         this.UnknownLayer = new HelixLayer(HelixLayerIds.Unknown);
@@ -160,50 +199,56 @@ define(function (require, exports, module) {
             helixTemplate.initializeDirectDependencies(_this.PathsToHelixTemplatesMap);
         });
 
-        var getModulePaths = function() {
-            var layerPrefixesPattern = foundationLayerRootPath + "|" + featureLayerRootPath + "|" + projectLayerRootPath;
-            var modulePathsPattern = "((" + layerPrefixesPattern + ")/[^/]+)(/|$)";
-            var modulePathsRegExp = new RegExp(modulePathsPattern);
-            var modulePathMatchGroupIndex = 1; // match will always be in group 1
+        this.ModulePaths = [];  
+        this.PathsToHelixModulesMap = {}; 
+        this.HelixModules = [];
+        
+        // set up the variables for building out the HelixModule models
+        var layerPrefixesPattern = foundationLayerRootPath + "|" + featureLayerRootPath + "|" + projectLayerRootPath;
+        var modulePathsPattern = "((" + layerPrefixesPattern + ")/([^/]+))(/|$)";
+        var modulePathsRegExp = new RegExp(modulePathsPattern);
+        var modulePathMatchGroupIndex = 1; // path will always be in group 1...until we move the regex to preferences
+        var moduleNameMatchGroupIndex = 3; // name will always be in group 3...until we move the regex to preferences'
 
-            var mPaths = ArrayUtils.uniqueElements(
-                jsonTemplates.map(function(jsonTemplate) {
-                    var matches = jsonTemplate.Path.match(modulePathsRegExp);
-                    if (!matches || matches.length < (modulePathMatchGroupIndex + 1)) { // so long as there are matches, there should be the expected number of match groups, but just to be safe...
-                        console.warn("WARNING: there were no module path matches for the template at the path \"" + jsonTemplate.Path + "\"");
-                        return null;
-                    }
-                    return matches[1];
-                })
-                .filter(function(path) {
-                    return path != null;
-                })
-            );
+        // populate the ModulePaths, PathsToHelixModulesMap, and HelixModuels properties
+        jsonTemplates.forEach(function(jsonTemplate) {
+            var matches = jsonTemplate.Path.match(modulePathsRegExp);
+                // ensures that the supplied match group indexes are in range of the number of match groups...
+                if (!matches || matches.length < (Math.max(modulePathMatchGroupIndex, moduleNameMatchGroupIndex) + 1)) { 
+                    console.warn("WARNING: there were no module path matches for the template at the path \"" + jsonTemplate.Path + "\"");
+                    return null;
+                }
+
+                var moduleName = matches[moduleNameMatchGroupIndex];
+                var modulePath = matches[modulePathMatchGroupIndex];
+
+                // if the module for this path has already been created then skip the path...
+                if (_this.ModulePaths.indexOf(modulePath) != -1) {
+                    return;
+                }
+                // add the module's path to the array
+                _this.ModulePaths.push(modulePath);
+
+                // get the layer ID of the layer that the module belongs to
+                var layerId = _this.getLayerIdFromPath(modulePath);
+                // get the paths for the templates belonging to the module
+                var templatePaths = _this.JsonTemplates
+                    .map(function(jsonTemplate) {
+                        return jsonTemplate.Path;
+                    })
+                    .filter(function(path) {
+                        return StringUtils.startsWith(path, modulePath + "/");
+                    });
+
+                // get the root package model
+                var rootPackageModel = getPackageModelFromPath(modulePath);
+    
+                // create the module
+                var helixModule = new HelixModule(moduleName, modulePath, rootPackageModel, layerId, templatePaths);
                 
-            return mPaths;
-        };
-
-        this.ModulePaths = modulePaths || getModulePaths();
-
-        if (!_this.ModulePaths || !_this.ModulePaths.length) {
-            return;
-        }
-
-        _this.PathsToHelixModulesMap = {};
-        _this.HelixModules = _this.ModulePaths.map(function(modulePath) {
-            var layerId = _this.getLayerIdFromPath(modulePath);
-            var templatePaths = jsonTemplates
-                .map(function(jsonTemplate) {
-                    return jsonTemplate.Path;
-                })
-                .filter(function(path) {
-                    return StringUtils.startsWith(path, modulePath)
-                });
-
-            var helixModule = new HelixModule(modulePath, layerId, templatePaths);
-            _this.PathsToHelixModulesMap[modulePath] = helixModule;
-
-            return helixModule;
+                // add the module to the map and the array
+                _this.PathsToHelixModulesMap[modulePath] = helixModule;    
+                _this.HelixModules.push(helixModule);
         });
     }; 
 
@@ -218,6 +263,10 @@ define(function (require, exports, module) {
 
         return HelixLayerIds.Unknown;
     };  
+    
+    function _getModuleInfos(jsonTemplates) {        
+        
+    };
 
     exports.HelixArchitecture = HelixArchitecture;
     exports.HelixLayer = HelixLayer;

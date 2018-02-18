@@ -51,9 +51,20 @@ define(function (require, exports, module) {
 			this_len = sourceString.length;
 		}
 		return sourceString.substring(this_len - search.length, this_len) === search;
-	};
+    };
+    
+    /**
+     * Returns a new string with any special markdown characters escaped
+     * @param {String} source Source string in which the markdown characters need to be escaped
+     */
+    function escapeForMarkdown(source) {
+        var markdownCharsPattern = "([_\*#])";
+        var re = new RegExp(markdownCharsPattern, "g");
+        return source.replace(re, "\\$1");
+    }
 
     exports.occurrences = occurrences;
     exports.startsWith = startsWith;
     exports.endsWith = endsWith;
+    exports.escapeForMarkdown = escapeForMarkdown;
 });
