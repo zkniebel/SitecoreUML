@@ -44,10 +44,10 @@ Download the [latest release](https://github.com/zkniebel/SitecoreUML/releases/l
 * (NEW) Generate a diagram for each Helix module that depicts the module's template architecture and its dependencies
 * And much more!
 
-## Coming Soon
+## Coming Soon!
 
-* (Coming Soon) Generate a diagram for each Helix layer that depicts the layer's template architecture and its dependencies
-* (Coming Soon) Validate Helix dependencies and visualize the results with reports and color-coded dependency arrows on the diagrams
+* (~March) Generate a diagram for each Helix layer that depicts the layer's template architecture and its dependencies
+* (~March) Validate Helix dependencies and visualize the results with reports and color-coded dependency arrows on the diagrams
 
 ## Project Status
 
