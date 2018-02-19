@@ -29,6 +29,7 @@
 * [Connecting to Sitecore](guide/connecting-to-sitecore.md)
 * [Validate](guide/validate.md)
 * [Deploy & Import](guide/deploy-and-import.md)
+* [Helix Tools](guide/helix-tools.md)
 * [JSON Tools](guide/json-tools.md)
 
 ## Module Reference
