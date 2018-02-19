@@ -33,6 +33,7 @@
   * [Module Diagrams](guide/helix-tools/module-diagram-generation.md)
   * [Layer Diagrams](guide/helix-tools/layer-diagrams.md)
   * [Dependency Validation](guide/helix-tools/dependency-validation.md)
+* [Generating HTML Documentation](guide/generating-html-documentation.md)
 * [JSON Tools](guide/json-tools.md)
 
 ## Module Reference
