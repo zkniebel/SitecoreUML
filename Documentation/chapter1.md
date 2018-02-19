@@ -86,6 +86,10 @@ Please note that the roadmap is tentative and subject to change.
   * [ ] New command for generating Helix layer-specific template diagrams
   * [ ] Visualize layer-to-layer dependencies on layer-specific diagrams
   * [ ] New Helix dependency direction validation integrated into all Helix diagrams
+  * [ ] Adds support for controlling the regular expression used for determining Helix modules to preferences
+  * [x] Adds support for controlling paths to layers in preferences
+  * [ ] Adds support for controlling dependency names in documentation
+  * [ ] Adds support for controlling dependency documentation format
 * [ ] Documentation
   * [ ] Export as HTML Docs
   * [ ] Helix Tools and Diagrams
@@ -102,6 +106,7 @@ Please note that the roadmap is tentative and subject to change.
 * JSON Tools and Extensibility Documentation
 
 * Updates the deployment to run validation and give the option to cancel the deployment if errors are detected
+
 * Makes the _TemplateRoot_ setting optional
   * * Falls back to the _/sitecore/templates_ folder 
     * Optional _exclusions_ configuration to define templates and paths to be excluded
