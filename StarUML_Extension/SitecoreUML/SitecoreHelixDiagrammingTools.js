@@ -342,7 +342,7 @@ define(function (require, exports, module) {
         var CommandManager = app.getModule("command/CommandManager");   
 
         // register the command
-        CommandManager.register("Test Generate Helix Module Diagrams", CMD_GENERATEHELIXMODULEDIAGRAMS, generateHelixModuleDiagrams);
+        CommandManager.register("Generate Helix Module Diagrams", CMD_GENERATEHELIXMODULEDIAGRAMS, generateHelixModuleDiagrams);
         // add the menu item
         SitecoreMenuLoader.sitecoreMenu.addMenuItem(CMD_GENERATEHELIXMODULEDIAGRAMS);
     };
