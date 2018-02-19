@@ -72,12 +72,8 @@ Please note that the roadmap is tentative and subject to change.
 
   * [x] Adds field section names to validation **\(1.2.0\)**
 
-* [ ] Documentation
-  * [ ] Export as Html Docs
-  * [ ] Print to PDF
-  * [ ] Layer Dependencies Diagram
-  * [ ] Layer-Specific Diagrams
-  * [ ] Helix layer-root path preferences
+* [x] Documentation
+
   * [x] Field section name validation **\(1.2.0\)**
   * [x] Sitecore Field Editor **\(1.2.0\)**
   * [x] Attribute type name dash support **\(1.2.0\)**
