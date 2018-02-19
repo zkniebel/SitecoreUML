@@ -4,11 +4,11 @@
 <!-- Publisher of the software -->
 <?define Publisher="Zachary Kniebel" ?>
 <!-- Software version -->
-<?define Version="1.2.0" ?>
+<?define Version="1.3.0" ?>
 <!-- Guid value unique to each version (necessary for upgrades) -->
-<?define VersionGuid="9538dc81-c650-436e-84aa-b0c3875cb36f" ?>
+<?define VersionGuid="9ae6656f-b89d-482d-8253-30412a71c03f" ?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"  xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
-	<Product Id="*"  Name="$(var.DisplayName)" Language="1033" Version="$(var.Version)" Manufacturer="$(var.Publisher)" UpgradeCode="$(var.VersionGuid)">
+	<Product Id="114c89be-c968-4131-af7f-95824b03bfdf"  Name="$(var.DisplayName)" Language="1033" Version="$(var.Version)" Manufacturer="$(var.Publisher)" UpgradeCode="$(var.VersionGuid)">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perUser" />
     
 		<MajorUpgrade
@@ -55,10 +55,18 @@
 
 	<Fragment>
 		<ComponentGroup Id="StarUML.Extension.Modules" Directory="INSTALLFOLDER">
-		  <Component Id="Modules.DiagramUtils" Permanent="no" NeverOverwrite="no"> 
-		    <RemoveFile Id="Remove_DiagramUtilsModule" Name="DiagramUtils.js" On="both" />
-		    <File Source="..\..\StarUML_Extension\SitecoreUML\DiagramUtils.js" KeyPath="yes" Vital="yes" />
-		  </Component>
+      <Component Id="Modules.ArrayUtils" Permanent="no" NeverOverwrite="no">
+        <RemoveFile Id="Remove_ArrayUtilsModule" Name="ArrayUtils.js" On="both" />
+        <File Source="..\..\StarUML_Extension\SitecoreUML\ArrayUtils.js" KeyPath="yes" Vital="yes" />
+      </Component>
+      <Component Id="Modules.DiagramUtils" Permanent="no" NeverOverwrite="no">
+        <RemoveFile Id="Remove_DiagramUtilsModule" Name="DiagramUtils.js" On="both" />
+        <File Source="..\..\StarUML_Extension\SitecoreUML\DiagramUtils.js" KeyPath="yes" Vital="yes" />
+      </Component>
+      <Component Id="Modules.RepositoryUtils" Permanent="no" NeverOverwrite="no">
+        <RemoveFile Id="Remove_RepositoryUtilsModule" Name="RepositoryUtils.js" On="both" />
+        <File Source="..\..\StarUML_Extension\SitecoreUML\RepositoryUtils.js" KeyPath="yes" Vital="yes" />
+      </Component>
 		  <Component Id="Modules.Main" Permanent="no" NeverOverwrite="no">
 		    <RemoveFile Id="Remove_MainModule" Name="Main.js" On="both" />
 		    <File Source="..\..\StarUML_Extension\SitecoreUML\Main.js" KeyPath="yes" Vital="yes" />
@@ -74,12 +82,20 @@
 		  <Component Id="Modules.SitecoreConnectionTest" Permanent="no" NeverOverwrite="no"> 
 		    <RemoveFile Id="Remove_SitecoreConnectionTestModule" Name="SitecoreConnectionTest.js" On="both" />
 		    <File Source="..\..\StarUML_Extension\SitecoreUML\SitecoreConnectionTest.js" KeyPath="yes" Vital="yes" />
-		  </Component> 
-		  <Component Id="Modules.SitecoreFieldEditorView" Permanent="no" NeverOverwrite="no"> 
-		    <RemoveFile Id="Remove_SitecoreFieldEditorViewModule" Name="SitecoreFieldEditorView.js" On="both" />
-		    <File Source="..\..\StarUML_Extension\SitecoreUML\SitecoreFieldEditorView.js" KeyPath="yes" Vital="yes" />
-		  </Component> 
-		  <Component Id="Modules.SitecoreMenuLoader" Permanent="no" NeverOverwrite="no"> 
+		  </Component>
+      <Component Id="Modules.SitecoreFieldEditorView" Permanent="no" NeverOverwrite="no">
+        <RemoveFile Id="Remove_SitecoreFieldEditorViewModule" Name="SitecoreFieldEditorView.js" On="both" />
+        <File Source="..\..\StarUML_Extension\SitecoreUML\SitecoreFieldEditorView.js" KeyPath="yes" Vital="yes" />
+      </Component>
+      <Component Id="Modules.SitecoreHelix" Permanent="no" NeverOverwrite="no">
+        <RemoveFile Id="Remove_SitecoreHelixModule" Name="SitecoreHelix.js" On="both" />
+        <File Source="..\..\StarUML_Extension\SitecoreUML\SitecoreHelix.js" KeyPath="yes" Vital="yes" />
+      </Component>
+      <Component Id="Modules.SitecoreHelixDiagrammingTools" Permanent="no" NeverOverwrite="no">
+        <RemoveFile Id="Remove_SitecoreHelixDiagrammingToolsModule" Name="SitecoreHelixDiagrammingTools.js" On="both" />
+        <File Source="..\..\StarUML_Extension\SitecoreUML\SitecoreHelixDiagrammingTools.js" KeyPath="yes" Vital="yes" />
+      </Component>
+      <Component Id="Modules.SitecoreMenuLoader" Permanent="no" NeverOverwrite="no"> 
 		    <RemoveFile Id="Remove_SitecoreMenuLoaderModule" Name="SitecoreMenuLoader.js" On="both" />
 		    <File Source="..\..\StarUML_Extension\SitecoreUML\SitecoreMenuLoader.js" KeyPath="yes" Vital="yes" />
 		  </Component> 
