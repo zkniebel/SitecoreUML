@@ -1,5 +1,4 @@
-<
-p align="center">
+<p align="center">
 <a href="https://github.com/zkniebel/SitecoreUML/">
 <img src="https://github.com/zkniebel/SitecoreUML/blob/master/Documentation/assets/SitecoreUML-Logo-50x50.png?raw=true" alt="SitecoreUML" />
 </a>
