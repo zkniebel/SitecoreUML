@@ -44,7 +44,7 @@ Download the [latest release](https://github.com/zkniebel/SitecoreUML/releases/l
 * Sitecore 8+
 * Sitecore 9+
 
-## Generated Documentation Sample
+## SitecoreUML-Generated Architecture Documentation Sample
 
 **[SitecoreUML-Generated-Documentation-for-Habitat.zip](/Documentation/assets/SitecoreUML-Generated-Documentation-for-Habitat.zip)**
 
