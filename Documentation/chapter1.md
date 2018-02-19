@@ -61,7 +61,7 @@ Please note that the roadmap is tentative and subject to change.
 
 ### Version 1.2 \(2017.10.20\)
 
-* [x] Adds support for dashes in Quick Edits for attribute type names \(fixes StarUML bug\) **\(1.2.0\)**
+* [x] Adds support for dashes in Quick Edits for attribute type names **\(1.2.0\)**
 * [x] Replaces Documentation field-based implementation of Extended Field Info with the Sitecore Field Editor **\(1.2.0\)**
 
   * [x] Updates the content of the Documentation field to be more human-readable **\(1.2.0\)**
@@ -76,7 +76,7 @@ Please note that the roadmap is tentative and subject to change.
 
   * [x] Field section name validation **\(1.2.0\)**
   * [x] Sitecore Field Editor **\(1.2.0\)**
-  * [x] Attribute type name dash support **\(1.2.0\)**
+  * [x] Attribute type name dash support - fixes StarUML bug **\(1.2.0\)**
 
 ### Version 1.3 \(2018.02.18\)
 
