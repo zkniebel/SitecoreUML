@@ -86,15 +86,15 @@ Please note that the roadmap is tentative and subject to change.
   * Adds support for generating layer-specific diagrams in addition to all-inclusive ones
   * Adds Helix preferences for setting layer-root paths for Helix diagram generation
   * Adds support for Helix module-specific diagram generation
-
 * Help Fields in Sitecore Updated with Documentation field from StarUML
+
 * Documentation
   * Export as Html Docs
   * Layer Dependencies Diagram
   * Layer-Specific Diagrams
   * Helix layer-root path preferences
 
-### Version 1.4 \(~ January 2018\)
+### Version 1.4 \(~ March 2018\)
 
 * Adds support for deploying specific diagram sets
 * Adds support for setting the default field section name in preferences, leaving the one in the Sitecore configuration to be a required backup value
@@ -112,10 +112,7 @@ Please note that the roadmap is tentative and subject to change.
 
 ### ...
 
-### Version 2.0 \(Coming in 2018\)
-
-* Azure infrastructure provisioning support
-* AWS infrastructure provisioning support
+### 
 
 
 
