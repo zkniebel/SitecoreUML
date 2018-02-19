@@ -31,10 +31,6 @@ With the release of version 1.3, SitecoreUML includes a new set of Helix tools f
 
 Download the [latest release](https://github.com/zkniebel/SitecoreUML/releases/latest) or checkout the [documentation](https://zkniebel.gitbooks.io/sitecoreuml/) to get started!
 
-## Supported Sitecore Versions
-* Sitecore 8+
-* Sitecore 9+
-
 ## Features
 
 * One-click generate UML diagrams and models from any existing Sitecore 8/9+ instance
@@ -44,10 +40,23 @@ Download the [latest release](https://github.com/zkniebel/SitecoreUML/releases/l
 * (NEW) Generate a diagram for each Helix module that depicts the module's template architecture and its dependencies
 * And much more!
 
-## Coming Soon!
+## Supported Sitecore Versions
+* Sitecore 8+
+* Sitecore 9+
 
-* (~March) Generate a diagram for each Helix layer that depicts the layer's template architecture and its dependencies
-* (~March) Validate Helix dependencies and visualize the results with reports and color-coded dependency arrows on the diagrams
+## Generated Documentation Sample
+
+**[SitecoreUML-Generated-Documentation-for-Habitat.zip](/Documentation/assets/SitecoreUML-Generated-Documentation-for-Habitat.zip)**
+
+Be sure to check out:
+* Diagrams (green icons) from the tree and/or the "All Diagrams" page (link at the top of the tree)
+* Template documentation pages (yellow, pin-like icons; under the module folders and/or their sub-folders)
+* Helix module-specific diagrams (green icons; one under each module)
+* Dependency documentation pages (blue icons; one under each module with dependencies on another module; named "Dependencies for \_\_\_\_\_ Layer")
+
+Using SitecoreUML, it took approximately **5 minutes to generate the Habitat documentation**. It took me another 30 minutes to push the output in source control and update the README.
+
+I generated this documentation straight from a clean Habitat instance and did not modify the documentation in any way. However, note that the documentation is customizeable from StarUML, and will soon be customizable from Sitecore, as well!
 
 ## Project Status
 
