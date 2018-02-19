@@ -30,6 +30,9 @@
 * [Validate](guide/validate.md)
 * [Deploy & Import](guide/deploy-and-import.md)
 * [Helix Tools](guide/helix-tools.md)
+  * [Module Diagrams](guide/helix-tools/module-diagram-generation.md)
+  * Layer Diagrams
+  * Dependency Validation
 * [JSON Tools](guide/json-tools.md)
 
 ## Module Reference
