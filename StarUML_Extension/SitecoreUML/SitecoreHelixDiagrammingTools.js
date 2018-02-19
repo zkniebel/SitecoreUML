@@ -5,13 +5,29 @@ define(function (require, exports, module) {
     var DiagramManager = app.getModule("diagrams/DiagramManager");
     var Factory = app.getModule("engine/Factory");
     var ModelExplorerView = app.getModule("explorer/ModelExplorerView");
+    var Dialogs = app.getModule("dialogs/Dialogs");
 
     // SitecoreUML Module Dependencies
     var SitecoreHelix = require("SitecoreHelix");
     var SitecoreMenuLoader = require("SitecoreMenuLoader");
     var SitecorePreferencesLoader = require("SitecorePreferencesLoader");
+    var SitecoreTemplatesJsonGenerator = require("SitecoreTemplatesJsonGenerator");
     var DiagramUtils = require("DiagramUtils");
     var StringUtils = require("StringUtils");
+    var ProgressDialog = require("ProgressDialog");    
+
+    // progress dialog constants
+    var progressDialogClassId = "dialog-progress__sitecoreuml--import";
+    var progressDialogTitle = "Helix Tools";
+    
+    // gets the import progress message that should be displayed
+    function getImportProgressMessage(actionLabel, moduleName, moduleLayerName, moduleIndex, totalModules) {
+        moduleLayerName = moduleLayerName ? " (" + moduleLayerName + ")" : "";
+        return "<div><b>" + actionLabel + ": </b>" + moduleName + moduleLayerName
+            + "<br/><b>Completed: </b>" + moduleIndex
+            + "<br/><b>Remaining: </b>" + (totalModules - moduleIndex)
+            + "</div>";
+    };
 
     function _addPackageViewForLayer(helixLayer, diagram) {
         return Factory.createViewOf(
@@ -132,52 +148,60 @@ define(function (require, exports, module) {
                     return helixModule.TemplatePaths.indexOf(dependencyHelixTemplate.JsonTemplate.Path) == -1;
                 })            
                 .forEach(function(dependencyHelixTemplate) {
-                // get the layer of the dependency
-                var dependencyLayer = dependencyHelixTemplate.getHelixLayer(helixArchitecture);
-    
-                // draw the layer, if not already drawn
-                var dependencyLayerView = layerIdsToDrawnViewsMap[dependencyLayer.LayerId];
-                if (dependencyLayerView === undefined) {
-                    // add layer to the diagram
-                    dependencyLayerView = _addViewToDiagram(dependencyLayer.RootPackageModel, templatesDiagram);
-                    // add layer to the drawn layers map to avoid adding it multiple times
-                    layerIdsToDrawnViewsMap[dependencyLayer.LayerId] = dependencyLayerView;
-                }
+                    // get the layer of the dependency
+                    var dependencyLayer = dependencyHelixTemplate.getHelixLayer(helixArchitecture);
+        
+                    // draw the layer, if not already drawn
+                    var dependencyLayerView = layerIdsToDrawnViewsMap[dependencyLayer.LayerId];
+                    if (dependencyLayerView === undefined) {
+                        // add layer to the diagram
+                        dependencyLayerView = _addViewToDiagram(dependencyLayer.RootPackageModel, templatesDiagram);
+                        // add layer to the drawn layers map to avoid adding it multiple times
+                        layerIdsToDrawnViewsMap[dependencyLayer.LayerId] = dependencyLayerView;
+                    }
 
-                // create the documentation entry
-                var templatePath = StringUtils.escapeForMarkdown(helixTemplate.JsonTemplate.Path);
-                var dependencyPath = StringUtils.escapeForMarkdown(dependencyHelixTemplate.JsonTemplate.Path);
-                var documentationEntry = "{" + templatePath + "} -> {" + dependencyPath + "}";
+                    // create the documentation entry
+                    var templatePath = StringUtils.escapeForMarkdown(helixTemplate.JsonTemplate.Path);
+                    var dependencyPath = StringUtils.escapeForMarkdown(dependencyHelixTemplate.JsonTemplate.Path);
+                    var documentationEntry = "{" + templatePath + "} -> {" + dependencyPath + "}";
 
-                var dependencyView = layerIdsToDrawnDependenciesMap[dependencyLayer.LayerId];
-                if (dependencyView === undefined) {    
-                    // add the dependency to the diagram
-                    dependencyView = _addRelationshipToDiagram(
-                        "UMLDependency", 
-                        dependencyLayerView, 
-                        moduleView, 
-                        templatesDiagram)
-                    
-                    // document the dependency info
-                    dependencyView.model.documentation = documentationEntry
-                } else {
-                    // append the dependency info to the existing documentaion
-                    dependencyView.model.documentation += "\n" + documentationEntry;
-                }          
-                // set the name of the dependency (for display in generated docs)
-                dependencyView.model.name = "Dependencies on the " + dependencyLayer.LayerId + " Layer";
-                // hides the name from displaying on the actual diagram (redundant and makes the diagrams harder to read)
-                dependencyView.nameLabel.font.size = 0; 
-            });
+                    var dependencyView = layerIdsToDrawnDependenciesMap[dependencyLayer.LayerId];
+                    if (dependencyView === undefined) {    
+                        // add the dependency to the diagram
+                        dependencyView = _addRelationshipToDiagram(
+                            "UMLDependency", 
+                            dependencyLayerView, 
+                            moduleView, 
+                            templatesDiagram)
+                        
+                        // document the dependency info
+                        dependencyView.model.documentation = documentationEntry
+                    } else {
+                        // append the dependency info to the existing documentaion
+                        dependencyView.model.documentation += "\n" + documentationEntry;
+                    }          
+                    // set the name of the dependency (for display in generated docs)
+                    dependencyView.model.name = "Dependencies on the " + dependencyLayer.LayerId + " Layer";
+                    // hides the name from displaying on the actual diagram (redundant and makes the diagrams harder to read)
+                    dependencyView.nameLabel.font.size = 0; 
+                });
         });
 
         // 8. Reformat the diagram and collapse the Model Explorer
         DiagramUtils.reformatDiagramLayout(templatesDiagram, SitecorePreferencesLoader.getSitecoreImportDefaultDiagramFormat());
-        ModelExplorerView.rebuild();
+                    ModelExplorerView.rebuild();
+        
+        
+
+        
 
         // 9. Annotate the dependencies as valid/invalid based on validation rules and update color formatting for better visualization
         
         // TODO: IMPLEMENT
+
+
+
+
     };
 
     // creates the view of the existing model without its relationships and adds it to the diagram
@@ -222,9 +246,11 @@ define(function (require, exports, module) {
             relationshipOptions);
     };
 
-
-    function testCreateHelixObject() {
-        var SitecoreTemplatesJsonGenerator = require("SitecoreTemplatesJsonGenerator");
+    /**
+     * Reinitializes (or initializes) the HelixArchitecture object created from the current architecture and updates the
+     * app.HelixArchitecture property with the result
+     */
+    function _reinitializeHelixArchitecture() {
         console.log("Serializing architecture into JSON...");
         var jsonTemplates = SitecoreTemplatesJsonGenerator.generateJsonTemplates();
         console.log("Serialization complete. Creating Helix Architecture object...");
@@ -236,42 +262,92 @@ define(function (require, exports, module) {
         return helixArchitecture;
     };
 
-    function testGenerateHelixModuleDiagrams() {
-        var helixArchitecture = testCreateHelixObject();
+    function generateHelixModuleDiagrams() {
+        var helixArchitecture = _reinitializeHelixArchitecture();
+        var totalModules = helixArchitecture.ModulePaths.length;
+        
+        var getGenerateTemplatesDiagramForModuleTask = function(helixModule, moduleIndex) {
+            return function() {
+                return ProgressDialog.async_executeTask(
+                    function() { 
+                        console.log("Generating diagram for module");
+                        generateTemplatesDiagramForModule(helixModule, helixArchitecture); 
+                        console.log("Diagram generation for mordule complete");
+                    },
+                    function() {    
+                        ProgressDialog.showOrUpdateDialogWithProgressBar(
+                            progressDialogClassId, 
+                            progressDialogTitle + " - Generating Diagrams", 
+                            getImportProgressMessage("Generating Diagrams for Module", helixModule.Name, helixModule.LayerId, moduleIndex, totalModules), 
+                            { 
+                                currentStep: moduleIndex, 
+                                totalSteps: totalModules
+                            });
+                    }
+                );
+            };
+        };
+        
+        // task to update the progress dialog to reflect completion
+        var getCompletionTask = function() {
+            return ProgressDialog.async_executeTask(
+                function() {        
+                    var finishButtonClass = "btn-import-finish";            
+                    var finishDialog = ProgressDialog.showOrUpdateDialog(
+                        progressDialogClassId, 
+                        "Module Diagram Generation Completed Successfully", 
+                        "<p>Helix module-specific diagram generation and reformatting complete, and dependencies have been drawn.</p>\
+                        <p><b>IMPORTANT:</b> Depending on the size of the processed architecture, it may take a few minutes for the Model Explorer to complete its background tasks. It is \
+                        common to experience some sluggishness or scrolling issues during this time. If this occurs, give the Model Explorer a few minutes and proper \
+                        functionality will be automatically restored.</p>\
+                        <p>Click \"Finish\" to close this dialog.</p>",
+                        [
+                            { 
+                                id: Dialogs.DIALOG_BTN_CANCEL, 
+                                text: "Finish",
+                                className: finishButtonClass
+                            }
+                        ]
+                    );
+                    
+                    // add the click handler for closing the window
+                    finishDialog.getElement().on("click.finishimport", "." + finishButtonClass, function() {
+                        finishDialog.close();
+                    });
+                }
+            );
+        };
 
-        console.log("Starting Helix Module Diagram Generation...");
-        helixArchitecture.HelixModules.forEach(function(helixModule) {
-            generateTemplatesDiagramForModule(helixModule, helixArchitecture);
+        // start the promise chain for the tasks
+        var tasks = Promise.resolve(); 
+
+        helixArchitecture.HelixModules.forEach(function(helixModule, moduleIndex) {
+            tasks = tasks.then(
+                getGenerateTemplatesDiagramForModuleTask(helixModule, moduleIndex), 
+                function(data) { console.error(data); }
+            );
         });
-        console.log("Completed Helix Module Diagram Generation!");
+
+        console.log("adding completion task");
+        tasks = tasks
+            .then(getCompletionTask);
     };
-
-
 
 
     // command ID constant
-    var CMD_TESTCREATEHELIXOBJECT = "sitecore.testcreatehelixobject";
-    var CMD_TESTGENERATEHELIXMODULEDIAGRAMS = "sitecore.testgeneratehelixmodulediagrams";
+    var CMD_GENERATEHELIXMODULEDIAGRAMS = "sitecore.generatehelixmodulediagrams";
 
     exports.initialize = function() {
         // eager-load the requisite modules
-        var CommandManager = app.getModule("command/CommandManager");
+        var CommandManager = app.getModule("command/CommandManager");   
 
         // register the command
-        CommandManager.register("Test Create Helix Object", CMD_TESTCREATEHELIXOBJECT, testCreateHelixObject);
+        CommandManager.register("Test Generate Helix Module Diagrams", CMD_GENERATEHELIXMODULEDIAGRAMS, generateHelixModuleDiagrams);
         // add the menu item
-        SitecoreMenuLoader.sitecoreMenu.addMenuItem(CMD_TESTCREATEHELIXOBJECT);
-        app.testCreateHelixObject = testCreateHelixObject;    
-
-        // register the command
-        CommandManager.register("Test Generate Helix Module Diagrams", CMD_TESTGENERATEHELIXMODULEDIAGRAMS, testGenerateHelixModuleDiagrams);
-        // add the menu item
-        SitecoreMenuLoader.sitecoreMenu.addMenuItem(CMD_TESTGENERATEHELIXMODULEDIAGRAMS);
-        app.testGenerateHelixModuleDiagrams = testGenerateHelixModuleDiagrams;
+        SitecoreMenuLoader.sitecoreMenu.addMenuItem(CMD_GENERATEHELIXMODULEDIAGRAMS);
     };
 
-    exports.testCreateHelixObject = testCreateHelixObject;
-    exports.testGenerateHelixModuleDiagrams = testGenerateHelixModuleDiagrams;
+    exports.generateHelixModuleDiagrams = generateHelixModuleDiagrams;
 
     exports.generateLayerDependenciesDiagram = generateLayerDependenciesDiagram;
     exports.generateModuleDependenciesDiagram = generateModuleDependenciesDiagram;
