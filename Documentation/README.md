@@ -27,6 +27,10 @@ You can use SitecoreUML to generate MSDN-style HTML documentation for any archit
 ## NEW - Helix Tools
 With the release of version 1.3, SitecoreUML includes a new set of Helix tools for visualizing and validating template dependencies in any Helix solution!
 
+## Getting Started
+
+Download the [latest release](https://github.com/zkniebel/SitecoreUML/releases/latest) or checkout the [documentation](https://zkniebel.gitbooks.io/sitecoreuml/) to get started!
+
 ## Supported Sitecore Versions
 * Sitecore 8+
 * Sitecore 9+ 
