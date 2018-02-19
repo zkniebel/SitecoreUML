@@ -59,7 +59,7 @@ Please note that the roadmap is tentative and subject to change.
   * [x] Template Exclude paths
   * [x] Import Diagram Formatting Preference
 
-### Version 1.2 \(2017.10.20 - Current\)
+### Version 1.2 \(2017.10.20\)
 
 * [x] Adds support for dashes in Quick Edits for attribute type names \(fixes StarUML bug\) **\(1.2.0\)**
 * [x] Replaces Documentation field-based implementation of Extended Field Info with the Sitecore Field Editor **\(1.2.0\)**
@@ -78,11 +78,11 @@ Please note that the roadmap is tentative and subject to change.
   * [x] Sitecore Field Editor **\(1.2.0\)**
   * [x] Attribute type name dash support **\(1.2.0\)**
 
-### Version 1.3 \(~ February 2018\)
+### Version 1.3 \(2018.02.18\)
 
 * [ ] Helix diagramming and validation features support
-  * [ ] New command for generating Helix module-specific template diagrams
-  * [ ] Visualize module-to-layer dependencies on module-specific diagrams
+  * [x] New command for generating Helix module-specific template diagrams
+  * [x] Visualize module-to-layer dependencies on module-specific diagrams
   * [ ] New command for generating Helix layer-specific template diagrams
   * [ ] Visualize layer-to-layer dependencies on layer-specific diagrams
   * [ ] New Helix dependency direction validation integrated into all Helix diagrams
@@ -90,7 +90,7 @@ Please note that the roadmap is tentative and subject to change.
   * [ ] Export as HTML Docs
   * [ ] Helix Tools and Diagrams
 
-### Version 1.4 \(~ March 2018\)
+### Version 1.4 \(~ April 2018\)
 
 * Adds support for deploying specific diagram sets
 * Help Fields in Sitecore Updated with Documentation field from StarUML
@@ -100,6 +100,7 @@ Please note that the roadmap is tentative and subject to change.
 * Adds support for setting the default field section name in preferences, leaving the one in the Sitecore configuration to be a required backup value
 
 * JSON Tools and Extensibility Documentation
+
 * Updates the deployment to run validation and give the option to cancel the deployment if errors are detected
 * Makes the _TemplateRoot_ setting optional
   * * Falls back to the _/sitecore/templates_ folder 
