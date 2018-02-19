@@ -39,6 +39,13 @@ define(function (require, exports, module) {
     var SitecoreConnectionTest = require("SitecoreConnectionTest");
     SitecoreConnectionTest.initialize();
 
+    // load the Sitecore Helix module
+    var SitecoreHelix = require("SitecoreHelix");
+
+    // load the Sitecore Helix Diagramming Tools
+    var SitecoreHelixDiagrammingTools = require("SitecoreHelixDiagrammingTools");
+    SitecoreHelixDiagrammingTools.initialize();
+
     
     var AppInit = app.getModule("utils/AppInit");
     AppInit.htmlReady(function() {

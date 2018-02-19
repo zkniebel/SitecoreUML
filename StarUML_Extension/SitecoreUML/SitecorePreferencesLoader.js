@@ -15,6 +15,9 @@ define(function(require, exports, module) {
     var sitecoreValidateRouteId = "sitecore.service.validateroute";
     var sitecoreTestConnectionRouteId = "sitecore.service.testconnectionroute";
     var sitecoreImportDefaultDiagramFormatId = "sitecore.import.defaultdiagramformat";
+    var sitecoreHelixFoundationPathId = "sitecore.helix.foundationlayerpath";
+    var sitecoreHelixFeaturePathId = "sitecore.helix.featurelayerpath";
+    var sitecoreHelixProjectPathId = "sitecore.helix.projectlayerpath";
 
     // configure the preferences
     var sitecorePreferences = {
@@ -60,6 +63,28 @@ define(function(require, exports, module) {
             ],            
             default: "format.layout.leftToRight"
         },
+        "sitecore.helix.section": {
+            text: "SitecoreUML Helix Settings",
+            type: "Section"
+        },
+        "sitecore.helix.foundationlayerpath": {
+            text: "Foundation Template Folder Path",
+            description: "Path to Foundation template folder relative to root template folder. (Case-sensitive; should start with a forward-slash should not end with a forward-slash)",
+            type: "String",
+            default: "/Foundation"
+        },
+        "sitecore.helix.featurelayerpath": {
+            text: "Feature Template Folder Path",
+            description: "Path to Feature template folder relative to root template folder. (Case-sensitive; should start with a forward-slash should not end with a forward-slash)",
+            type: "String",
+            default: "/Feature"
+        },
+        "sitecore.helix.projectlayerpath": {
+            text: "Project Template Folder Path",
+            description: "Path to Project template folder relative to root template folder. (Case-sensitive; should start with a forward-slash should not end with a forward-slash)",
+            type: "String",
+            default: "/Project"
+        },
         "sitecore.service.section": {
             text: "SitecoreUML Service Settings",
             type: "Section"
@@ -101,10 +126,16 @@ define(function(require, exports, module) {
     exports.sitecoreDeployRouteId = sitecoreDeployRouteId;
     exports.sitecoreImportRouteId = sitecoreImportRouteId;
     exports.sitecoreValidateRouteId = sitecoreValidateRouteId;
+    exports.sitecoreHelixFoundationPathId = sitecoreHelixFoundationPathId;
+    exports.sitecoreHelixFeaturePathId = sitecoreHelixFeaturePathId;
+    exports.sitecoreHelixProjectPathId = sitecoreHelixProjectPathId;
     exports.getSitecoreUrl = function() { return PreferenceManager.get(sitecoreUrlId); };
     exports.getSitecoreImportDefaultDiagramFormat = function() { return PreferenceManager.get(sitecoreImportDefaultDiagramFormatId); };
     exports.getSitecoreDeployRoute = function() { return PreferenceManager.get(sitecoreDeployRouteId); };
     exports.getSitecoreImportRoute = function() { return PreferenceManager.get(sitecoreImportRouteId); };
     exports.getSitecoreValidateRoute = function() { return PreferenceManager.get(sitecoreValidateRouteId); };
     exports.getSitecoreTestConnectionRoute = function() { return PreferenceManager.get(sitecoreTestConnectionRouteId); };
+    exports.getSitecoreHelixFoundationPath = function() { return PreferenceManager.get(sitecoreHelixFoundationPathId); };
+    exports.getSitecoreHelixFeaturePath = function() { return PreferenceManager.get(sitecoreHelixFeaturePathId); };
+    exports.getSitecoreHelixProjectPath = function() { return PreferenceManager.get(sitecoreHelixProjectPathId); };
 });

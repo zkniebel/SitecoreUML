@@ -53,8 +53,27 @@ define(function(require, exports, module) {
     //   buttonId             :  The button id to use when closing the dialog. Defaults to DIALOG_CANCELED
     function cancelDialogIfOpen(uniqueDialogCssClass, buttonId) {        
         Dialogs_get().cancelModalDialogIfOpen(uniqueDialogCssClass, buttonId);
+    };    
+
+    // executes a function asynchronously and supports a progress update function
+    function async_executeTask(taskFn, progressFn) {
+        return new Promise(function (resolve) {
+            // update the progress dialog
+            if (progressFn) {
+                progressFn();
+            }
+
+            // run the task async to support the progress bars, using a timeout of 0
+            setTimeout(function() {
+                // execute the task
+                taskFn();
+                // resolve the promises
+                resolve();
+            }, 0);
+        });
     };
 
+    exports.async_executeTask = async_executeTask;
     exports.showOrUpdateDialog = showOrUpdateDialog;
     exports.showOrUpdateDialogWithProgressBar = showOrUpdateDialogWithProgressBar;
     exports.cancelDialogIfOpen = cancelDialogIfOpen;
