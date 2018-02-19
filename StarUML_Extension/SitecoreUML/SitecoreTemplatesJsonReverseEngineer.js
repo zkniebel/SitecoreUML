@@ -419,7 +419,7 @@ define(function (require, exports, module) {
                     // add the inheritance relationship
                     Factory.createModelAndView(
                         "UMLGeneralization",
-                        baseTemplateView.model,
+                        templateView.model,
                         templatesDiagram,
                         relationshipOptions
                     );
