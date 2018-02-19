@@ -80,24 +80,25 @@ Please note that the roadmap is tentative and subject to change.
 
 ### Version 1.3 \(~ February 2018\)
 
-* Helix Diagramming and Validation Features Support
-
-* * Adds new diagram generated on import for visualizing Helix layer dependencies
-  * Adds support for generating layer-specific diagrams in addition to all-inclusive ones
-  * Adds Helix preferences for setting layer-root paths for Helix diagram generation
-  * Adds support for Helix module-specific diagram generation
-* Help Fields in Sitecore Updated with Documentation field from StarUML
-
-* Documentation
-  * Export as Html Docs
-  * Layer Dependencies Diagram
-  * Layer-Specific Diagrams
-  * Helix layer-root path preferences
+* [ ] Helix diagramming and validation features support
+  * [ ] New command for generating Helix module-specific template diagrams
+  * [ ] Visualize module-to-layer dependencies on module-specific diagrams
+  * [ ] New command for generating Helix layer-specific template diagrams
+  * [ ] Visualize layer-to-layer dependencies on layer-specific diagrams
+  * [ ] New Helix dependency direction validation integrated into all Helix diagrams
+* [ ] Documentation
+  * [ ] Export as HTML Docs
+  * [ ] Helix Tools and Diagrams
 
 ### Version 1.4 \(~ March 2018\)
 
 * Adds support for deploying specific diagram sets
+* Help Fields in Sitecore Updated with Documentation field from StarUML
+
+* Support for Sitecore IDs/updating existing architectures/diagrams
+
 * Adds support for setting the default field section name in preferences, leaving the one in the Sitecore configuration to be a required backup value
+
 * JSON Tools and Extensibility Documentation
 * Updates the deployment to run validation and give the option to cancel the deployment if errors are detected
 * Makes the _TemplateRoot_ setting optional
