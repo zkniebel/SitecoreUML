@@ -46,7 +46,7 @@ Download the [latest release](https://github.com/zkniebel/SitecoreUML/releases/l
 
 ## SitecoreUML-Generated Architecture Documentation Sample
 
-**[SitecoreUML-Generated-Documentation-for-Habitat.zip](https://github.com/zkniebel/SitecoreUML/blob/master/Documentation/assets/SitecoreUML-Generated-Docs-for-Habitat.zip)**
+**[SitecoreUML-Generated-Documentation-for-Habitat.zip](https://github.com/zkniebel/SitecoreUML/raw/master/Documentation/assets/SitecoreUML-Generated-Docs-for-Habitat.zip)**
 
 Be sure to check out:
 * Diagrams (green icons) from the tree and/or the "All Diagrams" page (link at the top of the tree)
