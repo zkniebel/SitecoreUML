@@ -133,9 +133,10 @@ define(function (require, exports, module) {
             if (value === undefined || value === "") {
                 value = fieldAttribute.default;
             }
-            docString += fieldAttribute.name + ": " + JSON.stringify(value);
+            
+            docString += "**" + fieldAttribute.name + ":** `" + JSON.stringify(value) + "`";
             if (numFieldAttributes > i + 1) {                
-                docString += ",\n";  
+                docString += "  \n";  
             }              
         });
 
