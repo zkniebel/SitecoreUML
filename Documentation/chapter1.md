@@ -81,13 +81,13 @@ Please note that the roadmap is tentative and subject to change.
 ### Version 1.3 \(2018.02.18 - current\)
 
 * [ ] Helix diagramming and validation features support
-  * [x] New command for generating Helix module-specific template diagrams
-  * [x] Visualize module-to-layer dependencies on module-specific diagrams
+  * [x] New command for generating Helix module-specific template diagrams **\(1.3.0\)**
+  * [x] Visualize module-to-layer dependencies on module-specific diagrams **\(1.3.0\)**
   * [ ] New command for generating Helix layer-specific template diagrams
   * [ ] Visualize layer-to-layer dependencies on layer-specific diagrams
   * [ ] New Helix dependency direction validation integrated into all Helix diagrams
   * [ ] Adds support for controlling the regular expression used for determining Helix modules to preferences
-  * [x] Adds support for controlling paths to layers in preferences
+  * [x] Adds support for controlling paths to layers in preferences **\(1.3.0\)**
   * [ ] Adds support for controlling dependency names in documentation
   * [ ] Adds support for controlling dependency documentation format
 * [ ] Documentation
@@ -113,6 +113,7 @@ Please note that the roadmap is tentative and subject to change.
     * Optional _exclusions_ configuration to define templates and paths to be excluded
 
 * Documentation
+
   * Add Diagram Set command
   * Developer Setup
   * Tutorials
