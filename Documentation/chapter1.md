@@ -78,7 +78,7 @@ Please note that the roadmap is tentative and subject to change.
   * [x] Sitecore Field Editor **\(1.2.0\)**
   * [x] Attribute type name dash support - fixes StarUML bug **\(1.2.0\)**
 
-### Version 1.3 \(2018.02.18\)
+### Version 1.3 \(2018.02.18 - current\)
 
 * [ ] Helix diagramming and validation features support
   * [x] New command for generating Helix module-specific template diagrams
@@ -108,8 +108,10 @@ Please note that the roadmap is tentative and subject to change.
 * Updates the deployment to run validation and give the option to cancel the deployment if errors are detected
 
 * Makes the _TemplateRoot_ setting optional
+
   * * Falls back to the _/sitecore/templates_ folder 
     * Optional _exclusions_ configuration to define templates and paths to be excluded
+
 * Documentation
   * Add Diagram Set command
   * Developer Setup
