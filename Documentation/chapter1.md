@@ -81,6 +81,7 @@ Please note that the roadmap is tentative and subject to change.
 ### Version 1.3 \(2018.02.18 - current\)
 
 * [ ] Optional template ID preservation support
+* [ ] Sitecore 7 support
 * [ ] Helix diagramming and validation features support
   * [x] New command for generating Helix module-specific template diagrams **\(1.3.0\)**
   * [x] Visualize module-to-layer dependencies on module-specific diagrams **\(1.3.0\)**
