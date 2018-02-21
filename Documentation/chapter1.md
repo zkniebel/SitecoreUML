@@ -59,48 +59,72 @@ Please note that the roadmap is tentative and subject to change.
   * [x] Template Exclude paths
   * [x] Import Diagram Formatting Preference
 
-### Version 1.2 \(2017.10.20 - Current\)
+### Version 1.2 \(2017.10.20\)
 
 * [x] Adds support for dashes in Quick Edits for attribute type names **\(1.2.0\)**
 * [x] Replaces Documentation field-based implementation of Extended Field Info with the Sitecore Field Editor **\(1.2.0\)**
+
   * [x] Updates the content of the Documentation field to be more human-readable **\(1.2.0\)**
   * [x] Adds auto-generation of Documentation based on Sitecore Field Editor-managed values **\(1.2.0\)**
   * [x] Adds support for controlling whether or not Documentation is auto-generated via a Sitecore Field Editor setting **\(1.2.0\)**
+
 * [x] Validation updates
+
   * [x] Adds field section names to validation **\(1.2.0\)**
-* [ ] Documentation
-  * [ ] Export as Html Docs
-  * [ ] Print to PDF
+
+* [x] Documentation
+
   * [x] Field section name validation **\(1.2.0\)**
   * [x] Sitecore Field Editor **\(1.2.0\)**
   * [x] Attribute type name dash support - fixes StarUML bug **\(1.2.0\)**
 
-### Version 1.3 \(~ December 2018\)
+### Version 1.3 \(2018.02.18 - current\)
+
+* [ ] Optional template ID preservation support
+* [ ] Sitecore 7 support
+* [ ] Helix diagramming and validation features support
+  * [x] New command for generating Helix module-specific template diagrams **\(1.3.0\)**
+  * [x] Visualize module-to-layer dependencies on module-specific diagrams **\(1.3.0\)**
+  * [ ] New command for generating Helix layer-specific template diagrams
+  * [ ] Visualize layer-to-layer dependencies on layer-specific diagrams
+  * [ ] New Helix dependency direction validation integrated into all Helix diagrams
+  * [ ] Adds support for controlling the regular expression used for determining Helix modules to preferences
+  * [x] Adds support for controlling paths to layers in preferences **\(1.3.0\)**
+  * [ ] Adds support for controlling dependency names in documentation
+  * [ ] Adds support for controlling dependency documentation format
+* [ ] Documentation
+  * [ ] Export as HTML Docs
+  * [ ] Helix Tools and Diagrams
+
+### Version 1.4 \(~ April 2018\)
+
+* Adds support for deploying specific diagram sets
+* Help Fields in Sitecore Updated with Documentation field from StarUML
+
+* Support for Sitecore IDs/updating existing architectures/diagrams
 
 * Adds support for setting the default field section name in preferences, leaving the one in the Sitecore configuration to be a required backup value
-* Makes the _TemplateRoot_ setting optional
-  * Falls back to the _/sitecore/templates_ folder 
-  * Optional _exclusions_ configuration to define templates and paths to be excluded
+
+* JSON Tools and Extensibility Documentation
+
 * Updates the deployment to run validation and give the option to cancel the deployment if errors are detected
-* Adds "Add diagram set" command
+
+* Makes the _TemplateRoot_ setting optional
+
+  * * Falls back to the _/sitecore/templates_ folder 
+    * Optional _exclusions_ configuration to define templates and paths to be excluded
+
 * Documentation
+
   * Add Diagram Set command
   * Developer Setup
   * Tutorials
   * Samples
   * Glossary
 
-### Version 1.4 \(~ January 2018\)
-
-* Adds support for deploying specific diagram sets
-* JSON Tools and Extensibility Documentation
-
 ### ...
 
-### Version 2.0 \(Coming in 2018\)
-
-* Azure infrastructure provisioning support
-* AWS infrastructure provisioning support
+### 
 
 
 
