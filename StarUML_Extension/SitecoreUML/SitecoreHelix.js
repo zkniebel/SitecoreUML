@@ -30,7 +30,7 @@ define(function (require, exports, module) {
                 this.IsProjectTemplate = true;
                 break;
             default:
-                console.error("Unknown layer id detected for template path \"" + jsonTemplate.Path + "\"");
+                console.warn("Unknown layer id detected for template path \"" + jsonTemplate.Path + "\"");
                 break;
         }
     };
@@ -82,7 +82,7 @@ define(function (require, exports, module) {
                 this.IsProjectModule = true;
                 break;
             default:
-                console.error("Unknown layer id,  \"" + layerId + "\", detected for helix module");
+                console.warn("Unknown layer id,  \"" + layerId + "\", detected for helix module");
                 break;
         }
     };    

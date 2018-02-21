@@ -4,7 +4,7 @@
   </a>
 </p>
 
-<h1 align="center">SitecoreUML: An Accelerator for Sitecore Architects</h1>
+<h1 align="center">SitecoreUML: Visualizing Sitecore Architecture</h1>
 <p align="center">
   <a href="https://github.com/zkniebel/SitecoreUML/releases/latest">
     <img src="https://img.shields.io/github/release/zkniebel/SitecoreUML.svg" alt="GitHub Release" />
@@ -20,34 +20,44 @@
   </a>  
 </p>
 
-SitecoreUML is a productivity tool that enables architects to one-click deploy their Sitecore template architectures directly from their UML diagrams, as well as one-click import and generate UML diagrams from an existing Sitecore solution’s template architecture.
+SitecoreUML is an architecture visualization tool that enables architects to one-click import existing Sitecore template architectures directly from Sitecore and generate UML diagrams from them. Additionally, SitecoreUML can be used to create new Sitecore architectures in UML and one-click deploy them to Sitecore.
 
-SitecoreUML can save countless project hours that would have been otherwise spent reproducing architectures diagrammed during planning phases. The round-trip diagram generation support means that any solution’s template architecture documentation can be updated at the click of a button, following every sprint, iteration, or milestone, and could even be updated automatically after every commit. It’s time to stop doing the same work twice, and spending hours on documentation, only to have it become outdated weeks, days or even just hours later. It’s time to start using SitecoreUML.
+You can use SitecoreUML to generate MSDN-style HTML documentation for any architecture, new or existing! Use this feature for ramping up onto projects, documenting the data model and architecture for internal or external technical teams, or even for audits and migration discovery! 
+
+## NEW - Helix Tools
+With the release of version 1.3, SitecoreUML includes a new set of Helix tools for visualizing and validating template dependencies in any Helix solution!
+
+## Getting Started
+
+Download the [latest release](https://github.com/zkniebel/SitecoreUML/releases/latest) or checkout the [documentation](https://zkniebel.gitbooks.io/sitecoreuml/) to get started!
+
+## Supported Sitecore Versions
+* Sitecore 8+
+* Sitecore 9+ 
 
 ## Features
 
-* One-click deploy Sitecore templates from UML directly to Sitecore
+* One-click generate UML diagrams and models from any existing Sitecore 8/9+ instance
+* One-click deploy Sitecore templates from UML diagrams directly to any Sitecore 8/9+ instance
 * One-click generate UML diagrams and models from a template architecture in Sitecore
-* Seamless integration between the StarUML IDE and Sitecore XP 
-* Save the URL of your Sitecore instance in your preferences so you don't have to enter it every time
-* Built using a JavaScript-based platform that supports Node.js and can be easily extended and tailored to your needs
+* One-click generate MSDN-style documentation from any existing Sitecore architecture that has been imported from Sitecore, or from any newly created architecture's UML
+* (NEW) Generate a diagram for each Helix module that depicts the module's template architecture and its dependencies
 * And much more!
 
-## Video Demo
+## Coming Soon!
 
-[![](https://camo.githubusercontent.com/5e02bc620c53584a3238cba7964b3946fc078a43/68747470733a2f2f692e7974696d672e636f6d2f76692f71666d646567716273766b2f687164656661756c742e6a70673f7371703d2d6f61796d774558434e4143454c7742534672797134717041776b4941525541414968434741453d2672733d414f6e34434c42766f665459794a31385f416f7a7347627359686f76736f68476567)](https://youtu.be/qfmdegqbsvk)
-
-Video URL: [https://youtu.be/qfmdegqbsvk](https://youtu.be/qfmdegqbsvk)
+* (~March) Generate a diagram for each Helix layer that depicts the layer's template architecture and its dependencies
+* (~March) Validate Helix dependencies and visualize the results with reports and color-coded dependency arrows on the diagrams
 
 ## Project Status
 
-The SitecoreUML project is actively maintained, and new features are always under development. As a general rule, documentation for any new or existing feature will be updated within two days or one patch release of the associated code changes.
+The [SitecoreUML project](https://github.com/zkniebel/SitecoreUML) is actively maintained, and new features are always under development. As a general rule, documentation for any new or existing feature will be updated within two days or one patch release of the associated code changes.
 
 Feel free to reach out to me over Sitecore Slack \(@Zachary\_Kniebel\) to get involved and to provide feedback!
 
-## Sprints & Milestones
+## Development Strategies
 
-The SitecoreUML project is run in 2-week sprints, with monthly milestones. A general goal of the project is to release at least one update per month, following the end of each milestone. This project is run following the agile methodology with continuous deployment, and updates are made available as soon as the tasks for the milestone are completed and validated. Occasionally, updates are released weeks early, but this is subject to schedule and availability.
+The SitecoreUML is run following the agile methodology with continuous deployment, and updates are made available as soon as the tasks for each milestone (not all of which are recorded in GitHub) are completed and validated. Occasionally, updates are released weeks early, but this is subject to schedule and availability.
 
 Before every update, all work is reviewed, and any new or updated features are thoroughly tested and documented. Each release candidate is subsequently regression tested and undergoes an install, upgrade, and uninstall test, to avoid any issues for new or existing users. Any issues discovered or reported after a release are investigated and resolved as soon as possible, and fixes are immediately released as patch releases (e.g. version _X.X.3_, where the _3_ is the patch version). Patches are not held up for new features, other fixes, or milestone completion. 
 
@@ -57,11 +67,11 @@ As previously alluded to, each milestone is comprised of a set of tasks that mus
 
 As a general rule, I do not mark tasks as completed on the [Project Roadmap](/chapter1.md) until they are finished and developer-tested. If for any reason you need access to a feature that is marked complete but hasn't been released yet, feel free to reach out to me over Sitecore Slack (@zachary\_kniebel) and I will gladly create an _early access_ version for you. 
 
-## About the Book
+## About the Documentation
 
-This book is meant to serve as a comprehensive guide to SitecoreUML, and is the primary source of the tool's documentation. In this book, you can find definitions and quick references, installation and configuration instructions, information regarding syntax and data models, feature and tool usage, details on how the tool can be extended and customized, as well as walkthroughs and tutorials.
+The [documentation](https://zkniebel.gitbooks.io/sitecoreuml/) is meant to serve as a comprehensive guide to SitecoreUML, and is the primary source of the tool's documentation. In it, you can find definitions and quick references, installation and configuration instructions, information regarding syntax and data models, feature and tool usage, details on how the tool can be extended and customized, as well as walkthroughs and tutorials.
 
 ## Contributors
 
-My name is Zachary Kniebel, and I am the sole contributor to the SitecoreUML project, as well as the sole author of this book. Feel free to reach out to me any time over Sitecore Community Slack \(@zachary\_kniebel\) if you have any questions, issues, or comments regarding this tool. I am always happy to help.
+My name is Zachary Kniebel, and I am the creator and developer of the SitecoreUML project and the documentation. Feel free to reach out to me any time over Sitecore Community Slack \(@zachary\_kniebel\) if you have any questions, issues, or comments regarding this tool. I am always happy to help.
 
