@@ -13,6 +13,7 @@ define(function (require, exports, module) {
     var SitecorePreferencesLoader = require("SitecorePreferencesLoader");
     var SitecoreTemplatesJsonGenerator = require("SitecoreTemplatesJsonGenerator");
     var DiagramUtils = require("DiagramUtils");
+    var RepositoryUtils = require("RepositoryUtils");
     var StringUtils = require("StringUtils");
     var ProgressDialog = require("ProgressDialog");    
 
@@ -131,21 +132,70 @@ define(function (require, exports, module) {
         });
 
         // 7. Add from the existing models each of the templates with their existing relationships and dependencies to the diagram, and show module folder as parent of each 
-        var layerIdsToDrawnViewsMap = {}
+        var layerIdsToDrawnViewsMap = {};
         layerIdsToDrawnViewsMap[helixLayer.LayerId] = layerView;
         var layerIdsToDrawnDependenciesMap = {};
+        var folderPathsToDrawnViewsMap = {};
 
         moduleHelixTemplates.forEach(function(helixTemplate) {
             // draw the template
             var templateView = _addViewWithRelationshipsToDiagram(helixTemplate.Model, editor);
-            // show module folder as containing the template
-            _addRelationshipToDiagram("UMLContainment", moduleView, templateView, templatesDiagram);
+
+            // get the path slugs that comprise the folder names
+            var orderedFolderNames = helixTemplate.JsonTemplate.Path
+                // start after the root path of the module
+                .substring(helixModule.RootPath.length)
+                // split the path on each slash
+                .split("/")
+                // remove empty entries
+                .filter(function(str) { return str.trim(); });
+            // remove the last element (the template itself) from the array
+            orderedFolderNames.splice(-1);
+
+            // add the folders to the diagram
+            var parentPath = helixModule.RootPath;
+            var parentView = moduleView;
+            var grandparentView;
+            while (orderedFolderNames.length) {
+                parentPath += "/" + orderedFolderNames.shift();
+                // set the grandparentView
+                grandparentView = parentView;
+                // check if the folder has already been added
+                parentView = folderPathsToDrawnViewsMap[parentPath];
+                if (!parentView) {
+                    // find the model at the specified path
+                    var parentModels = RepositoryUtils.getElementsByPath(parentPath, "@UMLPackage");
+                    if (!parentModels.length) {
+                        console.error("ERROR: a parent could not be found at the path \"" + parentPath + "\". Skipping...");
+                        return;
+                    } else if (parentModels.length > 1) {
+                        console.warn("WARNING: more than one model was found for parent path \"" + parentPath + "\". Only the first result will be used.");                        
+                    }
+                    // take the first result
+                    var parentModel = parentModels[0];
+                    // add the parent to the diagram
+                    parentView = _addViewToDiagram(parentModel, templatesDiagram);
+                    // add the parent view to the map
+                    folderPathsToDrawnViewsMap[parentPath] = parentView;
+                    // add the parent-child relationship between the parent and the grandparent
+                    _addRelationshipToDiagram("UMLContainment", grandparentView, parentView, templatesDiagram);
+                }
+            }
+
+            if (parentView) {
+                // show module folder as containing the template
+                _addRelationshipToDiagram("UMLContainment", parentView, templateView, templatesDiagram);
+            }
             
             // Loop through the dependencies and add them to the diagram
             helixTemplate.DirectDependencies
-                // don't add dependencies on templates in the same module, as these are already shown as generalizations
+                // don't show the following dependencies as module-to-layer dependencies
                 .filter(function(dependencyHelixTemplate) {
-                    return helixModule.TemplatePaths.indexOf(dependencyHelixTemplate.JsonTemplate.Path) == -1;
+                    return 
+                        // don't show dependencies on templates not in known layers
+                        dependencyHelixTemplate.LayerId != SitecoreHelix.HelixLayerIds.Unknown 
+                        // don't add dependencies on templates in the same module, as these are already shown as generalizations
+                        && helixModule.TemplatePaths.indexOf(dependencyHelixTemplate.JsonTemplate.Path) == -1;
                 })            
                 .forEach(function(dependencyHelixTemplate) {
                     // get the layer of the dependency
