@@ -188,16 +188,15 @@ define(function (require, exports, module) {
             }
             
             // Loop through the dependencies and add them to the diagram
-            helixTemplate.DirectDependencies
-                // don't show the following dependencies as module-to-layer dependencies
+            var dependencyHelixTemplates = helixTemplate.DirectDependencies
+                // don't show dependencies in the following cases:
                 .filter(function(dependencyHelixTemplate) {
-                    return 
-                        // don't show dependencies on templates not in known layers
-                        dependencyHelixTemplate.LayerId != SitecoreHelix.HelixLayerIds.Unknown 
-                        // don't add dependencies on templates in the same module, as these are already shown as generalizations
-                        && helixModule.TemplatePaths.indexOf(dependencyHelixTemplate.JsonTemplate.Path) == -1;
-                })            
+                    // a. don't show dependencies on templates not in known layers
+                    // b. don't add dependencies on templates in the same module, as these are already shown as generalizations
+                    return (dependencyHelixTemplate.LayerId != SitecoreHelix.HelixLayerIds.Unknown) && (helixModule.TemplatePaths.indexOf(dependencyHelixTemplate.JsonTemplate.Path) == -1);
+                })
                 .forEach(function(dependencyHelixTemplate) {
+
                     // get the layer of the dependency
                     var dependencyLayer = dependencyHelixTemplate.getHelixLayer(helixArchitecture);
         
