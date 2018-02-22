@@ -1,7 +1,11 @@
 {
     "root": "./Documentation",
-    "plugins": ["youtube"],
-	"env": {
-        "mocha": true
-    }
+	"pluginsConfig": {
+	  "youtubex": {
+		"embedDescription": {
+		  "en": "Watch this video!",
+		  "de": "Eingebettetes video:"
+		}
+	  }
+	}
 }
