@@ -132,10 +132,10 @@ define(function (require, exports, module) {
         });
 
         // 7. Add from the existing models each of the templates with their existing relationships and dependencies to the diagram, and show module folder as parent of each 
+        var folderPathsToDrawnViewsMap = {};        
         var layerIdsToDrawnViewsMap = {};
         layerIdsToDrawnViewsMap[helixLayer.LayerId] = layerView;
         var layerIdsToDrawnDependenciesMap = {};
-        var folderPathsToDrawnViewsMap = {};
 
         moduleHelixTemplates.forEach(function(helixTemplate) {
             // draw the template
@@ -186,54 +186,54 @@ define(function (require, exports, module) {
                 // show module folder as containing the template
                 _addRelationshipToDiagram("UMLContainment", parentView, templateView, templatesDiagram);
             }
-            
+
             // Loop through the dependencies and add them to the diagram
-            helixTemplate.DirectDependencies
-                // don't show the following dependencies as module-to-layer dependencies
+            var dependencyHelixTemplates = helixTemplate.DirectDependencies
+                // don't show dependencies in the following cases:
                 .filter(function(dependencyHelixTemplate) {
-                    return 
-                        // don't show dependencies on templates not in known layers
-                        dependencyHelixTemplate.LayerId != SitecoreHelix.HelixLayerIds.Unknown 
-                        // don't add dependencies on templates in the same module, as these are already shown as generalizations
-                        && helixModule.TemplatePaths.indexOf(dependencyHelixTemplate.JsonTemplate.Path) == -1;
-                })            
+                    // a. don't show dependencies on templates not in known layers
+                    // b. don't add dependencies on templates in the same module, as these are already shown as generalizations
+                    return (dependencyHelixTemplate.LayerId != SitecoreHelix.HelixLayerIds.Unknown) && (helixModule.TemplatePaths.indexOf(dependencyHelixTemplate.JsonTemplate.Path) == -1);
+                })
                 .forEach(function(dependencyHelixTemplate) {
                     // get the layer of the dependency
-                    var dependencyLayer = dependencyHelixTemplate.getHelixLayer(helixArchitecture);
-        
-                    // draw the layer, if not already drawn
-                    var dependencyLayerView = layerIdsToDrawnViewsMap[dependencyLayer.LayerId];
-                    if (dependencyLayerView === undefined) {
-                        // add layer to the diagram
-                        dependencyLayerView = _addViewToDiagram(dependencyLayer.RootPackageModel, templatesDiagram);
-                        // add layer to the drawn layers map to avoid adding it multiple times
-                        layerIdsToDrawnViewsMap[dependencyLayer.LayerId] = dependencyLayerView;
-                    }
-
+                    var dependencyLayer = dependencyHelixTemplate.getHelixLayer(helixArchitecture);        
+                    
                     // create the documentation entry
                     var templatePath = StringUtils.escapeForMarkdown(helixTemplate.JsonTemplate.Path);
                     var dependencyPath = StringUtils.escapeForMarkdown(dependencyHelixTemplate.JsonTemplate.Path);
                     var documentationEntry = "{" + templatePath + "} -> {" + dependencyPath + "}";
 
-                    var dependencyView = layerIdsToDrawnDependenciesMap[dependencyLayer.LayerId];
-                    if (dependencyView === undefined) {    
+                    // draw the layer and dependency, if not already drawn
+                    var dependencyView;
+                    var dependencyLayerView = layerIdsToDrawnViewsMap[dependencyLayer.LayerId];
+                    if (!dependencyLayerView) {
+                        // add layer to the diagram
+                        dependencyLayerView = _addViewToDiagram(dependencyLayer.RootPackageModel, templatesDiagram);
+                        // add layer to the drawn layers map to avoid adding it multiple times
+                        layerIdsToDrawnViewsMap[dependencyLayer.LayerId] = dependencyLayerView;
+
                         // add the dependency to the diagram
                         dependencyView = _addRelationshipToDiagram(
                             "UMLDependency", 
                             dependencyLayerView, 
                             moduleView, 
-                            templatesDiagram)
-                        
+                            templatesDiagram);
+                            
                         // document the dependency info
-                        dependencyView.model.documentation = documentationEntry
+                        dependencyView.model.documentation = documentationEntry;                        
+                        // set the name of the dependency (for display in generated docs)
+                        dependencyView.model.name = "Dependencies on the " + dependencyLayer.LayerId + " Layer";
+                        // hides the name from displaying on the actual diagram (redundant and makes the diagrams harder to read)
+                        dependencyView.nameLabel.font.size = 0; 
+                        
+                        // add the view for the newly drawn dependency to the map so we only draw one per module-to-layer
+                        layerIdsToDrawnDependenciesMap[dependencyLayer.LayerId] = dependencyView;
                     } else {
+                        dependencyView = layerIdsToDrawnDependenciesMap[dependencyLayer.LayerId];
                         // append the dependency info to the existing documentaion
                         dependencyView.model.documentation += "\n" + documentationEntry;
-                    }          
-                    // set the name of the dependency (for display in generated docs)
-                    dependencyView.model.name = "Dependencies on the " + dependencyLayer.LayerId + " Layer";
-                    // hides the name from displaying on the actual diagram (redundant and makes the diagrams harder to read)
-                    dependencyView.nameLabel.font.size = 0; 
+                    }  
                 });
         });
 
