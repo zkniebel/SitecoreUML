@@ -1,4 +1,7 @@
 {
     "root": "./Documentation",
-    "plugins": ["youtube"]
+    "plugins": ["youtube"],
+	"env": {
+        "mocha": true
+    }
 }
