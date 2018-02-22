@@ -200,9 +200,7 @@ define(function (require, exports, module) {
                     var dependencyLayer = dependencyHelixTemplate.getHelixLayer(helixArchitecture);        
                     
                     // create the documentation entry
-                    var templatePath = StringUtils.escapeForMarkdown(helixTemplate.JsonTemplate.Path);
-                    var dependencyPath = StringUtils.escapeForMarkdown(dependencyHelixTemplate.JsonTemplate.Path);
-                    var documentationEntry = "{" + templatePath + "} -> {" + dependencyPath + "}";
+                    var documentationEntry = "{`" + helixTemplate.JsonTemplate.Path + "`} -> {`" + dependencyHelixTemplate.JsonTemplate.Path + "`}";
 
                     // draw the layer and dependency, if not already drawn
                     var dependencyView;
@@ -232,7 +230,7 @@ define(function (require, exports, module) {
                     } else {
                         dependencyView = layerIdsToDrawnDependenciesMap[dependencyLayer.LayerId];
                         // append the dependency info to the existing documentaion
-                        dependencyView.model.documentation += "\n" + documentationEntry;
+                        dependencyView.model.documentation += "  \n" + documentationEntry;
                     }  
                 });
         });
