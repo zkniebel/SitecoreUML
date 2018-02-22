@@ -1,11 +1,4 @@
 {
     "root": "./Documentation",
-	"pluginsConfig": {
-	  "youtubex": {
-		"embedDescription": {
-		  "en": "Watch this video!",
-		  "de": "Eingebettetes video:"
-		}
-	  }
-	}
+	"plugins": ["noembed"]
 }
