@@ -4,11 +4,11 @@
 <!-- Publisher of the software -->
 <?define Publisher="Zachary Kniebel" ?>
 <!-- Software version -->
-<?define Version="1.3.2" ?>
+<?define Version="1.3.3" ?>
 <!-- Guid value unique to each version (necessary for upgrades) -->
-<?define VersionGuid="8032bfe3-9640-4815-8b9d-14f531ae71f7" ?>
+<?define VersionGuid="186C84DB-CAEE-4AB9-9A73-9D3DBD658F66" ?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"  xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
-	<Product Id="E6D55B3E-7324-441D-AE3B-F2279F828D96"  Name="$(var.DisplayName)" Language="1033" Version="$(var.Version)" Manufacturer="$(var.Publisher)" UpgradeCode="$(var.VersionGuid)">
+	<Product Id="3A493A02-2A3F-4D99-AA74-04B8B4AF0C4C"  Name="$(var.DisplayName)" Language="1033" Version="$(var.Version)" Manufacturer="$(var.Publisher)" UpgradeCode="$(var.VersionGuid)">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perUser" />
     
 		<MajorUpgrade
