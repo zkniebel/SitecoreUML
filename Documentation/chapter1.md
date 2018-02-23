@@ -6,6 +6,8 @@ Listed under each version is the set of tasks, features and enhancements that ar
 
 Please note that the roadmap is tentative and subject to change.
 
+**Scroll down to see the latest changes and the current backlog.** If you're looking for a feature \(even one that you would like to request\) that listed then please reach out to me over Sitecore Slack \(@zachary\_kniebel\) and I will do my best to add it. Similarly, I can occasionally provide early releases for features that you require that have not yet been implemented or completed. Reach out to me and I will see what I can do.
+
 ### Version alpha
 
 * [x] Initial build out of core features
