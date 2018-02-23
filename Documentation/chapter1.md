@@ -97,9 +97,10 @@ Please note that the roadmap is tentative and subject to change.
 
   * [x] Export as HTML Docs Video **\(1.3.3\)**
   * [x] Helix Module Diagram Generation Video **\(1.3.3\)**
-  * [ ] Default Field Section Name **\(1.3.4\)**
-  * [ ] Controlling Paths to Layers **\(1.3.4 - **was missed and should have been added in 1.3.0**\)**
-  * [ ] How to Review Dependencies \(late addition - decided to add this in order to be thorough\)
+  * [x] Default Field Section Name **\(1.3.4\)**
+  * [x] Controlling Paths to Layers **\(1.3.4 - **was missed and should have been added in 1.3.0**\)**
+  * [x] Controlling Dependency Name Format **\(1.3.4\)**
+  * [ ] How to review dependencies on diagram and in docs \(late addition - will be adding this this in order to be thorough\)
 
 ### Backlog \(Coming Soon\)
 
