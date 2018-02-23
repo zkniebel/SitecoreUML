@@ -8,12 +8,25 @@ SitecoreUML ships with full UI support for storing Preferences in StarUML. You c
 
 The current version of SitecoreUML includes three native Preferences:
 
-* Sitecore URL
-* Default Diagram Format **\(Version 1.1.3+\)**
-* Deploy Route
-* Import Route
-* Validate Route
-* Connection Test Route
+* Instance Connection Settings
+  * Sitecore URL
+* Diagram Generation Settings
+  * Default Diagram Format **\(1.1.3\)**
+* Helix Settings
+  * Foundation Template Folder Path **\(1.3.0\)**
+  * Feature Template Folder Path **\(1.3.0\)**
+  * Project Template Folder Path **\(1.3.0\)**
+  * Module Paths Regular Expression **\(1.3.4\)**
+  * Module Path Capture Group Number **\(1.3.4\)**
+  * Module Name Capture Group Number **\(1.3.4\)**
+  * Dependency Name Format **\(1.3.4\)**
+* Template Deploy Settings
+  * Default Field Section Name **\(1.3.4\)**
+* SitecoreUML Service Settings
+  * Connection Test Route
+  * Validate Route
+  * Import Route
+  * Deploy Route
 
 ### Sitecore URL
 
@@ -22,6 +35,10 @@ The Sitecore URL setting is the most important setting for SitecoreUML deploymen
 ### Default Diagram Format
 
 SitecoreUML **Version 1.1.3** adds support for controlling the default format of diagrams generated from imported template data, via the _Default Diagram Format_ drop-down. By default, the value is set to "Left to Right", as this tends to be the most printer and export-friendly format. Note that the available options map to the settings that are available by navigating to _Format_ -&gt; _Layout_ in the toolbar.
+
+### Default Field Section Name
+
+SitecoreUML **Version 1.3.4** adds support for controlling the default field section name to be used when deploying fields that do not have a field section name set to Sitecore. Note that in the configuration file for the SitecoreUML Service for Sitecore there is a required setting, [`defaultFieldSectionName`](/guide/sitecore-configuration.md#defaultfieldsectionname), that sets the fallback field section name, should the value of this preferences setting be empty.
 
 ### Route Settings
 

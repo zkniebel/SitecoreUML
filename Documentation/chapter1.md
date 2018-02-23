@@ -99,7 +99,7 @@ Please note that the roadmap is tentative and subject to change.
   * [x] Helix Module Diagram Generation Video **\(1.3.3\)**
   * [ ] Default Field Section Name **\(1.3.4\)**
   * [ ] Controlling Paths to Layers **\(1.3.4 - **was missed and should have been added in 1.3.0**\)**
-  * [ ] How to Review Dependencies \(late addition - decided to add, to be thorough\)
+  * [ ] How to Review Dependencies \(late addition - decided to add this in order to be thorough\)
 
 ### Backlog \(Coming Soon\)
 
