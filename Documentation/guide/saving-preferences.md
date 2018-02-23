@@ -17,8 +17,8 @@ The current version of SitecoreUML includes three native Preferences:
   * Feature Template Folder Path **\(1.3.0\)**
   * Project Template Folder Path **\(1.3.0\)**
   * Module Paths Regular Expression **\(1.3.4\)**
-  * Module Path Capture Group Number **\(1.3.4\)**
-  * Module Name Capture Group Number **\(1.3.4\)**
+    * Module Path Capture Group Number **\(1.3.4\)**
+    * Module Name Capture Group Number **\(1.3.4\)**
   * Dependency Name Format **\(1.3.4\)**
 * Template Deploy Settings
   * Default Field Section Name **\(1.3.4\)**
@@ -46,19 +46,27 @@ In SitecoreUML **Version 1.3.0**, settings were added to enable users to set the
 
 #### Module Paths Regular Expression
 
-In SitecoreUML **Version 1.3.4**, settings were added to control the regular expression that SitecoreUML uses to determine what folders are actually Helix module folders. SitecoreUML doesn't natively support distinguishing module groups from modules, so customizing this regular expression enables you to add support for that on your own, for your specific use-case. 
+In SitecoreUML **Version 1.3.4**, settings were added to control the regular expression that SitecoreUML uses to determine what folders are actually Helix module folders. SitecoreUML doesn't natively support distinguishing module groups from modules, so customizing this regular expression enables you to add support for that on your own, for your specific use-case.
 
-It is important to note that the regular expression must have a capturing group for the module's path and a matching group for the module's name. 
+It is important to note that the regular expression must have a capturing group for the module's path and a matching group for the module's name.
 
 This setting supports the use of a token, `{{LAYER_PATH}}`, to specify the generated pattern for matching any one of the layer names -  i.e. the replacement value is a regular expression formed by doing an OR match on each of the three layer names, e.g. `/Foundation|/Feature|/Project` .
 
-###### Module Path Capture Group Number
+##### Module Path Capture Group Number
 
 This setting holds the number of the capture group of the Module Paths Regular Expression that holds the module's path.
 
-###### Module Name Capture Group Number
+##### Module Name Capture Group Number
 
-This setting holds the number of the capture group of the Module Paths Regular Expression that holds the module's name. 
+This setting holds the number of the capture group of the Module Paths Regular Expression that holds the module's name.
+
+#### Dependency Name Format
+
+In SitecoreUML **Version 1.3.4**, the Dependency Name Format setting was added to allow the user to control the format of the name assigned to the dependency relationships. 
+
+Use the `{{LAYER}}` token to indicate the name of the layer that the dependency lives in \(points at\).
+
+By default, this setting is set to `Dependencies for the {{LAYER}} Layer` , which will result in the names "Dependencies for the Foundation Layer", "Dependencies for the Feature Layer", and "Dependencies for the Project Layer".
 
 ### Default Field Section Name
 
