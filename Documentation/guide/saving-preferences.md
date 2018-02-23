@@ -36,6 +36,30 @@ The Sitecore URL setting is the most important setting for SitecoreUML deploymen
 
 SitecoreUML **Version 1.1.3** adds support for controlling the default format of diagrams generated from imported template data, via the _Default Diagram Format_ drop-down. By default, the value is set to "Left to Right", as this tends to be the most printer and export-friendly format. Note that the available options map to the settings that are available by navigating to _Format_ -&gt; _Layout_ in the toolbar.
 
+### Helix Settings
+
+SitecoreUML **Version 1.3.0** introduces a new set of Helix features and settings to control them.
+
+#### Layer Folder Path Settings
+
+In SitecoreUML **Version 1.3.0**, settings were added to enable users to set the root path of each of the three Helix layers: Foundation, Feature and Project. The path is case-sensitive, should start with a forward-slash, should exclude _/sitecore/templates_, and should not end with a forward-slash, e.g. `/Foundation` , `/Feature` , and `/Project` .
+
+#### Module Paths Regular Expression
+
+In SitecoreUML **Version 1.3.4**, settings were added to control the regular expression that SitecoreUML uses to determine what folders are actually Helix module folders. SitecoreUML doesn't natively support distinguishing module groups from modules, so customizing this regular expression enables you to add support for that on your own, for your specific use-case. 
+
+It is important to note that the regular expression must have a capturing group for the module's path and a matching group for the module's name. 
+
+This setting supports the use of a token, `{{LAYER_PATH}}`, to specify the generated pattern for matching any one of the layer names -  i.e. the replacement value is a regular expression formed by doing an OR match on each of the three layer names, e.g. `/Foundation|/Feature|/Project` .
+
+###### Module Path Capture Group Number
+
+This setting holds the number of the capture group of the Module Paths Regular Expression that holds the module's path.
+
+###### Module Name Capture Group Number
+
+This setting holds the number of the capture group of the Module Paths Regular Expression that holds the module's name. 
+
 ### Default Field Section Name
 
 SitecoreUML **Version 1.3.4** adds support for controlling the default field section name to be used when deploying fields that do not have a field section name set to Sitecore. Note that in the configuration file for the SitecoreUML Service for Sitecore there is a required setting, [`defaultFieldSectionName`](/guide/sitecore-configuration.md#defaultfieldsectionname), that sets the fallback field section name, should the value of this preferences setting be empty.
