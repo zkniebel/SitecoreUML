@@ -87,15 +87,19 @@ Please note that the roadmap is tentative and subject to change.
   * [ ] New command for generating Helix layer-specific template diagrams
   * [ ] Visualize layer-to-layer dependencies on layer-specific diagrams
   * [ ] New Helix dependency direction validation integrated into all Helix diagrams
-  * [ ] Adds support for controlling the regular expression used for determining Helix modules to preferences
+  * [x] Adds support for controlling the regular expression used for determining Helix modules to preferences **\(1.3.4\)**
   * [x] Adds support for controlling paths to layers in preferences **\(1.3.0\)**
-  * [ ] Adds support for controlling dependency names in documentation
-  * [ ] Adds support for controlling dependency documentation format
+  * [x] Adds support for controlling dependency names in documentation **\(1.3.4\)**
 
-* [x] Documentation
+* [x] Adds support for setting the default field section name in preferences, leaving the one in the Sitecore configuration to be a required backup value **\(1.3.4\)**
+
+* [ ] Documentation
 
   * [x] Export as HTML Docs Video **\(1.3.3\)**
   * [x] Helix Module Diagram Generation Video **\(1.3.3\)**
+  * [ ] Default Field Section Name **\(1.3.4\)**
+  * [ ] Controlling Paths to Layers **\(1.3.4 - **was missed and should have been added in 1.3.0**\)**
+  * [ ] How to Review Dependencies \(late addition - decided to add, to be thorough\)
 
 ### Backlog \(Coming Soon\)
 
@@ -105,8 +109,6 @@ Please note that the roadmap is tentative and subject to change.
 * Help Fields in Sitecore Updated with Documentation field from StarUML
 
 * Support for Sitecore IDs/updating existing architectures/diagrams
-
-* Adds support for setting the default field section name in preferences, leaving the one in the Sitecore configuration to be a required backup value
 
 * JSON Tools and Extensibility Documentation
 
