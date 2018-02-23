@@ -22,6 +22,7 @@ define(function(require, exports, module) {
     var sitecoreHelixModulePathsRegularExpressionPathCaptureGroupId = "sitecore.helix.modulepathsregularexpression.pathcapturegroup";
     var sitecoreHelixModulePathsRegularExpressionNameCaptureGroupId = "sitecore.helix.modulepathsregularexpression.namecapturegroup";
     var sitecoreHelixDependencyNameFormatId = "sitecore.helix.dependencynameformat";
+    var sitecoreDeployDefaultFieldSectionNameId = "sitecore.deploy.defaultfieldsectionname";
 
     // configure the preferences
     var sitecorePreferences = {
@@ -113,6 +114,16 @@ define(function(require, exports, module) {
             type: "String",
             default: "Dependencies on the {{LAYER}} Layer"
         },
+        "sitecore.deploy.section": {
+            text: "SitecoreUML Template Deploy Settings",
+            type: "Section"
+        },
+        "sitecore.deploy.defaultfieldsectionname": {
+            text: "Default Field Section Name",
+            description: "Default field section name to be used if a field section name has not been specified for a field",
+            type: "String",
+            default: "Data"
+        },
         "sitecore.service.section": {
             text: "SitecoreUML Service Settings",
             type: "Section"
@@ -160,6 +171,7 @@ define(function(require, exports, module) {
     exports.sitecoreHelixModulePathsRegularExpressionId = sitecoreHelixModulePathsRegularExpressionId;
     exports.sitecoreHelixModulePathsRegularExpressionPathCaptureGroupId = sitecoreHelixModulePathsRegularExpressionPathCaptureGroupId;
     exports.sitecoreHelixDependencyNameFormatId = sitecoreHelixDependencyNameFormatId;
+    exports.sitecoreDeployDefaultFieldSectionNameId = sitecoreDeployDefaultFieldSectionNameId;
     exports.getSitecoreUrl = function() { return PreferenceManager.get(sitecoreUrlId); };
     exports.getSitecoreImportDefaultDiagramFormat = function() { return PreferenceManager.get(sitecoreImportDefaultDiagramFormatId); };
     exports.getSitecoreDeployRoute = function() { return PreferenceManager.get(sitecoreDeployRouteId); };
@@ -173,4 +185,5 @@ define(function(require, exports, module) {
     exports.getSitecoreHelixModulePathsRegularExpressionPathCaptureGroup = function() { return PreferenceManager.get(sitecoreHelixModulePathsRegularExpressionPathCaptureGroupId); };
     exports.getSitecoreHelixModulePathsRegularExpressionNameCaptureGroup = function() { return PreferenceManager.get(sitecoreHelixModulePathsRegularExpressionNameCaptureGroupId); };
     exports.getSitecoreHelixDependencyNameFormat = function() { return PreferenceManager.get(sitecoreHelixDependencyNameFormatId); };
+    exports.getSitecoreDeployDefaultFieldSectionName = function() { return PreferenceManager.get(sitecoreDeployDefaultFieldSectionNameId); };
 });
