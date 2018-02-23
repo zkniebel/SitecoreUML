@@ -59,7 +59,7 @@ Please note that the roadmap is tentative and subject to change.
   * [x] Template Exclude paths
   * [x] Import Diagram Formatting Preference
 
-### Version 1.2 \(2017.10.20\)
+### Version 1.2
 
 * [x] Adds support for dashes in Quick Edits for attribute type names **\(1.2.0\)**
 * [x] Replaces Documentation field-based implementation of Extended Field Info with the Sitecore Field Editor **\(1.2.0\)**
@@ -83,6 +83,7 @@ Please note that the roadmap is tentative and subject to change.
 * [ ] Optional template ID preservation support
 
 * [ ] Helix diagramming and validation features support
+
   * [x] New command for generating Helix module-specific template diagrams **\(1.3.0\)**
   * [x] Visualize module-to-layer dependencies on module-specific diagrams **\(1.3.0\)**
   * [ ] New command for generating Helix layer-specific template diagrams
@@ -92,6 +93,7 @@ Please note that the roadmap is tentative and subject to change.
   * [x] Adds support for controlling paths to layers in preferences **\(1.3.0\)**
   * [ ] Adds support for controlling dependency names in documentation
   * [ ] Adds support for controlling dependency documentation format
+
 * [ ] Documentation
   * [ ] Export as HTML Docs
   * [ ] Helix Tools and Diagrams
