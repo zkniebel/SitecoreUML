@@ -1,4 +1,10 @@
 # Module Diagrams
 
-Coming soon! \(est. 20 February 2018\)
+## Video Guide
+
+{{ "https://www.youtube.com/watch?v=LvZ4yzLatQA" | video }}
+
+Written, step-by-step documentation coming soon!
+
+
 
