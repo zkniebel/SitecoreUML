@@ -18,6 +18,11 @@ define(function(require, exports, module) {
     var sitecoreHelixFoundationPathId = "sitecore.helix.foundationlayerpath";
     var sitecoreHelixFeaturePathId = "sitecore.helix.featurelayerpath";
     var sitecoreHelixProjectPathId = "sitecore.helix.projectlayerpath";
+    var sitecoreHelixModulePathsRegularExpressionId = "sitecore.helix.modulepathsregularexpression";
+    var sitecoreHelixModulePathsRegularExpressionPathCaptureGroupId = "sitecore.helix.modulepathsregularexpression.pathcapturegroup";
+    var sitecoreHelixModulePathsRegularExpressionNameCaptureGroupId = "sitecore.helix.modulepathsregularexpression.namecapturegroup";
+    var sitecoreHelixDependencyNameFormatId = "sitecore.helix.dependencynameformat";
+    var sitecoreDeployDefaultFieldSectionNameId = "sitecore.deploy.defaultfieldsectionname";
 
     // configure the preferences
     var sitecorePreferences = {
@@ -85,6 +90,40 @@ define(function(require, exports, module) {
             type: "String",
             default: "/Project"
         },
+        "sitecore.helix.modulepathsregularexpression": {
+            text: "Module Paths Regular Expression",
+            description: "Regular expression for used to match Helix modules in paths. Use the {{LAYER_PATH}} token to indicate the generated pattern for matching any one of the layer names. IMPORTANT: the regular expression must have a capturing group for the module's path and a matching group for the module's name",
+            type: "String",
+            default: "(({{LAYER_PATH}}))/([^/]+))(/|$)"
+        },
+        "sitecore.helix.modulepathsregularexpression.pathcapturegroup": {
+            text: "Module Path Capture Group Number",
+            description: "Group number of the capture group in the Module Paths Regular Expression that matches the module's path",
+            type: "Number",
+            default: 1
+        },        
+        "sitecore.helix.modulepathsregularexpression.namecapturegroup": {
+            text: "Module Name Capture Group Number",
+            description: "Group number of the capture group in the Module Paths Regular Expression that matches the module's name",
+            type: "Number",
+            default: 3
+        },        
+        "sitecore.helix.dependencynameformat": {
+            text: "Dependency Name Format",
+            description: "Format of the name assigned to dependency relationships. Use the {{LAYER}} token to indicate the name of the layer that the dependency lives in (points at)",
+            type: "String",
+            default: "Dependencies on the {{LAYER}} Layer"
+        },
+        "sitecore.deploy.section": {
+            text: "SitecoreUML Template Deploy Settings",
+            type: "Section"
+        },
+        "sitecore.deploy.defaultfieldsectionname": {
+            text: "Default Field Section Name",
+            description: "Default field section name to be used if a field section name has not been specified for a field",
+            type: "String",
+            default: "Data"
+        },
         "sitecore.service.section": {
             text: "SitecoreUML Service Settings",
             type: "Section"
@@ -129,6 +168,10 @@ define(function(require, exports, module) {
     exports.sitecoreHelixFoundationPathId = sitecoreHelixFoundationPathId;
     exports.sitecoreHelixFeaturePathId = sitecoreHelixFeaturePathId;
     exports.sitecoreHelixProjectPathId = sitecoreHelixProjectPathId;
+    exports.sitecoreHelixModulePathsRegularExpressionId = sitecoreHelixModulePathsRegularExpressionId;
+    exports.sitecoreHelixModulePathsRegularExpressionPathCaptureGroupId = sitecoreHelixModulePathsRegularExpressionPathCaptureGroupId;
+    exports.sitecoreHelixDependencyNameFormatId = sitecoreHelixDependencyNameFormatId;
+    exports.sitecoreDeployDefaultFieldSectionNameId = sitecoreDeployDefaultFieldSectionNameId;
     exports.getSitecoreUrl = function() { return PreferenceManager.get(sitecoreUrlId); };
     exports.getSitecoreImportDefaultDiagramFormat = function() { return PreferenceManager.get(sitecoreImportDefaultDiagramFormatId); };
     exports.getSitecoreDeployRoute = function() { return PreferenceManager.get(sitecoreDeployRouteId); };
@@ -138,4 +181,9 @@ define(function(require, exports, module) {
     exports.getSitecoreHelixFoundationPath = function() { return PreferenceManager.get(sitecoreHelixFoundationPathId); };
     exports.getSitecoreHelixFeaturePath = function() { return PreferenceManager.get(sitecoreHelixFeaturePathId); };
     exports.getSitecoreHelixProjectPath = function() { return PreferenceManager.get(sitecoreHelixProjectPathId); };
+    exports.getSitecoreHelixModulePathsRegularExpression = function() { return PreferenceManager.get(sitecoreHelixModulePathsRegularExpressionId); };
+    exports.getSitecoreHelixModulePathsRegularExpressionPathCaptureGroup = function() { return PreferenceManager.get(sitecoreHelixModulePathsRegularExpressionPathCaptureGroupId); };
+    exports.getSitecoreHelixModulePathsRegularExpressionNameCaptureGroup = function() { return PreferenceManager.get(sitecoreHelixModulePathsRegularExpressionNameCaptureGroupId); };
+    exports.getSitecoreHelixDependencyNameFormat = function() { return PreferenceManager.get(sitecoreHelixDependencyNameFormatId); };
+    exports.getSitecoreDeployDefaultFieldSectionName = function() { return PreferenceManager.get(sitecoreDeployDefaultFieldSectionNameId); };
 });

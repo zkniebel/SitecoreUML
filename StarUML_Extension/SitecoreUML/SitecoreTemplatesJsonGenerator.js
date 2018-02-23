@@ -18,6 +18,9 @@ define(function(require, exports, module) {
     var FileUtils  = _backingFields._fileUtils || (_backingFields._fileUtils = app.getModule("file/FileUtils"));
     var Dialogs = _backingFields._dialogs || (_backingFields._dialogs = app.getModule("dialogs/Dialogs"));
 
+    // eagerly-loaded SitecoreUML modules
+    var SitecorePreferencesLoader = require("SitecorePreferencesLoader");
+
     // generates the JSON templates from the diagrams and models
     function generateJsonTemplates() {
         var SitecoreTemplateField = function(
@@ -90,6 +93,7 @@ define(function(require, exports, module) {
 
         var inheritanceMap = [];
         // get an array of sitecore templates
+        var defaultFieldSectionName = SitecorePreferencesLoader.getSitecoreDeployDefaultFieldSectionName();
         var sitecoreTemplates = umlInterfaces.map(function(umlInterface, index) {            
             var fields = umlInterface.attributes.map(function(attribute, index) {  
                 var field = new SitecoreTemplateField(
@@ -109,7 +113,7 @@ define(function(require, exports, module) {
                     field.Source = fieldAttributeMap["Source"] || null;
                     field.Shared = fieldAttributeMap["Shared"] || false; // by default, fields are not shared
                     field.Unversioned = fieldAttributeMap["Unversioned"] || false; // by default, fields are not shared
-                    field.SectionName = fieldAttributeMap["SectionName"];
+                    field.SectionName = (fieldAttributeMap["SectionName"] || "").trim() || defaultFieldSectionName; // fall back to the default name set in preferences
                     field.StandardValue = fieldAttributeMap["StandardValue"];
                 } catch (e) {
                     console.error("Eval error occurred while trying to retrieve the extended field info for " + umlInterface.name + "::" + attribute.name, e);
