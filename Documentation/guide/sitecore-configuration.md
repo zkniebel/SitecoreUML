@@ -68,7 +68,7 @@ Description:** Path to the root item that contains all templates to be imported 
 
 **Type:** string  
 **Default:** `Data`  
-**Description:** Field section name to be created by default on all imported templates
+**Description:** Field section name to be created by default on all imported templates. As of **version 1.3.4**, this required setting acts as a fallback for the [Default Field Section Name](/guide/saving-preferences.md#default-field-section-name) setting in the SitecoreUML preferences dialog.
 
 #### `importDropFolderPath` \(&lt;1.1.1\)
 
