@@ -97,13 +97,13 @@ define(function(require, exports, module) {
             default: "(({{LAYER_PATH}}))/([^/]+))(/|$)"
         },
         "sitecore.helix.modulepathsregularexpression.pathcapturegroup": {
-            text: "Path Capture Group Number",
+            text: "Module Path Capture Group Number",
             description: "Group number of the capture group in the Module Paths Regular Expression that matches the module's path",
             type: "Number",
             default: 1
         },        
         "sitecore.helix.modulepathsregularexpression.namecapturegroup": {
-            text: "Name Capture Group Number",
+            text: "Module Name Capture Group Number",
             description: "Group number of the capture group in the Module Paths Regular Expression that matches the module's name",
             type: "Number",
             default: 3
