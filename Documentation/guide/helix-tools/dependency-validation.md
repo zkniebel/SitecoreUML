@@ -1,6 +1,4 @@
 # Dependency Validation
 
-Coming soon!
-
-
+Feature coming soon!
 
