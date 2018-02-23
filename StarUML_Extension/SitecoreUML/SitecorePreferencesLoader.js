@@ -21,6 +21,7 @@ define(function(require, exports, module) {
     var sitecoreHelixModulePathsRegularExpressionId = "sitecore.helix.modulepathsregularexpression";
     var sitecoreHelixModulePathsRegularExpressionPathCaptureGroupId = "sitecore.helix.modulepathsregularexpression.pathcapturegroup";
     var sitecoreHelixModulePathsRegularExpressionNameCaptureGroupId = "sitecore.helix.modulepathsregularexpression.namecapturegroup";
+    var sitecoreHelixDependencyNameFormatId = "sitecore.helix.dependencynameformat";
 
     // configure the preferences
     var sitecorePreferences = {
@@ -106,6 +107,12 @@ define(function(require, exports, module) {
             type: "Number",
             default: 3
         },        
+        "sitecore.helix.dependencynameformat": {
+            text: "Dependency Name Format",
+            description: "Format of the name assigned to dependency relationships. Use the {{LAYER}} token to indicate the name of the layer that the dependency lives in (points at)",
+            type: "String",
+            default: "Dependencies on the {{LAYER}} Layer"
+        },
         "sitecore.service.section": {
             text: "SitecoreUML Service Settings",
             type: "Section"
@@ -151,8 +158,9 @@ define(function(require, exports, module) {
     exports.sitecoreHelixFeaturePathId = sitecoreHelixFeaturePathId;
     exports.sitecoreHelixProjectPathId = sitecoreHelixProjectPathId;
     exports.sitecoreHelixModulePathsRegularExpressionId = sitecoreHelixModulePathsRegularExpressionId;
-    exports.getSitecoreUrl = function() { return PreferenceManager.get(sitecoreUrlId); };
     exports.sitecoreHelixModulePathsRegularExpressionPathCaptureGroupId = sitecoreHelixModulePathsRegularExpressionPathCaptureGroupId;
+    exports.sitecoreHelixDependencyNameFormatId = sitecoreHelixDependencyNameFormatId;
+    exports.getSitecoreUrl = function() { return PreferenceManager.get(sitecoreUrlId); };
     exports.getSitecoreImportDefaultDiagramFormat = function() { return PreferenceManager.get(sitecoreImportDefaultDiagramFormatId); };
     exports.getSitecoreDeployRoute = function() { return PreferenceManager.get(sitecoreDeployRouteId); };
     exports.getSitecoreImportRoute = function() { return PreferenceManager.get(sitecoreImportRouteId); };
@@ -164,4 +172,5 @@ define(function(require, exports, module) {
     exports.getSitecoreHelixModulePathsRegularExpression = function() { return PreferenceManager.get(sitecoreHelixModulePathsRegularExpressionId); };
     exports.getSitecoreHelixModulePathsRegularExpressionPathCaptureGroup = function() { return PreferenceManager.get(sitecoreHelixModulePathsRegularExpressionPathCaptureGroupId); };
     exports.getSitecoreHelixModulePathsRegularExpressionNameCaptureGroup = function() { return PreferenceManager.get(sitecoreHelixModulePathsRegularExpressionNameCaptureGroupId); };
+    exports.getSitecoreHelixDependencyNameFormat = function() { return PreferenceManager.get(sitecoreHelixDependencyNameFormatId); };
 });

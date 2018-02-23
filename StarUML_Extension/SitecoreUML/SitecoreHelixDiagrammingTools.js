@@ -221,7 +221,8 @@ define(function (require, exports, module) {
                         // document the dependency info
                         dependencyView.model.documentation = documentationEntry;                        
                         // set the name of the dependency (for display in generated docs)
-                        dependencyView.model.name = "Dependencies on the " + dependencyLayer.LayerId + " Layer";
+                        var _sitecoreHelixDependencyNameFormat = SitecorePreferencesLoader.getSitecoreHelixDependencyNameFormat();
+                        dependencyView.model.name = _sitecoreHelixDependencyNameFormat.replace("{{LAYER}}", dependencyLayer.LayerId);
                         // hides the name from displaying on the actual diagram (redundant and makes the diagrams harder to read)
                         dependencyView.nameLabel.font.size = 0; 
                         
