@@ -205,10 +205,11 @@ define(function (require, exports, module) {
         
         // set up the variables for building out the HelixModule models
         var layerPrefixesPattern = foundationLayerRootPath + "|" + featureLayerRootPath + "|" + projectLayerRootPath;
-        var modulePathsPattern = "((" + layerPrefixesPattern + ")/([^/]+))(/|$)";
+        var rawModulePathsPattern = SitecorePreferencesLoader.getSitecoreHelixModulePathsRegularExpression();
+        var modulePathsPattern = rawModulePathsPattern.replace("{{LAYER_PATH}}", layerPrefixesPattern);
         var modulePathsRegExp = new RegExp(modulePathsPattern);
-        var modulePathMatchGroupIndex = 1; // path will always be in group 1...until we move the regex to preferences
-        var moduleNameMatchGroupIndex = 3; // name will always be in group 3...until we move the regex to preferences'
+        var modulePathMatchGroupIndex = SitecorePreferencesLoader.getSitecoreHelixModulePathsRegularExpressionPathCaptureGroup();
+        var moduleNameMatchGroupIndex = SitecorePreferencesLoader.getSitecoreHelixModulePathsRegularExpressionNameCaptureGroup();
 
         // populate the ModulePaths, PathsToHelixModulesMap, and HelixModuels properties
         jsonTemplates.forEach(function(jsonTemplate) {
