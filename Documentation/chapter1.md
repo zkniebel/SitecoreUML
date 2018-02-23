@@ -80,8 +80,6 @@ Please note that the roadmap is tentative and subject to change.
 
 ### Version 1.3 \(2018.02.18 - current\)
 
-* [ ] Optional template ID preservation support
-
 * [ ] Helix diagramming and validation features support
 
   * [x] New command for generating Helix module-specific template diagrams **\(1.3.0\)**
@@ -94,14 +92,16 @@ Please note that the roadmap is tentative and subject to change.
   * [ ] Adds support for controlling dependency names in documentation
   * [ ] Adds support for controlling dependency documentation format
 
-* [ ] Documentation
-  * [ ] Export as HTML Docs
-  * [ ] Helix Tools and Diagrams
+* [x] Documentation
 
-### Version 1.4 \(~ April 2018\)
+  * [x] Export as HTML Docs Video **\(1.3.3\)**
+  * [x] Helix Module Diagram Generation Video **\(1.3.3\)**
+
+### Backlog \(Coming Soon\)
 
 * Adds support for deploying specific diagram sets
 * Sitecore 7 Support
+* Optional Template ID Generation Support
 * Help Fields in Sitecore Updated with Documentation field from StarUML
 
 * Support for Sitecore IDs/updating existing architectures/diagrams
