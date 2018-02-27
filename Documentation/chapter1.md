@@ -106,16 +106,13 @@ Please note that the roadmap is tentative and subject to change.
 
 ### Backlog \(Coming Soon\)
 
+* Introduces a new CLI tool to be used for generating [metadata-json](https://github.com/staruml/metadata-json) \(.mdj\) files directly from Sitecore and using [mdgen](https://github.com/staruml/mdgen) to auto-generate the HTML documentation, for use in CI/CD builds
 * Adds support for deploying specific diagram sets
 * Sitecore 7 Support
-* Optional Template ID Generation Support
+* Optional Template ID Generation and Preservation Support
 * Help Fields in Sitecore Updated with Documentation field from StarUML
 
-* Support for Sitecore IDs/updating existing architectures/diagrams
-
-* JSON Tools and Extensibility Documentation
-
-* Updates the deployment to run validation and give the option to cancel the deployment if errors are detected
+* Update the deployment to run validation and give the option to cancel the deployment if errors are detected
 
 * Makes the _TemplateRoot_ setting optional
 
