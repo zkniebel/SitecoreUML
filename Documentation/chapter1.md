@@ -95,6 +95,8 @@ Please note that the roadmap is tentative and subject to change.
 
 * [x] Adds support for setting the default field section name in preferences, leaving the one in the Sitecore configuration to be a required backup value **\(1.3.4\)**
 
+* [x] Adds support for SitecoreDXG \(new product in the SitecoreUML family - product coming soon\) to SitecoreUML Service for Sitecore so that both products will be able to share the same service
+
 * [ ] Documentation
 
   * [x] Export as HTML Docs Video **\(1.3.3\)**
@@ -106,7 +108,10 @@ Please note that the roadmap is tentative and subject to change.
 
 ### Backlog \(Coming Soon\)
 
-* Introduces a new CLI tool to be used for generating [metadata-json](https://github.com/staruml/metadata-json) \(.mdj\) files directly from Sitecore and using [mdgen](https://github.com/staruml/mdgen) to auto-generate the HTML documentation, for use in CI/CD builds
+* Rewrite of logic for importing from Sitecore to leverage newer, more performant service and logic that were written for SitecoreDXG \(see below\)
+* Introduces SitecoreDXG, a new CLI tool to be used for generating [metadata-json](https://github.com/staruml/metadata-json) \(.mdj\) files directly from Sitecore and using [mdgen](https://github.com/staruml/mdgen) to auto-generate the HTML documentation, for use in CI/CD builds 
+  * This will be a new product in the StarUML family, not directly a part of SitecoreUML
+  * SitecoreDXG is currently in alpha testing
 * Adds support for deploying specific diagram sets
 * Sitecore 7 Support
 * Optional Template ID Generation and Preservation Support
