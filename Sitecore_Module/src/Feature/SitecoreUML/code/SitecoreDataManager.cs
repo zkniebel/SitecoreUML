@@ -276,6 +276,119 @@ namespace ZacharyKniebel.Feature.SitecoreUML
         }
 
         /// <summary>
+        /// Returns the template architecture serialized as Json for the solution
+        /// </summary>
+        /// <returns></returns>
+        public virtual JsonSitecoreTemplateArchitecture GetTemplateArchitectureForExport()
+        {
+            var templateRoot = _database.GetItem(SitecoreUMLConfiguration.Instance.TemplatesRootPath);
+            if (templateRoot == null)
+            {
+                Sitecore.Diagnostics.Log.Error($"SitecoreUML Configuration Error: Template root path does not exist: '{SitecoreUMLConfiguration.Instance.TemplatesRootPath}'.", this);
+                throw new Sitecore.Exceptions.ItemNotFoundException("SitecoreUML Configuration Error: The configured template root item could not be found. See the Sitecore log for more details.");
+            }
+            
+            return new JsonSitecoreTemplateArchitecture()
+            {
+                Items = GetChildJsonSitecoreItems(
+                    templateRoot,
+                    templateRoot,
+                    SitecoreUMLConfiguration.Instance.TemplateExcludePaths)
+            };
+        }
+
+        /// <summary>
+        /// Gets the Json Sitecore item that represents the given item
+        /// </summary>
+        /// <param name="item">The item to get the Json Sitecore item for</param>
+        /// <param name="templateRoot">The template root item</param>
+        /// <param name="excludePaths">Root paths of items to be ignored</param>
+        /// <returns></returns>
+        protected IJsonSitecoreItem GetJsonSitecoreItem(Item item, Item templateRoot, IList<string> excludePaths)
+        {
+            if (TemplateManager.IsTemplate(item))
+            {
+                var templateItem = item.Database.GetTemplate(item.ID);
+                var templateRootPath = templateRoot.Paths.Path;
+                var templateRootPathLength = templateRootPath.Length;
+
+                return new JsonSitecoreTemplate()
+                {
+                    ReferenceID = templateItem.ID.ToString(),
+                    Name = templateItem.Name,
+                    BaseTemplates = templateItem.BaseTemplates
+                            .Where(
+                                baseTemplateItem =>
+                                    !SitecoreUMLConfiguration.Instance.TemplateExcludePaths
+                                        .Any(excludePath =>
+                                            baseTemplateItem.InnerItem.Paths.Path.StartsWith(excludePath,
+                                                StringComparison.OrdinalIgnoreCase))
+                                    && baseTemplateItem.InnerItem.Paths.Path.StartsWith(templateRootPath))
+                            .Select(
+                                baseTemplateItem =>
+                                    baseTemplateItem.InnerItem.ID.ToString())
+                            .ToArray(),
+                    Path = templateItem.InnerItem.Paths.Path.Substring(templateRootPathLength),
+                    Fields = templateItem.OwnFields
+                            .Select(
+                                templateFieldItem =>
+                                    new JsonSitecoreTemplateField()
+                                    {
+                                        Name = templateFieldItem.Name,
+                                        FieldType =
+                                            SitecoreUMLConfiguration.Instance.FieldTypes.HasKey(templateFieldItem
+                                                .Type)
+                                                ? SitecoreUMLConfiguration.Instance.FieldTypes.Forward[
+                                                    templateFieldItem.Type]
+                                                : templateFieldItem
+                                                    .Type, // field type wasn't in the map, so fall back to the Sitecore field type
+                                        SortOrder = templateFieldItem.Sortorder,
+                                        SectionName = templateFieldItem.Section.Name,
+                                        Title = templateFieldItem.InnerItem.Fields[TemplateFieldIDs.Title]
+                                            .GetValue(false, false, false, false),
+                                        Source = templateFieldItem.InnerItem.Fields[TemplateFieldIDs.Source]
+                                            .GetValue(false, false, false, false),
+                                        StandardValue =
+                                            templateItem.StandardValues?.Fields[templateFieldItem.ID]
+                                                .GetValue(false, false, false, false),
+                                        Shared = templateFieldItem.IsShared
+                                    })
+                            .ToArray()
+                };
+            }
+
+            if (item.TemplateID == TemplateIDs.TemplateFolder)
+            {
+                return new JsonSitecoreTemplateFolder()
+                {
+                    ReferenceID = item.ID.ToString(),
+                    Name = item.Name,
+                    Path = item.Paths.Path,
+                    Children = GetChildJsonSitecoreItems(item, templateRoot, excludePaths)
+                };
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Retrieves the array of Json Sitecore items that represents the children of the given item
+        /// </summary>
+        /// <param name="item">The item to get the child Json Sitecore items from</param>
+        /// <param name="templateRoot">The template root item</param>
+        /// <param name="excludePaths">Root paths of items to be ignored</param>
+        /// <returns></returns>
+        protected IJsonSitecoreItem[] GetChildJsonSitecoreItems(Item item, Item templateRoot, IList<string> excludePaths)
+        {
+            return item.Children
+                .Where(child => !excludePaths
+                    .Any(path => child.Paths.Path.StartsWith(path)))
+                .Select(child => GetJsonSitecoreItem(child, templateRoot, excludePaths))
+                .Where(jsonItem => jsonItem != null)
+                .ToArray();
+        }
+
+        /// <summary>
         /// Validates the templates and returns a response with any validation errors
         /// </summary>
         /// <param name="templates">The templates to validate</param>

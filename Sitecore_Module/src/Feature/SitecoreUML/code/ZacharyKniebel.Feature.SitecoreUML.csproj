@@ -177,7 +177,7 @@
     <Compile Include="Configuration\SitecoreUMLConfiguration.cs" />
     <Compile Include="Controllers\MetaDataJsonController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
-    <Compile Include="Controllers\Template2Controller.cs" />
+    <Compile Include="Controllers\SitecoreDXGController.cs" />
     <Compile Include="Controllers\TemplatesController.cs" />
     <Compile Include="Models\IJsonSitecoreItem.cs" />
     <Compile Include="Models\ItemType.cs" />
