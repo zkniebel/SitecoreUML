@@ -17,5 +17,16 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Models
         public bool IsTemplate { get; } = false;
 
         public IJsonSitecoreItem[] Children { get; set; }
+
+
+        public static implicit operator JsonSitecoreTemplateFolder(Sitecore.Data.Items.Item item)
+        {
+            return new JsonSitecoreTemplateFolder()
+            {
+                ReferenceID = item.ID.ToString(),
+                Name = item.Name,
+                Path = item.Paths.Path
+            };
+        }
     }
 }

@@ -21,6 +21,9 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Configuration
         public string TargetDatabaseName { get; private set; }
 
         // ReSharper disable once UnusedAutoPropertyAccessor.Local
+        public string DocumentationConfigurationPath { get; private set; }
+
+        // ReSharper disable once UnusedAutoPropertyAccessor.Local
         public string TemplatesRootPath { get; private set; }
         
         public List<string> TemplateExcludePaths { get; }

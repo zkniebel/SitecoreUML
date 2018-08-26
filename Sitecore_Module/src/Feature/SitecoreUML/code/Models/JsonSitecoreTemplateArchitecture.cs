@@ -9,5 +9,6 @@ namespace ZacharyKniebel.Feature.SitecoreUML.Models
     public class JsonSitecoreTemplateArchitecture
     {
         public IJsonSitecoreItem[] Items { get; set; } = Array.Empty<IJsonSitecoreItem>();
+        public DocumentationConfiguration DocumentationConfiguration { get; set; } = null;
     }
 }

@@ -1,0 +1,108 @@
+----item----
+version: 1
+id: {89C6BD38-AC9E-4CFB-B881-B7109E106E1E}
+database: master
+path: /sitecore/templates/SitecoreUML/DocumentationConfiguration/__Standard Values
+parent: {52A90A7B-479F-499E-A606-4FE91E3795D4}
+name: __Standard Values
+master: {00000000-0000-0000-0000-000000000000}
+template: {52A90A7B-479F-499E-A606-4FE91E3795D4}
+templatekey: DocumentationConfiguration
+created: 20180813T210808Z
+
+----version----
+language: en
+version: 1
+revision: 9023f2a2-9b69-4ae3-9e49-838abfb1e739
+
+----field----
+field: {830C982C-585A-45C7-968C-5DA1ED1C42DD}
+name: DocumentationTitle
+key: documentationtitle
+content-length: 0
+
+
+----field----
+field: {E294BA1E-AE73-430C-9F66-7BA72D85B8D3}
+name: ExcludedItems
+key: excludeditems
+content-length: 38
+
+{85F8D4BB-5616-41AC-B456-629227A87BB7}
+----field----
+field: {D3BA6229-2F29-4A88-BD59-5009F7846115}
+name: FoundationLayerRoot
+key: foundationlayerroot
+content-length: 0
+
+
+----field----
+field: {B1394057-16AA-4750-AA08-D580E7D556AB}
+name: FoundationModuleFolders
+key: foundationmodulefolders
+content-length: 0
+
+
+----field----
+field: {10F61242-2935-4CBC-A0A6-4BCD11399618}
+name: FeatureLayerRoot
+key: featurelayerroot
+content-length: 0
+
+
+----field----
+field: {6A8485F3-939F-4CD0-A3C1-5123918B8339}
+name: FeatureModuleFolders
+key: featuremodulefolders
+content-length: 0
+
+
+----field----
+field: {3B58F99D-2E61-4380-B479-0AB35AB5719F}
+name: ProjectLayerRoot
+key: projectlayerroot
+content-length: 0
+
+
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 14
+
+sitecore\admin
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20180813T210808Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 14
+
+sitecore\admin
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+9023f2a2-9b69-4ae3-9e49-838abfb1e739
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20180814T151846Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\admin
