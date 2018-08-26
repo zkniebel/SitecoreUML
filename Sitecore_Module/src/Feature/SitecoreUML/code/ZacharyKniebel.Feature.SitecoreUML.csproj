@@ -22,6 +22,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -179,10 +180,12 @@
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\SitecoreDXGController.cs" />
     <Compile Include="Controllers\TemplatesController.cs" />
+    <Compile Include="Models\DocumentationConfiguration.cs" />
     <Compile Include="Models\IJsonSitecoreItem.cs" />
     <Compile Include="Models\ItemType.cs" />
     <Compile Include="Models\JsonInvalidTemplateFieldType.cs" />
     <Compile Include="Models\JsonInvalidItemName.cs" />
+    <Compile Include="Models\JsonSitecoreItem.cs" />
     <Compile Include="Models\JsonSitecoreTemplateArchitecture.cs" />
     <Compile Include="Models\JsonSitecoreTemplateFolder.cs" />
     <Compile Include="Models\JsonValidationResponse.cs" />
