@@ -4,6 +4,7 @@ using System.Linq;
 using Sitecore;
 using Sitecore.ContentSearch.Maintenance;
 using Sitecore.Data;
+using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Data.Managers;
 using Sitecore.Data.Proxies;
@@ -287,13 +288,51 @@ namespace ZacharyKniebel.Feature.SitecoreUML
                 Sitecore.Diagnostics.Log.Error($"SitecoreUML Configuration Error: Template root path does not exist: '{SitecoreUMLConfiguration.Instance.TemplatesRootPath}'.", this);
                 throw new Sitecore.Exceptions.ItemNotFoundException("SitecoreUML Configuration Error: The configured template root item could not be found. See the Sitecore log for more details.");
             }
-            
+
+            var excludePaths = SitecoreUMLConfiguration.Instance.TemplateExcludePaths;
+            var documentationConfiguration = (DocumentationConfiguration) null;
+
+            var documentationConfigurationItem = _database.GetItem(SitecoreUMLConfiguration.Instance.DocumentationConfigurationPath);
+            if (documentationConfigurationItem != null)
+            {
+                documentationConfiguration = new DocumentationConfiguration()
+                {
+                    DocumentationTitle = documentationConfigurationItem["DocumentationTitle"],
+                    ExcludedItemPaths = ((MultilistField)documentationConfigurationItem.Fields["ExcludedItems"])
+                        ?.GetItems()
+                        ?.Select(item => item.Paths.Path),
+                    FoundationLayerRoot = (JsonSitecoreItem)((ReferenceField)documentationConfigurationItem.Fields["FoundationLayerRoot"])
+                        ?.TargetItem,
+                    FoundationModuleFolders = ((MultilistField)documentationConfigurationItem.Fields["FoundationModuleFolders"])
+                        .GetItems()
+                        .Select(item => (JsonSitecoreItem)item)
+                        .ToArray(),
+                    FeatureLayerRoot = (JsonSitecoreItem)((ReferenceField)documentationConfigurationItem.Fields["FeatureLayerRoot"])
+                        ?.TargetItem,
+                    FeatureModuleFolders = ((MultilistField)documentationConfigurationItem.Fields["FeatureModuleFolders"])
+                        .GetItems()
+                        .Select(item => (JsonSitecoreItem)item)
+                        .ToArray(),
+                    ProjectLayerRoot = (JsonSitecoreItem)((ReferenceField)documentationConfigurationItem.Fields["ProjectLayerRoot"])
+                        ?.TargetItem,
+                    ProjectModuleFolders = ((MultilistField)documentationConfigurationItem.Fields["ProjectModuleFolders"])
+                        .GetItems()
+                        .Select(item => (JsonSitecoreItem)item)
+                        .ToArray()
+                };
+
+                excludePaths.AddRange(
+                    documentationConfiguration.ExcludedItemPaths
+                        .Where(path => !excludePaths.Contains(path)));
+            }
+
             return new JsonSitecoreTemplateArchitecture()
             {
                 Items = GetChildJsonSitecoreItems(
                     templateRoot,
                     templateRoot,
-                    SitecoreUMLConfiguration.Instance.TemplateExcludePaths)
+                    excludePaths),
+                DocumentationConfiguration = documentationConfiguration
             };
         }
 
