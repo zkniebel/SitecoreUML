@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SitecoreUML", "SitecoreUML", "{8B4D8B9D-8A5D-4F6F-95B2-F331CDB1169C}"
 EndProject
@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Foundation", "3. Foundat
 	EndProjectSection
 EndProject
 Project("{CAA73BB0-EF22-4D79-A57E-DF67B3BA9C80}") = "TDS.SitecoreUML.Core", "src\Feature\SitecoreUML\serialization\TDS.SitecoreUML.Core\TDS.SitecoreUML.Core.scproj", "{798A567B-EF3E-4146-9FE9-FF994421542D}"
+EndProject
+Project("{CAA73BB0-EF22-4D79-A57E-DF67B3BA9C80}") = "TDS.SitecoreUML.Master", "src\serialization\TDS.SitecoreUML.Master\TDS.SitecoreUML.Master.scproj", "{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,30 @@ Global
 		{798A567B-EF3E-4146-9FE9-FF994421542D}.Release|x64.ActiveCfg = Release|Any CPU
 		{798A567B-EF3E-4146-9FE9-FF994421542D}.Release|x64.Build.0 = Release|Any CPU
 		{798A567B-EF3E-4146-9FE9-FF994421542D}.Release|x64.Deploy.0 = Release|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.always|Any CPU.ActiveCfg = Release|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.always|Any CPU.Build.0 = Release|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.always|Any CPU.Deploy.0 = Release|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.always|x64.ActiveCfg = Release|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.always|x64.Build.0 = Release|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.always|x64.Deploy.0 = Release|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.ci|Any CPU.ActiveCfg = Release|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.ci|Any CPU.Build.0 = Release|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.ci|Any CPU.Deploy.0 = Release|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.ci|x64.ActiveCfg = Release|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.ci|x64.Build.0 = Release|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.ci|x64.Deploy.0 = Release|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.Debug|x64.Build.0 = Debug|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.Debug|x64.Deploy.0 = Debug|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.Release|x64.ActiveCfg = Release|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.Release|x64.Build.0 = Release|Any CPU
+		{5413BA74-6ED1-4BF9-A2E0-C3B0491852C1}.Release|x64.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,5 +103,8 @@ Global
 		{8B4D8B9D-8A5D-4F6F-95B2-F331CDB1169C} = {C1A0A8DA-9DD7-4397-854F-EDC72371916C}
 		{0EFBCDCC-486A-4675-8939-6DAB7939ED17} = {8B4D8B9D-8A5D-4F6F-95B2-F331CDB1169C}
 		{798A567B-EF3E-4146-9FE9-FF994421542D} = {8B4D8B9D-8A5D-4F6F-95B2-F331CDB1169C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {201DAE96-E198-4113-9F44-AA0772E72990}
 	EndGlobalSection
 EndGlobal
