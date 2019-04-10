@@ -396,7 +396,7 @@ namespace ZacharyKniebel.Feature.SitecoreUML
                 };
             }
 
-            if (item.TemplateID == TemplateIDs.TemplateFolder)
+            if (item.TemplateID == TemplateIDs.TemplateFolder || item.TemplateID == TemplateIDs.Folder)
             {
                 return new JsonSitecoreTemplateFolder()
                 {
