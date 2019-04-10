@@ -11,9 +11,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Feature", "2. Feature", "{C1A0A8DA-9DD7-4397-854F-EDC72371916C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Foundation", "3. Foundation", "{CD48DDAE-E2D5-4B92-ACA1-0E5E48A8FBA4}"
-	ProjectSection(SolutionItems) = preProject
-		src\Feature\SitecoreUML\code\ViewModels\JsonResult.cs = src\Feature\SitecoreUML\code\ViewModels\JsonResult.cs
-	EndProjectSection
 EndProject
 Project("{CAA73BB0-EF22-4D79-A57E-DF67B3BA9C80}") = "TDS.SitecoreUML.Core", "src\Feature\SitecoreUML\serialization\TDS.SitecoreUML.Core\TDS.SitecoreUML.Core.scproj", "{798A567B-EF3E-4146-9FE9-FF994421542D}"
 EndProject
