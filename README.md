@@ -1,3 +1,12 @@
+# DEPRECATED 
+
+SitecoreUML is now deprecated and is available as a legacy download. It is recommended that you use [SitecoreDXG](https://sitecoreuml.gitbook.io/sitecoredxg/) instead of SitecoreUML for documenting, visualizing and performing Helix validations on your Sitecore template architectures.
+
+**If you choose to use SitecoreUML anyway, please not that you will need to install StarUML 2.x. SitecoreUML does not work with StarUML 3+ due to breaking changes in StarUML.**
+
+SitecoreDXG is the latest in the SitecoreUML family and the only feature it's missing from SitecoreUML is the template authoring and deployment to Sitecore feature. This feature will be released in a future project called the *SitecoreUML Authoring Toolkit*, which is planned for a late 2020 release. 
+
+
 <p align="center">
 <a href="https://github.com/zkniebel/SitecoreUML/">
 <img src="https://github.com/zkniebel/SitecoreUML/blob/master/Documentation/assets/SitecoreUML-Logo-50x50.png?raw=true" alt="SitecoreUML" />
